@@ -1,0 +1,10 @@
+# Eclipse
+.project
+.settings/*
+.buildpath
+
+# Symfony
+/app/cache/*
+/app/logs/*
+app/config/config_*local.yml
+tags
