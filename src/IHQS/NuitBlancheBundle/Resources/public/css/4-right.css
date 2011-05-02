@@ -1,0 +1,47 @@
+div.last-wars .team
+{
+		display: inline-block;
+		width: 70px;
+}
+div.widget li
+{
+		margin-bottom: 5px;
+}
+
+div.widget a
+{
+		display: inline-block;
+		width: 130px;
+		height: 12px;
+		overflow: hidden;
+}
+
+div.widget .little
+{
+		display: inline-block;
+		margin-top: 3px;
+}
+
+div.last-replays li a
+{
+		float: left;
+		display: inline;
+		overflow: hidden;
+		height: 40px;
+		width: 79px;
+		font-size: 10px;
+		
+		margin: 4px 0;
+}
+div.last-replays li .little
+{
+		float: right;
+		text-align: center;
+		veritcal-align: middle;
+		height: 32px;
+		display:block;
+		margin-top: 8px;
+}
+
+
+	

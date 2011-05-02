@@ -1,0 +1,7 @@
+{% extends 'IHQSNuitBlancheBundle::layout_standard.html.twig' %}
+
+{% block title %}Welcome !{% endblock %}
+
+{% block content %}
+    {% include "IHQSNuitBlancheBundle:News:details.html.twig" with { 'news': news } %}
+{% endblock %}

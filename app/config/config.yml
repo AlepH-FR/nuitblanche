@@ -15,7 +15,7 @@ framework:
         default_locale: %locale%
         lifetime:       3600
         auto_start:     true
-
+    
 # Twig Configuration
 twig:
     debug:            %kernel.debug%
@@ -43,7 +43,9 @@ doctrine:
 
     orm:
         auto_generate_proxy_classes: %kernel.debug%
-        auto_mapping: true
+        auto_mapping: false
+        mappings:
+            IHQSNuitBlancheBundle: { type: annotation, dir: Entity/ }
 
 # Swiftmailer Configuration
 swiftmailer:
@@ -55,3 +57,5 @@ swiftmailer:
 jms_security_extra:
     secure_controllers:  true
     secure_all_services: false
+
+ihqs_nuit_blanche: ~

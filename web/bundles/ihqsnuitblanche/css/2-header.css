@@ -1,0 +1,125 @@
+#header 
+{
+	background: url(../images/banner_fond.png) no-repeat;
+	background-size: length;
+	box-shadow: 0 0 10px #888;
+	-moz-box-shadow: 0 0 10px #888;
+	-webkit-box-shadow: 0 0 10px #888; 
+	z-index:2;
+}
+
+#header h1
+{
+	float: left;
+	height: 100px;
+	width: 150px;
+	margin-left: 20px;
+	box-shadow: 0 0 10px #888;
+	-moz-box-shadow: 0 0 10px #888;
+	-webkit-box-shadow: 0 0 10px #888;  
+	background: url(../images/logo.png) 0 0 no-repeat;
+}
+#header h1 span
+{
+	display: none;
+}
+#header .lang
+{
+	float: right;
+	padding: 10px 20px 0 0;
+}
+
+#header .lang li
+{
+	display: inline-block;
+}
+#header .lang li a
+{
+	width: 16px;
+	height: 11px;
+	display: inline-block;
+}
+#header .lang li a span
+{
+	display: none;
+}
+#header .lang li a.fr
+{
+	background: url(../images/flags/FR.gif);
+}
+#header .lang li a.en
+{
+	background: url(../images/flags/UK.gif);
+}
+
+#header form
+{
+	width: 150px;
+	height: 90px;
+	
+	box-shadow: 0 0 10px #888;
+	-moz-box-shadow: 0 0 10px #888;
+	-webkit-box-shadow: 0 0 10px #888;  
+	
+	position: relative;
+	top: 31px;
+	left: 730px;
+}
+#header form fieldset
+{
+	position: absolute;
+	margin: 10px;
+}
+#header form fieldset legend,
+#header form fieldset label
+{
+	display: none;	
+}
+#header form p
+{
+	margin: 6px 0;
+}
+#header form p input
+{
+	width: 124px;
+	padding: 2px;
+	height: 14px;
+}
+#header form p input.submit
+{
+	background: #395674;
+	border: 1px solid black;	
+	width: 130px;
+	height: 18px;
+	padding: 0;
+}
+
+#header ul.menu 
+{
+	z-index: 3;
+	clear: both;
+	background: white;
+	
+	width: 880px;
+	height: 40px;
+	
+	box-shadow: 0 0 10px #888;
+	-moz-box-shadow: 0 0 10px #888;
+	-webkit-box-shadow: 0 0 10px #888; 
+	
+	padding: 0 10px;
+}
+#header ul.menu li
+{
+	line-height: 40px;
+	display: inline-block;
+	padding: 0 20px;
+}
+#header ul.menu li.first
+{
+	padding-left: 10px;
+}
+#header ul.menu last
+{
+	padding-right: 10px;
+}

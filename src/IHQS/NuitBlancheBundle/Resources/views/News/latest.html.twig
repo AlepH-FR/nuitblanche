@@ -1,0 +1,11 @@
+<div class="widget last-news">
+    <h3>{{ "Latest news" | trans }}</h3>
+    <ul>
+        {% for new in news %}
+        <li>
+            <a href="{{ url('news_show', {'news_id': new.id}) }}">{{ new.title }}</a>
+            <span class="little">{{ new.author.username }} - {{ new.date.format('d m Y') }}</span>
+        </li>
+        {% endfor %}
+    </ul>
+</div>

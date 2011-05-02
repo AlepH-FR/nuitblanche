@@ -1,0 +1,24 @@
+<div class="news">
+    <h2>{{ news.title }}</h2>
+    <p class="meta">{{ "by" | trans }}
+        <a href="{{ url('player_show', {'player_id': news.author.id}) }}">{{ news.author.username }}</a>
+        - {{ news.date.format('d/m/Y - H:i') }}
+    </p>
+    {{ news.body | raw }}
+</div>
+<h2>{{ "Comments" | trans }}</h2>
+<ol class="comments">
+{% for comment in news.comments %}
+    <li>
+        <img src="{{ comment.author.avatar }}" />
+        <p class="meta">
+            #{{ loop.index }}
+            - <a href="{{ url('player_show', {'player_id': comment.author.id}) }}">{{ comment.author.username }}</a>
+            - {{ comment.date.format('d/m/Y - H:i') }}
+        </p>
+        <p>
+            {{ comment.body | raw }}
+        </p>
+    </li>
+{% endfor %}
+</ol>

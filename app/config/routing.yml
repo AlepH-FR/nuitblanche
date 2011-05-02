@@ -1,12 +1,27 @@
-_welcome:
-    pattern:  /
-    defaults: { _controller: AcmeDemoBundle:Welcome:index }
-
-_demo_secured:
-    resource: "@AcmeDemoBundle/Controller/SecuredController.php"
+main:
+    resource: "@IHQSNuitBlancheBundle/Controller/MainController.php"
     type:     annotation
 
-_demo:
-    resource: "@AcmeDemoBundle/Controller/DemoController.php"
+league:
+    resource: "@IHQSNuitBlancheBundle/Controller/LeagueController.php"
     type:     annotation
-    prefix:   /demo
+
+news:
+    resource: "@IHQSNuitBlancheBundle/Controller/NewsController.php"
+    type:     annotation
+
+player:
+    resource: "@IHQSNuitBlancheBundle/Controller/PlayerController.php"
+    type:     annotation
+
+replay:
+    resource: "@IHQSNuitBlancheBundle/Controller/ReplayController.php"
+    type:     annotation
+
+team:
+    resource: "@IHQSNuitBlancheBundle/Controller/TeamController.php"
+    type:     annotation
+
+war:
+    resource: "@IHQSNuitBlancheBundle/Controller/WarController.php"
+    type:     annotation

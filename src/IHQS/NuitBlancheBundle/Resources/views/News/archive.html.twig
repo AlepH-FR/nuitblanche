@@ -1,0 +1,18 @@
+<div class="sub-section wide">
+    <h3>{{ "News archive" | trans }}</h3>
+    <ul>
+        {% for new in news_archives %}
+        <li>
+            <a href="{{ url('news_show', { 'news_id : news }) }}">
+                <img class="flag" src="{{ new.team.icon }}" />
+                {{ new.title }}
+            </a>
+            <span class="little">
+                <strong>{{ new.author.username }}</strong>
+                - {{ new.date.format('d m Y') }}
+            </span>
+            <span class="little">(<strong>{{ new.comments.length }}</strong> {{ "comments" | trans }})</span>
+        </li>
+        {% endfor %}
+    </ul>
+</div>

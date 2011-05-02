@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="keywords" content="nuit blanche, starcraft 2, multigaming, female gaming" />
+        <title>Nuit Blanche, Fair Gamers since 1996 | {% block title %}{% endblock %}</title>
+
+        <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
+        <link rel="stylesheet" href="{{ asset('bundles/ihqsnuitblanche/css/styles.css') }}" type="text/css" media="all" />
+
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
+    </head>
+    <body>
+  	<div id="page">
+            <a name="top"></a>
+            <div id="header">
+                <h1><span>Nuit Blanche - {{ block('title') }}</span></h1>
+                <ul class="lang">
+                    <li><a href="" class="fr"><span>fr</span></a></li>
+                    <li><a href="" class="en"><span>en</span></a></li>
+                </ul>
+
+                <ul class="menu">
+                    <li class="first">
+                        <a href="{{ url('homepage') }}">{{ "Home" | trans }}</a>
+                    </li>
+                    <li>
+                        <a href="{{ url('homepage') }}">{{ "News" | trans }}</a>
+                    </li>
+                    <li>
+                        <a href="{{ url('team_list') }}">{{ "Team" | trans }}</a>
+                    </li>
+                    <li>
+                        <a href="{{ url('war_list') }}">{{ "Matchs" | trans }}</a>
+                    </li>
+                    <li>
+                        <a href="{{ url('league_list') }}">{{ "Leagues" | trans }}</a>
+                    </li>
+                    <li>
+                        <a href="{{ url('replay_list') }}">{{ "Replays" | trans }}</a>
+                    </li>
+                    <li class="last">
+                        <a href="" class="disabled">Forum</a>
+                    </li>
+                </ul>
+
+                <div style="clear: both"></div>
+            </div>
+
+            <div id="left">
+                {% block left %}
+                    {% include "IHQSNuitBlancheBundle:Layout:sections_menu.html.twig" %}
+                {% endblock %}
+            </div>
+
+            <div id="content">
+                {% if app.session.flash('notice') %}
+                    <div class="flash-message">
+                        <em>Notice</em>: {{ app.session.flash('notice') }}
+                    </div>
+                {% endif %}
+
+                {% block content %}
+                {% endblock %}
+            </div>
+
+            <div id="right">
+                {% block right %}
+                {% endblock %}
+            </div>
+        </div>
+    </body>
+</html>

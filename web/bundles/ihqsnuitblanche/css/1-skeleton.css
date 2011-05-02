@@ -1,0 +1,81 @@
+body
+{
+		font-family: Arial, Helvetica;
+		font-size: 12px;
+		height: 100%;
+}
+
+
+.spacer
+{
+		clear: both;
+}
+
+a, strong
+{
+		font-weight: bold;
+		color: #395674;
+		text-decoration: none;
+}
+a.disabled
+{
+		font-weight: normal;
+}
+a:hover
+{
+		color: #294769;
+		text-shadow: 0 0 5px #888;
+		-moz-text-shadow: 0 0 5px #888;
+		-webkit-text-shadow: 0 0 10px #888; 
+}
+a.no-color
+{
+		color: white;
+}
+
+h2
+{
+		font-family: Georgia;
+		font-weight: bold;
+		color: #395674;
+		font-size: 18px;
+		margin-bottom: 10px;
+}
+
+h3
+{
+		font-family: Georgia;
+		font-weight: bold;
+		color: black;
+		margin-bottom: 5px;
+}
+
+img.flag
+{
+	margin-left : 3px;
+	margin-right: 3px;
+}
+
+.win
+{
+		color: green;
+}
+.loss
+{
+		color: red;
+}
+.little
+{
+		font-size: 9px;
+}
+
+hr
+{
+		background-color: #888;
+		height: 1px;
+		box-shadow: 0 0 2px #888;
+		-moz-box-shadow: 0 0 2px #888;
+		-webkit-box-shadow: 0 0 2px #888; 
+		
+		margin-bottom: 1px;
+}

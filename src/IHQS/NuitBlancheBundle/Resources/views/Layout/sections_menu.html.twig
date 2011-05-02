@@ -1,0 +1,39 @@
+<ul class="teams">
+	<li class="main up">
+		<span><img class="flag" src="{{ asset('bundles/ihqsnuitblanche/images/ico/nb_boy.png') }}" /> nB.SC2</span>
+		<ul>
+			<li>. <a href="">news</a></li>
+			<li>. <a href="">team</a></li>
+			<li>. <a href="">matchs</a></li>
+			<li>. <a href="">leagues</a></li>
+		</ul>
+	</li>
+	<li class="main up">
+		<span><img class="flag" src="{{ asset('bundles/ihqsnuitblanche/images/ico/nb_girl.png') }}" /> nB.SC2 - ladies</span>
+		<ul>
+			<li>. <a href="">news</a></li>
+			<li>. <a href="">team</a></li>
+			<li>. <a href="">matchs</a></li>
+			<li>. <a href="">leagues</a></li>
+		</ul>
+	</li>
+	<li class="main up">
+		<span><img class="flag" src="{{ asset('bundles/ihqsnuitblanche/images/ico/nb_boy.png') }}" /> nB.SC2 - oldies</span>
+		<ul></ul>
+	</li>
+</ul>
+<script type="text/javascript">
+$("li.main").click(function() {
+	if(!$(this).hasClass("down"))
+	{
+		$(this).children("ul").animate({"height":"60px", "padding": "0 0 10px 10px"}, "slow")
+		$(this).addClass("down").removeClass("up");
+	}
+
+	else
+	{
+		$(this).children("ul").animate({"height":"0px", "padding": "0"}, "slow")
+		$(this).addClass("up").removeClass("down");
+	}
+})
+</script>

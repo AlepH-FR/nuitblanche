@@ -1,0 +1,39 @@
+#left ul.teams
+{
+	padding-top: 20px;	
+}
+
+#left ul.teams li.main
+{
+	border-top: 1px solid #888;
+	border-bottom: 1px solid #888;
+	margin-bottom: 10px;
+	cursor: pointer;
+}
+#left ul.teams li span
+{
+	font-weight: bold;
+	color: white;
+	margin-bottom: 5px;
+	
+	display:inline-block;
+	width: 100%;
+}
+
+#left ul.teams li.down span
+{
+	background: #888 url(../images/ico/list_up.png) no-repeat 130px 3px;
+}
+
+#left ul.teams li.up span
+{
+	background: #888 url(../images/ico/list_down.png) no-repeat 130px 3px;
+}
+
+#left ul.teams li ul
+{
+	padding: 0;
+	height: 0px;
+	overflow: hidden;
+}
+
