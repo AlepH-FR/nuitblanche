@@ -4,6 +4,7 @@ namespace IHQS\NuitBlancheBundle\Entity;
 
 /**
  * @orm:Entity(repositoryClass="IHQS\NuitBlancheBundle\Model\GamePlayerRepository")
+ * @orm:Table(name="gameplayer")
  */
 class GamePlayer
 {
@@ -18,6 +19,11 @@ class GamePlayer
      * @orm:ManyToOne(targetEntity="Game")
      */
     protected $game;
+
+    /**
+     * @orm:ManyToOne(targetEntity="WarGame")
+     */
+    protected $warGame;
 
     /**
      * @orm:ManyToOne(targetEntity="Player")

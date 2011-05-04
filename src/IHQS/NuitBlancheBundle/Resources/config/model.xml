@@ -16,6 +16,7 @@
         <parameter key="nb.model.team.class">IHQS\NuitBlancheBundle\Entity\Team</parameter>
         <parameter key="nb.model.user.class">IHQS\NuitBlancheBundle\Entity\User</parameter>
         <parameter key="nb.model.war.class">IHQS\NuitBlancheBundle\Entity\War</parameter>
+        <parameter key="nb.model.war_game.class">IHQS\NuitBlancheBundle\Entity\WarGame</parameter>
 
         <parameter key="nb.manager.comment.class">IHQS\NuitBlancheBundle\Model\CommentRepository</parameter>
         <parameter key="nb.manager.game.class">IHQS\NuitBlancheBundle\Model\GameRepository</parameter>
@@ -28,56 +29,61 @@
         <parameter key="nb.manager.team.class">IHQS\NuitBlancheBundle\Model\TeamRepository</parameter>
         <parameter key="nb.manager.user.class">IHQS\NuitBlancheBundle\Model\UserRepository</parameter>
         <parameter key="nb.manager.war.class">IHQS\NuitBlancheBundle\Model\WarRepository</parameter>
+        <parameter key="nb.manager.war_game.class">IHQS\NuitBlancheBundle\Model\WarGameRepository</parameter>
     </parameters>
 
     <services>
         <!-- Document manager -->
-        <service id="ihqs.entity_manager" alias="doctrine.orm.entity_manager" />
+        <service id="nb.entity_manager" alias="doctrine.orm.entity_manager" />
 
         <!-- Repositories -->
         <service class="%nb.manager.comment.class%" id="nb.manager.comment" factory-method="getRepository" factory-class="IHQS\NuitBlancheBundle\DependencyInjection\IHQSNuitBlancheExtension">
-            <argument type="service" id="ihqs.entity_manager" />
+            <argument type="service" id="nb.entity_manager" />
             <argument type="string">%nb.model.comment.class%</argument>
         </service>
         <service class="%nb.manager.game.class%" id="nb.manager.game" factory-method="getRepository" factory-class="IHQS\NuitBlancheBundle\DependencyInjection\IHQSNuitBlancheExtension">
-            <argument type="service" id="ihqs.entity_manager" />
+            <argument type="service" id="nb.entity_manager" />
             <argument type="string">%nb.model.game.class%</argument>
         </service>
         <service class="%nb.manager.game_player.class%" id="nb.manager.game_player" factory-method="getRepository" factory-class="IHQS\NuitBlancheBundle\DependencyInjection\IHQSNuitBlancheExtension">
-            <argument type="service" id="ihqs.entity_manager" />
+            <argument type="service" id="nb.entity_manager" />
             <argument type="string">%nb.model.game_player.class%</argument>
         </service>
         <service class="%nb.manager.league.class%" id="nb.manager.league" factory-method="getRepository" factory-class="IHQS\NuitBlancheBundle\DependencyInjection\IHQSNuitBlancheExtension">
-            <argument type="service" id="ihqs.entity_manager" />
+            <argument type="service" id="nb.entity_manager" />
             <argument type="string">%nb.model.league.class%</argument>
         </service>
         <service class="%nb.manager.news.class%" id="nb.manager.news" factory-method="getRepository" factory-class="IHQS\NuitBlancheBundle\DependencyInjection\IHQSNuitBlancheExtension">
-            <argument type="service" id="ihqs.entity_manager" />
+            <argument type="service" id="nb.entity_manager" />
             <argument type="string">%nb.model.news.class%</argument>
         </service>
         <service class="%nb.manager.player.class%" id="nb.manager.player" factory-method="getRepository" factory-class="IHQS\NuitBlancheBundle\DependencyInjection\IHQSNuitBlancheExtension">
-            <argument type="service" id="ihqs.entity_manager" />
+            <argument type="service" id="nb.entity_manager" />
             <argument type="string">%nb.model.player.class%</argument>
         </service>
         <service class="%nb.manager.replay.class%" id="nb.manager.replay" factory-method="getRepository" factory-class="IHQS\NuitBlancheBundle\DependencyInjection\IHQSNuitBlancheExtension">
-            <argument type="service" id="ihqs.entity_manager" />
+            <argument type="service" id="nb.entity_manager" />
             <argument type="string">%nb.model.replay.class%</argument>
         </service>
         <service class="%nb.manager.season.class%" id="nb.manager.season" factory-method="getRepository" factory-class="IHQS\NuitBlancheBundle\DependencyInjection\IHQSNuitBlancheExtension">
-            <argument type="service" id="ihqs.entity_manager" />
+            <argument type="service" id="nb.entity_manager" />
             <argument type="string">%nb.model.season.class%</argument>
         </service>
         <service class="%nb.manager.team.class%" id="nb.manager.team" factory-method="getRepository" factory-class="IHQS\NuitBlancheBundle\DependencyInjection\IHQSNuitBlancheExtension">
-            <argument type="service" id="ihqs.entity_manager" />
+            <argument type="service" id="nb.entity_manager" />
             <argument type="string">%nb.model.team.class%</argument>
         </service>
         <service class="%nb.manager.user.class%" id="nb.manager.user" factory-method="getRepository" factory-class="IHQS\NuitBlancheBundle\DependencyInjection\IHQSNuitBlancheExtension">
-            <argument type="service" id="ihqs.entity_manager" />
+            <argument type="service" id="nb.entity_manager" />
             <argument type="string">%nb.model.user.class%</argument>
         </service>
         <service class="%nb.manager.war.class%" id="nb.manager.war" factory-method="getRepository" factory-class="IHQS\NuitBlancheBundle\DependencyInjection\IHQSNuitBlancheExtension">
-            <argument type="service" id="ihqs.entity_manager" />
+            <argument type="service" id="nb.entity_manager" />
             <argument type="string">%nb.model.war.class%</argument>
+        </service>
+        <service class="%nb.manager.war_game.class%" id="nb.manager.war_game" factory-method="getRepository" factory-class="IHQS\NuitBlancheBundle\DependencyInjection\IHQSNuitBlancheExtension">
+            <argument type="service" id="nb.entity_manager" />
+            <argument type="string">%nb.model.war_game.class%</argument>
         </service>
     </services>
 

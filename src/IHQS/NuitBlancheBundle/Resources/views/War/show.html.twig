@@ -1,123 +1,105 @@
-<h2>{{ "Clan War" | trans }}</h2>
-<ul class="filters">
-    <li class="first">
-        <a href="#info">{{ "Info" | trans }}</a>
-    </li>
-    <li>
-        <a href="#stats">{{ "Games" | trans }}</a>
-    </li>
-    <li class="last">
-        <a href="#social">{{ "Replays" | trans }}</a>
-    </li>
-</ul>
+{% extends 'IHQSNuitBlancheBundle::layout_standard.html.twig' %}
 
-<a name="info"></a>
-<div class="replay-info">
-    <div class="teams">
-        <div class="team1"><strong>{{ war.team.tag }}</strong></div>
-        <div class="score win">{{ war.teamScore }}</div>
-        <div class="score loss">{{ war.opponentScore }}</div>
-        <div class="team2"><strong>{{ war.opponentName }}</strong></div>
+{% block title %}{{ "War" | trans }} : {{ war.team.name}} vs {{ war.opponentName }}{% endblock %}
+
+{% block content %}
+    <h2>{{ "Clan War" | trans }}</h2>
+    <ul class="filters">
+        <li class="first">
+            <a href="#info">{{ "Info" | trans }}</a>
+        </li>
+        <li>
+            <a href="#stats">{{ "Games" | trans }}</a>
+        </li>
+        <li class="last">
+            <a href="#social">{{ "Replays" | trans }}</a>
+        </li>
+    </ul>
+
+    <a name="info"></a>
+    <div class="replay-info">
+        <div class="teams">
+            <div class="team1"><strong>{{ war.team.tag }}</strong></div>
+            <div class="score win">{{ war.teamScore }}</div>
+            <div class="score loss">{{ war.opponentScore }}</div>
+            <div class="team2"><strong>{{ war.opponentName }}</strong></div>
+            <div class="spacer"></div>
+        </div>
         <div class="spacer"></div>
+        <br />
+        <hr />
+        <div class="game-info">
+            <h3>{{ "War information" | trans }}</h3>
+            <ul class="info">
+                <li>
+                    <span class="stat">{{ "league" | trans }}</span>
+                    <span class="data"><a href="{{ url('league_show', { 'league_id': war.season.league.id }) }}">{{ war.season.league.name }}</a></span>
+                </li>
+                <li>
+                    <span class="stat">{{ "season" | trans }}</span>
+                    <span class="data"><a href="">{{ war.season.number }}</a></span>
+                </li>
+            </ul>
+            <ul class="info">
+                <li>
+                    <span class="stat">{{ "date" | trans }}</span>
+                    <span class="data">{{ war.date.format('d m Y') }}</span>
+                </li>
+                <li>
+                    <span class="stat">{{ "maps" | trans }}</span>
+                    <span class="data">{{ war.maps }}</span>
+                </li>
+            </ul>
+        </div>
     </div>
-    <div class="spacer"></div>
-    <br />
-    <hr />
-    <div class="game-info">
-        <h3>{{ "War information" | trans }}</h3>
-        <ul class="info">
-            <li>
-                <span class="stat">{{ "league" | trans }}</span>
-                <span class="data"><a href="{{ url('league_show', { 'league_id': war.season.league.id }) }}">{{ war.season.league.name }}</a></span>
-            </li>
-            <li>
-                <span class="stat">{{ "season" | trans }}</span>
-                <span class="data"><a href="">{{ war.season.number }}</a></span>
-            </li>
-        </ul>
-        <ul class="info">
-            <li>
-                <span class="stat">{{ "date" | trans }}</span>
-                <span class="data">{{ war.date.format('d m Y') }}</span>
-            </li>
-            <li>
-                <span class="stat">{{ "maps" | trans }}</span>
-                <span class="data">{{ war.maps }}</span>
-            </li>
-        </ul>
-    </div>
-</div>
 
-<a name="games"></a>
-<h2>{{ "Games" | trans }}</h2>
-<div class="sub-section wars replays">
-    <table>
-        <caption>{{ "Games" | trans }}</caption>
-        <thead></thead>
-        <tfoot></tfoot>
-        <tbody>
-            {% for game in war.games %}
-            <tr>
-                <td class="map">
-                    {{ game.map }}
-                </td>
-                <td class="war-score">&nbsp;</td>
-                <td class="player player-left">
-                    <img class="race-icon" src="{{ asset('bundles/ihqsnuitblancheimages/ico/' ~ game.team1.race ~ '_icon.png') }}" />
-                    {{ game.team1.name }}
-                </td>
-                <td class="score match-{{ game.team1Result }}">{{ game.team1Score }}</td>
-                <td class="separator"></td>
-                <td class="score match-{{ game.team2Result }}">{{ game.team2Score }}</td>
-                <td class="player player-right">
-                    <img class="race-icon" src="{{ asset('bundles/ihqsnuitblancheimages/ico/' ~ game.team2.race ~ '_icon.png') }}" />
-                    {{ game.team2.name }}
-                </td>
-                <td class="date">{{ game.date }}</td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-    <br />
-    <br />
-</div>
-  	
-<a name="replays"></a>
-	
-<h2>{{ "Replays" | trans }}</h2>
-<div class="sub-section wars replays">
-    <table>
-        <caption>{{ "Replays" | trans }}</caption>
-        <thead></thead>
-        <tfoot></tfoot>
-        <tbody>
-            {% for replay in war.replays }}
-            <tr>
-                <td class="map">
-                   {{ replay.map }}
-                </td>
-                <td class="player player-left">
-                    <img class="race-icon" src="{{ asset('bundles/ihqsnuitblancheimages/ico/' ~ replay.team1.race ~ '_icon.png') }}" />
-                    {{ replay.team1.name }}
-                </td>
-                <td class="separator"></td>
-                <td class="player player-right">
-                    <img class="race-icon" src="{{ asset('bundles/ihqsnuitblancheimages/ico/' ~ replay.team2.race ~ '_icon.png') }}" />
-                    {{ replay.team2.name }}
-                </td>
-                <td class="date">{{ replay.date.format('d/m/Y') }}</td>
-                <td class="view">
-                    <a href="{{ url('replay_full', { 'replay_id' : replay.id }) }}">
-                        <img class="ico" src="{{ asset('bundles/ihqsnuitblanche/images/ico/watch.png') }}" alt="{{ "details" | trans }}">
-                    </a>
-                </td>
-                <td class="download">
-                    <a href="{{ url('replay_file_download', { 'replay_id' : replay.id }) }}">
-                        <img class="ico" src="{{ asset('bundles/ihqsnuitblanche/images/ico/save.png') }}" alt="{{ "download" | trans }}">
-                    </a>
-                </td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-</div>
+    <a name="games"></a>
+    <h2>{{ "Games" | trans }}</h2>
+    <div class="sub-section wars replays">
+        <table>
+            <caption>{{ "Games" | trans }}</caption>
+            <thead></thead>
+            <tfoot></tfoot>
+            <tbody>
+                {% for game in war.games %}
+                <tr>
+                    <td class="map">
+                        {{ game.games[0].map }}
+                    </td>
+                    <td class="war-score">&nbsp;</td>
+                    <td class="player player-left">
+                        <img class="race-icon" src="{{ asset('bundles/ihqsnuitblanche/images/ico/' ~ game.team1Race ~ '_icon.png') }}" />
+                        {{ game.team1Name }}
+                    </td>
+                    <td class="score match-{{ game.team1Result }}">{{ game.team1Score }}</td>
+                    <td class="separator"></td>
+                    <td class="score match-{{ game.team2Result }}">{{ game.team2Score }}</td>
+                    <td class="player player-right">
+                        <img class="race-icon" src="{{ asset('bundles/ihqsnuitblanche/images/ico/' ~ game.team2Race ~ '_icon.png') }}" />
+                        {{ game.team2Name }}
+                    </td>
+                    <td class="date">{{ game.games[0].date.format('d m Y') }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <br />
+        <br />
+    </div>
+
+    <a name="replays"></a>
+
+    <h2>{{ "Replays" | trans }}</h2>
+    <div class="sub-section wars replays">
+        <table>
+            <caption>{{ "Replays" | trans }}</caption>
+            <thead></thead>
+            <tfoot></tfoot>
+            <tbody>
+                {% for replay in war.replays %}
+                {% include "IHQSNuitBlancheBundle:Replay:_row.html.twig" with { "replay" : replay } %}
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

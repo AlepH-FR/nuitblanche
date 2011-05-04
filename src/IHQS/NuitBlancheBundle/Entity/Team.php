@@ -4,6 +4,7 @@ namespace IHQS\NuitBlancheBundle\Entity;
 
 /**
  * @orm:Entity(repositoryClass="IHQS\NuitBlancheBundle\Model\TeamRepository")
+ * @orm:Table(name="team")
  */
 class Team
 {

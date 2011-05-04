@@ -4,6 +4,7 @@ namespace IHQS\NuitBlancheBundle\Entity;
 
 /**
  * @orm:Entity(repositoryClass="IHQS\NuitBlancheBundle\Model\PlayerRepository")
+ * @orm:Table(name="player")
  */
 class Player
 {
@@ -153,6 +154,20 @@ class Player
         return $result;
     }
 
+	public function getWarGames()
+	{
+		$warGames = array();
+		foreach($this->getGames() as $game)
+		{
+			if($wg = $game->getWarGame())
+			{
+				$warGames[$wg->getId()] = $wg;
+			}
+		}
+
+		return $warGames;
+	}
+
     public function getReplays() {
         $games = $this->games;
 
@@ -221,7 +236,8 @@ class Player
         }
     }
 
-    public function get2v2Teams() {
+    public function get2v2Teams()
+	{
         
     }
 }

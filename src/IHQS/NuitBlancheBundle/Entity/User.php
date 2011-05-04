@@ -4,6 +4,7 @@ namespace IHQS\NuitBlancheBundle\Entity;
 
 /**
  * @orm:Entity(repositoryClass="IHQS\NuitBlancheBundle\Model\UserRepository")
+ * @orm:Table(name="user")
  */
 class User
 {

@@ -10,10 +10,10 @@ class WarController extends Controller
      * @extra:Route("/war/{war_id}/show", name="war_show")
      * @extra:Template()
      */
-    public function showAction($player_id)
+    public function showAction($war_id)
     {
         return array(
-
+            'war' => $this->get('nb.manager.war')->findOneById($war_id)
         );
     }
 
@@ -24,14 +24,14 @@ class WarController extends Controller
     public function listAction()
     {
         return array(
-
+			'wars' => $this->get('nb.manager.war')->findAll()
         );
     }
 
     /**
      * @extra:Template()
      */
-    public function latestAction()
+    public function _latestAction()
     {
         return array(
             'wars' => $this->get('nb.manager.war')->findLatest()

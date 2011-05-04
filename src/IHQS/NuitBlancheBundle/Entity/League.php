@@ -4,6 +4,7 @@ namespace IHQS\NuitBlancheBundle\Entity;
 
 /**
  * @orm:Entity(repositoryClass="IHQS\NuitBlancheBundle\Model\LeagueRepository")
+ * @orm:Table(name="league")
  */
 class League
 {
@@ -52,4 +53,8 @@ class League
     public function getSeasons() {
         return $this->seasons;
     }
+
+	public function getLastSeason() {
+		return $this->seasons->last();
+	}
 }

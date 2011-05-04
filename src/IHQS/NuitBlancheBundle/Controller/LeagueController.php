@@ -13,6 +13,18 @@ class LeagueController extends Controller
     public function showAction($league_id)
     {
         return array(
+            'league' => $this->get('nb.manager.league')->findOneById($league_id)
+        );
+    }
+
+    /**
+     * @extra:Route("/season/{season_id}/show", name="season_show")
+     * @extra:Template()
+     */
+    public function seasonShowAction($season_id)
+    {
+        return array(
+            'season' => $this->get('nb.manager.season')->findOneById($season_id)
 
         );
     }
@@ -24,7 +36,7 @@ class LeagueController extends Controller
     public function listAction()
     {
         return array(
-
+            'leagues' => $this->get('nb.manager.league')->findAll()
         );
     }
 }

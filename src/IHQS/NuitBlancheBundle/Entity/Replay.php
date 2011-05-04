@@ -4,6 +4,7 @@ namespace IHQS\NuitBlancheBundle\Entity;
 
 /**
  * @orm:Entity(repositoryClass="IHQS\NuitBlancheBundle\Model\ReplayRepository")
+ * @orm:Table(name="replay")
  */
 class Replay
 {
@@ -25,7 +26,7 @@ class Replay
     protected $chart;
 
     /**
-     * @orm:OneToOne(targetEntity="game")
+     * @orm:OneToOne(targetEntity="Game")
      */
     protected $game;
 
@@ -53,6 +54,11 @@ class Replay
      * @orm:Column(type="string")
      */
     protected $version;
+
+	/**
+	 * @orm:Column(type="integer", nullable="true")
+	 */
+	protected $downloads;
 
     public function getId() {
         return $this->id;
@@ -121,4 +127,23 @@ class Replay
     public function setVersion($version) {
         $this->version = $version;
     }
+
+	public function getDownloads() {
+		return $this->downloads;
+	}
+
+	public function incrementDownloads() {
+		$this->downloads++;
+	}
+
+	public function getNormalizedFileName() {
+		$data = array();
+		$data[] = $this->game->getDate()->format('Y-m-d');
+		$data[] = '-';
+		$data[] = $this->game->getTeam1Name();
+		$data[] = 'vs';
+		$data[] = $this->game->getTeam2Name();
+
+		return implode(' ', $data).'.SC2Replay';
+	}
 }

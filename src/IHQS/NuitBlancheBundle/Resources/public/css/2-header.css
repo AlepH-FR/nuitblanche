@@ -5,7 +5,8 @@
 	box-shadow: 0 0 10px #888;
 	-moz-box-shadow: 0 0 10px #888;
 	-webkit-box-shadow: 0 0 10px #888; 
-	z-index:2;
+	z-index:50;
+        with: 900px;
 }
 
 #header h1
@@ -96,11 +97,12 @@
 
 #header ul.menu 
 {
-	z-index: 3;
+	z-index: 50;
+        float: left;
 	clear: both;
 	background: white;
 	
-	width: 880px;
+	width: 890px;
 	height: 40px;
 	
 	box-shadow: 0 0 10px #888;
@@ -108,6 +110,7 @@
 	-webkit-box-shadow: 0 0 10px #888; 
 	
 	padding: 0 10px;
+        margin-left: -5px;
 }
 #header ul.menu li
 {
@@ -122,4 +125,14 @@
 #header ul.menu last
 {
 	padding-right: 10px;
+}
+
+#header ul.menu li.stream-live
+{
+    background: url("/bundles/ihqsnuitblanche/images/ico/result_win.gif") no-repeat scroll 8px 15px transparent;
+}
+
+#header ul.menu li.stream-off
+{
+    background: url("/bundles/ihqsnuitblanche/images/ico/result_loss.gif") no-repeat scroll 8px 15px transparent;
 }

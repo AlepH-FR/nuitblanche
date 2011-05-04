@@ -20,7 +20,7 @@ class NewsController extends Controller
     /**
      * @extra:Template()
      */
-    public function latestAction()
+    public function _latestAction()
     {
         return array(
             'news' => $this->get('nb.manager.news')->findLatest()

@@ -35,7 +35,7 @@ div.notice-war-ended h2
 }
 div.notice h2 span
 {
-		display: inline-block;
+		display: block;
 		margin-top:-12px;
 }
 
@@ -79,6 +79,7 @@ div.player-item
 		
 		z-index: 1;
 		float: left;
+                background: white;
 }
 div.item-wide
 {
@@ -108,7 +109,7 @@ div.player-item h2
 }
 div.player-item h2 span
 {
-		display: inline-block;
+		display: block;
 		margin-top:-12px;
 		
 		height:24px;
@@ -167,7 +168,8 @@ div.replay-info
 		
 		box-shadow: 0 0 10px #888;
 		-moz-box-shadow: 0 0 10px #888;
-		-webkit-box-shadow: 0 0 10px #888; 
+		-webkit-box-shadow: 0 0 10px #888;
+                background: white;
 }
 div.replay-info .teams,
 div.replay-info .players
@@ -308,6 +310,7 @@ div.sub-section
 		box-shadow: 0 0 10px #888;
 		-moz-box-shadow: 0 0 10px #888;
 		-webkit-box-shadow: 0 0 10px #888;
+                background: white;
 }
 
 div.sub-section li

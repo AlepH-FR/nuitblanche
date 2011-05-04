@@ -1,15 +1,14 @@
 <?php
 
 namespace IHQS\NuitBlancheBundle\Entity;
+use IHQS\NuitBlancheBundle\Entity\Base\Game as BaseGame;
 
 /**
  * @orm:Entity(repositoryClass="IHQS\NuitBlancheBundle\Model\GameRepository")
+ * @orm:Table(name="game")
  */
-class Game
+class Game extends BaseGame
 {
-    const RESULT_WIN    = "win";
-    const RESULT_LOSS   = "loss";
-
     const TYPE_1v1 = "1v1";
     const TYPE_2v2 = "2v2";
     const TYPE_3v4 = "3v3";
@@ -85,6 +84,14 @@ class Game
         $this->players = $players;
     }
 
+	public function addPlayer(Player $player) {
+		$this->players->add($player);
+	}
+
+	public function removePlayer(Player $player) {
+		$this->players->remove($player);
+	}
+
     public function getWinner() {
         return $this->winner;
     }
@@ -107,5 +114,39 @@ class Game
 
     public function setReplay(Replay $replay) {
         $this->replay = $replay;
+    }
+
+	public function getWarGame()
+	{
+		return $this->warGame;
+	}
+
+	public function setWarGame(WarGame $warGame)
+	{
+		$this->warGame = $warGame;
+	}
+
+
+	public function getType()
+	{
+        switch(count($this->players))
+        {
+            case 2: return Game::TYPE_1v1;
+            case 4: return Game::TYPE_2v2;
+            case 6: return Game::TYPE_3v3;
+            case 8: return Game::TYPE_4v4;
+        }
+
+        throw new \RuntimeException('Invalid number of players for a game : ' . count($this->players));
+	}
+
+    public function getTeam1Score()
+    {
+        return ($this->winner == 1) ? 1: 0;
+    }
+
+    public function getTeam2Score()
+    {
+        return ($this->winner == 2) ? 1 : 0;
     }
 }

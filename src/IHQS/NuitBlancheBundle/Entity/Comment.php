@@ -4,6 +4,7 @@ namespace IHQS\NuitBlancheBundle\Entity;
 
 /**
  * @orm:Entity(repositoryClass="IHQS\NuitBlancheBundle\Model\CommentRepository")
+ * @orm:Table(name="comment")
  */
 class Comment
 {

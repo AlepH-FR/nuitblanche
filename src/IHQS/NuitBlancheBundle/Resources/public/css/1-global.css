@@ -1,3 +1,8 @@
+body
+{
+    background: url('/bundles/ihqsnuitblanche/images/stripes.png');
+}
+
 body div#page
 {
 		margin-left: auto;
@@ -21,7 +26,10 @@ div#left
 		
 		box-shadow: 0 0 10px #888;
 		-moz-box-shadow: 0 0 10px #888;
-		-webkit-box-shadow: 0 0 10px #888;  
+		-webkit-box-shadow: 0 0 10px #888;
+                background: white;
+
+                margin-top: 20px;
 }
 
 div#right
@@ -38,6 +46,7 @@ div#right .widget
 		
 		padding: 10px;
 		margin-bottom: 20px;
+                background: white;
 }
 
 img.race-icon

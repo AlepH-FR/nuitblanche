@@ -4,6 +4,7 @@ namespace IHQS\NuitBlancheBundle\Entity;
 
 /**
  * @orm:Entity(repositoryClass="IHQS\NuitBlancheBundle\Model\WarRepository")
+ * @orm:Table(name="war")
  */
 class War
 {
@@ -60,7 +61,7 @@ class War
     protected $result;
 
     /**
-     * @orm:OneToMany(targetEntity="Game", mappedBy="war")
+     * @orm:OneToMany(targetEntity="WarGame", mappedBy="war")
      */
     protected $games;
 
@@ -147,4 +148,22 @@ class War
     public function getGames() {
         return $this->games;
     }
+
+	public function getReplays()
+	{
+		$replays = array();
+		foreach($this->getGames() as $wg)
+		{
+			foreach($wg->getGames() as $game)
+			{
+				$replay = $game->getReplay();
+				if($replay instanceof Replay)
+				{
+					array_push($replays, $game);
+				}
+			}
+		}
+
+		return $replays;
+	}
 }

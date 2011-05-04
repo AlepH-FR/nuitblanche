@@ -1,40 +1,20 @@
-<h2>{{ "Replays" | trans }}</h2>
-<div class="sub-section replays">
-    <table>
-        <caption>{{ "Replays" | trans }}</caption>
-        <thead></thead>
-        <tfoot></tfoot>
-        <tbody>
-            {% for replay in replays %}
-            <tr>
-                <td class="map">
-                   {{ replay.map }}
-                </td>
-                <td class="player player-left">
-                    <img class="race-icon" src="{{ asset('bundles/ihqsnuitblancheimages/ico/' ~ replay.team1.race ~ '_icon.png') }}" />
-                    {{ replay.team1.name }}
-                </td>
-                <td class="separator"></td>
-                <td class="player player-right">
-                    <img class="race-icon" src="{{ asset('bundles/ihqsnuitblancheimages/ico/' ~ replay.team2.race ~ '_icon.png') }}" />
-                    {{ replay.team2.name }}
-                </td>
-                <td class="date">
-                    {{ replay.date.format('d m Y') }}
-                </td>
-                <td class="view">
-                    <a href="{{ url('replay_full', { 'replay_id' : replay.id }) }}">
-                        <img class="ico" src="{{ asset('bundles/ihqsnuitblanche/images/ico/watch.png') }}" alt="{{ "details" | trans }}">
-                    </a>
-                </td>
-                <td class="download">
-                    <a href="{{ url('replay_file_download', { 'replay_id' : replay.id }) }}">
-                        <img class="ico" src="{{ asset('bundles/ihqsnuitblanche/images/ico/save.png') }}" alt="{{ "download" | trans }}">
-                    </a>
-                </td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-</div>
-{% include "IHQSNuitBlancheBundle:Layout:back_on_top.html.twig" %}
+{% extends 'IHQSNuitBlancheBundle::layout_standard.html.twig' %}
+
+{% block title %}{{ "War list" | trans }}{% endblock %}
+
+{% block content %}
+    <h2>{{ "Replays" | trans }}</h2>
+    <div class="sub-section replays">
+        <table>
+            <caption>{{ "Replays" | trans }}</caption>
+            <thead></thead>
+            <tfoot></tfoot>
+            <tbody>
+                {% for replay in replays %}
+                {% include "IHQSNuitBlancheBundle:Replay:_row.html.twig" with { "replay" : replay } %}
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% include "IHQSNuitBlancheBundle:Layout:back_on_top.html.twig" %}
+{% endblock %}

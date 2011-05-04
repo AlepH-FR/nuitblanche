@@ -11,6 +11,10 @@
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
     </head>
     <body>
+        <div id="beta" style="position: fixed; margin: 10px; padding: 10px; border: 1px dotted #395674; background: white; opacity: 0.7; -moz-opacity: 0.7;">
+            <p>This is a <a name="beta">beta version</a> of the website</p>
+            <p>Please report bugs by mailing <strong>lysimaque (at) hotmail (dot) com</strong></p>
+        </div>
   	<div id="page">
             <a name="top"></a>
             <div id="header">
@@ -38,6 +42,9 @@
                     </li>
                     <li>
                         <a href="{{ url('replay_list') }}">{{ "Replays" | trans }}</a>
+                    </li>
+                    <li class="stream-{% render "IHQSNuitBlancheBundle:Stream:_status" %}">
+                        <a href="http://www.livestream.com/nuitblanchegaming" target="_blank" class="disabled">Stream</a>
                     </li>
                     <li class="last">
                         <a href="" class="disabled">Forum</a>
