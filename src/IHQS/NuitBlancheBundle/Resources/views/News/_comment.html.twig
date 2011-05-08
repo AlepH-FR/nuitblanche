@@ -1,0 +1,21 @@
+<div id="comment-form">
+    {% if not_connected %}
+    <p class="login">
+        {{ "Please <strong>log in</strong> in order to post comments" | raw }}
+    </p>
+    {% else %}
+    <form method="post" action="">
+        <fieldset>
+            <legend>{{ "Add your comment" | trans }}</legend>
+            {{ form_widget(form) }}
+        </fieldset>
+
+        <fieldset id="submit_fieldset">
+            <legend>{{ "Submission" | trans }}</legend>
+            <p>
+                <input type="submit" name="_comment_submit" value="{{ "Submit" | trans }}" />
+            </p>
+        </fieldset>
+    </form>
+    {% endif %}
+</div>

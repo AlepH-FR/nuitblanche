@@ -4,4 +4,5 @@
 
 {% block content %}
     {% include "IHQSNuitBlancheBundle:News:details.html.twig" with { 'news': news } %}
+    {% render  "IHQSNuitBlancheBundle:News:_comment" with { 'news': news } %}
 {% endblock %}

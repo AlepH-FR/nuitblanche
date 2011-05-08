@@ -8,7 +8,9 @@ div.notice
 		
 		box-shadow: 0 0 10px #888;
 		-moz-box-shadow: 0 0 10px #888;
-		-webkit-box-shadow: 0 0 10px #888; 
+		-webkit-box-shadow: 0 0 10px #888;
+
+                background: white;
 }
 
 div.notice h2
@@ -366,7 +368,9 @@ div.wide ul li span.little
 		
 		box-shadow: 0 0 10px #888;
 		-moz-box-shadow: 0 0 10px #888;
-		-webkit-box-shadow: 0 0 10px #888; 
+		-webkit-box-shadow: 0 0 10px #888;
+
+                background: white;
 }
 
 .comments li img
@@ -479,4 +483,48 @@ div.replays table td.view,
 div.replays table td.download
 {
 	width: 20px;
+}
+
+fieldset legend
+{
+    margin-bottom: 10px;
+}
+
+div#comment-form p.login
+{
+    display: list-item;
+    list-style: circle outside none;
+    margin-left: 15px;
+}
+
+div#comment-form fieldset
+{
+    float: left;
+}
+div#comment-form form label
+{
+    display: none;
+}
+
+div#comment-form fieldset#submit_fieldset legend
+{
+    visibility: hidden;
+    width: 100px;
+}
+
+div#comment-form fieldset#submit_fieldset input
+{
+    height: 99px;
+    width: 99px;
+    color: white;
+    font-weight: bold;
+    background: #395674;
+    border: 1px solid black;
+}
+
+div#comment-form form textarea
+{
+    height: 90px;
+    width: 410px;
+    padding: 5px;
 }

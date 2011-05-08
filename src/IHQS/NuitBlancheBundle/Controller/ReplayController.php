@@ -8,6 +8,16 @@ use Symfony\Component\HttpFoundation\Response;
 class ReplayController extends Controller
 {
     /**
+     * @extra:Template()
+     */
+    public function _latestAction()
+    {
+        return array(
+            'replays' => $this->get('nb.manager.replay')->findLatest()
+        );
+    }
+
+    /**
      * @extra:Route("/replay/{replay_id}/show", name="replay_show")
      * @extra:Template()
      */
@@ -17,6 +27,18 @@ class ReplayController extends Controller
             'replay' => $this->get('nb.manager.replay')->findOneById($replay_id)
         );
     }
+
+    /**
+     * @extra:Route("/replay/list", name="replay_list")
+     * @extra:Template()
+     */
+    public function listAction()
+    {
+        return array(
+            'replays' => $this->get('nb.manager.game')->findAllWithReplay()
+        );
+    }
+
     /**
      * @extra:Route("/replay/{replay_id}/download", name="replay_file_download")
      */
@@ -43,23 +65,13 @@ class ReplayController extends Controller
     }
 
     /**
-     * @extra:Route("/replay/list", name="replay_list")
+     * @extra:Route("contribute/replay/add", name="contribute_replay_new")
      * @extra:Template()
      */
-    public function listAction()
+    public function newAction()
     {
         return array(
-            'replays' => $this->get('nb.manager.game')->findAllWithReplay()
-        );
-    }
 
-    /**
-     * @extra:Template()
-     */
-    public function _latestAction()
-    {
-        return array(
-            'replays' => $this->get('nb.manager.replay')->findLatest()
         );
     }
 }

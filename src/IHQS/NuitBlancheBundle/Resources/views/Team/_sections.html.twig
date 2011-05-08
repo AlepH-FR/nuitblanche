@@ -1,0 +1,13 @@
+<div class="widget">
+    <h3>{{ "Section list" | trans }}</h3>
+    <ul class="teams">
+        {% for team in teams %}
+        <li class="main up">
+            <span>
+                <img class="flag" src="{{ team.icon }}" />
+                <a href="#">{{ team.name }}</a>
+            </span>
+        </li>
+        {% endfor %}
+    </ul>
+</div>

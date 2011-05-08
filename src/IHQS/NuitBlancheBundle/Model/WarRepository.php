@@ -20,4 +20,20 @@ class WarRepository extends EntityRepository
             getQuery()->
             execute();
     }
+
+    public function findByMonth($month)
+    {
+        $month_first_day = date('Y-') . $month . "-1" . " 00:00:01";
+        $month_last_day  = date('Y-') . $month . date('-t') . " 23:59:59";
+
+        $qb = $this->createQueryBuilder('w');
+
+        return $qb->
+            where($qb->expr()->andx(
+                $qb->expr()->gte('w.date', $qb->expr()->literal($month_first_day)),
+                $qb->expr()->lte('w.date', $qb->expr()->literal($month_last_day))
+            ))->
+            orderBy('w.date', 'DESC')->
+            getQuery()->execute();
+    }
 }

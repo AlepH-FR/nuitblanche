@@ -11,10 +11,7 @@
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
     </head>
     <body>
-        <div id="beta" style="position: fixed; margin: 10px; padding: 10px; border: 1px dotted #395674; background: white; opacity: 0.7; -moz-opacity: 0.7;">
-            <p>This is a <a name="beta">beta version</a> of the website</p>
-            <p>Please report bugs by mailing <strong>lysimaque (at) hotmail (dot) com</strong></p>
-        </div>
+        {% include "IHQSNuitBlancheBundle:Layout:_message.html.twig" %}
   	<div id="page">
             <a name="top"></a>
             <div id="header">
@@ -23,6 +20,12 @@
                     <li><a href="" class="fr"><span>fr</span></a></li>
                     <li><a href="" class="en"><span>en</span></a></li>
                 </ul>
+
+                {% if is_granted('ROLE_USER') %}
+                    {% render "IHQSNuitBlancheBundle:Secured:_hello" %}
+                {% else %}
+                    {% render "IHQSNuitBlancheBundle:Secured:_login" %}
+                {% endif %}
 
                 <ul class="menu">
                     <li class="first">
@@ -56,7 +59,6 @@
 
             <div id="left">
                 {% block left %}
-                    {% include "IHQSNuitBlancheBundle:Layout:sections_menu.html.twig" %}
                 {% endblock %}
             </div>
 

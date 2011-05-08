@@ -43,8 +43,9 @@ class Comment
         return $this->date;
     }
 
-    public function setDate($date) {
+    public function setDate(\Datetime $date) {
         $this->date = $date;
+        return $this;
     }
 
     public function getBody() {
@@ -53,6 +54,7 @@ class Comment
 
     public function setBody($body) {
         $this->body = $body;
+        return $this;
     }
 
     public function getNews() {
@@ -61,6 +63,7 @@ class Comment
 
     public function setNews(News $news) {
         $this->news = $news;
+        return $this;
     }
 
     public function getAuthor() {
@@ -69,5 +72,6 @@ class Comment
 
     public function setAuthor(User $author) {
         $this->author = $author;
+        return $this;
     }
 }

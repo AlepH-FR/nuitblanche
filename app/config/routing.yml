@@ -25,3 +25,7 @@ team:
 war:
     resource: "@IHQSNuitBlancheBundle/Controller/WarController.php"
     type:     annotation
+
+secured:
+    resource: "@IHQSNuitBlancheBundle/Controller/SecuredController.php"
+    type:     annotation

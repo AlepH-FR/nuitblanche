@@ -2,11 +2,13 @@
 
 namespace IHQS\NuitBlancheBundle\Entity;
 
+use Symfony\Component\Security\Core\User\UserInterface;
+
 /**
  * @orm:Entity(repositoryClass="IHQS\NuitBlancheBundle\Model\UserRepository")
  * @orm:Table(name="user")
  */
-class User
+class User implements UserInterface
 {
     /**
      * @orm:Id
@@ -182,5 +184,30 @@ class User
 
     public function setMsn($msn) {
         $this->msn = $msn;
+    }
+
+    public function getPublicMsn() {
+        if(is_null($this->msn))  { return null; }
+
+        list($account, $tld) = explode('@', $this->msn);
+        list($domain, $region) = explode('.', $tld);
+
+        return $account . '@' . substr($domain, 0, 1) . '....' . $region;
+    }
+
+    public function getRoles() {
+        return array('ROLE_ADMIN');
+    }
+
+    public function getSalt() {
+        return '';
+    }
+
+    public function eraseCredentials() {
+        return true;
+    }
+
+    public function equals(UserInterface $user) {
+        return ($user->getUsername() == $this->getUsername());
     }
 }

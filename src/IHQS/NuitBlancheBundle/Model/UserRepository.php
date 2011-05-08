@@ -12,4 +12,11 @@ use Doctrine\ORM\EntityRepository;
  */
 class UserRepository extends EntityRepository
 {
+    public function loadUserByUsername($username)
+    {
+        // do whatever you need to retrieve the user from the database
+        // code below is the implementation used when using the property setting
+
+        return $this->findOneBy(array('username' => $username));
+    }
 }

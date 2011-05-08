@@ -1,81 +1,81 @@
 body
 {
-		font-family: Arial, Helvetica;
-		font-size: 12px;
-		height: 100%;
+    font-family: Arial, Helvetica;
+    font-size: 12px;
+    height: 100%;
 }
-
 
 .spacer
 {
-		clear: both;
+    clear: both;
 }
 
 a, strong
 {
-		font-weight: bold;
-		color: #395674;
-		text-decoration: none;
+    font-weight: bold;
+    color: #395674;
+    text-decoration: none;
 }
 a.disabled
 {
-		font-weight: normal;
+    font-weight: normal;
 }
 a:hover
 {
-		color: #294769;
-		text-shadow: 0 0 5px #888;
-		-moz-text-shadow: 0 0 5px #888;
-		-webkit-text-shadow: 0 0 10px #888; 
+    color: #294769;
+    text-shadow: 0 0 5px #888;
+    -moz-text-shadow: 0 0 5px #888;
+    -webkit-text-shadow: 0 0 10px #888;
 }
 a.no-color
 {
-		color: white;
+    color: white;
 }
 
-h2
+h2,
+fieldset legend
 {
-		font-family: Georgia;
-		font-weight: bold;
-		color: #395674;
-		font-size: 18px;
-		margin-bottom: 10px;
+    font-family: Georgia;
+    font-weight: bold;
+    color: #395674;
+    font-size: 18px;
+    margin-bottom: 10px;
 }
 
 h3
 {
-		font-family: Georgia;
-		font-weight: bold;
-		color: black;
-		margin-bottom: 5px;
+    font-family: Georgia;
+    font-weight: bold;
+    color: black;
+    margin-bottom: 5px;
 }
 
 img.flag
 {
-	margin-left : 3px;
-	margin-right: 3px;
+    margin-left : 3px;
+    margin-right: 3px;
 }
 
 .win
 {
-		color: green;
+    color: green;
 }
 .loss
 {
-		color: red;
+    color: red;
 }
 .little
 {
-		font-size: 9px;
+    font-size: 9px;
 }
 
 hr
 {
-		background-color: #888;
-		height: 1px;
-		box-shadow: 0 0 2px #888;
-		-moz-box-shadow: 0 0 2px #888;
-		-webkit-box-shadow: 0 0 2px #888; 
-		
-		margin-bottom: 1px;
+    background-color: #888;
+    height: 1px;
+    margin-bottom: 1px;
+
+    box-shadow: 0 0 2px #888;
+    -moz-box-shadow: 0 0 2px #888;
+    -webkit-box-shadow: 0 0 2px #888;
 }

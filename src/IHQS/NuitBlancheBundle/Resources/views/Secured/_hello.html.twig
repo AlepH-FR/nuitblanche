@@ -1,0 +1,36 @@
+<div class="block-login">
+    <div class="log">
+        <img class="avatar" src="{{ user.avatar }}" />
+        <div class="userdata">
+            {{ "Logged as" | trans }}<br />
+            <span class="username">{{ user.username }}</span>
+        </div>
+        <div class="spacer"></div>
+        <form action="{{ path("_security_logout") }}" method="post" id="logout">
+            <p class="para_standard" id="para_submit" >
+                <label>{{ "Log out" | trans }}</label>
+                <input type="submit" value="{{ "Log out" | trans }}" class="submit"  />
+            </p>
+        </form>
+    </div>
+</div>
+
+<div class="user-menu">
+    <h2>{{ "User menu" | trans }}</h2>
+    {% if is_granted('ROLE_ADMIN') %}
+    <ul>
+        <li>
+            <a href="{{ url('contribute_news_new') }}">
+                {{ "Add a news" | trans }}
+            </a>
+        </li>
+        <li>
+            <a href="{{ url('contribute_replay_new') }}">
+                {{ "Add a replay" | trans }}
+            </a>
+        </li>
+    </ul>
+    {% else %}
+
+    {% endif %}
+</div>

@@ -18,6 +18,16 @@ class TeamController extends Controller
     }
 
     /**
+     * @extra:Template()
+     */
+    public function _sectionsAction()
+    {
+        return array(
+            'teams' => $this->get('nb.manager.team')->findAll()
+        );
+    }
+
+    /**
      * @extra:Route("/team/list", name="team_list")
      * @extra:Template()
      */

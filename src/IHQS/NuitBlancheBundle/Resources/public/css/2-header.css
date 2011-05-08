@@ -53,7 +53,7 @@
 	background: url(../images/flags/UK.gif);
 }
 
-#header form
+#header .block-login
 {
 	width: 150px;
 	height: 90px;
@@ -66,13 +66,35 @@
 	top: 31px;
 	left: 730px;
 }
-#header form fieldset
+#header form fieldset,
+#header .block-login div.log
 {
 	position: absolute;
 	margin: 10px;
+        color: white;
 }
+
+#header .block-login div.log div.userdata
+{
+    float: left;
+    margin-left: 5px;
+}
+
+#header .block-login div.log span.username
+{
+    font-weight: bold;
+}
+
+#header .block-login img.avatar
+{
+    width: 40px;
+    height: 40px;
+    float: left;
+    border: 1px solid #888;
+}
+
 #header form fieldset legend,
-#header form fieldset label
+#header form label
 {
 	display: none;	
 }
@@ -135,4 +157,25 @@
 #header ul.menu li.stream-off
 {
     background: url("/bundles/ihqsnuitblanche/images/ico/result_loss.gif") no-repeat scroll 8px 15px transparent;
+}
+
+#header div.user-menu
+{
+    position: fixed;
+    right: 0;
+    top: 0;
+
+    margin: 10px;
+    padding: 10px;
+    border: 1px dotted #395674;
+    
+    background: white;
+    opacity: 0.7;
+    -moz-opacity: 0.7;
+}
+
+#header div.user-menu ul li
+{
+    display: list-item;
+    list-style: circle inside none;
 }

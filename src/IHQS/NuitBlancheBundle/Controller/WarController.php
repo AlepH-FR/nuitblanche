@@ -37,4 +37,30 @@ class WarController extends Controller
             'wars' => $this->get('nb.manager.war')->findLatest()
         );
     }
+
+    /**
+     * @extra:Template()
+     */
+    public function _calendarAction()
+    {
+        $dates = array();
+        foreach(range(1, date('t')) as $i)
+        {
+            $dates[$i] = array("events" => array());
+        }
+
+        $wars = $this->get('nb.manager.war')->findByMonth(date('m'));
+        foreach($wars as $war)
+        {
+            $key = (int) $war->getDate()->format('d');
+            $dates[$key]["events"][] = array(
+                "time"  => $war->getDate()->format('H:i'),
+                "name"  => $war->getSeason()->getLeague()->getName(),
+            );
+        }
+        
+        return array(
+            'dates' => $dates
+        );
+    }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace Acme\DemoBundle\Controller;
+namespace IHQS\NuitBlancheBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Security\Core\SecurityContext;
@@ -14,7 +14,7 @@ class SecuredController extends Controller
      * @extra:Route("/login", name="_demo_login")
      * @extra:Template()
      */
-    public function loginAction()
+    public function _loginAction()
     {
         if ($this->get('request')->attributes->has(SecurityContext::AUTHENTICATION_ERROR)) {
             $error = $this->get('request')->attributes->get(SecurityContext::AUTHENTICATION_ERROR);
@@ -27,6 +27,15 @@ class SecuredController extends Controller
             'error'         => $error,
         );
     }
+    /**
+     * @extra:Template()
+     */
+    public function _helloAction()
+    {
+        return array(
+            'user' => $this->get('security.context')->getToken()->getUser()
+        );
+    }
 
     /**
      * @extra:Route("/login_check", name="_security_check")
@@ -37,32 +46,10 @@ class SecuredController extends Controller
     }
 
     /**
-     * @extra:Route("/logout", name="_demo_logout")
+     * @extra:Route("/logout", name="_security_logout")
      */
     public function logoutAction()
     {
         // The security layer will intercept this request
-    }
-
-    /**
-     * @extra:Routes({
-     *   @extra:Route("/hello", defaults={"name"="World"}),
-     *   @extra:Route("/hello/{name}", name="_demo_secured_hello")
-     * })
-     * @extra:Template()
-     */
-    public function helloAction($name)
-    {
-        return array('name' => $name);
-    }
-
-    /**
-     * @extra:Route("/hello/admin/{name}", name="_demo_secured_hello_admin")
-     * @extra:Secure(roles="ROLE_ADMIN")
-     * @extra:Template()
-     */
-    public function helloadminAction($name)
-    {
-        return array('name' => $name);
     }
 }

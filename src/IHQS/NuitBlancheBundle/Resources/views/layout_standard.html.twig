@@ -1,5 +1,10 @@
 {% extends 'IHQSNuitBlancheBundle::layout_base.html.twig' %}
 
+{% block left %}
+    {% render "IHQSNuitBlancheBundle:Team:_sections" %}
+    {% render "IHQSNuitBlancheBundle:War:_calendar" %}
+{% endblock %}
+
 {% block right %}
     {% render "IHQSNuitBlancheBundle:War:_latest" %}
     {% render "IHQSNuitBlancheBundle:News:_latest" %}
