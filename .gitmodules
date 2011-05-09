@@ -1,0 +1,3 @@
+[submodule "src/IHQS/WysiwygBundle"]
+	path = src/IHQS/WysiwygBundle
+	url = git@github.com:ihqs/WysiwygBundle.git
