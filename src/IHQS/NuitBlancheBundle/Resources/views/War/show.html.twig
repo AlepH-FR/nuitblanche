@@ -55,37 +55,7 @@
 
     <a name="games"></a>
     <h2>{{ "Games" | trans }}</h2>
-    <div class="sub-section wars replays">
-        <table>
-            <caption>{{ "Games" | trans }}</caption>
-            <thead></thead>
-            <tfoot></tfoot>
-            <tbody>
-                {% for game in war.games %}
-                <tr>
-                    <td class="map">
-                        {{ game.games[0].map }}
-                    </td>
-                    <td class="war-score">&nbsp;</td>
-                    <td class="player player-left">
-                        <img class="race-icon" src="{{ asset('bundles/ihqsnuitblanche/images/ico/' ~ game.team1Race ~ '_icon.png') }}" />
-                        {{ game.team1Name }}
-                    </td>
-                    <td class="score match-{{ game.team1Result }}">{{ game.team1Score }}</td>
-                    <td class="separator"></td>
-                    <td class="score match-{{ game.team2Result }}">{{ game.team2Score }}</td>
-                    <td class="player player-right">
-                        <img class="race-icon" src="{{ asset('bundles/ihqsnuitblanche/images/ico/' ~ game.team2Race ~ '_icon.png') }}" />
-                        {{ game.team2Name }}
-                    </td>
-                    <td class="date">{{ game.games[0].date.format('d m Y') }}</td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-        <br />
-        <br />
-    </div>
+    {% render "IHQSNuitBlancheBundle:War:_games" with { "war_id" : war.id } %}
 
     <a name="replays"></a>
 

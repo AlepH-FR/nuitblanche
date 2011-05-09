@@ -1,0 +1,48 @@
+{% extends 'TwigBundle:Form:div_layout.html.twig' %}
+
+{% block textarea_widget %}
+{% spaceless %}
+    <textarea {{ block('attributes') }}>{{ value }}</textarea>
+{% endspaceless %}
+{% endblock textarea_widget %}
+
+{% block datetime_widget %}
+{% spaceless %}
+    <div class="select-datetime" {{ block('attributes') }}>
+        {{ form_errors(form.date) }}
+        {{ form_errors(form.time) }}
+        {{ form_widget(form.date) }}
+        {{ form_widget(form.time) }}
+    </div>
+{% endspaceless %}
+{% endblock datetime_widget %}
+
+{% block date_widget %}
+{% spaceless %}
+    {{ date_pattern|replace({
+        '{{ year }}': form_widget(form.year, { 'attr': { 'class': 'select-date-year' } }),
+        '{{ month }}': form_widget(form.month, { 'attr': { 'class': 'select-date-month' } }),
+        '{{ day }}': form_widget(form.day, { 'attr': { 'class': 'select-date-day' } }),
+    })|raw }}
+{% endspaceless %}
+{% endblock date_widget %}
+
+{% block time_widget %}
+{% spaceless %}
+    @
+    {{ form_widget(form.hour, { 'attr': { 'class': 'select-time-hour' } }) }}
+    :
+    {{ form_widget(form.minute, { 'attr': { 'class': 'select-time-minutes' } }) }}
+{% endspaceless %}
+{% endblock time_widget %}
+
+
+{% block file_widget %}
+{% spaceless %}
+    <div class="input-file" {{ block('attributes') }}>
+        {{ form_widget(form.file) }}
+        {{ form_widget(form.token) }}
+        {{ form_widget(form.name) }}
+    </div>
+{% endspaceless %}
+{% endblock file_widget %}

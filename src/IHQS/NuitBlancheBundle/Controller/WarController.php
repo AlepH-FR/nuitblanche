@@ -37,6 +37,16 @@ class WarController extends Controller
             'wars' => $this->get('nb.manager.war')->findLatest()
         );
     }
+	
+	/**
+     * @extra:Template()
+     */
+    public function _gamesAction($war_id)
+    {
+        return array(
+            'war' => $this->get('nb.manager.war')->findOneById($war_id)
+        );
+    }
 
     /**
      * @extra:Template()

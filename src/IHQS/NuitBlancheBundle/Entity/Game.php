@@ -48,6 +48,7 @@ class Game extends BaseGame
     
     /**
      * @orm:ManyToOne(targetEntity="WarGame")
+	 * @orm:JoinColumn(name="warGame_id", nullable="true")
      */
     protected $warGame;
 
@@ -124,6 +125,7 @@ class Game extends BaseGame
 	public function setWarGame(WarGame $warGame)
 	{
 		$this->warGame = $warGame;
+		$this->setWar($warGame->getWar());
 	}
 
 

@@ -2,10 +2,12 @@
 
 namespace IHQS\NuitBlancheBundle\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 
-class ReplayController extends Controller
+use IHQS\NuitBlancheBundle\Entity\Game;
+use IHQS\NuitBlancheBundle\Entity\Replay;
+
+class ReplayController extends BaseController
 {
     /**
      * @extra:Template()
@@ -66,12 +68,25 @@ class ReplayController extends Controller
 
     /**
      * @extra:Route("contribute/replay/add", name="contribute_replay_new")
-     * @extra:Template()
+     * @extra:Template("IHQSNuitBlancheBundle:Main:adminForm.html.twig")
      */
     public function newAction()
     {
-        return array(
+        $user = $this->get('security.context')->getToken()->getUser();
 
-        );
+		// creating default object
+		$game = new Game();
+		$game->setDate(new \Datetime());
+
+		$replay = new Replay();
+		$replay->setGame($game);
+
+		// creating form
+        $formType = $this->container->getParameter('nb.form.replay.class');
+
+		$form = $this->get('form.factory')->create(new $formType());
+		$form->setData($replay);
+
+		return $this->_adminFormAction('Add / Edit a replay', $form);
     }
 }

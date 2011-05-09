@@ -4,5 +4,13 @@
 
 {% block content %}
     {% include "IHQSNuitBlancheBundle:News:details.html.twig" with { 'news': news } %}
-    {% render  "IHQSNuitBlancheBundle:News:_comment" with { 'news': news } %}
+    <div id="comment-form">
+        <p class="login">
+            <a href="{{ url('news_show', { "news_id": news.id }) }}">
+                {{ "Read more and view comments" | trans }}
+            </a>
+        </p>
+    </div>
+    <br/>
+    {% render  "IHQSNuitBlancheBundle:News:_latest" %}
 {% endblock %}

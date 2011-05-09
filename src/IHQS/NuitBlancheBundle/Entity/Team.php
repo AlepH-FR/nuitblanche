@@ -77,4 +77,9 @@ class Team
     {
         $this->players->remove($player);
     }
+
+	public function __toString()
+	{
+		return $this->name;
+	}
 }

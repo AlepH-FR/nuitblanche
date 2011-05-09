@@ -20,6 +20,8 @@ framework:
 twig:
     debug:            %kernel.debug%
     strict_variables: %kernel.debug%
+    form:
+        resources: [IHQSNuitBlancheBundle::form.html.twig]
 
 # Assetic Configuration
 assetic:
@@ -59,3 +61,8 @@ jms_security_extra:
     secure_all_services: false
 
 ihqs_nuit_blanche: ~
+
+ihqs_wysiwyg:
+    selector: wysiwyg_editor
+    editor:
+        set: custom

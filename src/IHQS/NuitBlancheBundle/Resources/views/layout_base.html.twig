@@ -8,7 +8,8 @@
         <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
         <link rel="stylesheet" href="{{ asset('bundles/ihqsnuitblanche/css/styles.css') }}" type="text/css" media="all" />
 
-        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+        <script type="text/javascript" src="{{ asset('bundles/ihqswysiwyg/js/wysiwyg.js') }}"</script>
     </head>
     <body>
         {% include "IHQSNuitBlancheBundle:Layout:_message.html.twig" %}
@@ -78,5 +79,31 @@
                 {% endblock %}
             </div>
         </div>
+
+        <script type="text/javascript">
+            ihqs.wysiwyg.setSettings({
+                name: "html",
+                onShiftEnter:  	{ keepDefault: false, replaceWith: '<br />\n' },
+                onCtrlEnter:  	{ keepDefault: false, openWith: '\n<p>', closeWith : '</p>' },
+                onTab:    	{ keepDefault: false, replaceWith: '    '},
+                markupSet:  [
+                    {name:'Title',      openWith:'<h3(!( class="[![Class]!]")!)>',  closeWith:'</h3>'  },
+                    {name:'Paragraph',  openWith:'<p(!( class="[![Class]!]")!)>',   closeWith:'</p>'  },
+                    {separator : '---------------' },
+                    {name : 'Bold',             key : 'B',  openWith : '(!(<strong>|!|<b>)!)',  closeWith : '(!(</strong>|!|</b>)!)' },
+                    {name : 'Italic',           key : 'I',  openWith : '(!(<em>|!|<i>)!)',      closeWith : '(!(</em>|!|</i>)!)'  },
+                    {name : 'Stroke through',   key : 'S',  openWith : '<del>',                 closeWith : '</del>' },
+                    {separator : '---------------' },
+                    {name : 'Picture',          key : 'P',  replaceWith :   '<img src="[![Source : ! : http : //]!]" alt="[![Alternative text]!]" />' },
+                    {name : 'Link',             key : 'L',  openWith :      '<a href="[![Link : ! : http : //]!]"(!( title="[![Title]!]")!)>', closeWith : '</a>', placeHolder : 'Your text to link...' },
+                    {separator : '---------------' },
+                    {name : 'War',              key : 'W',  openWith :      '\n<div class="news-war">{war:[![War Id]!]}</div>\n', closeWith : '' },
+                    {separator : '---------------' },
+                    {name : 'Clean',    className : 'clean',    replaceWith : function(markitup) { return markitup.selection.replace(/<(.*?)>/g, "") } },
+                    {name : 'Preview',  className : 'preview',  call : 'preview'}
+                ]
+            });
+        </script>
+        {% render "IHQSWysiwygBundle:Script:init" %}
     </body>
 </html>

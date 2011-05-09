@@ -118,4 +118,9 @@ class GamePlayer
     public function setTeam($team) {
         $this->team = $team;
     }
+
+	public function __toString()
+	{
+		return $this->getName();
+	}
 }

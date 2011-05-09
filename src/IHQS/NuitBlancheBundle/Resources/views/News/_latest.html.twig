@@ -4,7 +4,7 @@
         {% for new in news %}
         <li>
             <a href="{{ url('news_show', {'news_id': new.id}) }}">{{ new.title }}</a>
-            <span class="little">{{ new.author.username }} - {{ new.date.format('d m Y') }}</span>
+            <span class="little">{{ new.author.username }} - {{ new.comments | length }} {{ "comments" | trans }}</span>
         </li>
         {% endfor %}
     </ul>

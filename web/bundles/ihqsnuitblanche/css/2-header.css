@@ -1,70 +1,70 @@
-#header 
+#header
 {
-	background: url(../images/banner_fond.png) no-repeat;
-	background-size: length;
-	box-shadow: 0 0 10px #888;
-	-moz-box-shadow: 0 0 10px #888;
-	-webkit-box-shadow: 0 0 10px #888; 
-	z-index:50;
-        with: 900px;
+    background: url(../images/banner_fond.png) no-repeat;
+    background-size: length;
+    box-shadow: 0 0 10px #888;
+    -moz-box-shadow: 0 0 10px #888;
+    -webkit-box-shadow: 0 0 10px #888;
+    z-index:50;
+    with: 900px;
 }
 
 #header h1
 {
-	float: left;
-	height: 100px;
-	width: 150px;
-	margin-left: 20px;
-	box-shadow: 0 0 10px #888;
-	-moz-box-shadow: 0 0 10px #888;
-	-webkit-box-shadow: 0 0 10px #888;  
-	background: url(../images/logo.png) 0 0 no-repeat;
+    float: left;
+    height: 100px;
+    width: 150px;
+    margin-left: 20px;
+    box-shadow: 0 0 10px #888;
+    -moz-box-shadow: 0 0 10px #888;
+    -webkit-box-shadow: 0 0 10px #888;
+    background: url(../images/logo.png) 0 0 no-repeat;
 }
 #header h1 span
 {
-	display: none;
+    display: none;
 }
 #header .lang
 {
-	float: right;
-	padding: 10px 20px 0 0;
+    float: right;
+    padding: 10px 20px 0 0;
 }
 
 #header .lang li
 {
-	display: inline-block;
+    display: inline-block;
 }
 #header .lang li a
 {
-	width: 16px;
-	height: 11px;
-	display: inline-block;
+    width: 16px;
+    height: 11px;
+    display: inline-block;
 }
 #header .lang li a span
 {
-	display: none;
+    display: none;
 }
 #header .lang li a.fr
 {
-	background: url(../images/flags/FR.gif);
+    background: url(../images/flags/FR.gif);
 }
 #header .lang li a.en
 {
-	background: url(../images/flags/UK.gif);
+    background: url(../images/flags/UK.gif);
 }
 
 #header .block-login
 {
-	width: 150px;
-	height: 90px;
-	
-	box-shadow: 0 0 10px #888;
-	-moz-box-shadow: 0 0 10px #888;
-	-webkit-box-shadow: 0 0 10px #888;  
-	
-	position: relative;
-	top: 31px;
-	left: 730px;
+    width: 150px;
+    height: 90px;
+
+    box-shadow: 0 0 10px #888;
+    -moz-box-shadow: 0 0 10px #888;
+    -webkit-box-shadow: 0 0 10px #888;
+
+    position: relative;
+    top: 31px;
+    left: 730px;
 }
 #header form fieldset,
 #header .block-login div.log
@@ -96,57 +96,59 @@
 #header form fieldset legend,
 #header form label
 {
-	display: none;	
+    display: none;
 }
 #header form p
 {
-	margin: 6px 0;
+    margin: 6px 0;
 }
 #header form p input
 {
-	width: 124px;
-	padding: 2px;
-	height: 14px;
+    width: 124px;
+    padding: 2px;
+    height: 14px;
 }
 #header form p input.submit
 {
-	background: #395674;
-	border: 1px solid black;	
-	width: 130px;
-	height: 18px;
-	padding: 0;
+    background: #395674;
+    color: white;
+    font-weight: bold;
+    border: 1px solid black;
+    width: 130px;
+    height: 18px;
+    padding: 0;
 }
 
-#header ul.menu 
+#header ul.menu
 {
-	z-index: 50;
-        float: left;
-	clear: both;
-	background: white;
-	
-	width: 890px;
-	height: 40px;
-	
-	box-shadow: 0 0 10px #888;
-	-moz-box-shadow: 0 0 10px #888;
-	-webkit-box-shadow: 0 0 10px #888; 
-	
-	padding: 0 10px;
-        margin-left: -5px;
+    z-index: 50;
+    float: left;
+    clear: both;
+    background: white;
+
+    width: 890px;
+    height: 40px;
+
+    box-shadow: 0 0 10px #888;
+    -moz-box-shadow: 0 0 10px #888;
+    -webkit-box-shadow: 0 0 10px #888;
+
+    padding: 0 10px;
+    margin-left: -5px;
 }
 #header ul.menu li
 {
-	line-height: 40px;
-	display: inline-block;
-	padding: 0 20px;
+    line-height: 40px;
+    display: inline-block;
+    padding: 0 20px;
 }
 #header ul.menu li.first
 {
-	padding-left: 10px;
+    padding-left: 10px;
 }
 #header ul.menu last
 {
-	padding-right: 10px;
+    padding-right: 10px;
 }
 
 #header ul.menu li.stream-live
@@ -168,7 +170,7 @@
     margin: 10px;
     padding: 10px;
     border: 1px dotted #395674;
-    
+
     background: white;
     opacity: 0.7;
     -moz-opacity: 0.7;

@@ -4,5 +4,29 @@
 
 {% block content %}
     {% include "IHQSNuitBlancheBundle:News:details.html.twig" with { 'news': news } %}
+    <br />
+    <h2>{{ "Comments" | trans }}</h2>
+    {% if news.comments | length > 0 %}
+        <ol class="comments">
+        {% for comment in news.comments %}
+            <li>
+                <img src="{{ comment.author.avatar }}" />
+                <p class="meta">
+                    #{{ loop.index }}
+                    - <a href="{{ url('player_show', {'player_id': comment.author.id}) }}">{{ comment.author.username }}</a>
+                    - {{ comment.date.format('d/m/Y - H:i') }}
+                </p>
+                <p>
+                    {{ comment.body | raw }}
+                </p>
+            </li>
+        {% endfor %}
+        </ol>
+    {% else %}
+        <p>
+            <em>{{ "no comment posted yet" | trans }}</em>
+        </p>
+        <br />
+    {% endif %}
     {% render  "IHQSNuitBlancheBundle:News:_comment" with { 'news': news } %}
 {% endblock %}

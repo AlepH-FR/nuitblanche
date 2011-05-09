@@ -55,6 +55,7 @@ class News
 
     public function setTitle($title) {
         $this->title = $title;
+		return $this;
     }
 
     public function getBody() {
@@ -63,6 +64,7 @@ class News
 
     public function setBody($body) {
         $this->body = $body;
+		return $this;
     }
 
     public function getAuthor() {
@@ -71,22 +73,25 @@ class News
 
     public function setAuthor(User $author) {
         $this->author = $author;
+		return $this;
     }
 
     public function getDate() {
         return $this->date;
     }
 
-    public function setDate($date) {
+    public function setDate(\DateTime $date) {
         $this->date = $date;
+		return $this;
     }
 
     public function getTeam() {
         return $this->team;
     }
 
-    public function setTeam($team) {
+    public function setTeam(Team $team) {
         $this->team = $team;
+		return $this;
     }
 
     public function getComments() {

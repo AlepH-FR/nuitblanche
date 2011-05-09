@@ -2,12 +2,31 @@
 
 namespace IHQS\NuitBlancheBundle\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use IHQS\NuitBlancheBundle\Entity\Comment;
+use IHQS\NuitBlancheBundle\Entity\News;
 use IHQS\NuitBlancheBundle\Entity\User;
 
-class NewsController extends Controller
+class NewsController extends BaseController
 {
+	protected function getFormComment(News $news, User $user)
+	{
+		// default object
+        $comment = new Comment();
+        $comment
+            ->setDate(new \Datetime())
+            ->setNews($news)
+            ->setAuthor($user)
+        ;
+
+		// creating form
+        $form = $this->get('form.factory')
+            ->createBuilder('form', $comment)
+            ->add('body')
+            ->getForm();
+
+		return $form;
+	}
+
     /**
      * @extra:Template()
      */
@@ -28,25 +47,15 @@ class NewsController extends Controller
         {
             return array('not_connected' => true);
         }
+		$form = $this->getFormComment($news, $user);
 
-        $comment = new Comment();
-        $comment
-            ->setDate(new \Datetime())
-            ->setNews($news)
-            ->setAuthor($user)
-        ;
-
-        $form = $this->get('form.factory')
-            ->createBuilder('form', $comment)
-            ->add('body')
-            ->getForm();
-
+		// handling response
         return array(
             'not_connected' => false,
-            'form' => $form->createView()
+			'submit_path'	=> $this->generateUrl('news_show', array('news_id' => $news->getId())),
+            'form'			=> $form->createView()
         );
     }
-
     
     /**
      * @extra:Route("/news/{news_id}/show", name="news_show")
@@ -54,19 +63,55 @@ class NewsController extends Controller
      */
     public function showAction($news_id)
     {
+		$news = $this->get('nb.manager.news')->findOneById($news_id);
+        $user = $this->get('security.context')->getToken()->getUser();
+
+        if($user instanceof User)
+        {
+			$form = $this->getFormComment($news, $user);
+
+			// handling request
+			$request = $this->get('request');
+			if ($request->getMethod() == 'POST')
+			{
+				$form->bindRequest($request);
+
+				// handling submission
+				if($form->isValid())
+				{
+					$comment = $form->getData();
+					$this->get('nb.entity_manager')->persist($comment);
+					$this->get('nb.entity_manager')->flush();
+				}
+			}
+		}
+
         return array(
-            'news' => $this->get('nb.manager.news')->findOneById($news_id)
+            'news' => $news
         );
     }
 
     /**
      * @extra:Route("contribute/news/add", name="contribute_news_new")
-     * @extra:Template()
+     * @extra:Template("IHQSNuitBlancheBundle:Main:adminForm.html.twig")
      */
     public function newAction()
     {
-        return array(
+        $user = $this->get('security.context')->getToken()->getUser();
 
-        );
+		// creating default object
+		$news = new News();
+		$news
+			->setAuthor($user)
+			->setDate(new \Datetime())
+		;
+
+		// creating form
+        $formType = $this->container->getParameter('nb.form.news.class');
+
+		$form = $this->get('form.factory')->create(new $formType());
+		$form->setData($news);
+
+		return $this->_adminFormAction('Add / Edit a news', $form);
     }
 }

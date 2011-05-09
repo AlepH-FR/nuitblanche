@@ -101,4 +101,21 @@ class WarGame extends BaseGame
 	{
 		$this->team2Score = $team2Score;
 	}
+
+	public function __toString()
+	{
+		$infos = array(
+			'vs',
+			$this->getWar()->getOpponentName(),
+			'-',
+		);
+		
+		foreach($this->players as $player)
+		{
+			$infos[] = (string) $player;
+		}
+
+		return implode(' ', $infos);
+
+	}
 }
