@@ -10,10 +10,8 @@ div.widget li
 
 div.widget a
 {
-    display: inline-block;
+    display: block;
     width: 130px;
-    height: 12px;
-    overflow: hidden;
 }
 
 div.widget .little
@@ -26,21 +24,18 @@ div.last-replays li a
 {
     float: left;
     display: inline;
-    overflow: hidden;
-    height: 40px;
-    width: 79px;
+    width: 130px;
     font-size: 10px;
 
-    margin: 4px 0;
+    margin: 4px 0 0 0;
 }
 div.last-replays li .little
 {
     float: right;
-    text-align: center;
+    text-align: right;
     vertical-align: middle;
-    height: 32px;
     display:block;
-    margin-top: 8px;
+    margin: 0 0 4px 0;
 }
 
 

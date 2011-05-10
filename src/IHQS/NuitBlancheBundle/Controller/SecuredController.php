@@ -2,16 +2,36 @@
 
 namespace IHQS\NuitBlancheBundle\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Security\Core\SecurityContext;
+use IHQS\NuitBlancheBundle\Entity\User;
+use IHQS\NuitBlancheBundle\Entity\Player;
 
-/**
- * @extra:Route("/secured")
- */
-class SecuredController extends Controller
+class SecuredController extends BaseController
 {
     /**
-     * @extra:Route("/login", name="_demo_login")
+     * @extra:Route("register", name="_secured_register")
+     * @extra:Template("IHQSNuitBlancheBundle:Main:adminForm.html.twig")
+     */
+	public function registerAction()
+	{
+        $user = $this->get('security.context')->getToken()->getUser();
+
+		// creating default object
+		$user = new User();
+		$player = new Player();
+		$player->setUser($user);
+
+		// creating form
+        $formType = $this->container->getParameter('nb.form.player.class');
+
+		$form = $this->get('form.factory')->create(new $formType());
+		$form->setData($player);
+
+		return $this->_adminFormAction('Register Nuit Blanche website', $form);
+	}
+
+    /**
+     * @extra:Route("/login", name="_secured_login")
      * @extra:Template()
      */
     public function _loginAction()
@@ -27,6 +47,7 @@ class SecuredController extends Controller
             'error'         => $error,
         );
     }
+
     /**
      * @extra:Template()
      */

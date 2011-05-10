@@ -10,7 +10,7 @@ class ReplayFormType extends AbstractType
 	public function buildForm(FormBuilder $builder, array $options)
 	{
 		$builder
-			->add('file', 'file')
+			->add('file', 'file', array('type' => null))
 			->add('game', new ReplayGameFormType())
 		;
 	}

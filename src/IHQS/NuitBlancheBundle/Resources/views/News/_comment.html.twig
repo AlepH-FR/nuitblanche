@@ -1,7 +1,7 @@
 <div id="comment-form">
     {% if not_connected %}
     <p class="login">
-        {{ "Please <strong>log in</strong> in order to post comments" | raw }}
+        Please <strong>log in</strong> or <a href="{{ url('_secured_register') }}">register</a> in order to post comments
     </p>
     {% else %}
     <form method="post" action="{{ submit_path }}">

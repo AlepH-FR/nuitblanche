@@ -25,16 +25,17 @@ security:
             security: false
 
         login:
-            pattern:  ^/secured/login$
+            pattern:  ^/login$
             security: false
 
         main:
             pattern:    /.*
             form_login:
-                check_path: /secured/login_check
-                login_path: /secured/login
+                check_path:   /login_check
+                login_path:   /
+                use_referer:  true
             logout:
-                path:   /secured/logout
+                path:   /logout
                 target: /
             anonymous: ~
 

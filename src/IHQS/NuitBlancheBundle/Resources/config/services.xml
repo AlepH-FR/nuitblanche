@@ -11,5 +11,9 @@
             <argument type="service" id="service_container" />
         </service>
 
+        <service id="nb.replay.processor" class="IHQS\NuitBlancheBundle\Replay\Processor">
+            <argument type="service" id="nb.entity_manager" />
+        </service>
+
     </services>
 </container>

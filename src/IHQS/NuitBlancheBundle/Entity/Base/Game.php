@@ -6,6 +6,7 @@ abstract class Game
 {
     const RESULT_WIN    = "win";
     const RESULT_LOSS   = "loss";
+    const RESULT_DRAW   = "draw";
 
     protected function getTeam($team_id)
     {
@@ -75,11 +76,19 @@ abstract class Game
 
     public function getTeam1Result()
     {
-        return ($this->getTeam1Score() > $this->getTeam2Score()) ? self::RESULT_WIN : self::RESULT_LOSS;
+        return ($this->getTeam1Score() == $this->getTeam2Score())
+			? self::RESULT_DRAW
+			: ($this->getTeam1Score() > $this->getTeam2Score())
+				? self::RESULT_WIN
+				: self::RESULT_LOSS;
     }
 
     public function getTeam2Result()
     {
-        return ($this->getTeam1Score() < $this->getTeam2Score()) ? self::RESULT_WIN : self::RESULT_LOSS;
+        return ($this->getTeam1Score() == $this->getTeam2Score())
+			? self::RESULT_DRAW
+			: ($this->getTeam1Score() < $this->getTeam2Score())
+				? self::RESULT_WIN
+				: self::RESULT_LOSS;
     }
 }

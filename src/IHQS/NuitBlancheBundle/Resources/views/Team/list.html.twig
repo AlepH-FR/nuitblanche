@@ -13,7 +13,7 @@
         <div class="player-item {% if loop.index is even %}right{% endif %}">
             <a href="{{ url('player_show', { 'player_id': player.id }) }}">
                 <img class="avatar" src="{{ player.user.avatar }}" />
-                <h2><span>{{ team.tag }}{{ player.username }} #{{ player.sc2Id }}</span></h2>
+                <h2><span>{{ player.username }} #{{ player.sc2Id }}</span></h2>
                 <img class="race" src="{{ asset('bundles/ihqsnuitblanche/images/ico/' ~ player.sc2Race ~ '_fond.png') }}" />
             </a>
         </div>

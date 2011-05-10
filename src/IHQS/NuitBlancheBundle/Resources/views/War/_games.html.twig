@@ -11,21 +11,25 @@
                     </td>
                     <td class="war-score">&nbsp;</td>
                     <td class="player player-left">
-                        <img class="race-icon" src="{{ asset('bundles/ihqsnuitblanche/images/ico/' ~ game.team1Race ~ '_icon.png') }}" />
-                        {{ game.team1Name }}
+                         {% for player in game.team1 %}
+                            {{ player.name }}
+                            <img class="race-icon" src="{{ asset('bundles/ihqsnuitblanche/images/ico/' ~ player.race ~ '_icon.png') }}" />
+                            <br />
+                         {% endfor %}
                     </td>
                     <td class="score match-{{ game.team1Result }}">{{ game.team1Score }}</td>
                     <td class="separator"></td>
                     <td class="score match-{{ game.team2Result }}">{{ game.team2Score }}</td>
                     <td class="player player-right">
-                        <img class="race-icon" src="{{ asset('bundles/ihqsnuitblanche/images/ico/' ~ game.team2Race ~ '_icon.png') }}" />
-                        {{ game.team2Name }}
+                         {% for player in game.team2 %}
+                            <img class="race-icon" src="{{ asset('bundles/ihqsnuitblanche/images/ico/' ~ player.race ~ '_icon.png') }}" />
+                            {{ player.name }}
+                            <br />
+                         {% endfor %}
                     </td>
                     <td class="date">{{ game.games[0].date.format('d m Y') }}</td>
                 </tr>
                 {% endfor %}
             </tbody>
         </table>
-        <br />
-        <br />
     </div>

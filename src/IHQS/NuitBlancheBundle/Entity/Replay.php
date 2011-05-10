@@ -2,6 +2,9 @@
 
 namespace IHQS\NuitBlancheBundle\Entity;
 
+use IHQS\NuitBlancheBundle\Replay\Processor;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+
 /**
  * @orm:Entity(repositoryClass="IHQS\NuitBlancheBundle\Model\ReplayRepository")
  * @orm:Table(name="replay")
@@ -26,7 +29,7 @@ class Replay
     protected $chart;
 
     /**
-     * @orm:OneToOne(targetEntity="Game")
+     * @orm:OneToOne(targetEntity="Game", cascade={"persist"})
      */
     protected $game;
 
@@ -60,6 +63,18 @@ class Replay
 	 */
 	protected $downloads;
 
+    /**
+     * @orm:Column(type="text")
+     */
+	protected $chatLog;
+
+    /**
+     * @orm:ManyToOne(targetEntity="Player")
+     */
+	protected $uploader;
+
+	private $processor;
+
     public function getId() {
         return $this->id;
     }
@@ -68,9 +83,20 @@ class Replay
         return $this->file;
     }
 
-    public function setFile($file) {
-        $this->file = $file;
+    public function setFile(UploadedFile $file) {
+		if(is_null($this->processor))
+		{
+			throw new \RuntimeException('No replay processor defined');
+		}
+
+		$this->processor->updateFile($this, $file);
+		$this->downloads = 0;
     }
+
+	public function doSetFile($file)
+	{
+		$this->file = $file;
+	}
 
     public function getChart() {
         return $this->chart;
@@ -105,11 +131,11 @@ class Replay
     }
 
     public function getObs() {
-        return $this->obs;
+        return implode(', ', unserialize($this->obs));
     }
 
-    public function setObs($obs) {
-        $this->obs = $obs;
+    public function setObs(array $obs) {
+        $this->obs = serialize($obs);
     }
 
     public function getRealm() {
@@ -136,6 +162,26 @@ class Replay
 		$this->downloads++;
 	}
 
+	public function getChatLog()
+	{
+		return unserialize($this->chatLog);
+	}
+
+	public function setChatLog(array $chatLog)
+	{
+		$this->chatLog = serialize($chatLog);
+	}
+
+	public function getUploader()
+	{
+		return $this->uploader;
+	}
+
+	public function setUploader(User $uploader)
+	{
+		$this->uploader = $uploader;
+	}
+
 	public function getNormalizedFileName() {
 		$data = array();
 		$data[] = $this->game->getDate()->format('Y-m-d');
@@ -145,5 +191,23 @@ class Replay
 		$data[] = $this->game->getTeam2Name();
 
 		return implode(' ', $data).'.SC2Replay';
+	}
+
+	public function getNormalizedLength() {
+		$secs = $this->getLength();
+
+		$mins	= floor($secs / 60);
+		$secs	= $secs % 60;
+
+		$values = array();
+		if ($mins > 0)	{ $values[] = $mins . ' mins'; }
+		$values[] = $secs . ' secs';
+
+		return implode(', ', $values);
+	}
+
+	public function setReplayProcessor(Processor $processor)
+	{
+		$this->processor = $processor;
 	}
 }

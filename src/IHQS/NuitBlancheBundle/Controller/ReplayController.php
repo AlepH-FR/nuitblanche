@@ -80,6 +80,8 @@ class ReplayController extends BaseController
 
 		$replay = new Replay();
 		$replay->setGame($game);
+		$replay->setUploader($user);
+		$replay->setReplayProcessor($this->get('nb.replay.processor'));
 
 		// creating form
         $formType = $this->container->getParameter('nb.form.replay.class');

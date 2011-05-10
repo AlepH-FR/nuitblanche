@@ -5,6 +5,7 @@ div#left {
 
 ul.teams li a {
     width: 100px;
+    display: inline-block;
 }
 
 div.calendar-title {
@@ -92,7 +93,7 @@ ul.calendar li.date .number {
 }
 
 ul.calendar li.war {
-    background-image: url('http://nb2.localhost/bundles/ihqsnuitblanche/images/logo_league.jpg');
+    background-image: url('../images/logo_league.jpg');
     background-position: 169px -4px;
     cursor: pointer;
 }

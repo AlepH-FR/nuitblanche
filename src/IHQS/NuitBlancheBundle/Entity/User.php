@@ -3,6 +3,7 @@
 namespace IHQS\NuitBlancheBundle\Entity;
 
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
  * @orm:Entity(repositoryClass="IHQS\NuitBlancheBundle\Model\UserRepository")
@@ -33,7 +34,7 @@ class User implements UserInterface
     protected $email;
     
     /**
-     * @orm:Column(type="string")
+     * @orm:Column(type="string", nullable="true")
      */
     protected $avatar;
 
@@ -82,6 +83,11 @@ class User implements UserInterface
      */
     protected $news;
 
+    /**
+     * @orm:OneToMany(targetEntity="Replay", mappedBy="uploader")
+     */
+    protected $uploadedReplays;
+
     public function getId() {
         return $this->id;
     }
@@ -114,8 +120,15 @@ class User implements UserInterface
         return $this->avatar;
     }
 
-    public function setAvatar($avatar) {
-        $this->avatar = $avatar;
+    public function setAvatar(UploadedFile $avatar) {
+		chmod($avatar->getPath(), 0777);
+		
+		$rootDir = __DIR__.'/../../../../web/';
+		$dir = 'upload/avatar';
+		$filename = strtolower($this->username) . '.' . pathinfo($avatar->getOriginalName(), PATHINFO_EXTENSION);
+
+		$avatar->move($rootDir . $dir, $filename);
+        $this->avatar = $dir . '/' . $filename;
     }
     
     public function getFirstName() {

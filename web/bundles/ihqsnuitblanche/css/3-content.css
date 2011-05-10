@@ -58,7 +58,7 @@ div.notice ul li span
 }
 div.notice ul li span.league
 {
-    width: 55px;
+    width: 70px;
 }
 
 div.notice ul li span.league
@@ -186,14 +186,18 @@ div.replay-info img.race
     margin-top: -20px;
 }
 
-div.replay-info div.team1
+div.replay-info div.team1-container,
+div.replay-info div.team2-container
 {
     float: left;
+    width: 220px;
+}
+div.replay-info div.team1
+{
     text-align: left;
 }
 div.replay-info div.team2
 {
-    float: right;
     text-align: right;
 }
 div.replay-info div.versus
@@ -205,7 +209,12 @@ div.replay-info div.versus
 div.replay-info div.team1,
 div.replay-info div.team2
 {
-    width: 110px;
+    width: 220px;
+}
+div.war-info div.team1,
+div.war-info div.team2
+{
+    float: left;
 }
 div.replay-info .players div.team1 p,
 div.replay-info .players div.team2 p
@@ -245,23 +254,65 @@ div.replay-info .teams .score
 
 div.replay-info .game-info
 {
-    height: 100px;
+    height: 120px;
 }
-div.replay-info .obs
+div.replay-info .apm-chart
 {
-    display:inline-block;
-    height:12px;
-    overflow:hidden;
-    width:160px;
+    height: 245px;
 }
+
+div.replay-info div.obs
+{
+    margin-top: 10px;
+}
+
+div.replay-info div.obs span.stat,
+div.replay-info div.obs span.data
+{
+    display: block; 
+    float: left;
+}
+div.replay-info div.obs span.stat
+{
+    width:58px;
+}
+div.replay-info div.obs span.data
+{
+    width:400px;
+}
+
+div.replay-info ul.log
+{
+    margin: 5px 0;
+    width: 500px;
+}
+div.replay-info ul.log li span.time
+{
+    width: 50px;
+    display: inline-block;
+    color: rgb(136, 136, 136);
+    padding-left: 30px;
+}
+div.replay-info ul.log li span.name
+{
+    font-weight: bold;
+    width: 100px;
+    display: inline-block;
+}
+div.replay-info ul.log li span.message
+{
+    width: 300px;
+    display: inline-block;
+}
+
 div.replay-info ul,
 div.sub-section ul
 {
     float: left;
     width: 250px;
 }
-div.replay-info ul li span.stat,
-div.sub-section ul li span.stat
+div.replay-info  span.stat,
+div.sub-section span.stat
 {
     padding-left: 30px;
     width: 55px;
@@ -326,6 +377,11 @@ div.sub-section ul.short
 div.sub-section ul.long
 {
     width: 270px;
+}
+div.sub-section ul.long span.data
+{
+    width: 130px;
+    display: inline-block;
 }
 
 div.wide ul
@@ -413,7 +469,7 @@ div.wars table td
 }
 div.wars table td.team
 {
-    width: 80px;
+    width: 90px;
 }
 div.wars table td.war-team
 {
@@ -470,7 +526,7 @@ div.wars table td.match-loss
 div.replays table td.map
 {
 	font-size: 10px;
-	width: 80px;
+	width: 100px;
 }
 div.replays table td.player
 {
@@ -542,6 +598,7 @@ form#admin-form div label
     width: 150px;
     height: 30px;
     vertical-align: top;
+    line-height: 30px;
 }
 
 form#admin-form div input,
@@ -551,6 +608,12 @@ form#admin-form div select
     width: 364px;
     height: 26px;
     border: 1px solid white;
+}
+
+form#admin-form div select
+{
+    height: 32px;
+    line-height: 32px;
 }
 
 form#admin-form div input:focus,
@@ -567,6 +630,7 @@ form#admin-form div input.submit
     background: #395674;
     border: 1px solid black;
     width: 370px;
+    height: 32px;
 }
 
 form#admin-form div div.select-datetime,

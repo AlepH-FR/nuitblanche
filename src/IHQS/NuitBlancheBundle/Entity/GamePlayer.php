@@ -16,7 +16,7 @@ class GamePlayer
     private $id;
 
     /**
-     * @orm:ManyToOne(targetEntity="Game")
+     * @orm:ManyToOne(targetEntity="Game", cascade={"all"})
      */
     protected $game;
 
@@ -118,6 +118,17 @@ class GamePlayer
     public function setTeam($team) {
         $this->team = $team;
     }
+
+	public function getWarGame()
+	{
+		return $this->warGame;
+	}
+
+	public function setWarGame(WarGame $warGame)
+	{
+		$this->warGame = $warGame;
+	}
+
 
 	public function __toString()
 	{

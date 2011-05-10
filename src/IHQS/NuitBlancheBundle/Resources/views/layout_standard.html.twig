@@ -6,6 +6,11 @@
 {% endblock %}
 
 {% block right %}
+    {% if not is_granted('ROLE_USER') %}
+        <div class="register">
+            <a href="{{ url('_secured_register') }}">{{ "Register" | trans }}</a>
+        </div>
+    {% endif %}
     {% render "IHQSNuitBlancheBundle:War:_latest" %}
     {% render "IHQSNuitBlancheBundle:News:_latest" %}
     {% render "IHQSNuitBlancheBundle:Replay:_latest" %}

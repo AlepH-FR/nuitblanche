@@ -115,40 +115,40 @@
         <ul class="short">
             <li>
                 <span class="stat long"><img class="ico" src="{{ asset('bundles/ihqsnuitblanche/images/ico/site_esl.ico') }}" /> esl</span>
-                <span class="data"><a href="{{ player.sc2ProfileEsl }}">{{ "link" | trans }}</a></span>
+                <span class="data">{% if player.sc2ProfileEsl %}<a href="{{ player.sc2ProfileEsl }}">{{ "link" | trans }}</a>{% else %}-{% endif %}</span>
             </li>
             <li>
                 <span class="stat long"><img class="ico" src="http://starcraft2.ingame.de/sc2cl/gfx/favicon.ico" /> sc2cl</span>
-                <span class="data"><a href="{{ player.sc2ProfileSc2cl }}">{{ "link" | trans }}</a></span>
+                <span class="data">{% if player.sc2ProfileSc2cl %}<a href="{{ player.sc2ProfileSc2cl }}">{{ "link" | trans }}</a>{% else %}-{% endif %}</span>
             </li>
             <li>
                 <span class="stat long"><img class="ico" src="http://www.pandaria-wars.com/themes/dyy_2009/images/favicon.ico" /> pandaria</span>
-                <span class="data"><a href="{{ player.sc2ProfilePandaria }}">{{ "link" | trans }}</a></span>
+                <span class="data">{% if player.sc2ProfilePandaria %}<a href="{{ player.sc2ProfilePandaria }}">{{ "link" | trans }}</a>{% else %}-{% endif %}</span>
             </li>
         </ul>
         <ul class="long">
             {% if player.user.twitter %}
             <li>
                 <span class="stat long"><img class="ico" src="http://twitter.com/phoenix/favicon.ico" /> twitter</span>
-                <span class="data"><a href="http://twitter.com/{{ player.user.twitter }}">@{{ player.user.twitter }}</a></span>
+                <span class="data">{% if player.user.twitter %}<a href="http://twitter.com/{{ player.user.twitter }}">@{{ player.user.twitter }}</a>{% else %}-{% endif %}</span>
             </li>
             {% endif %}
             {% if player.user.facebook %}
             <li>
                 <span class="stat long"><img class="ico" src="{{ asset('bundles/ihqsnuitblanche/images/ico/site_fb.ico') }}" /> facebook</span>
-                <span class="data"><a href="{{ player.user.facebook }}">{{ "link" | trans }}</a></span>
+                <span class="data">{% if player.user.facebook %}<a href="{{ player.user.facebook }}">{{ "link" | trans }}</a>{% else %}-{% endif %}</span>
             </li>
             {% endif %}
             {% if player.user.skype %}
             <li>
                 <span class="stat long"><img class="ico" src="http://www.skypeassets.com/i/images/icons/favicon.ico" /> skype</span>
-                <span class="data"><a href="#">{{ player.user.skype }}</a></span>
+                <span class="data">{% if player.user.skype %}<strong>{{ player.user.skype }}</strong>{% else %}-{% endif %}</span>
             </li>
             {% endif %}
             {% if player.user.msn %}
             <li>
                 <span class="stat long"><img class="ico" src="{{ asset('bundles/ihqsnuitblanche/images/ico/site_msn.gif') }}" /> msn</span>
-                <span class="data"><a href="">{{ player.user.publicMsn }}</a></span>
+                <span class="data">{% if player.user.publicMsn %}<strong>{{ player.user.publicMsn }}</strong>{% else %}-{% endif %}</span>
             </li>
             {% endif %}
         </ul>

@@ -8,6 +8,7 @@
 /app/logs/*
 app/config/config_*local.yml
 tags
+/web/upload/*
 
 # NetBeans
 nbproject

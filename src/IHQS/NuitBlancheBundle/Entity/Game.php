@@ -15,8 +15,9 @@ class Game extends BaseGame
     const TYPE_4v4 = "4v4";
 
     static public $_results = array(
-        self::RESULT_WIN,
-        self::RESULT_LOSS
+        self::RESULT_WIN	=> self::RESULT_WIN,
+        self::RESULT_LOSS	=> self::RESULT_LOSS,
+        self::RESULT_DRAW	=> self::RESULT_DRAW
     );
 
     /**
@@ -32,12 +33,12 @@ class Game extends BaseGame
     protected $date;
 
     /**
-     * @orm:OneToMany(targetEntity="GamePlayer", mappedBy="game")
+     * @orm:OneToMany(targetEntity="GamePlayer", mappedBy="game", cascade={"persist"})
      */
     protected $players;
 
     /**
-     * @orm:Column(type="integer")
+     * @orm:Column(type="integer", nullable="true")
      */
     protected $winner;
 
@@ -78,19 +79,24 @@ class Game extends BaseGame
     }
 
     public function getPlayers() {
-        return $this->players;
+        if(!$this->players)
+		{
+			$this->players = new \Doctrine\Common\Collections\ArrayCollection();
+		}
+
+		return $this->players;
     }
 
     public function setPlayers($players) {
         $this->players = $players;
     }
 
-	public function addPlayer(Player $player) {
-		$this->players->add($player);
+	public function addPlayer(GamePlayer $player) {
+		$this->getPlayers()->add($player);
 	}
 
-	public function removePlayer(Player $player) {
-		$this->players->remove($player);
+	public function removePlayer(GamePlayer $player) {
+		$this->getPlayers()->remove($player);
 	}
 
     public function getWinner() {

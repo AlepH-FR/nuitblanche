@@ -252,6 +252,7 @@ class SC2Replay {
 	private function parseAttributesFile($string) {
 		if ($this->debug) $this->debug("Parsing replay.attributes.events file");
 		$numByte = 4; // skip the 4-byte header
+		if ($this->build >= 17326) $numByte += 1; // 1 additional byte for these builds
 		$numAttribs = MPQFile::readUInt32($string,$numByte);
 		$attribArray = array();
 		$difficulties = array("VyEy" => 0, "Easy" => 1, "Medi" => 2, "Hard" => 3, "VyHd" => 4, "Insa" => 5);
@@ -302,7 +303,7 @@ class SC2Replay {
 		}
 		// custom games have different values (not tested with all values, algorithm may be wrong)
 		switch ($attribArray[0x07D0][0x10]) {
-			case 'Cust': $teamAttrib = $teamAttrib + 0x10 - 1; break; // 0x7D3 becomes 0x7E2 etc.
+			case 'Cust': if ($attribArray[0x03E9][0x10] == 'no') $teamAttrib += 0x10; break; // 0x7D3 -> 0x7E3 etc.
 			default:
 		}
 		// populate the data structures with relevant values
@@ -439,13 +440,15 @@ class SC2Replay {
 			$time += $timeStamp;
 			$numEvents++;
 
-			if ($playerId > count($this->players) || ($globalEventFlag > 0 && $playerId > 0))
+			if ($globalEventFlag > 0 && $playerId > 0)
 				$knownEvent = false;
 			else
 			switch ($eventType) {
 				case 0x00: // initialization
 					switch ($eventCode) {
 						case 0x2B:
+					        case 0x2C:
+					        case 0x0C: // for build >= 17326
 						case 0x0B: // Player enters game
 							if ($playerId == 0)
 								$knownEvent = false;
@@ -938,6 +941,10 @@ class SC2Replay {
 						case 0x18:
 							$numByte += 4;
 							break;
+						case 0x1C:
+							break;
+     					        case 0x3C: //well what do you know.. this is unknown, too
+						        break;
 						case 0x87: //unknown
 							$numByte += 4;
 							break;
@@ -959,7 +966,7 @@ class SC2Replay {
 			}
 			if ($knownEvent == false) {
 				if ($this->debug) $this->debug(sprintf("Unknown event: Timestamp: %d, Type: %d, Global: %d, Player ID: %d (%s), Event code: %02X Byte: %08X<br />\n",
-								$timeStamp, $eventType, $globalEventFlag,$playerId,$playerName,$eventCode,$numByte));
+								       $timeStamp, $eventType, $globalEventFlag,$playerId,$playerName,$eventCode,$numByte));
 				return false;
 			}
 			else if ($this->debug >= 2) $this->debug(sprintf("DEBUG L2: Timestamp: %d, Frames: %d, Type: %d, Global: %d, Player ID: %d (%s), Event code: %02X Byte: %08X<br />\n",
@@ -1016,6 +1023,7 @@ class SC2Replay {
       $this->unitsDict[$playerId][$uId]['type'] = $uType;
       $this->unitsDict[$playerId][$uId]['firstSeen'] = $time;
     }
+	$this->unitsDict['units'][$uType][$uId] = true;
     $this->unitsDict[$playerId][$uId]['lastSeen'] = $time;
   }
 

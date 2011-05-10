@@ -11,11 +11,13 @@ class Player
     const SC2RACE_PROTOSS = "protoss";
     const SC2RACE_TERRAN  = "terran";
     const SC2RACE_ZERG    = "zerg";
+    const SC2RACE_RANDOM  = "random";
 
     static public $_sc2races = array(
-        self::SC2RACE_PROTOSS,
-        self::SC2RACE_TERRAN,
-        self::SC2RACE_ZERG
+        self::SC2RACE_PROTOSS	=> self::SC2RACE_PROTOSS,
+        self::SC2RACE_TERRAN	=> self::SC2RACE_TERRAN,
+        self::SC2RACE_ZERG		=> self::SC2RACE_ZERG,
+        self::SC2RACE_RANDOM	=> self::SC2RACE_RANDOM
     );
 
     /**
@@ -26,13 +28,12 @@ class Player
     private $id;
 
     /**
-     * @orm:ManyToOne(targetEntity="User")
-     * @orm:JoinColumn(name="user_id", referencedColumnName="id")
+     * @orm:ManyToOne(targetEntity="User", cascade={"persist"})
      */
     protected $user;
 
     /**
-     * @orm:Column(type="string")
+     * @orm:Column(type="string", nullable="true")
      */
     protected $sc2Role;
 

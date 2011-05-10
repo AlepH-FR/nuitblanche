@@ -6,7 +6,9 @@
 
     <parameters>
         <parameter key="nb.form.news.class">IHQS\NuitBlancheBundle\Form\NewsFormType</parameter>
+        <parameter key="nb.form.player.class">IHQS\NuitBlancheBundle\Form\PlayerFormType</parameter>
         <parameter key="nb.form.replay.class">IHQS\NuitBlancheBundle\Form\ReplayFormType</parameter>
+        <parameter key="nb.form.user.class">IHQS\NuitBlancheBundle\Form\UserFormType</parameter>
     </parameters>
 
 </container>

@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /*
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -361,11 +361,16 @@ class SC2ReplayUtils {
 	public static $ABILITYCODES_16561 = array(
 		// terran 
 		0x020A00 => array('link' => 0x080A00),
+		0x011810 => array('link' => 0x050800), // rally point with action (gather, repair, etc)
+		0x01FE01 => array('link' => 0x070E01),
+		0x013E01 => array('link' => 0x070E01),
+		0x01FE03 => array('link' => 0x070E03),
 		0x011820 => array('link' => 0x050800),
 		0x013011 => array('link' => 0x070001),
 		0x013013 => array('link' => 0x070003),
 		0x013022 => array('link' => 0x070002),
 		0x011610 => array('link' => 0x050600),
+		0x011620 => array('link' => 0x050600), // rally point with action (gather, load into bunker, etc)
 		0x020E00 => array('link' => 0x080E00),
 		0x031200 => array('link' => 0x0D0300),
 		0x020200 => array('link' => 0x080200),
@@ -380,9 +385,13 @@ class SC2ReplayUtils {
 		0x017015 => array('link' => 0x07000D),
 		0x013010 => array('link' => 0x070000),
 		0x020400 => array('link' => 0x080400),
+		0x020410 => array('link' => 0x080400), // while floating
 		0x020401 => array('link' => 0x080401),
+		0x020411 => array('link' => 0x080401), // while floating
 		0x020600 => array('link' => 0x080600),
+		0x020610 => array('link' => 0x080600), // while floating
 		0x020601 => array('link' => 0x080601),
+		0x020611 => array('link' => 0x080601), // while floating
 		0x013014 => array('link' => 0x070004),
 		0x030D00 => array('link' => 0x0C0D00),
 		0x013016 => array('link' => 0x070006),
@@ -395,8 +404,10 @@ class SC2ReplayUtils {
 		0x020910 => array('link' => 0x080900),
 		0x020300 => array('link' => 0x080300),
 		0x020B10 => array('link' => 0x080B00),
-		0x012F00 => array('link' => 0x080A00), // scv autorepair
+		0x012F00 => array('desc' => 'toggles auto-repair (SCV)', 'name' => 'autorepair (SCV)', 'type' => SC2_TYPEGEN), // scv autorepair
 		0x010A20 => array('link' => 0x040A00),
+		0x010A10 => array('link' => 0x040A00), // MULE not on mineral patch
+		0x030D01 => array('link' => 0x060D01),
 		0x012120 => array('link' => 0x060100), 
 		0x013A10 => array('link' => 0x070A00), 
 		0x020E02 => array('link' => 0x080E02),
@@ -409,6 +420,8 @@ class SC2ReplayUtils {
 		0x021400 => array('link' => 0x090400),
 		0x021402 => array('link' => 0x090402),
 		0x021203 => array('link' => 0x090203),
+		0x01FF04 => array('link' => 0x070F04),
+		0x01FF01 => array('link' => 0x070F01),
 		0x020000 => array('link' => 0x080000),
 		0x020110 => array('link' => 0x080100),
 		0x021501 => array('link' => 0x090501),
@@ -450,6 +463,7 @@ class SC2ReplayUtils {
 		0x020F05 => array('link' => 0x080F05),
 		0x020F01 => array('link' => 0x080F01),
 		0x020F04 => array('link' => 0x080F04),
+		0x013500 => array('desc' => 'toggles auto-heal (Medivac)', 'name' => 'autoheal (Medivac)', 'type' => SC2_TYPEGEN),
 		0x013600 => array('link' => 0x070600),
 		0x013700 => array('link' => 0x070700),
 		0x033910 => array('link' => 0x0F0A00),
@@ -474,6 +488,7 @@ class SC2ReplayUtils {
 		0x013920 => array('link' => 0x070900),
 		0x370003 => array('link' => 0x070903),
 		0x013912 => array('link' => 0x070902),
+		0x013922 => array('link' => 0x070902),
 		0x013C00 => array('link' => 0x070C00),
 		0x013D00 => array('link' => 0x070D00),
 		0x012B00 => array('link' => 0x0D0301),
@@ -554,16 +569,20 @@ class SC2ReplayUtils {
 		0x030820 => array('link' => 0x0C0800),
 		0x011E20 => array('link' => 0x050E00),
 		0x030833 => array('link' => 0x0C0801),
+		0x030801 => array('desc' => 'unloads unit (Nydus Worm)', 'name' => 'unload unit (Nydus Worm)', 'type' => SC2_TYPEABILITY),
 		0x011610 => array('link' => 0x050600),
 		0x010F00 => array('desc' => 'uses Spawn changeling (Infestor)', 'name' => 'Changeling', 'type' => SC2_TYPEABILITY),
 		0x040120 => array('link' => 0x100200),
 		0x033200 => array('link' => 0x0C0200),
 		0x033201 => array('link' => 0x0F0301),
 		0x030220 => array('link' => 0x0C0200),
+		0x030222 => array('desc' => 'unloads unit (Overlord)', 'name' => 'unload unit (Overlord)', 'type' => SC2_TYPEABILITY),
 		0x030233 => array('link' => 0x0C0202),
 		0x030212 => array('link' => 0x0C0202),
 		0x031000 => array('desc' => 'uses Burrow (Ultralisk)', 'name' => 'Burrow (Ultralisk)', 'type' => SC2_TYPEABILITY),
 		0x031100 => array('desc' => 'uses Unburrow (Ultralisk)', 'name' => 'Unburrow (Ultralisk)', 'type' => SC2_TYPEABILITY),
+		0x030600 => array('link' => 0x0C0600),
+		0x030700 => array('link' => 0x0C0700),
 		0x030A00 => array('link' => 0x0C0A00),
 		0x030B00 => array('link' => 0x0C0B00),
 		0x023400 => array('link' => 0x0B0400),
@@ -579,8 +598,14 @@ class SC2ReplayUtils {
 		0x023300 => array('link' => 0x0B0300),
 		0x003400 => array('link' => 0x030400),
 		0x011C20 => array('link' => 0x050C00),
+		0x03F806 => array('desc' => 'cancels build in progress (Creep tumor)', 'name' => 'cancel (Creep tumor)', 'type' => SC2_TYPEABILITY, 'subtype' => SC2_SUBTYPECANCEL),
+		0x012A00 => array('desc' => 'cancels morph in progress', 'name' => 'cancel morph', 'type' => SC2_TYPEABILITY, 'subtype' => SC2_SUBTYPECANCEL),
+		0x030C01 => array('desc' => 'cancels morph in progress (Overseer)', 'name' => 'cancel (Overseer)', 'type' => SC2_TYPEABILITY, 'subtype' => SC2_SUBTYPECANCEL),
+		0x023101 => array('desc' => 'cancels morph in progress (Brood Lord)', 'name' => 'cancel (Brood Lord)', 'type' => SC2_TYPEABILITY, 'subtype' => SC2_SUBTYPECANCEL),
 		
 		//protoss
+		0x011A10 => array('link' => 0x050900),
+		0x011A20 => array('link' => 0x050900), // rally point with action
 		0x021E00 => array('link' => 0x090E00),
 		0x021911 => array('link' => 0x090901),
 		0x021922 => array('link' => 0x090902),
@@ -683,6 +708,7 @@ class SC2ReplayUtils {
 		0x002610 => array('link' => 0x020600),
 		0x002400 => array('link' => 0x020400),
 		0x002602 => array('link' => 0x020900),
+		0x002613 => array('desc' => 'scan moves (attack)', 'name' => 'scan move', 'type' => SC2_TYPEGEN),
 		0x022701 => array('desc' => 'returns cargo', 'name' => 'return cargo', 'type' => SC2_TYPEGEN),
 		0x01F006 => array('desc' => 'continues construction', 'name' => 'construct', 'type' => SC2_TYPEGEN)
 	);
@@ -1010,7 +1036,16 @@ class SC2ReplayUtils {
 	// return false if the ability code is unknown
 	static function getAbilityArray($num, $build) {
 		while ($build > 0) {
-			if ($build >= 16561) {
+		       if ($build >= 17326) {
+			 if ($num > 0x012c00) {
+			   $num -= 0x200;
+			 } elseif ($num > 0x002900) {
+			   $num -= 0x100;
+			 }
+			 $array = self::$ABILITYCODES_16561;
+				$build = 16560;
+		       }
+		       elseif ($build >= 16561) {
 				$array = self::$ABILITYCODES_16561;
 				$build = 16560;
 			}
