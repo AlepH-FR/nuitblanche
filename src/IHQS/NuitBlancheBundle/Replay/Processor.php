@@ -12,118 +12,122 @@ use SC2Chart\Replay\ReplayInterface;
 
 class Processor
 {
-	static protected $is_init = false;
-	static protected $lib_dir;
-	static protected $replay_dir;
+    static protected $is_init = false;
+    static protected $lib_dir;
+    static protected $replay_dir;
 
-	protected $em;
+    protected $em;
 
-	public function __construct(EntityManager $em, $analyzerClass = '\SC2Chart\Bridge\SC2Replay\Analyzer', $charterClass = '\SC2Chart\Charter\GDCharter')
-	{
-		$this->em = $em;
+    public function __construct(EntityManager $em, $analyzerClass = '\SC2Chart\Bridge\SC2Replay\Analyzer', $charterClass = '\SC2Chart\Charter\GDCharter')
+    {
+        $this->em = $em;
 
-		$analyzer = new $analyzerClass();
-		$charter  = new $charterClass();
-		$sc2chart = new SC2Chart($analyzer, $charter);
-		$this->sc2chart = $sc2chart;
-	}
+        $analyzer = new $analyzerClass();
+        $charter  = new $charterClass();
+        $sc2chart = new SC2Chart($analyzer, $charter);
+        $this->sc2chart = $sc2chart;
+    }
 
-	static public function init()
-	{
-		if(!self::$is_init)
-		{
-			$rootDir = __DIR__.'/../../../../';
-			self::$lib_dir		= $rootDir . '/vendor/sc2replays/';
-			self::$replay_dir	= $rootDir . '/web';
+    static public function init()
+    {
+        if(!self::$is_init)
+        {
+            $rootDir = __DIR__.'/../../../../';
+            self::$lib_dir		= $rootDir . '/vendor/sc2replays/';
+            self::$replay_dir	= $rootDir . '/web';
 
-			require_once(self::$lib_dir . 'sc2replay.php');
-			require_once(self::$lib_dir . 'mpqfile.php');
-			self::$is_init = true;
-		}
-	}
+            require_once(self::$lib_dir . 'sc2replay.php');
+            require_once(self::$lib_dir . 'mpqfile.php');
+            self::$is_init = true;
+        }
+    }
 
-	public function updateFile(Replay $replay, UploadedFile $file)
-	{
-		self::init();
+    public function updateFile(Replay $replay, UploadedFile $file)
+    {
+        self::init();
 
-		$file  = $this->moveFile($file);
-		$chart = $this->buildChart($replay, $file);
-		$sc2replay = $this->sc2chart->getReplay();
-		
-		$this->updateGame($replay->getGame(), $sc2replay);
+        $file  = $this->moveFile($file);
+        $chart = $this->buildChart($replay, $file);
+        $sc2replay = $this->sc2chart->getReplay();
 
-		$stats = stat($file);
-		$replay->doSetFile($file);
-		$replay->setSize(round($stats['size'] / 1024));
-		$replay->setLength($sc2replay->getLength());
-		$replay->setRealm($sc2replay->getRealm());
-		$replay->setVersion($sc2replay->getVersion() . '.' . $sc2replay->getBuild());
-		$replay->setChatLog($sc2replay->getMessages());
+        $this->updateGame($replay->getGame(), $sc2replay);
 
-		$obs = array();
-		foreach($sc2replay->getPlayers() as $player)
-		{
-			if($player->isObs())
-			{
-				$obs[] = $player->getName();
-			}
-		}
-		$replay->setObs($obs);
-	}
+        $stats = stat($file);
+        $replay->doSetFile($file);
+        $replay->setSize(round($stats['size'] / 1024));
+        $replay->setLength($sc2replay->getLength());
+        $replay->setRealm($sc2replay->getRealm());
+        $replay->setVersion($sc2replay->getVersion() . '.' . $sc2replay->getBuild());
+        $replay->setChatLog($sc2replay->getMessages());
 
-	protected function moveFile(UploadedFile $file)
-	{
-		chmod($file->getPath(), 0777);
+        $obs = array();
+        foreach($sc2replay->getPlayers() as $player)
+        {
+            if($player->isObs())
+            {
+                $obs[] = $player->getName();
+            }
+        }
+        $replay->setObs($obs);
+    }
 
-		$dir = self::$replay_dir . '/upload/replay';
-		$file->move($dir);
+    protected function moveFile(UploadedFile $file)
+    {
+        chmod($file->getPath(), 0777);
+
+        $dir = self::$replay_dir . '/upload/replay';
+        $file->move($dir);
         $movedFile = $dir . '/' . $file->getName();
 
-		return $file;
-	}
+        return $file;
+    }
 
-	protected function buildChart(Replay $replay, $file)
-	{
-		$chart = '/upload/chart/' . basename($file) . '.png';
-		$this->sc2chart->populate($file, self::$replay_dir . $chart);
+    protected function buildChart(Replay $replay, $file)
+    {
+        $chart = '/upload/chart/' . basename($file) . '.png';
+        $this->sc2chart->populate($file, self::$replay_dir . $chart);
 
-		$replay->setChart($chart);
-	}
+        $replay->setChart($chart);
+    }
 
-	public function updateGame(Game $game, ReplayInterface $sc2replay)
-	{
-		$game->setMap($sc2replay->getMap());
-		$game->setDate($sc2replay->getCtime());
+    public function updateGame(Game $game, ReplayInterface $sc2replay)
+    {
+        $game->setMap($sc2replay->getMap());
+        $game->setDate($sc2replay->getCtime());
 
-		foreach($sc2replay->getPlayers() as $player)
-		{
-			if($player->isObs())
-			{
-				continue;
-			}
+        foreach($sc2replay->getPlayers() as $player)
+        {
+            if($player->isObs())
+            {
+                continue;
+            }
 
-			$actions = array_sum($player->getActions());
-			$apm = round(60 * $actions / $sc2replay->getLength());
+            $actions = array_sum($player->getActions());
+            $apm = round(60 * $actions / $sc2replay->getLength());
 
-			$gp = new GamePlayer();
-			$gp->setGame($game);
-			$gp->setName($player->getName());
-			$gp->setRace(strtolower($player->getRace()));
-			$gp->setColor($player->getColor());
-			$gp->setApm($apm);
-			$gp->setTeam($player->getTeam());
+            $name = $player->getName();
+            $db_player = $this->em->getRepository('IHQS\NuitBlancheBundle\Entity\Player')->findOneBySc2Account($name);
 
-			$wg = $game->getWarGame();
-			if($wg instanceof WarGame)
-			{
-				$gp->setWarGame($wg);
-			}
-			$game->addPlayer($gp);
+            $gp = new GamePlayer();
+            $gp->setGame($game);
+            $gp->setName($name);
+            if(!is_null($db_player)) { $gp->setPlayer($db_player); }
+            $gp->setRace(strtolower($player->getRace()));
+            $gp->setColor($player->getColor());
+            $gp->setApm($apm);
+            $gp->setTeam($player->getTeam());
 
-			if($player->isWinner())
-			{
-				$game->setWinner($player->getTeam());
-			}
-		}
-	}
+            $wg = $game->getWarGame();
+            if($wg instanceof WarGame)
+            {
+                $gp->setWarGame($wg);
+            }
+            $game->addPlayer($gp);
+
+            if($player->isWinner())
+            {
+                $game->setWinner($player->getTeam());
+            }
+        }
+    }
 }

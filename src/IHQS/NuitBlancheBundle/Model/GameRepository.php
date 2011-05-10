@@ -13,19 +13,27 @@ use IHQS\NuitBlancheBundle\Entity\Replay;
  */
 class GameRepository extends EntityRepository
 {
-	public function findAllWithReplay()
-	{
+    public function findAll()
+    {
+        return $this->createQueryBuilder('g')->
+            orderBy('g.id', 'DESC')->
+            getQuery()->
+            execute();
+    }
+
+    public function findAllWithReplay()
+    {
         $games = $this->findAll();
 
-		$result = array();
-		foreach($games as $game)
-		{
-			if($game->getReplay() instanceof Replay)
-			{
-				array_push($result, $game);
-			}
-		}
+        $result = array();
+        foreach($games as $game)
+        {
+            if($game->getReplay() instanceof Replay)
+            {
+                array_push($result, $game);
+            }
+        }
 
-		return $result;
-	}
+        return $result;
+    }
 }

@@ -12,6 +12,14 @@ use Doctrine\ORM\EntityRepository;
  */
 class ReplayRepository extends EntityRepository
 {
+    public function findAll()
+    {
+        return $this->createQueryBuilder('r')->
+            orderBy('r.id', 'DESC')->
+            getQuery()->
+            execute();
+    }
+
     public function findLatest()
     {
         return $this->createQueryBuilder('r')->

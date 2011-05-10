@@ -80,8 +80,12 @@ class Replay extends \SC2Replay implements ReplayInterface
 					->setRace($player['race'])
 					->setTeam($player['team'])
 					->setObs(false)
-					->setWinner($player['won'])
-				;
+                                ;
+
+                                if(isset($player['won']))
+                                {
+                                    $processedPlayer->setWinner($player['won']);
+                                }
 			}
 			else
 			{

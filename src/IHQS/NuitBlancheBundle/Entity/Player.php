@@ -45,6 +45,11 @@ class Player
     /**
      * @orm:Column(type="string")
      */
+    protected $sc2Account;
+
+    /**
+     * @orm:Column(type="string")
+     */
     protected $sc2Race;
 
     /**
@@ -106,6 +111,14 @@ class Player
 
     public function setSc2Id($sc2Id) {
         $this->sc2Id = $sc2Id;
+    }
+
+    public function getSc2Account() {
+        return $this->sc2Account;
+    }
+
+    public function setSc2Account($sc2Account) {
+        $this->sc2Account = $sc2Account;
     }
 
     public function getSc2Race() {
@@ -222,6 +235,8 @@ class Player
         $this->stats = array(
             "_1v1" => array(),
             "_2v2" => array(),
+            "_3v3" => array(),
+            "_4v4" => array(),
             "_1v1protoss"   => array(),
             "_1v1terran"    => array(),
             "_1v1zerg"      => array()

@@ -11,7 +11,7 @@ class Game extends BaseGame
 {
     const TYPE_1v1 = "1v1";
     const TYPE_2v2 = "2v2";
-    const TYPE_3v4 = "3v3";
+    const TYPE_3v3 = "3v3";
     const TYPE_4v4 = "4v4";
 
     static public $_results = array(
