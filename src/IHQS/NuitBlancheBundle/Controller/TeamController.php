@@ -12,8 +12,12 @@ class TeamController extends Controller
      */
     public function showAction($team_id)
     {
+        $team       = $this->get('nb.manager.team')->findOneById($team_id);
+        $players    = $team->getPlayers();
+        
         return array(
-            'team' => $this->get('nb.manager.team')->findById($team_id)
+            'team'      => $team,
+            'players'   => $players,
         );
     }
 

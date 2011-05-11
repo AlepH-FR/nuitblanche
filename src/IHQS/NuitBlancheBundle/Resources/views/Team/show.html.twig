@@ -1,0 +1,35 @@
+{% extends 'IHQSNuitBlancheBundle::layout_standard.html.twig' %}
+
+{% block title %}{{ team.name }} {{ "player list" | trans }}{% endblock %}
+
+{% block content %}
+    <table class="sortable">
+        <caption>{{ team.name }} {{ "player list" | trans }}</caption>
+
+        <thead>
+            <tr>
+                <th>{{ "race" | trans }}</th>
+                <th>{{ "name" | trans }}</th>
+                <th>{{ "sc2 account" | trans }}</th>
+                <th>{{ "role" | trans }}</th>
+                <th>{{ "1v1" | trans }}</th>
+                <th>{{ "2v2" | trans }}</th>
+                <th></th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for player in players %}
+            <tr>
+                <td>{{ player.sc2Race }}</td>
+                <td>{{ player.username }}</td>
+                <td>{{ player.sc2Account }}#{{ player.sc2Id }}</td>
+                <td>{{ player.sc2Role }}</td>
+                <td>{{ player.stats._1v1.ratio }}%</td>
+                <td>{{ player.stats._2v2.ratio }}%</td>
+                <td>-</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

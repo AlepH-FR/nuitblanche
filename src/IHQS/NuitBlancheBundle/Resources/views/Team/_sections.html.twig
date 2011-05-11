@@ -5,9 +5,12 @@
         <li class="main up">
             <span>
                 <img class="flag" src="{{ team.icon }}" />
-                <a href="#">{{ team.name }}</a>
+                <a href="{{ url('team_show', { "team_id": team.id }) }}">{{ team.name }}</a>
             </span>
         </li>
         {% endfor %}
     </ul>
+    <p>
+        <a href="{{ url('player_list') }}">{{ "Website's user list" }}</a>
+    </p>
 </div>
