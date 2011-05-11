@@ -5,15 +5,28 @@
     xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <services>
+        <!-- Twig -->
         <service id="twig.extension.nb.inner_blocks" class="IHQS\NuitBlancheBundle\Twig\Extension\InnerBlocksExtension" public="false">
             <tag name="twig.extension" />
             <argument type="service" id="twig.loader" />
             <argument type="service" id="service_container" />
         </service>
 
-        <service id="nb.replay.processor" class="IHQS\NuitBlancheBundle\Replay\Processor">
+        <!-- Processor -->
+        <service id="nb.replay.processor" class="IHQS\NuitBlancheBundle\Processor\ReplayProcessor">
             <argument type="service" id="nb.entity_manager" />
         </service>
 
+        <!-- Event listeners -->
+        <service id="nb.controller.listener" class="IHQS\NuitBlancheBundle\ControllerListener">
+            <tag name="kernel.listener" event="onCoreController" />
+            <argument type="service" id="service_container" />
+        </service>
+
+        <!-- Validators -->
+        <service id="validator.unique.unique" class="IHQS\NuitBlancheBundle\Validator\UniqueValidator">
+            <argument type="service" id="nb.entity_manager" />
+            <tag name="validator.constraint_validator" alias="Unique" />
+        </service>
     </services>
 </container>

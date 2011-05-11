@@ -11,6 +11,10 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
  */
 class User implements UserInterface
 {
+	const STATUS_ONLINE		= "online";
+	const STATUS_OFFLINE	= "offline";
+	const STATUS_IDLE		= "idle";
+
     /**
      * @orm:Id
      * @orm:Column(type="integer")
@@ -20,31 +24,41 @@ class User implements UserInterface
 
     /**
      * @orm:Column(type="string")
+	 * @assertCustom:Unique(message = "This username is already used. Please choose another one")
+	 * @assert:NotBlank()
+	 * @assert:MinLength(4)
      */
     protected $username;
 
     /**
      * @orm:Column(type="string")
+	 * @assert:NotBlank()
+	 * @assert:MinLength(8)
      */
     protected $password;
 
     /**
      * @orm:Column(type="string")
+	 * @assert:NotBlank()
+	 * @assert:Email()
      */
     protected $email;
     
     /**
      * @orm:Column(type="string", nullable="true")
+	 * @assert:File()
      */
     protected $avatar;
 
     /**
      * @orm:Column(type="string")
+	 * @assert:NotBlank()
      */
     protected $firstName;
 
     /**
      * @orm:Column(type="string")
+	 * @assert:NotBlank()
      */
     protected $lastName;
 
@@ -55,11 +69,13 @@ class User implements UserInterface
 
     /**
      * @orm:Column(type="string")
+	 * @assert:NotBlank()
      */
     protected $country;
 
     /**
      * @orm:Column(type="string")
+	 * @assert:Url()
      */
     protected $facebook;
 
@@ -75,6 +91,7 @@ class User implements UserInterface
 
     /**
      * @orm:Column(type="string")
+	 * @assert:Email()
      */
     protected $msn;
 
@@ -87,6 +104,11 @@ class User implements UserInterface
      * @orm:OneToMany(targetEntity="Replay", mappedBy="uploader")
      */
     protected $uploadedReplays;
+
+    /**
+     * @orm:Column(type="datetime")
+     */
+	protected $lastActivity;
 
     public function getId() {
         return $this->id;
@@ -199,6 +221,24 @@ class User implements UserInterface
         $this->msn = $msn;
     }
 
+	public function getLastActivity()
+	{
+		return $this->lastActivity;
+	}
+
+	public function setLastActivity(\DateTime $lastActivity)
+	{
+		$this->lastActivity = $lastActivity;
+	}
+
+	public function getStatus()
+	{
+		$diff = time() - $this->getLastActivity()->getTimestamp();
+		if($diff < 600) { return self::STATUS_ONLINE; }
+		if($diff < 900) { return self::STATUS_IDLE; }
+		return self::STATUS_OFFLINE;
+	}
+
     public function getPublicMsn() {
         if(is_null($this->msn))  { return null; }
 
@@ -223,4 +263,9 @@ class User implements UserInterface
     public function equals(UserInterface $user) {
         return ($user->getUsername() == $this->getUsername());
     }
+
+	static public function getRaces()
+	{
+		return array_keys(Player::$_sc2races);
+	}
 }

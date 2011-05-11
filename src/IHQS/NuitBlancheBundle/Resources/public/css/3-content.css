@@ -177,6 +177,7 @@ div.replay-info .teams,
 div.replay-info .players
 {
     height: 70px;
+    margin-bottom: 20px;
 }
 div.replay-info img.race
 {
@@ -204,7 +205,9 @@ div.replay-info div.versus
 {
     float: left;
     text-align: center;
+    display: table;
     width: 60px;
+    height: 100%;
 }
 div.replay-info div.team1,
 div.replay-info div.team2
@@ -334,6 +337,8 @@ div.replay-info div.versus span
     line-height: 50px;
     font-size: 36px;
     text-align: center;
+    display: table-cell;
+    vertical-align: middle;
 
     text-shadow: 0 0 10px #888;
     -moz-text-shadow: 0 0 10px #888;
@@ -346,7 +351,7 @@ div.replay-info h3
     font-family: Georgia;
     font-weight: bold;
     margin-bottom: 5px;
-    margin-top: -14px;
+    margin-top: -16px;
     text-align: center;
 
     text-shadow: 0 0 10px #000000;
@@ -508,9 +513,9 @@ div.wars table td.match-win
     text-align: center;
     font-weight: bold;
     background: green;
-    background: -webkit-gradient(linear, left top, left bottom, from(#0f0), to(#ccc));
-    background: -moz-linear-gradient(bottom, #0f0, #ccc);
-    -ms-filter: "progid:DXImageTransform.Microsoft.gradient (GradientType=0, startColorstr=#0f0, endColorstr=#ccc)";
+    background: -webkit-gradient(linear, left top, left bottom, from(#0f0), to(#fff));
+    background: -moz-linear-gradient(bottom, #0f0, #fff);
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient (GradientType=0, startColorstr=#0f0, endColorstr=#fff)";
 
 }
 div.wars table td.match-loss
@@ -518,9 +523,9 @@ div.wars table td.match-loss
     text-align: center;
     font-weight: bold;
     background: red;
-    background: -webkit-gradient(linear, left top, left bottom, from(#f00), to(#ccc));
-    background: -moz-linear-gradient(bottom, #f00, #ccc);
-    -ms-filter: "progid:DXImageTransform.Microsoft.gradient (GradientType=0, startColorstr=#f00, endColorstr=#ccc)";
+    background: -webkit-gradient(linear, left top, left bottom, from(#f00), to(#fff));
+    background: -moz-linear-gradient(bottom, #f00, #fff);
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient (GradientType=0, startColorstr=#f00, endColorstr=#fff)";
 }
 
 div.replays table td.map
@@ -669,4 +674,72 @@ form#admin-form div select.select-time-hour,
 form#admin-form div select.select-time-minutes
 {
     width: 50px;
+}
+
+
+form#admin-form ul.error-message
+{
+    padding-left: 170px;
+    color: red;
+    margin-bottom: 10px;
+    background: url('../images/ico/arrow_red.gif') no-repeat 150px 1px;
+    margin-top: 5px;
+}
+
+form#admin-form div.error label
+{
+    color: red;
+}
+
+form#admin-form div.error input,
+form#admin-form div.error select,
+form#admin-form div.error textarea
+{
+    border: 1px solid red;
+}
+
+table.team-player-list
+{
+    margin-top: 20px;
+}
+
+table.team-player-list caption
+{
+    display: none;
+}
+
+table.team-player-list thead tr th
+{
+    font-weight: bold;
+    text-align: center;
+}
+
+table.team-player-list tbody tr
+{
+    background: white;
+    margin: 2px 0;
+}
+
+table.team-player-list tbody tr td
+{
+    text-align: center;
+    vertical-align: middle;
+}
+
+div.widget div.bottom-link a
+{
+    padding: 3px;
+    width: 120px;
+    text-align: center;
+    margin-top: 15px;
+    background-color: #EEE;
+    border-right: 1px solid #CCC;
+}
+
+div.flash
+{
+    background: rgb(255, 122, 122);
+    border: 1px solid red;
+    padding: 10px;
+    margin-bottom: 20px;
 }

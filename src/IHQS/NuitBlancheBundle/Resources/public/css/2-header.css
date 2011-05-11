@@ -152,6 +152,14 @@ div.register a
     padding: 0 10px;
     margin-left: -5px;
 }
+#header ul.menu a
+{
+    font-weight: bold;
+}
+#header ul.menu a.disabled
+{
+    font-weight: normal;
+}
 #header ul.menu li
 {
     line-height: 40px;

@@ -3,7 +3,21 @@
 {% block title %}{{ team.name }} {{ "player list" | trans }}{% endblock %}
 
 {% block content %}
-    <table class="sortable">
+    <h2>{{ team.name }} {{ "player list" | trans }}</h2>
+    <ul class="filters">
+        {% for team in teams %}
+        <li class="{% if loop.index == 1 %}first{% endif %}">
+            <span>
+                <a href="{{ url('team_show', { "team_id": team.id }) }}">{{ team.name }}</a>
+            </span>
+        </li>
+        {% endfor %}
+        <li class="last">
+            <a href="{{ url('player_list') }}">{{ "Website's user list" }}</a>
+        </li>
+    </ul>
+
+    <table class="team-player-list sortable">
         <caption>{{ team.name }} {{ "player list" | trans }}</caption>
 
         <thead>
@@ -14,20 +28,18 @@
                 <th>{{ "role" | trans }}</th>
                 <th>{{ "1v1" | trans }}</th>
                 <th>{{ "2v2" | trans }}</th>
-                <th></th>
             </tr>
         </thead>
 
         <tbody>
             {% for player in players %}
             <tr>
-                <td>{{ player.sc2Race }}</td>
-                <td>{{ player.username }}</td>
+                <td><img class="race-icon" src="{{ asset('bundles/ihqsnuitblanche/images/ico/' ~ player.sc2Race ~ '_icon.png') }}" /></td>
+                <td><a href="{{ url('player_show', { "player_id": player.id }) }}">{{ player.username }}</a></td>
                 <td>{{ player.sc2Account }}#{{ player.sc2Id }}</td>
                 <td>{{ player.sc2Role }}</td>
-                <td>{{ player.stats._1v1.ratio }}%</td>
-                <td>{{ player.stats._2v2.ratio }}%</td>
-                <td>-</td>
+                <td>{{ player.stats._1v1.wins }}-{{ player.stats._1v1.losses }} ({{ player.stats._1v1.ratio }}%)</td>
+                <td>{{ player.stats._2v2.wins }}-{{ player.stats._2v2.losses }} ({{ player.stats._2v2.ratio }}%)</td>
             </tr>
             {% endfor %}
         </tbody>

@@ -12,9 +12,12 @@ body
 
 a, strong
 {
-    font-weight: bold;
     color: #395674;
     text-decoration: none;
+}
+strong
+{
+    font-weight: bold;
 }
 a.disabled
 {
@@ -48,6 +51,7 @@ h3
     font-weight: bold;
     color: black;
     margin-bottom: 5px;
+    font-size: 14px;
 }
 
 img.flag
@@ -71,11 +75,7 @@ img.flag
 
 hr
 {
-    background-color: #888;
+    background-color: #EEE;
     height: 1px;
     margin-bottom: 1px;
-
-    box-shadow: 0 0 2px #888;
-    -moz-box-shadow: 0 0 2px #888;
-    -webkit-box-shadow: 0 0 2px #888;
 }

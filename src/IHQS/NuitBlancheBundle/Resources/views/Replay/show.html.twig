@@ -15,7 +15,7 @@
 </ul>
 
 <div class="replay-info">
-    <div class="players">
+    <div class="players" style="height: {{ 60 * replay.game.team1 | length }}px">
         <div class="team1-container">
             {% for player in replay.game.team1 %}
             <div class="team1">

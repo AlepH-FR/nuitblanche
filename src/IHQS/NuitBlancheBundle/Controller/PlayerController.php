@@ -7,6 +7,16 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 class PlayerController extends Controller
 {
     /**
+     * @extra:Template()
+     */
+    public function _connectedAction()
+    {
+        return array(
+            'players' => $this->get('nb.manager.player')->findConnected()
+        );
+    }
+
+	/**
      * @extra:Route("/player/{player_id}/show", name="player_show")
      * @extra:Template()
      */
@@ -30,6 +40,7 @@ class PlayerController extends Controller
         $players = $this->get('nb.manager.player')->findAll();
 
         return array(
+			'teams'		=> $this->get('nb.manager.team')->findAll(),
             'team'      => $team,
             'players'   => $players,
         );

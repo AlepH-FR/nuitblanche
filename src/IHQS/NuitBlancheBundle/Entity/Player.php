@@ -29,6 +29,7 @@ class Player
 
     /**
      * @orm:ManyToOne(targetEntity="User", cascade={"persist"})
+	 * @assert:Valid()
      */
     protected $user;
 
@@ -39,31 +40,38 @@ class Player
 
     /**
      * @orm:Column(type="integer")
+	 * @assert:NotBlank()
+	 * @assert:Regex("/\d+/")
      */
     protected $sc2Id;
 
     /**
      * @orm:Column(type="string")
+	 * @assert:NotBlank()
      */
     protected $sc2Account;
 
     /**
      * @orm:Column(type="string")
+	 * @assert:Choice(callback = "getRaces")
      */
     protected $sc2Race;
 
     /**
      * @orm:Column(type="string")
+	 * @assert:Url()
      */
     protected $sc2ProfileEsl;
 
     /**
      * @orm:Column(type="string")
+	 * @assert:Url()
      */
     protected $sc2ProfileSc2cl;
     
     /**
      * @orm:Column(type="string")
+	 * @assert:Url()
      */
     protected $sc2ProfilePandaria;
 
@@ -173,7 +181,8 @@ class Player
 		$warGames = array();
 		foreach($this->getGames() as $game)
 		{
-			if($wg = $game->getWarGame())
+			$wg = $game->getWarGame();
+			if($wg instanceof WarGame)
 			{
 				$warGames[$wg->getId()] = $wg;
 			}

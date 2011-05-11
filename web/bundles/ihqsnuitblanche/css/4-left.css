@@ -18,6 +18,7 @@ div.calendar-title h3 {
 
 ul.calendar {
     margin-left: -2px;
+    margin-bottom: 20px;
 }
 
 ul.calendar li.date {

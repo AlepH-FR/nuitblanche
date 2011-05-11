@@ -56,6 +56,17 @@ class NewsController extends BaseController
             'form'			=> $form->createView()
         );
     }
+
+    /**
+     * @extra:Route("/news/archives", name="news_archives")
+     * @extra:Template()
+     */
+    public function archivesAction()
+    {
+        return array(
+            'news' => $this->get('nb.manager.news')->findLatest()
+        );
+    }
     
     /**
      * @extra:Route("/news/{news_id}/show", name="news_show")

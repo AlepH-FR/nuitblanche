@@ -12,4 +12,18 @@ use Doctrine\ORM\EntityRepository;
  */
 class PlayerRepository extends EntityRepository
 {
+	public function findConnected()
+	{
+        $limit = date('Y-m-d H:i:s', mktime(date('H'), date('i')-10, date('s'), date('m'), date('d'), date('Y'))) ;
+
+        $qb = $this->createQueryBuilder('p');
+
+        return $qb
+			->leftJoin('p.user', 'u')
+            ->where(
+                $qb->expr()->gte('u.lastActivity', $qb->expr()->literal($limit))
+            )
+            ->orderBy('u.lastActivity', 'DESC')
+            ->getQuery()->execute();
+	}
 }

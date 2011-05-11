@@ -2,7 +2,7 @@
 
 {% block content %}
         <h2>{{ title | trans }}</h2>
-        {{ message | trans }}
+        {% if message is not empty %}<div class="flash">{{ message | trans }}</div>{% endif %}
         <form id="admin-form" method="post" action="" {{ form_enctype(form) }}>
             {{ form_widget(form) }}
             <div>

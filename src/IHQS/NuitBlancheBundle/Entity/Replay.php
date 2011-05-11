@@ -2,7 +2,7 @@
 
 namespace IHQS\NuitBlancheBundle\Entity;
 
-use IHQS\NuitBlancheBundle\Replay\Processor;
+use IHQS\NuitBlancheBundle\Processor\ReplayProcessor;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
@@ -206,7 +206,7 @@ class Replay
 		return implode(', ', $values);
 	}
 
-	public function setReplayProcessor(Processor $processor)
+	public function setReplayProcessor(ReplayProcessor $processor)
 	{
 		$this->processor = $processor;
 	}
