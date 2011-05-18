@@ -52,6 +52,7 @@
     {% for child in form.children %}
         {{ form_row(child) }}
     {% endfor %}
+    {{ form_errors(form) }}
 {% endspaceless %}
 {% endblock field_rows %}
 
@@ -76,3 +77,10 @@
     {% endif %}
 {% endspaceless %}
 {% endblock field_errors %}
+
+{% block attributes %}
+{% spaceless %}
+    id="{{ id }}" name="{{ name }}"{% if read_only %} disabled="disabled"{% endif %} {% if max_length %} maxlength="{{ max_length }}"{% endif %}
+    {% for attrname,attrvalue in attr %}{{attrname}}="{{attrvalue}}" {% endfor %}
+{% endspaceless %}
+{% endblock attributes %}

@@ -13,6 +13,7 @@ class PlayerFormType extends AbstractType
 		$builder
 			->add('user', new UserFormType())
 			->add('sc2Id')
+			->add('sc2Account')
 			->add('sc2Race', 'choice', array('choices' => Player::$_sc2races))
 			->add('sc2ProfileEsl')
 			->add('sc2ProfilePandaria')

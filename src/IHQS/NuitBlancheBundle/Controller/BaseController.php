@@ -7,33 +7,35 @@ use Symfony\Component\Form\FormInterface;
 
 class BaseController extends Controller
 {
-	protected function _adminFormAction($title, FormInterface $form)
-	{
-		$message = '';
+    protected function _adminFormAction($title, FormInterface $form, $message, $redisplay = true)
+    {
+        $valid = false;
+        $error = '';
 
-		// handling request
-		$request = $this->get('request');
-		if ($request->getMethod() == 'POST')
-		{
-			$form->bindRequest($request);
+        // handling request
+        $request = $this->get('request');
+        if ($request->getMethod() == 'POST')
+        {
+            $form->bindRequest($request);
 
-			// handling submission
-			if($form->isValid())
-			{
-				$object = $form->getData();
-				$this->get('nb.entity_manager')->persist($object);
-				$this->get('nb.entity_manager')->flush();
-			}
-			else
-			{
-				$message = 'Form was not validated';
-			}
-		}
+            // handling submission
+            if($form->isValid())
+            {
+                $object = $form->getData();
+                $this->get('nb.entity_manager')->persist($object);
+                $this->get('nb.entity_manager')->flush();
+                $valid = true;
+            }
+            else
+            {
+                $error = 'Form was not validated';
+            }
+        }
 
-		return array(
-			'title'		=> $title,
-			'form'		=> $form->createView(),
-			'message'	=> $message,
-		);
-	}
+        return array(
+            'title'	=> $title,
+            'form'	=> ($valid && !$redisplay) ? false : $form->createView(),
+            'message'	=> $valid ? $message : $error,
+        );
+    }
 }

@@ -8,9 +8,9 @@ use IHQS\NuitBlancheBundle\Entity\User;
 
 class NewsController extends BaseController
 {
-	protected function getFormComment(News $news, User $user)
-	{
-		// default object
+    protected function getFormComment(News $news, User $user)
+    {
+	// default object
         $comment = new Comment();
         $comment
             ->setDate(new \Datetime())
@@ -18,7 +18,7 @@ class NewsController extends BaseController
             ->setAuthor($user)
         ;
 
-		// creating form
+	// creating form
         $form = $this->get('form.factory')
             ->createBuilder('form', $comment)
             ->add('body')
@@ -49,11 +49,11 @@ class NewsController extends BaseController
         }
 		$form = $this->getFormComment($news, $user);
 
-		// handling response
+	// handling response
         return array(
-            'not_connected' => false,
-			'submit_path'	=> $this->generateUrl('news_show', array('news_id' => $news->getId())),
-            'form'			=> $form->createView()
+            'not_connected'     => false,
+            'submit_path'	=> $this->generateUrl('news_show', array('news_id' => $news->getId())),
+            'form'		=> $form->createView()
         );
     }
 
@@ -74,28 +74,28 @@ class NewsController extends BaseController
      */
     public function showAction($news_id)
     {
-		$news = $this->get('nb.manager.news')->findOneById($news_id);
+	$news = $this->get('nb.manager.news')->findOneById($news_id);
         $user = $this->get('security.context')->getToken()->getUser();
 
         if($user instanceof User)
         {
-			$form = $this->getFormComment($news, $user);
+            $form = $this->getFormComment($news, $user);
 
-			// handling request
-			$request = $this->get('request');
-			if ($request->getMethod() == 'POST')
-			{
-				$form->bindRequest($request);
+            // handling request
+            $request = $this->get('request');
+            if ($request->getMethod() == 'POST')
+            {
+                $form->bindRequest($request);
 
-				// handling submission
-				if($form->isValid())
-				{
-					$comment = $form->getData();
-					$this->get('nb.entity_manager')->persist($comment);
-					$this->get('nb.entity_manager')->flush();
-				}
-			}
-		}
+                // handling submission
+                if($form->isValid())
+                {
+                    $comment = $form->getData();
+                    $this->get('nb.entity_manager')->persist($comment);
+                    $this->get('nb.entity_manager')->flush();
+                }
+            }
+        }
 
         return array(
             'news' => $news
@@ -110,19 +110,23 @@ class NewsController extends BaseController
     {
         $user = $this->get('security.context')->getToken()->getUser();
 
-		// creating default object
-		$news = new News();
-		$news
-			->setAuthor($user)
-			->setDate(new \Datetime())
-		;
+        // creating default object
+        $news = new News();
+        $news
+            ->setAuthor($user)
+            ->setDate(new \Datetime())
+        ;
 
-		// creating form
+        // creating form
         $formType = $this->container->getParameter('nb.form.news.class');
 
-		$form = $this->get('form.factory')->create(new $formType());
-		$form->setData($news);
+        $form = $this->get('form.factory')->create(new $formType());
+        $form->setData($news);
 
-		return $this->_adminFormAction('Add / Edit a news', $form);
+        return $this->_adminFormAction(
+            'Add / Edit a news',
+            $form,
+            "News added"
+        );
     }
 }

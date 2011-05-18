@@ -11,9 +11,9 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
  */
 class User implements UserInterface
 {
-	const STATUS_ONLINE		= "online";
-	const STATUS_OFFLINE	= "offline";
-	const STATUS_IDLE		= "idle";
+    const STATUS_ONLINE     = "online";
+    const STATUS_OFFLINE    = "offline";
+    const STATUS_IDLE       = "idle";
 
     /**
      * @orm:Id
@@ -24,41 +24,41 @@ class User implements UserInterface
 
     /**
      * @orm:Column(type="string")
-	 * @assertCustom:Unique(message = "This username is already used. Please choose another one")
-	 * @assert:NotBlank()
-	 * @assert:MinLength(4)
+     * @assertCustom:Unique(message = "This username is already used. Please choose another one")
+     * @assert:NotBlank(message = "Please choose a username")
+     * @assert:MinLength(4)
      */
     protected $username;
 
     /**
      * @orm:Column(type="string")
-	 * @assert:NotBlank()
-	 * @assert:MinLength(8)
+     * @assert:NotBlank(message = "Please choose a password")
+     * @assert:MinLength(8)
      */
     protected $password;
 
     /**
      * @orm:Column(type="string")
-	 * @assert:NotBlank()
-	 * @assert:Email()
+     * @assert:NotBlank(message = "Please add your email adress")
+     * @assert:Email()
      */
     protected $email;
     
     /**
      * @orm:Column(type="string", nullable="true")
-	 * @assert:File()
+     * @assert:File()
      */
     protected $avatar;
 
     /**
      * @orm:Column(type="string")
-	 * @assert:NotBlank()
+     * @assert:NotBlank(message = "Please add your first name")
      */
     protected $firstName;
 
     /**
      * @orm:Column(type="string")
-	 * @assert:NotBlank()
+     * @assert:NotBlank(message = "Please add your last name")
      */
     protected $lastName;
 
@@ -69,13 +69,13 @@ class User implements UserInterface
 
     /**
      * @orm:Column(type="string")
-	 * @assert:NotBlank()
+     * @assert:NotBlank(message = "Please choose your country")
      */
     protected $country;
 
     /**
      * @orm:Column(type="string")
-	 * @assert:Url()
+     * @assert:Url()
      */
     protected $facebook;
 
@@ -91,7 +91,7 @@ class User implements UserInterface
 
     /**
      * @orm:Column(type="string")
-	 * @assert:Email()
+     * @assert:Email()
      */
     protected $msn;
 
@@ -106,9 +106,9 @@ class User implements UserInterface
     protected $uploadedReplays;
 
     /**
-     * @orm:Column(type="datetime")
+     * @orm:Column(type="datetime", nullable="true")
      */
-	protected $lastActivity;
+    protected $lastActivity;
 
     public function getId() {
         return $this->id;
@@ -143,13 +143,13 @@ class User implements UserInterface
     }
 
     public function setAvatar(UploadedFile $avatar) {
-		chmod($avatar->getPath(), 0777);
-		
-		$rootDir = __DIR__.'/../../../../web/';
-		$dir = 'upload/avatar';
-		$filename = strtolower($this->username) . '.' . pathinfo($avatar->getOriginalName(), PATHINFO_EXTENSION);
+        chmod($avatar->getPath(), 0777);
 
-		$avatar->move($rootDir . $dir, $filename);
+        $rootDir = __DIR__.'/../../../../web/';
+        $dir = 'upload/avatar';
+        $filename = strtolower($this->username) . '.' . pathinfo($avatar->getOriginalName(), PATHINFO_EXTENSION);
+
+        $avatar->move($rootDir . $dir, $filename);
         $this->avatar = $dir . '/' . $filename;
     }
     
@@ -221,23 +221,23 @@ class User implements UserInterface
         $this->msn = $msn;
     }
 
-	public function getLastActivity()
-	{
-		return $this->lastActivity;
-	}
+    public function getLastActivity()
+    {
+        return $this->lastActivity;
+    }
 
-	public function setLastActivity(\DateTime $lastActivity)
-	{
-		$this->lastActivity = $lastActivity;
-	}
+    public function setLastActivity(\DateTime $lastActivity)
+    {
+        $this->lastActivity = $lastActivity;
+    }
 
-	public function getStatus()
-	{
-		$diff = time() - $this->getLastActivity()->getTimestamp();
-		if($diff < 600) { return self::STATUS_ONLINE; }
-		if($diff < 900) { return self::STATUS_IDLE; }
-		return self::STATUS_OFFLINE;
-	}
+    public function getStatus()
+    {
+        $diff = time() - $this->getLastActivity()->getTimestamp();
+        if($diff < 600) { return self::STATUS_ONLINE; }
+        if($diff < 900) { return self::STATUS_IDLE; }
+        return self::STATUS_OFFLINE;
+    }
 
     public function getPublicMsn() {
         if(is_null($this->msn))  { return null; }
@@ -264,8 +264,8 @@ class User implements UserInterface
         return ($user->getUsername() == $this->getUsername());
     }
 
-	static public function getRaces()
-	{
-		return array_keys(Player::$_sc2races);
-	}
+    static public function getRaces()
+    {
+        return array_keys(Player::$_sc2races);
+    }
 }

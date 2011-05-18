@@ -12,23 +12,28 @@ class SecuredController extends BaseController
      * @extra:Route("register", name="_secured_register")
      * @extra:Template("IHQSNuitBlancheBundle:Main:adminForm.html.twig")
      */
-	public function registerAction()
-	{
+    public function registerAction()
+    {
         $user = $this->get('security.context')->getToken()->getUser();
 
-		// creating default object
-		$user = new User();
-		$player = new Player();
-		$player->setUser($user);
+        // creating default object
+        $user = new User();
+        $player = new Player();
+        $player->setUser($user);
 
-		// creating form
+        // creating form
         $formType = $this->container->getParameter('nb.form.player.class');
 
-		$form = $this->get('form.factory')->create(new $formType());
-		$form->setData($player);
+        $form = $this->get('form.factory')->create(new $formType());
+        $form->setData($player);
 
-		return $this->_adminFormAction('Register Nuit Blanche website', $form);
-	}
+        return $this->_adminFormAction(
+            'Register Nuit Blanche website',
+            $form,
+            "Thx for you registration. You can now log on the website.",
+            false
+        );
+    }
 
     /**
      * @extra:Route("/login", name="_secured_login")

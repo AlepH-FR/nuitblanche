@@ -29,7 +29,7 @@ class Player
 
     /**
      * @orm:ManyToOne(targetEntity="User", cascade={"persist"})
-	 * @assert:Valid()
+     * @assert:Valid()
      */
     protected $user;
 
@@ -40,38 +40,38 @@ class Player
 
     /**
      * @orm:Column(type="integer")
-	 * @assert:NotBlank()
-	 * @assert:Regex("/\d+/")
+     * @assert:NotBlank(message = "Please add your SC2 account id")
+     * @assert:Regex("/\d+/")
      */
     protected $sc2Id;
 
     /**
      * @orm:Column(type="string")
-	 * @assert:NotBlank()
+     * @assert:NotBlank(message = "Please add your SC2 account")
      */
     protected $sc2Account;
 
     /**
      * @orm:Column(type="string")
-	 * @assert:Choice(callback = "getRaces")
+     * @assert:Choice(callback = "getRaces")
      */
     protected $sc2Race;
 
     /**
      * @orm:Column(type="string")
-	 * @assert:Url()
+     * @assert:Url()
      */
     protected $sc2ProfileEsl;
 
     /**
      * @orm:Column(type="string")
-	 * @assert:Url()
+     * @assert:Url()
      */
     protected $sc2ProfileSc2cl;
     
     /**
      * @orm:Column(type="string")
-	 * @assert:Url()
+     * @assert:Url()
      */
     protected $sc2ProfilePandaria;
 
@@ -176,20 +176,20 @@ class Player
         return $result;
     }
 
-	public function getWarGames()
-	{
-		$warGames = array();
-		foreach($this->getGames() as $game)
-		{
-			$wg = $game->getWarGame();
-			if($wg instanceof WarGame)
-			{
-				$warGames[$wg->getId()] = $wg;
-			}
-		}
+    public function getWarGames()
+    {
+        $warGames = array();
+        foreach($this->getGames() as $game)
+        {
+            $wg = $game->getWarGame();
+            if($wg instanceof WarGame)
+            {
+                $warGames[$wg->getId()] = $wg;
+            }
+        }
 
-		return $warGames;
-	}
+        return $warGames;
+    }
 
     public function getReplays() {
         $games = $this->games;
@@ -262,7 +262,7 @@ class Player
     }
 
     public function get2v2Teams()
-	{
+    {
         
     }
 }

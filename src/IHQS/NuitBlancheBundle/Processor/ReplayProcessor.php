@@ -10,7 +10,7 @@ use IHQS\NuitBlancheBundle\Entity\GamePlayer;
 use SC2Chart\SC2Chart;
 use SC2Chart\Replay\ReplayInterface;
 
-class Processor
+class ReplayProcessor
 {
     static protected $is_init = false;
     static protected $lib_dir;

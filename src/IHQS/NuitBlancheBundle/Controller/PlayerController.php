@@ -16,7 +16,7 @@ class PlayerController extends Controller
         );
     }
 
-	/**
+    /**
      * @extra:Route("/player/{player_id}/show", name="player_show")
      * @extra:Template()
      */
@@ -40,7 +40,7 @@ class PlayerController extends Controller
         $players = $this->get('nb.manager.player')->findAll();
 
         return array(
-			'teams'		=> $this->get('nb.manager.team')->findAll(),
+            'teams'	=> $this->get('nb.manager.team')->findAll(),
             'team'      => $team,
             'players'   => $players,
         );

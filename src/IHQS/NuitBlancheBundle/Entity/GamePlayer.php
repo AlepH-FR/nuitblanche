@@ -90,7 +90,7 @@ class GamePlayer
     public function setRace($race) {
         if(!in_array($race, Player::$_sc2races))
         {
-            throw new \InvalidArgumentException('Invalid parameter for StarCraft 2 Race');
+            throw new \InvalidArgumentException('Invalid race "' . $race . '" for StarCraft 2 Race');
         }
         $this->race = $race;
     }
@@ -119,19 +119,18 @@ class GamePlayer
         $this->team = $team;
     }
 
-	public function getWarGame()
-	{
-		return $this->warGame;
-	}
+    public function getWarGame()
+    {
+        return $this->warGame;
+    }
 
-	public function setWarGame(WarGame $warGame)
-	{
-		$this->warGame = $warGame;
-	}
+    public function setWarGame(WarGame $warGame)
+    {
+        $this->warGame = $warGame;
+    }
 
-
-	public function __toString()
-	{
-		return $this->getName();
-	}
+    public function __toString()
+    {
+        return $this->getName();
+    }
 }

@@ -17,11 +17,13 @@ class News
 
     /**
      * @orm:Column(type="string", length="255")
+     * @assert:NotBlank()
      */
     protected $title;
 
     /**
      * @orm:Column(type="text")
+     * @assert:NotBlank()
      */
     protected $body;
 

@@ -3,6 +3,7 @@
 namespace IHQS\NuitBlancheBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use IHQS\NuitBlancheBundle\Entity\War;
 
 class WarController extends Controller
 {
@@ -24,7 +25,7 @@ class WarController extends Controller
     public function listAction()
     {
         return array(
-			'wars' => $this->get('nb.manager.war')->findAll()
+            'wars' => $this->get('nb.manager.war')->findAll()
         );
     }
 
@@ -71,6 +72,28 @@ class WarController extends Controller
         
         return array(
             'dates' => $dates
+        );
+    }
+
+    /**
+     * @extra:Route("contribute/war/add", name="contribute_war_new")
+     * @extra:Template("IHQSNuitBlancheBundle:Main:adminForm.html.twig")
+     */
+    public function newAction()
+    {
+        // creating default object
+        $war = new War();
+
+	// creating form
+        $formType = $this->container->getParameter('nb.form.war.class');
+
+        $form = $this->get('form.factory')->create(new $formType());
+        $form->setData($replay);
+
+        return $this->_adminFormAction(
+            'Add / Edit a clan war',
+            $form,
+            "Clan war added to the database"
         );
     }
 }
