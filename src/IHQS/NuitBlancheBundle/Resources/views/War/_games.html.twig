@@ -7,7 +7,9 @@
                 {% for game in war.games %}
                 <tr>
                     <td class="map">
+                        {% if game.games | length > 0 %}
                         {{ game.games[0].map }}
+                        {% endif %}
                     </td>
                     <td class="war-score">&nbsp;</td>
                     <td class="player player-left">
@@ -27,7 +29,16 @@
                             <br />
                          {% endfor %}
                     </td>
-                    <td class="date">{{ game.games[0].date.format('d m Y') }}</td>
+                    <td class="date">
+                        {% if game.games | length > 0 %}
+                        {{ game.games[0].date.format('d m Y') }}
+                        {% endif %}
+                    </td>
+                    {% if is_granted('ROLE_ADMIN') %}
+                    <td class="admin_actions">
+                        <a class="edit" href="{{ url('contribute_war_game', {'game_id': game.id}) }}">({{ "edit" | trans }})</a>
+                    </tr>
+                    {% endif %}
                 </tr>
                 {% endfor %}
             </tbody>

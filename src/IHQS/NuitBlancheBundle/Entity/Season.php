@@ -162,4 +162,9 @@ class Season
     {
         return current($this->wars);
     }
+
+	public function __toString()
+	{
+		return $this->league->__toString() . ' - Season #' . $this->number;
+	}
 }

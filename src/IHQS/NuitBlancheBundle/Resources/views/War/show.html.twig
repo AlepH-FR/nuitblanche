@@ -3,7 +3,14 @@
 {% block title %}{{ "War" | trans }} : {{ war.team.name}} vs {{ war.opponentName }}{% endblock %}
 
 {% block content %}
-    <h2>{{ "Clan War" | trans }}</h2>
+    <h2>
+        {{ "Clan War" | trans }}
+        {% if is_granted('ROLE_ADMIN') %}
+            <div class="admin_actions">
+            <a class="edit" href="{{ url('contribute_war_edit', {'war_id': war.id}) }}">({{ "edit" | trans }})</a>
+            </div>
+        {% endif %}
+    </h2>
     <ul class="filters">
         <li class="first">
             <a href="#info">{{ "Info" | trans }}</a>

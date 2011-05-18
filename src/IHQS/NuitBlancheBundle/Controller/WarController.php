@@ -2,10 +2,9 @@
 
 namespace IHQS\NuitBlancheBundle\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use IHQS\NuitBlancheBundle\Entity\War;
 
-class WarController extends Controller
+class WarController extends BaseController
 {
     /**
      * @extra:Route("/war/{war_id}/show", name="war_show")
@@ -76,24 +75,52 @@ class WarController extends Controller
     }
 
     /**
-     * @extra:Route("contribute/war/add", name="contribute_war_new")
+     * @extra:Routes({
+     *		@extra:Route("contribute/war/add", name="contribute_war_new"),
+     *		@extra:Route("contribute/war/{war_id}/edit", name="contribute_war_edit")
+     * })
      * @extra:Template("IHQSNuitBlancheBundle:Main:adminForm.html.twig")
      */
-    public function newAction()
+    public function newAction($war_id = null)
     {
-        // creating default object
-        $war = new War();
+		$war = null;
+		if(!is_null($war_id))
+		{
+			$war = $this->get('nb.manager.war')->findOneById($war_id);
+		}
+		
+		if(is_null($war))
+		{
+			$war = new War();
+			$war->setDate(new \Datetime());
+		}
 
-	// creating form
-        $formType = $this->container->getParameter('nb.form.war.class');
-
-        $form = $this->get('form.factory')->create(new $formType());
-        $form->setData($replay);
+        // creating form
+        $formType = $this->container->getParameter('nb.form.war_new.class');
+        $form = $this->get('form.factory')->create(new $formType(), $war);
 
         return $this->_adminFormAction(
             'Add / Edit a clan war',
             $form,
-            "Clan war added to the database"
+            "Clan war updated"
         );
     }
+
+    /**
+     * @extra:Route("contribute/war/games/{game_id}/edit", name="contribute_war_game")
+     * @extra:Template("IHQSNuitBlancheBundle:War:gameForm.html.twig")
+     */
+	public function gameAction($game_id)
+	{
+		$game = $this->get('nb.manager.war_game')->findOneById($game_id);
+
+        $formType = $this->container->getParameter('nb.form.war_game.class');
+        $form = $this->get('form.factory')->create(new $formType(), $game);
+
+        return $this->_adminFormAction(
+            'Edit clan war game',
+            $form,
+            "Clan war game updated"
+        );
+	}
 }

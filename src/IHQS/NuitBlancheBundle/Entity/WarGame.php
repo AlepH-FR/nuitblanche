@@ -22,7 +22,7 @@ class WarGame extends BaseGame
     protected $war;
 
     /**
-     * @orm:OneToMany(targetEntity="GamePlayer", mappedBy="warGame")
+     * @orm:OneToMany(targetEntity="GamePlayer", mappedBy="warGame", cascade={"persist"})
      */
     protected $players;
 
@@ -37,9 +37,15 @@ class WarGame extends BaseGame
     protected $team2Score;
 
     /**
-     * @orm:OneToMany(targetEntity="Game", mappedBy="warGame")
+     * @orm:OneToMany(targetEntity="Game", mappedBy="warGame", cascade={"persist"})
      */
     protected $games;
+
+	public function __construct()
+	{
+		$this->games	= new \Doctrine\Common\Collections\ArrayCollection();
+		$this->players	= new \Doctrine\Common\Collections\ArrayCollection();
+	}
 
 	public function getId()
 	{
@@ -59,6 +65,21 @@ class WarGame extends BaseGame
 	public function getGames()
 	{
 		return $this->games;
+	}
+
+	public function addGame(Game $game)
+	{
+		$this->games->add($game);
+	}
+
+	public function removeGame(Game $game)
+	{
+		$this->games->remove($game);
+	}
+
+	public function setGames(\Doctrine\Common\Collections\ArrayCollection $games)
+	{
+		$this->games = $games;
 	}
 
     public function getPlayers() {

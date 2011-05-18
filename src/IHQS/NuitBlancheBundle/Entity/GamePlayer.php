@@ -31,7 +31,7 @@ class GamePlayer
     protected $player;
 
     /**
-     * @orm:Column(type="string")
+     * @orm:Column(type="string", nullable="true")
      */
     protected $name;
 
@@ -41,12 +41,12 @@ class GamePlayer
     protected $race;
 
     /**
-     * @orm:Column(type="string")
+     * @orm:Column(type="string", nullable="true")
      */
     protected $color;
 
     /**
-     * @orm:Column(type="integer")
+     * @orm:Column(type="integer", nullable="true")
      */
     protected $apm;
 

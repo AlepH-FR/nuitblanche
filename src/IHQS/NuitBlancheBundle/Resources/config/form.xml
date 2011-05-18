@@ -9,6 +9,8 @@
         <parameter key="nb.form.player.class">IHQS\NuitBlancheBundle\Form\PlayerFormType</parameter>
         <parameter key="nb.form.replay.class">IHQS\NuitBlancheBundle\Form\ReplayFormType</parameter>
         <parameter key="nb.form.user.class">IHQS\NuitBlancheBundle\Form\UserFormType</parameter>
+        <parameter key="nb.form.war_new.class">IHQS\NuitBlancheBundle\Form\WarFormType</parameter>
+        <parameter key="nb.form.war_game.class">IHQS\NuitBlancheBundle\Form\WarGameFormType</parameter>
     </parameters>
 
 </container>

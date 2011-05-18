@@ -8,6 +8,12 @@ abstract class Game
     const RESULT_LOSS   = "loss";
     const RESULT_DRAW   = "draw";
 
+    static public $_results = array(
+        self::RESULT_WIN	=> self::RESULT_WIN,
+        self::RESULT_LOSS	=> self::RESULT_LOSS,
+        self::RESULT_DRAW	=> self::RESULT_DRAW
+    );
+	
     protected function getTeam($team_id)
     {
         $result = array();

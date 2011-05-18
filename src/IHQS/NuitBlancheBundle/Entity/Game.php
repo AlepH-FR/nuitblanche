@@ -14,12 +14,6 @@ class Game extends BaseGame
     const TYPE_3v3 = "3v3";
     const TYPE_4v4 = "4v4";
 
-    static public $_results = array(
-        self::RESULT_WIN	=> self::RESULT_WIN,
-        self::RESULT_LOSS	=> self::RESULT_LOSS,
-        self::RESULT_DRAW	=> self::RESULT_DRAW
-    );
-
     /**
      * @orm:Id
      * @orm:Column(type="integer")
@@ -43,12 +37,12 @@ class Game extends BaseGame
     protected $winner;
 
     /**
-     * @orm:Column(type="string")
+     * @orm:Column(type="string", nullable="true")
      */
     protected $map;
     
     /**
-     * @orm:ManyToOne(targetEntity="WarGame")
+     * @orm:ManyToOne(targetEntity="WarGame", inversedBy="games")
 	 * @orm:JoinColumn(name="warGame_id", nullable="true")
      */
     protected $warGame;

@@ -57,4 +57,9 @@ class League
 	public function getLastSeason() {
 		return $this->seasons->last();
 	}
+
+	public function __toString()
+	{
+		return $this->name;
+	}
 }

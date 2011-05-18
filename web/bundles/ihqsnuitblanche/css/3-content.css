@@ -595,7 +595,8 @@ form#admin-form div
     margin-bottom: 5px;
 }
 
-form#admin-form div label
+form#admin-form div label,
+form#admin-form div h3
 {
     color: #395674;
     font-size: 16px;
@@ -690,6 +691,7 @@ form#admin-form div.error label
 {
     color: red;
 }
+
 form#admin-form div.error input,
 form#admin-form div.error select,
 form#admin-form div.error textarea
@@ -697,7 +699,17 @@ form#admin-form div.error textarea
     border: 1px solid red;
 }
 
+form#admin-form div.composite
+{
+    margin-left: 50px;
+}
 
+form#admin-form div.composite input,
+form#admin-form div.composite select,
+form#admin-form div.composite textarea
+{
+    width: 314px;
+}
 
 
 table.team-player-list

@@ -5,6 +5,7 @@ namespace IHQS\NuitBlancheBundle\Entity;
 /**
  * @orm:Entity(repositoryClass="IHQS\NuitBlancheBundle\Model\WarRepository")
  * @orm:Table(name="war")
+ * @orm:HasLifecycleCallbacks
  */
 class War
 {
@@ -21,7 +22,7 @@ class War
     protected $date;
 
     /**
-     * @orm:Column(type="string")
+     * @orm:Column(type="string", nullable="true")
      */
     protected $maps;
 
@@ -61,9 +62,32 @@ class War
     protected $result;
 
     /**
-     * @orm:OneToMany(targetEntity="WarGame", mappedBy="war")
+     * @orm:OneToMany(targetEntity="WarGame", mappedBy="war", cascade={"persist", "delete"})
      */
     protected $games;
+
+	public function __construct()
+	{
+		$this->games = new \Doctrine\Common\Collections\ArrayCollection();
+	}
+
+	/**
+	 * @orm:PrePersist
+	 */
+	public function prePersist()
+	{
+		if($this->teamScore > $this->opponentScore)		{ $this->setResult(WarGame::RESULT_WIN); }
+		if($this->teamScore < $this->opponentScore)		{ $this->setResult(WarGame::RESULT_LOSS); }
+		if($this->teamScore == $this->opponentScore)	{ $this->setResult(WarGame::RESULT_DRAW); }
+
+		foreach($this->games as $warGame)
+		{
+			foreach($warGame->getGames() as $game)
+			{
+				$game->setDate($this->getDate());
+			}
+		}
+	}
 
     public function getId() {
         return $this->id;
@@ -149,6 +173,11 @@ class War
         return $this->games;
     }
 
+	public function setGames(\Doctrine\Common\Collections\ArrayCollection $games)
+	{
+		$this->games = $games;
+	}
+
 	public function getReplays()
 	{
 		$replays = array();
@@ -165,5 +194,76 @@ class War
 		}
 
 		return $replays;
+	}
+
+	protected function setNumberOfGames($number, $type)
+	{
+		foreach(range(1, $number) as $i)
+		{
+			$warGame = new WarGame();
+			$warGame->setWar($this);
+			$warGame->setTeam1Score(0);
+			$warGame->setTeam2Score(0);
+
+			$game = new Game();
+			$game->setWarGame($warGame);
+			$game->setDate($this->getDate());
+
+			foreach(range(1, 3) as $i)
+			{
+				$clone = clone $game;
+				foreach(range(1, $type*2) as $i)
+				{
+					$gamePlayer = new GamePlayer();
+					$gamePlayer->setGame($clone);
+					$gamePlayer->setWarGame($warGame);
+					$gamePlayer->setRace(Player::SC2RACE_RANDOM);
+					$gamePlayer->setTeam(round($i / $type));
+					$clone->addPlayer($gamePlayer);
+				}
+
+				$warGame->addGame($clone);
+			}
+
+			$this->games->add($warGame);
+		}
+	}
+
+	public function getNumberOf1on1Games()
+	{
+		$count = 0;
+		foreach($this->games as $game)
+		{
+			if($game->getType() == Game::TYPE_1v1)
+			{
+				$count++;
+			}
+		}
+
+		return $count;
+	}
+
+	public function setNumberOf1on1Games($number)
+	{
+		return $this->setNumberOfGames($number, 1);
+	}
+
+	public function getNumberOf2on2Games()
+	{
+		$count = 0;
+		foreach($this->games as $game)
+		{
+			if($game->getType() == Game::TYPE_2v2)
+			{
+				$count++;
+			}
+		}
+
+		return $count;
+	}
+
+	public function setNumberOf2on2Games($number)
+	{
+		return $this->setNumberOfGames($number, 2);
 	}
 }

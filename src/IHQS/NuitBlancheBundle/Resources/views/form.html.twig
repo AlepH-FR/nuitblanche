@@ -58,7 +58,7 @@
 
 {% block field_row %}
 {% spaceless %}
-    <div class="{% if errors | length > 0 %}error{% endif %}">
+    <div class="{% if form.children | length > 0 %}as-children{% endif %}{% if errors | length > 0 %}error{% endif %}">
         {{ form_label(form) }}
         {{ form_widget(form) }}
         {{ form_errors(form) }}
