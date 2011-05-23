@@ -64,6 +64,9 @@
         <service class="%nb.manager.replay.class%" id="nb.manager.replay" factory-method="getRepository" factory-class="IHQS\NuitBlancheBundle\DependencyInjection\IHQSNuitBlancheExtension">
             <argument type="service" id="nb.entity_manager" />
             <argument type="string">%nb.model.replay.class%</argument>
+            <call method="setReplayProcessor">
+                <argument type="service" id="nb.replay.processor" />
+            </call>
         </service>
         <service class="%nb.manager.season.class%" id="nb.manager.season" factory-method="getRepository" factory-class="IHQS\NuitBlancheBundle\DependencyInjection\IHQSNuitBlancheExtension">
             <argument type="service" id="nb.entity_manager" />

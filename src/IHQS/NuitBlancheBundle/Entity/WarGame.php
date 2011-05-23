@@ -2,10 +2,12 @@
 
 namespace IHQS\NuitBlancheBundle\Entity;
 use IHQS\NuitBlancheBundle\Entity\Base\Game as BaseGame;
-
+use Doctrine\Common\NotifyPropertyChanged;
+use Doctrine\Common\PropertyChangedListener;
 /**
  * @orm:Entity(repositoryClass="IHQS\NuitBlancheBundle\Model\WarGameRepository")
  * @orm:Table(name="wargame")
+ * @orm:HasLifecycleCallbacks
  */
 class WarGame extends BaseGame
 {
@@ -37,9 +39,11 @@ class WarGame extends BaseGame
     protected $team2Score;
 
     /**
-     * @orm:OneToMany(targetEntity="Game", mappedBy="warGame", cascade={"persist"})
+     * @orm:OneToMany(targetEntity="Game", mappedBy="warGame", cascade={"all"})
      */
     protected $games;
+
+    private $_listeners = array();
 
 	public function __construct()
 	{
@@ -121,6 +125,37 @@ class WarGame extends BaseGame
 	public function setTeam2Score($team2Score)
 	{
 		$this->team2Score = $team2Score;
+	}
+
+	/**
+	 * @orm:PrePersist
+	 */
+	public function prePersist()
+	{
+		$this->updateTeamScores();
+	}
+
+	/**
+	 * @orm:PreUpdate
+	 */
+	public function preUpdate()
+	{
+		$this->updateTeamScores();
+	}
+
+	public function updateTeamScores()
+	{
+		$team1score = 0;
+		$team2score = 0;
+
+		foreach($this->games as $game)
+		{
+			$var = "team" . $game->getWinner() . "score";
+			${$var}++;
+		}
+
+		$this->setTeam1Score($team1score);
+		$this->setTeam2Score($team2score);
 	}
 
 	public function __toString()

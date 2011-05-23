@@ -115,15 +115,15 @@
         <ul class="short">
             <li>
                 <span class="stat long"><img class="ico" src="{{ asset('bundles/ihqsnuitblanche/images/ico/site_esl.ico') }}" /> esl</span>
-                <span class="data">{% if player.sc2ProfileEsl %}<a href="{{ player.sc2ProfileEsl }}">{{ "link" | trans }}</a>{% else %}-{% endif %}</span>
+                <span class="data">{% if player.sc2ProfileEsl %}<a href="http://www.esl.eu/fr/player/{{ player.sc2ProfileEsl }}/">{{ "link" | trans }}</a>{% else %}-{% endif %}</span>
             </li>
             <li>
                 <span class="stat long"><img class="ico" src="http://starcraft2.ingame.de/sc2cl/gfx/favicon.ico" /> sc2cl</span>
-                <span class="data">{% if player.sc2ProfileSc2cl %}<a href="{{ player.sc2ProfileSc2cl }}">{{ "link" | trans }}</a>{% else %}-{% endif %}</span>
+                <span class="data">{% if player.sc2ProfileSc2cl %}<a href="http://starcraft2.ingame.de/sc2cl/?m=profile&userId={{ player.sc2ProfileSc2cl }}">{{ "link" | trans }}</a>{% else %}-{% endif %}</span>
             </li>
             <li>
                 <span class="stat long"><img class="ico" src="http://www.pandaria-wars.com/themes/dyy_2009/images/favicon.ico" /> pandaria</span>
-                <span class="data">{% if player.sc2ProfilePandaria %}<a href="{{ player.sc2ProfilePandaria }}">{{ "link" | trans }}</a>{% else %}-{% endif %}</span>
+                <span class="data">{% if player.sc2ProfilePandaria %}<a href="http://www.pandaria-wars.com/index.php?file=Members&op=detail&autor={{ player.sc2ProfilePandaria }}">{{ "link" | trans }}</a>{% else %}-{% endif %}</span>
             </li>
         </ul>
         <ul class="long">
@@ -176,15 +176,15 @@
                         </td>
                         <td class="war-score {{ game.war.result }}">{{ game.war.teamScore }}-{{ game.war.opponentScore }}</td>
                         <td class="player player-left">
-                            <img class="race-icon" src="{{ asset('bundles/ihqsnuitblanche/images/ico/' ~ game.team1Race ~ '_icon.png') }}" />
-                            {{ game.team1Name }}
+                            {{ game.games[0].team1Name }}
+                            <img class="race-icon" src="{{ asset('bundles/ihqsnuitblanche/images/ico/' ~ game.games[0].team1Race ~ '_icon.png') }}" />
                         </td>
                         <td class="score match-{{ game.team1Result }}">{{ game.team1Score }}</td>
                         <td class="separator"></td>
                         <td class="score match-{{ game.team2Result }}">{{ game.team2Score }}</td>
                         <td class="player player-right">
-                            <img class="race-icon" src="{{ asset('bundles/ihqsnuitblanche/images/ico/' ~ game.team2Race ~ '_icon.png') }}" />
-                            {{ game.team2Name }}
+                            <img class="race-icon" src="{{ asset('bundles/ihqsnuitblanche/images/ico/' ~ game.games[0].team2Race ~ '_icon.png') }}" />
+                            {{ game.games[0].team2Name }}
                         </td>
                         <td class="date">{{ game.games[0].date.format('d m Y') }}</td>
                     </tr>

@@ -12,6 +12,9 @@ class WarGameFormType extends AbstractType
 		$builder->add('games', 'collection', array(
 			'type' => new WarGameGameFormType(),
 		));
+
+		$builder->add('team1score', 'hidden');
+		$builder->add('team2score', 'hidden');
 	}
 
 	public function getDefaultOptions(array $options)
