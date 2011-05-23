@@ -3,6 +3,7 @@
 namespace IHQS\NuitBlancheBundle\Model;
 
 use Doctrine\ORM\EntityRepository;
+use IHQS\NuitBlancheBundle\Entity\War;
 
 /**
  * WarRepository
@@ -12,6 +13,11 @@ use Doctrine\ORM\EntityRepository;
  */
 class WarRepository extends EntityRepository
 {
+	public function createOne()
+	{
+		
+	}
+
     public function findLatest()
     {
         return $this->createQueryBuilder('w')->

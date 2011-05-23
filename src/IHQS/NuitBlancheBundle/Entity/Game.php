@@ -6,6 +6,7 @@ use IHQS\NuitBlancheBundle\Entity\Base\Game as BaseGame;
 /**
  * @orm:Entity(repositoryClass="IHQS\NuitBlancheBundle\Model\GameRepository")
  * @orm:Table(name="game")
+ * @orm:HasLifecycleCallbacks
  */
 class Game extends BaseGame
 {
@@ -42,7 +43,7 @@ class Game extends BaseGame
     protected $map;
     
     /**
-     * @orm:ManyToOne(targetEntity="WarGame", inversedBy="games")
+     * @orm:ManyToOne(targetEntity="WarGame", inversedBy="games", cascade={"all"})
 	 * @orm:JoinColumn(name="warGame_id", nullable="true")
      */
     protected $warGame;
@@ -99,6 +100,10 @@ class Game extends BaseGame
 
     public function setWinner($winner) {
         $this->winner = $winner;
+		if(!is_null($this->warGame))
+		{
+			$this->warGame->updateTeamScores();
+		}
     }
 
     public function getMap() {

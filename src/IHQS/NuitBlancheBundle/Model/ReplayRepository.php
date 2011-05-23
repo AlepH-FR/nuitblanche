@@ -3,7 +3,9 @@
 namespace IHQS\NuitBlancheBundle\Model;
 
 use Doctrine\ORM\EntityRepository;
-
+use Doctrine\ORM\EntityManager;
+use IHQS\NuitBlancheBundle\Entity\Replay;
+use IHQS\NuitBlancheBundle\Processor\ReplayProcessor;
 /**
  * ReplayRepository
  *
@@ -12,6 +14,20 @@ use Doctrine\ORM\EntityRepository;
  */
 class ReplayRepository extends EntityRepository
 {
+	protected $replayProcessor;
+
+	public function setReplayProcessor(ReplayProcessor $replayProcessor)
+	{
+		$this->replayProcessor = $replayProcessor;
+	}
+	
+	public function createOne()
+	{
+		$replay = new Replay();
+        $replay->setReplayProcessor($this->replayProcessor);
+		return $reply;
+	}
+
     public function findAll()
     {
         return $this->createQueryBuilder('r')->

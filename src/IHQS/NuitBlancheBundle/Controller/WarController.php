@@ -113,7 +113,8 @@ class WarController extends BaseController
 	public function gameAction($game_id)
 	{
 		$game = $this->get('nb.manager.war_game')->findOneById($game_id);
-
+		$game->setTeam1Score(0); // enforcing recalculation of team scores
+		
         $formType = $this->container->getParameter('nb.form.war_game.class');
         $form = $this->get('form.factory')->create(new $formType(), $game);
 

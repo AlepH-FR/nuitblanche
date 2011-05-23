@@ -13,8 +13,7 @@ class WarGameGameFormType extends AbstractType
 			->add('date')
 			->add('map')
 			->add('players', 'collection', array('type' => new WarGameGamePlayerFormType()))
-			->add('winner', 'choice', array('choices' => array(1, 2)))
-			->add('replay', new WarGameGameReplayFormType())
+			->add('winner', 'choice', array('choices' => array(1 => '1', 2 => '2')))
 		;
 	}
 

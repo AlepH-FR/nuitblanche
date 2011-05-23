@@ -606,6 +606,10 @@ form#admin-form div h3
     vertical-align: top;
     line-height: 30px;
 }
+form#admin-form div h3
+{
+    width: 200px;
+}
 
 form#admin-form div input,
 form#admin-form div select

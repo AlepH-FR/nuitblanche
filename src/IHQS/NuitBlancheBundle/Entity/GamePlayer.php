@@ -2,9 +2,12 @@
 
 namespace IHQS\NuitBlancheBundle\Entity;
 
+use IHQS\NuitBlancheBundle\Model\PlayerRepository;
+
 /**
  * @orm:Entity(repositoryClass="IHQS\NuitBlancheBundle\Model\GamePlayerRepository")
  * @orm:Table(name="gameplayer")
+ * @orm:HasLifecycleCallbacks
  */
 class GamePlayer
 {
@@ -54,6 +57,8 @@ class GamePlayer
      * @orm:Column(type="integer")
      */
     protected $team;
+
+	protected $playerRepo;
 
     public function getId() {
         return $this->id;
@@ -128,6 +133,28 @@ class GamePlayer
     {
         $this->warGame = $warGame;
     }
+
+	public function setPlayerRepository(PlayerRepository $playerRepo)
+	{
+		$this->playerRepo = $playerRepo;
+	}
+	
+	/**
+	 * @orm:PrePersist
+	 */
+	public function prePersist()
+	{
+		if(is_null($this->playerRepo))
+		{
+			return;
+		}
+		
+		$player = $this->playerRepo->findOneBySc2Account($this->getName());
+		if($player instanceof Player)
+		{
+			$this->player = $player;
+		}
+	}
 
     public function __toString()
     {

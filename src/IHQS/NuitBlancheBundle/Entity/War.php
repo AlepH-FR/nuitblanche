@@ -62,7 +62,7 @@ class War
     protected $result;
 
     /**
-     * @orm:OneToMany(targetEntity="WarGame", mappedBy="war", cascade={"persist", "delete"})
+     * @orm:OneToMany(targetEntity="WarGame", mappedBy="war", cascade={"persist", "update", "delete"})
      */
     protected $games;
 

@@ -9,6 +9,6 @@
 app/config/config_*local.yml
 tags
 /web/upload/*
-
+/web/bundles/*
 # NetBeans
 nbproject
