@@ -11,7 +11,6 @@ nb.contributeWarGame = function()
         {
             for(var j = 0; j < nb_games; j++)
             {
-               alert($('#wargame_games_' + j + '_players_' + i + '_name').val());
                 $('#wargame_games_' + j + '_players_' + i + '_name').val($(this).val());
             }
         });
