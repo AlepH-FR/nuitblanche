@@ -13,6 +13,9 @@ nb.contributeWarGame = function()
             var key = $(this).attr('id').charAt(24);
             for(var j = 1; j < nb_games; j++)
             {
+<<<<<<< HEAD
+                $('#wargame_games_' + j + '_players_' + i + '_name').val($(this).val());
+=======
                 alert('#wargame_games_' + j + '_players_' + key + '_name');
                 $('#wargame_games_' + j + '_players_' + key + '_name').val($(this).val());
             }
@@ -26,6 +29,7 @@ nb.contributeWarGame = function()
             {
                 alert('#wargame_games_' + j + '_players_' + key + '_race');
                 $('#wargame_games_' + j + '_players_' + key + '_race').val($(this).val());
+>>>>>>> 3ed11e944c855169f5f747f7c0a1c62048108387
             }
         });
     }
