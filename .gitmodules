@@ -1,3 +1,6 @@
 [submodule "src/IHQS/WysiwygBundle"]
 	path = src/IHQS/WysiwygBundle
 	url = git@github.com:ihqs/WysiwygBundle.git
+[submodule "vendor/doctrine-datafixtures"]
+	path = vendor/doctrine-datafixtures
+	url = git://github.com/doctrine/data-fixtures.git
