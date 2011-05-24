@@ -2,67 +2,69 @@
 
 namespace IHQS\NuitBlancheBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+
 /**
- * @orm:Entity(repositoryClass="IHQS\NuitBlancheBundle\Model\WarRepository")
- * @orm:Table(name="war")
- * @orm:HasLifecycleCallbacks
+ * @ORM\Entity(repositoryClass="IHQS\NuitBlancheBundle\Model\WarRepository")
+ * @ORM\Table(name="war")
+ * @ORM\HasLifecycleCallbacks
  */
 class War
 {
     /**
-     * @orm:Id
-     * @orm:Column(type="integer")
-     * @orm:GeneratedValue(strategy="AUTO")
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
     /**
-     * @orm:Column(type="datetime")
+     * @ORM\Column(type="datetime")
      */
     protected $date;
 
     /**
-     * @orm:Column(type="string", nullable="true")
+     * @ORM\Column(type="string", nullable="true")
      */
     protected $maps;
 
     /**
-     * @orm:ManyToOne(targetEntity="Team")
+     * @ORM\ManyToOne(targetEntity="Team")
      */
     protected $team;
 
     /**
-     * @orm:ManyToOne(targetEntity="Season")
+     * @ORM\ManyToOne(targetEntity="Season")
      */
     protected $season;
 
     /**
-     * @orm:Column(type="integer")
+     * @ORM\Column(type="integer")
      */
     protected $teamScore;
 
     /**
-     * @orm:Column(type="string")
+     * @ORM\Column(type="string")
      */
     protected $opponentName;
 
     /**
-     * @orm:Column(type="integer")
+     * @ORM\Column(type="integer")
      */
     protected $opponentScore;
 
     /**
-     * @orm:Column(type="string")
+     * @ORM\Column(type="string")
      */
     protected $opponentCountry;
 
     /**
-     * @orm:Column(type="string")
+     * @ORM\Column(type="string")
      */
     protected $result;
 
     /**
-     * @orm:OneToMany(targetEntity="WarGame", mappedBy="war", cascade={"persist", "update", "delete"})
+     * @ORM\OneToMany(targetEntity="WarGame", mappedBy="war", cascade={"persist", "update", "delete"})
      */
     protected $games;
 
@@ -72,7 +74,7 @@ class War
 	}
 
 	/**
-	 * @orm:PrePersist
+	 * @ORM\PrePersist
 	 */
 	public function prePersist()
 	{

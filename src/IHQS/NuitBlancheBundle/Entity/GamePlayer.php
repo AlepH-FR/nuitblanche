@@ -2,59 +2,60 @@
 
 namespace IHQS\NuitBlancheBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
 use IHQS\NuitBlancheBundle\Model\PlayerRepository;
 
 /**
- * @orm:Entity(repositoryClass="IHQS\NuitBlancheBundle\Model\GamePlayerRepository")
- * @orm:Table(name="gameplayer")
- * @orm:HasLifecycleCallbacks
+ * @ORM\Entity(repositoryClass="IHQS\NuitBlancheBundle\Model\GamePlayerRepository")
+ * @ORM\Table(name="gameplayer")
+ * @ORM\HasLifecycleCallbacks
  */
 class GamePlayer
 {
     /**
-     * @orm:Id
-     * @orm:Column(type="integer")
-     * @orm:GeneratedValue(strategy="AUTO")
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
     /**
-     * @orm:ManyToOne(targetEntity="Game", cascade={"all"})
+     * @ORM\ManyToOne(targetEntity="Game", cascade={"all"})
      */
     protected $game;
 
     /**
-     * @orm:ManyToOne(targetEntity="WarGame")
+     * @ORM\ManyToOne(targetEntity="WarGame")
      */
     protected $warGame;
 
     /**
-     * @orm:ManyToOne(targetEntity="Player")
+     * @ORM\ManyToOne(targetEntity="Player")
      */
     protected $player;
 
     /**
-     * @orm:Column(type="string", nullable="true")
+     * @ORM\Column(type="string", nullable="true")
      */
     protected $name;
 
     /**
-     * @orm:Column(type="string")
+     * @ORM\Column(type="string")
      */
     protected $race;
 
     /**
-     * @orm:Column(type="string", nullable="true")
+     * @ORM\Column(type="string", nullable="true")
      */
     protected $color;
 
     /**
-     * @orm:Column(type="integer", nullable="true")
+     * @ORM\Column(type="integer", nullable="true")
      */
     protected $apm;
 
     /**
-     * @orm:Column(type="integer")
+     * @ORM\Column(type="integer")
      */
     protected $team;
 
@@ -140,7 +141,7 @@ class GamePlayer
 	}
 	
 	/**
-	 * @orm:PrePersist
+	 * @ORM\PrePersist
 	 */
 	public function prePersist()
 	{

@@ -2,44 +2,45 @@
 
 namespace IHQS\NuitBlancheBundle\Entity;
 use IHQS\NuitBlancheBundle\Entity\Base\Game as BaseGame;
+use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\NotifyPropertyChanged;
 use Doctrine\Common\PropertyChangedListener;
 /**
- * @orm:Entity(repositoryClass="IHQS\NuitBlancheBundle\Model\WarGameRepository")
- * @orm:Table(name="wargame")
- * @orm:HasLifecycleCallbacks
+ * @ORM\Entity(repositoryClass="IHQS\NuitBlancheBundle\Model\WarGameRepository")
+ * @ORM\Table(name="wargame")
+ * @ORM\HasLifecycleCallbacks
  */
 class WarGame extends BaseGame
 {
     /**
-     * @orm:Id
-     * @orm:Column(type="integer")
-     * @orm:GeneratedValue(strategy="AUTO")
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
     /**
-     * @orm:ManyToOne(targetEntity="War")
+     * @ORM\ManyToOne(targetEntity="War")
      */
     protected $war;
 
     /**
-     * @orm:OneToMany(targetEntity="GamePlayer", mappedBy="warGame", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="GamePlayer", mappedBy="warGame", cascade={"persist"})
      */
     protected $players;
 
     /**
-     * @orm:Column(type="integer")
+     * @ORM\Column(type="integer")
      */
     protected $team1Score;
 
     /**
-     * @orm:Column(type="integer")
+     * @ORM\Column(type="integer")
      */
     protected $team2Score;
 
     /**
-     * @orm:OneToMany(targetEntity="Game", mappedBy="warGame", cascade={"all"})
+     * @ORM\OneToMany(targetEntity="Game", mappedBy="warGame", cascade={"all"})
      */
     protected $games;
 
@@ -128,7 +129,7 @@ class WarGame extends BaseGame
 	}
 
 	/**
-	 * @orm:PrePersist
+	 * @ORM\PrePersist
 	 */
 	public function prePersist()
 	{
@@ -136,7 +137,7 @@ class WarGame extends BaseGame
 	}
 
 	/**
-	 * @orm:PreUpdate
+	 * @ORM\PreUpdate
 	 */
 	public function preUpdate()
 	{

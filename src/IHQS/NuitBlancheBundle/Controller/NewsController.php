@@ -5,6 +5,8 @@ namespace IHQS\NuitBlancheBundle\Controller;
 use IHQS\NuitBlancheBundle\Entity\Comment;
 use IHQS\NuitBlancheBundle\Entity\News;
 use IHQS\NuitBlancheBundle\Entity\User;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 class NewsController extends BaseController
 {
@@ -28,7 +30,7 @@ class NewsController extends BaseController
 	}
 
     /**
-     * @extra:Template()
+     * @Template()
      */
     public function _latestAction()
     {
@@ -38,7 +40,7 @@ class NewsController extends BaseController
     }
 
     /**
-     * @extra:Template()
+     * @Template()
      */
     public function _commentAction($news)
     {
@@ -58,8 +60,8 @@ class NewsController extends BaseController
     }
 
     /**
-     * @extra:Route("/news/archives", name="news_archives")
-     * @extra:Template()
+     * @Route("/news/archives", name="news_archives")
+     * @Template()
      */
     public function archivesAction()
     {
@@ -69,8 +71,8 @@ class NewsController extends BaseController
     }
     
     /**
-     * @extra:Route("/news/{news_id}/show", name="news_show")
-     * @extra:Template()
+     * @Route("/news/{news_id}/show", name="news_show")
+     * @Template()
      */
     public function showAction($news_id)
     {
@@ -103,8 +105,8 @@ class NewsController extends BaseController
     }
 
     /**
-     * @extra:Route("contribute/news/add", name="contribute_news_new")
-     * @extra:Template("IHQSNuitBlancheBundle:Main:adminForm.html.twig")
+     * @Route("contribute/news/add", name="contribute_news_new")
+     * @Template("IHQSNuitBlancheBundle:Main:adminForm.html.twig")
      */
     public function newAction()
     {

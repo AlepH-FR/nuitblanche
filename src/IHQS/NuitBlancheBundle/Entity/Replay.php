@@ -2,74 +2,75 @@
 
 namespace IHQS\NuitBlancheBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
 use IHQS\NuitBlancheBundle\Processor\ReplayProcessor;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
- * @orm:Entity(repositoryClass="IHQS\NuitBlancheBundle\Model\ReplayRepository")
- * @orm:Table(name="replay")
+ * @ORM\Entity(repositoryClass="IHQS\NuitBlancheBundle\Model\ReplayRepository")
+ * @ORM\Table(name="replay")
  */
 class Replay
 {
     /**
-     * @orm:Id
-     * @orm:Column(type="integer")
-     * @orm:GeneratedValue(strategy="AUTO")
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
     /**
-     * @orm:Column(type="string")
+     * @ORM\Column(type="string")
      */
     protected $file;
 
     /**
-     * @orm:Column(type="string")
+     * @ORM\Column(type="string")
      */
     protected $chart;
 
     /**
-     * @orm:OneToOne(targetEntity="Game", cascade={"persist"})
+     * @ORM\OneToOne(targetEntity="Game", cascade={"persist"})
      */
     protected $game;
 
     /**
-     * @orm:Column(type="integer")
+     * @ORM\Column(type="integer")
      */
     protected $size;
     
     /**
-     * @orm:Column(type="string")
+     * @ORM\Column(type="string")
      */
     protected $length;
     
     /**
-     * @orm:Column(type="string")
+     * @ORM\Column(type="string")
      */
     protected $obs;
 
     /**
-     * @orm:Column(type="string")
+     * @ORM\Column(type="string")
      */
     protected $realm;
 
     /**
-     * @orm:Column(type="string")
+     * @ORM\Column(type="string")
      */
     protected $version;
 
 	/**
-	 * @orm:Column(type="integer", nullable="true")
+	 * @ORM\Column(type="integer", nullable="true")
 	 */
 	protected $downloads;
 
     /**
-     * @orm:Column(type="text")
+     * @ORM\Column(type="text")
      */
 	protected $chatLog;
 
     /**
-     * @orm:ManyToOne(targetEntity="Player")
+     * @ORM\ManyToOne(targetEntity="Player")
      */
 	protected $uploader;
 

@@ -2,31 +2,33 @@
 
 namespace IHQS\NuitBlancheBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+
 /**
- * @orm:Entity(repositoryClass="IHQS\NuitBlancheBundle\Model\LeagueRepository")
- * @orm:Table(name="league")
+ * @ORM\Entity(repositoryClass="IHQS\NuitBlancheBundle\Model\LeagueRepository")
+ * @ORM\Table(name="league")
  */
 class League
 {
     /**
-     * @orm:Id
-     * @orm:Column(type="integer")
-     * @orm:GeneratedValue(strategy="AUTO")
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
     /**
-     * @orm:Column(type="string")
+     * @ORM\Column(type="string")
      */
     protected $name;
 
     /**
-     * @orm:Column(type="string")
+     * @ORM\Column(type="string")
      */
     protected $country;
 
     /**
-     * @orm:OneToMany(targetEntity="Season", mappedBy="league")
+     * @ORM\OneToMany(targetEntity="Season", mappedBy="league")
      */
     protected $seasons;
 

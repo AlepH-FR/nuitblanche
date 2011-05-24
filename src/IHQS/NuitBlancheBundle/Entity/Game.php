@@ -2,11 +2,12 @@
 
 namespace IHQS\NuitBlancheBundle\Entity;
 use IHQS\NuitBlancheBundle\Entity\Base\Game as BaseGame;
+use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @orm:Entity(repositoryClass="IHQS\NuitBlancheBundle\Model\GameRepository")
- * @orm:Table(name="game")
- * @orm:HasLifecycleCallbacks
+ * @ORM\Entity(repositoryClass="IHQS\NuitBlancheBundle\Model\GameRepository")
+ * @ORM\Table(name="game")
+ * @ORM\HasLifecycleCallbacks
  */
 class Game extends BaseGame
 {
@@ -16,40 +17,40 @@ class Game extends BaseGame
     const TYPE_4v4 = "4v4";
 
     /**
-     * @orm:Id
-     * @orm:Column(type="integer")
-     * @orm:GeneratedValue(strategy="AUTO")
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
 
     /**
-     * @orm:Column(type="datetime")
+     * @ORM\Column(type="datetime")
      */
     protected $date;
 
     /**
-     * @orm:OneToMany(targetEntity="GamePlayer", mappedBy="game", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="GamePlayer", mappedBy="game", cascade={"persist"})
      */
     protected $players;
 
     /**
-     * @orm:Column(type="integer", nullable="true")
+     * @ORM\Column(type="integer", nullable="true")
      */
     protected $winner;
 
     /**
-     * @orm:Column(type="string", nullable="true")
+     * @ORM\Column(type="string", nullable="true")
      */
     protected $map;
     
     /**
-     * @orm:ManyToOne(targetEntity="WarGame", inversedBy="games", cascade={"all"})
-	 * @orm:JoinColumn(name="warGame_id", nullable="true")
+     * @ORM\ManyToOne(targetEntity="WarGame", inversedBy="games", cascade={"all"})
+	 * @ORM\JoinColumn(name="warGame_id", nullable="true")
      */
     protected $warGame;
 
     /**
-     * @orm:OneToOne(targetEntity="Replay", mappedBy="game")
+     * @ORM\OneToOne(targetEntity="Replay", mappedBy="game")
      */
     protected $replay;
 

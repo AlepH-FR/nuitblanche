@@ -3,12 +3,14 @@
 namespace IHQS\NuitBlancheBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 class TeamController extends Controller
 {
     /**
-     * @extra:Route("/team/{team_id}/show", name="team_show")
-     * @extra:Template()
+     * @Route("/team/{team_id}/show", name="team_show")
+     * @Template()
      */
     public function showAction($team_id)
     {
@@ -23,7 +25,7 @@ class TeamController extends Controller
     }
 
     /**
-     * @extra:Template()
+     * @Template()
      */
     public function _sectionsAction()
     {
@@ -33,8 +35,8 @@ class TeamController extends Controller
     }
 
     /**
-     * @extra:Route("/team/list", name="team_list")
-     * @extra:Template()
+     * @Route("/team/list", name="team_list")
+     * @Template()
      */
     public function listAction()
     {

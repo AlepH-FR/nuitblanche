@@ -2,37 +2,39 @@
 
 namespace IHQS\NuitBlancheBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+
 /**
- * @orm:Entity(repositoryClass="IHQS\NuitBlancheBundle\Model\TeamRepository")
- * @orm:Table(name="team")
+ * @ORM\Entity(repositoryClass="IHQS\NuitBlancheBundle\Model\TeamRepository")
+ * @ORM\Table(name="team")
  */
 class Team
 {
     /**
-     * @orm:Id
-     * @orm:Column(type="integer")
-     * @orm:GeneratedValue(strategy="AUTO")
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
     /**
-     * @orm:Column(type="string")
+     * @ORM\Column(type="string")
      */
     protected $name;
 
     /**
-     * @orm:Column(type="string")
+     * @ORM\Column(type="string")
      */
     protected $icon;
 
     /**
-     * @orm:Column(type="string")
+     * @ORM\Column(type="string")
      */
     protected $tag;
 
     /**
-     * @orm:ManyToMany(targetEntity="Player", inversedBy="teams")
-     * @orm:JoinTable()
+     * @ORM\ManyToMany(targetEntity="Player", inversedBy="teams")
+     * @ORM\JoinTable()
      */
     protected $players;
 

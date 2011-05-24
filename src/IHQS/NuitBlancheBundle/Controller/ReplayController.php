@@ -3,6 +3,8 @@
 namespace IHQS\NuitBlancheBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Response;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 use IHQS\NuitBlancheBundle\Entity\Game;
 use IHQS\NuitBlancheBundle\Entity\Replay;
@@ -10,7 +12,7 @@ use IHQS\NuitBlancheBundle\Entity\Replay;
 class ReplayController extends BaseController
 {
     /**
-     * @extra:Template()
+     * @Template()
      */
     public function _latestAction()
     {
@@ -20,8 +22,8 @@ class ReplayController extends BaseController
     }
 
     /**
-     * @extra:Route("/replay/{replay_id}/show", name="replay_show")
-     * @extra:Template()
+     * @Route("/replay/{replay_id}/show", name="replay_show")
+     * @Template()
      */
     public function showAction($replay_id)
     {
@@ -31,8 +33,8 @@ class ReplayController extends BaseController
     }
 
     /**
-     * @extra:Route("/replay/list", name="replay_list")
-     * @extra:Template()
+     * @Route("/replay/list", name="replay_list")
+     * @Template()
      */
     public function listAction()
     {
@@ -42,7 +44,7 @@ class ReplayController extends BaseController
     }
 
     /**
-     * @extra:Route("/replay/{replay_id}/download", name="replay_file_download")
+     * @Route("/replay/{replay_id}/download", name="replay_file_download")
      */
     public function fileDownloadAction($replay_id)
     {
@@ -67,8 +69,8 @@ class ReplayController extends BaseController
     }
 
     /**
-     * @extra:Route("contribute/replay/add", name="contribute_replay_new")
-     * @extra:Template("IHQSNuitBlancheBundle:Main:adminForm.html.twig")
+     * @Route("contribute/replay/add", name="contribute_replay_new")
+     * @Template("IHQSNuitBlancheBundle:Main:adminForm.html.twig")
      */
     public function newAction()
     {

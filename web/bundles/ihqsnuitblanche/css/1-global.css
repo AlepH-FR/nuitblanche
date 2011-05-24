@@ -1,0 +1,98 @@
+body
+{
+    background: url('/bundles/ihqsnuitblanche/images/stripes.png');
+}
+
+body div#page
+{
+    margin-left: auto;
+    margin-right: auto;
+    width: 900px;
+    height: 100%;
+}
+div#content
+{
+    margin: 20px;
+    width: 520px;
+    float: left;
+}
+
+div#left
+{
+    margin-left: 20px;
+    width: 150px;
+    float: left;
+
+    margin-top: 20px;
+}
+
+div#right
+{
+    width: 150px;
+    float: left;
+    padding: 20px 0;
+}
+
+.widget
+{
+    box-shadow: 0 0 10px #888;
+    -moz-box-shadow: 0 0 10px #888;
+    -webkit-box-shadow: 0 0 10px #888;
+
+    padding: 10px;
+    margin-bottom: 20px;
+    background: white;
+}
+
+img.race-icon
+{
+    width: 20px;
+    height: 20px;
+    vertical-align:middle;
+}
+
+img.ico
+{
+    width: 16px;
+    height: 16px;
+    vertical-align:middle;
+}
+div.note-container
+{
+    display: inline-block;
+    height: 12px;
+    width: 100px;
+    border: 1px solid black;
+    background: #395674;
+    background: -webkit-gradient(linear, left top, right top, from(#ddd), to(#395674));
+    background: -moz-linear-gradient(left,#ddd,#395674);
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient (GradientType=1, startColorstr=#ddd, endColorstr=#395674)";
+
+    vertical-align: middle;
+}
+div.note-container span
+{ 
+    height: 12px;
+    display: inline-block;
+    float: right;
+    background: white;
+    font-size: 8px;
+    line-height: 12px;
+    text-align: right;
+}
+
+ul.filters li
+{
+    display: inline-block;
+    border-right: 1px solid #888;
+    font-weight: normal;
+    padding: 0 5px;
+}
+ul.filters li.first
+{
+    padding-left: 0;
+}
+ul.filters li.last
+{
+    border: 0;
+}

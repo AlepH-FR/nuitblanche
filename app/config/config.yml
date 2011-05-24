@@ -5,16 +5,12 @@ imports:
 framework:
     secret:        %secret%
     charset:       UTF-8
-    error_handler: null
     csrf_protection:
         enabled: true
     router:        { resource: "%kernel.root_dir%/config/routing.yml" }
     validation:
         enabled: true
-        annotations:
-            namespaces:
-                assertCustom: IHQS\NuitBlancheBundle\Validator\
-                   
+        
     templating:    { engines: ['twig'] } #assets_version: SomeVersionScheme
     session:
         default_locale: %locale%

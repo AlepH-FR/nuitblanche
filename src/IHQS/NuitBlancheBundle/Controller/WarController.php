@@ -3,12 +3,14 @@
 namespace IHQS\NuitBlancheBundle\Controller;
 
 use IHQS\NuitBlancheBundle\Entity\War;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 class WarController extends BaseController
 {
     /**
-     * @extra:Route("/war/{war_id}/show", name="war_show")
-     * @extra:Template()
+     * @Route("/war/{war_id}/show", name="war_show")
+     * @Template()
      */
     public function showAction($war_id)
     {
@@ -18,8 +20,8 @@ class WarController extends BaseController
     }
 
     /**
-     * @extra:Route("/war/list", name="war_list")
-     * @extra:Template()
+     * @Route("/war/list", name="war_list")
+     * @Template()
      */
     public function listAction()
     {
@@ -29,7 +31,7 @@ class WarController extends BaseController
     }
 
     /**
-     * @extra:Template()
+     * @Template()
      */
     public function _latestAction()
     {
@@ -39,7 +41,7 @@ class WarController extends BaseController
     }
 	
 	/**
-     * @extra:Template()
+     * @Template()
      */
     public function _gamesAction($war_id)
     {
@@ -49,7 +51,7 @@ class WarController extends BaseController
     }
 
     /**
-     * @extra:Template()
+     * @Template()
      */
     public function _calendarAction()
     {
@@ -75,11 +77,9 @@ class WarController extends BaseController
     }
 
     /**
-     * @extra:Routes({
-     *		@extra:Route("contribute/war/add", name="contribute_war_new"),
-     *		@extra:Route("contribute/war/{war_id}/edit", name="contribute_war_edit")
-     * })
-     * @extra:Template("IHQSNuitBlancheBundle:Main:adminForm.html.twig")
+     * @Route("contribute/war/add", name="contribute_war_new"),
+     * @Route("contribute/war/{war_id}/edit", name="contribute_war_edit")
+     * @Template("IHQSNuitBlancheBundle:Main:adminForm.html.twig")
      */
     public function newAction($war_id = null)
     {
@@ -107,8 +107,8 @@ class WarController extends BaseController
     }
 
     /**
-     * @extra:Route("contribute/war/games/{game_id}/edit", name="contribute_war_game")
-     * @extra:Template("IHQSNuitBlancheBundle:War:gameForm.html.twig")
+     * @Route("contribute/war/games/{game_id}/edit", name="contribute_war_game")
+     * @Template("IHQSNuitBlancheBundle:War:gameForm.html.twig")
      */
 	public function gameAction($game_id)
 	{

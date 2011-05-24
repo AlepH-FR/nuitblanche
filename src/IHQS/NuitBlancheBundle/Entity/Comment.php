@@ -2,36 +2,38 @@
 
 namespace IHQS\NuitBlancheBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+
 /**
- * @orm:Entity(repositoryClass="IHQS\NuitBlancheBundle\Model\CommentRepository")
- * @orm:Table(name="comment")
+ * @ORM\Entity(repositoryClass="IHQS\NuitBlancheBundle\Model\CommentRepository")
+ * @ORM\Table(name="comment")
  */
 class Comment
 {
     /**
-     * @orm:Id
-     * @orm:Column(type="integer")
-     * @orm:GeneratedValue(strategy="AUTO")
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
     /**
-     * @orm:Column(type="datetime")
+     * @ORM\Column(type="datetime")
      */
     protected $date;
 
     /**
-     * @orm:Column(type="text")
+     * @ORM\Column(type="text")
      */
     protected $body;
 
     /**
-     * @orm:ManyToOne(targetEntity="News")
+     * @ORM\ManyToOne(targetEntity="News")
      */
     protected $news;
 
     /**
-     * @orm:ManyToOne(targetEntity="User")
+     * @ORM\ManyToOne(targetEntity="User")
      */
     protected $author;
 

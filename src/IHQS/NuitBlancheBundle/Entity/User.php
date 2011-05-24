@@ -2,12 +2,15 @@
 
 namespace IHQS\NuitBlancheBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use IHQS\NuitBlancheBundle\Validator\Unique;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
- * @orm:Entity(repositoryClass="IHQS\NuitBlancheBundle\Model\UserRepository")
- * @orm:Table(name="user")
+ * @ORM\Entity(repositoryClass="IHQS\NuitBlancheBundle\Model\UserRepository")
+ * @ORM\Table(name="user")
  */
 class User implements UserInterface
 {
@@ -16,97 +19,97 @@ class User implements UserInterface
     const STATUS_IDLE       = "idle";
 
     /**
-     * @orm:Id
-     * @orm:Column(type="integer")
-     * @orm:GeneratedValue(strategy="AUTO")
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
     /**
-     * @orm:Column(type="string")
-     * @assertCustom:Unique(message = "This username is already used. Please choose another one")
-     * @assert:NotBlank(message = "Please choose a username")
-     * @assert:MinLength(4)
+     * @ORM\Column(type="string")
+     * @Unique(message = "This username is already used. Please choose another one")
+     * @Assert\NotBlank(message = "Please choose a username")
+     * @Assert\MinLength(4)
      */
     protected $username;
 
     /**
-     * @orm:Column(type="string")
-     * @assert:NotBlank(message = "Please choose a password")
-     * @assert:MinLength(8)
+     * @ORM\Column(type="string")
+     * @Assert\NotBlank(message = "Please choose a password")
+     * @Assert\MinLength(8)
      */
     protected $password;
 
     /**
-     * @orm:Column(type="string")
-     * @assert:NotBlank(message = "Please add your email adress")
-     * @assert:Email()
+     * @ORM\Column(type="string")
+     * @Assert\NotBlank(message = "Please add your email adress")
+     * @Assert\Email()
      */
     protected $email;
     
     /**
-     * @orm:Column(type="string", nullable="true")
-     * @assert:File()
+     * @ORM\Column(type="string", nullable="true")
+     * @Assert\File()
      */
     protected $avatar;
 
     /**
-     * @orm:Column(type="string")
-     * @assert:NotBlank(message = "Please add your first name")
+     * @ORM\Column(type="string")
+     * @Assert\NotBlank(message = "Please add your first name")
      */
     protected $firstName;
 
     /**
-     * @orm:Column(type="string")
-     * @assert:NotBlank(message = "Please add your last name")
+     * @ORM\Column(type="string")
+     * @Assert\NotBlank(message = "Please add your last name")
      */
     protected $lastName;
 
     /**
-     * @orm:Column(type="string")
+     * @ORM\Column(type="string")
      */
     protected $city;
 
     /**
-     * @orm:Column(type="string")
-     * @assert:NotBlank(message = "Please choose your country")
+     * @ORM\Column(type="string")
+     * @Assert\NotBlank(message = "Please choose your country")
      */
     protected $country;
 
     /**
-     * @orm:Column(type="string")
-     * @assert:Url()
+     * @ORM\Column(type="string")
+     * @Assert\Url()
      */
     protected $facebook;
 
     /**
-     * @orm:Column(type="string")
+     * @ORM\Column(type="string")
      */
     protected $twitter;
 
     /**
-     * @orm:Column(type="string")
+     * @ORM\Column(type="string")
      */
     protected $skype;
 
     /**
-     * @orm:Column(type="string")
-     * @assert:Email()
+     * @ORM\Column(type="string")
+     * @Assert\Email()
      */
     protected $msn;
 
     /**
-     * @orm:OneToMany(targetEntity="News", mappedBy="author")
+     * @ORM\OneToMany(targetEntity="News", mappedBy="author")
      */
     protected $news;
 
     /**
-     * @orm:OneToMany(targetEntity="Replay", mappedBy="uploader")
+     * @ORM\OneToMany(targetEntity="Replay", mappedBy="uploader")
      */
     protected $uploadedReplays;
 
     /**
-     * @orm:Column(type="datetime", nullable="true")
+     * @ORM\Column(type="datetime", nullable="true")
      */
     protected $lastActivity;
 

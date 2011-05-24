@@ -3,12 +3,14 @@
 namespace IHQS\NuitBlancheBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 class MainController extends Controller
 {
     /**
-     * @extra:Route("/", name="homepage")
-     * @extra:Template()
+     * @Route("/", name="homepage")
+     * @Template()
      */
     public function indexAction()
     {
@@ -18,8 +20,8 @@ class MainController extends Controller
     }
 
     /**
-     * @extra:Route("/404", name="exception")
-     * @extra:Template()
+     * @Route("/404", name="exception")
+     * @Template()
      */
     public function exceptionAction()
     {

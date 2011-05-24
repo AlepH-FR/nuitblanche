@@ -2,48 +2,51 @@
 
 namespace IHQS\NuitBlancheBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
 /**
- * @orm:Entity(repositoryClass="IHQS\NuitBlancheBundle\Model\NewsRepository")
- * @orm:Table(name="news")
+ * @ORM\Entity(repositoryClass="IHQS\NuitBlancheBundle\Model\NewsRepository")
+ * @ORM\Table(name="news")
  */
 class News
 {
     /**
-     * @orm:Id
-     * @orm:Column(type="integer")
-     * @orm:GeneratedValue(strategy="AUTO")
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
     /**
-     * @orm:Column(type="string", length="255")
-     * @assert:NotBlank()
+     * @ORM\Column(type="string", length="255")
+     * @Assert\NotBlank()
      */
     protected $title;
 
     /**
-     * @orm:Column(type="text")
-     * @assert:NotBlank()
+     * @ORM\Column(type="text")
+     * @Assert\NotBlank()
      */
     protected $body;
 
     /**
-     * @orm:ManyToOne(targetEntity="User")
+     * @ORM\ManyToOne(targetEntity="User")
      */
     protected $author;
 
     /**
-     * @orm:Column(type="datetime")
+     * @ORM\Column(type="datetime")
      */
     protected $date;
 
     /**
-     * @orm:ManyToOne(targetEntity="Team")
+     * @ORM\ManyToOne(targetEntity="Team")
      */
     protected $team;
 
     /**
-     * @orm:OneToMany(targetEntity="Comment", mappedBy="news")
+     * @ORM\OneToMany(targetEntity="Comment", mappedBy="news")
      */
     protected $comments;
 

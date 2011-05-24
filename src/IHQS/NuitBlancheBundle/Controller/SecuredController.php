@@ -3,14 +3,16 @@
 namespace IHQS\NuitBlancheBundle\Controller;
 
 use Symfony\Component\Security\Core\SecurityContext;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use IHQS\NuitBlancheBundle\Entity\User;
 use IHQS\NuitBlancheBundle\Entity\Player;
 
 class SecuredController extends BaseController
 {
     /**
-     * @extra:Route("register", name="_secured_register")
-     * @extra:Template("IHQSNuitBlancheBundle:Main:adminForm.html.twig")
+     * @Route("register", name="_secured_register")
+     * @Template("IHQSNuitBlancheBundle:Main:adminForm.html.twig")
      */
     public function registerAction()
     {
@@ -36,8 +38,8 @@ class SecuredController extends BaseController
     }
 
     /**
-     * @extra:Route("/login", name="_secured_login")
-     * @extra:Template()
+     * @Route("/login", name="_secured_login")
+     * @Template()
      */
     public function _loginAction()
     {
@@ -54,7 +56,7 @@ class SecuredController extends BaseController
     }
 
     /**
-     * @extra:Template()
+     * @Template()
      */
     public function _helloAction()
     {
@@ -64,7 +66,7 @@ class SecuredController extends BaseController
     }
 
     /**
-     * @extra:Route("/login_check", name="_security_check")
+     * @Route("/login_check", name="_security_check")
      */
     public function securityCheckAction()
     {
@@ -72,7 +74,7 @@ class SecuredController extends BaseController
     }
 
     /**
-     * @extra:Route("/logout", name="_security_logout")
+     * @Route("/logout", name="_security_logout")
      */
     public function logoutAction()
     {

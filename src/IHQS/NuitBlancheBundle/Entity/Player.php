@@ -2,9 +2,12 @@
 
 namespace IHQS\NuitBlancheBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
 /**
- * @orm:Entity(repositoryClass="IHQS\NuitBlancheBundle\Model\PlayerRepository")
- * @orm:Table(name="player")
+ * @ORM\Entity(repositoryClass="IHQS\NuitBlancheBundle\Model\PlayerRepository")
+ * @ORM\Table(name="player")
  */
 class Player
 {
@@ -21,67 +24,67 @@ class Player
     );
 
     /**
-     * @orm:Id
-     * @orm:Column(type="integer")
-     * @orm:GeneratedValue(strategy="AUTO")
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
     /**
-     * @orm:ManyToOne(targetEntity="User", cascade={"persist"})
-     * @assert:Valid()
+     * @ORM\ManyToOne(targetEntity="User", cascade={"persist"})
+     * @Assert\Valid()
      */
     protected $user;
 
     /**
-     * @orm:Column(type="string", nullable="true")
+     * @ORM\Column(type="string", nullable="true")
      */
     protected $sc2Role;
 
     /**
-     * @orm:Column(type="integer")
-     * @assert:NotBlank(message = "Please add your SC2 account id")
-     * @assert:Regex("/\d+/")
+     * @ORM\Column(type="integer")
+     * @Assert\NotBlank(message = "Please add your SC2 account id")
+     * @Assert\Regex("/\d+/")
      */
     protected $sc2Id;
 
     /**
-     * @orm:Column(type="string")
-     * @assert:NotBlank(message = "Please add your SC2 account")
+     * @ORM\Column(type="string")
+     * @Assert\NotBlank(message = "Please add your SC2 account")
      */
     protected $sc2Account;
 
     /**
-     * @orm:Column(type="string")
-     * @assert:Choice(callback = "getRaces")
+     * @ORM\Column(type="string")
+     * @Assert\Choice(callback = "getRaces")
      */
     protected $sc2Race;
 
     /**
-     * @orm:Column(type="string")
-     * @assert:Url()
+     * @ORM\Column(type="string")
+     * @Assert\Url()
      */
     protected $sc2ProfileEsl;
 
     /**
-     * @orm:Column(type="string")
-     * @assert:Url()
+     * @ORM\Column(type="string")
+     * @Assert\Url()
      */
     protected $sc2ProfileSc2cl;
     
     /**
-     * @orm:Column(type="string")
-     * @assert:Url()
+     * @ORM\Column(type="string")
+     * @Assert\Url()
      */
     protected $sc2ProfilePandaria;
 
     /**
-     * @orm:ManyToMany(targetEntity="Team", mappedBy="players")
+     * @ORM\ManyToMany(targetEntity="Team", mappedBy="players")
      */
     protected $teams;
 
     /**
-     * @orm:OneToMany(targetEntity="GamePlayer", mappedBy="player")
+     * @ORM\OneToMany(targetEntity="GamePlayer", mappedBy="player")
      */
     protected $games;
 

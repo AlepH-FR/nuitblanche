@@ -3,12 +3,14 @@
 namespace IHQS\NuitBlancheBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 class LeagueController extends Controller
 {
     /**
-     * @extra:Route("/league/{league_id}/show", name="league_show")
-     * @extra:Template()
+     * @Route("/league/{league_id}/show", name="league_show")
+     * @Template()
      */
     public function showAction($league_id)
     {
@@ -18,8 +20,8 @@ class LeagueController extends Controller
     }
 
     /**
-     * @extra:Route("/season/{season_id}/show", name="season_show")
-     * @extra:Template()
+     * @Route("/season/{season_id}/show", name="season_show")
+     * @Template()
      */
     public function seasonShowAction($season_id)
     {
@@ -30,8 +32,8 @@ class LeagueController extends Controller
     }
 
     /**
-     * @extra:Route("/league/list", name="league_list")
-     * @extra:Template()
+     * @Route("/league/list", name="league_list")
+     * @Template()
      */
     public function listAction()
     {

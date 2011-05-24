@@ -2,71 +2,73 @@
 
 namespace IHQS\NuitBlancheBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+
 /**
- * @orm:Entity(repositoryClass="IHQS\NuitBlancheBundle\Model\SeasonRepository")
- * @orm:Table(name="season")
+ * @ORM\Entity(repositoryClass="IHQS\NuitBlancheBundle\Model\SeasonRepository")
+ * @ORM\Table(name="season")
  */
 class Season
 {
     /**
-     * @orm:Id
-     * @orm:Column(type="integer")
-     * @orm:GeneratedValue(strategy="AUTO")
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
     /**
-     * @orm:ManyToOne(targetEntity="League")
+     * @ORM\ManyToOne(targetEntity="League")
      */
     protected $league;
 
     /**
-     * @orm:Column(type="integer")
+     * @ORM\Column(type="integer")
      */
     protected $number;
 
     /**
-     * @orm:Column(type="integer")
+     * @ORM\Column(type="integer")
      */
     protected $division;
 
     /**
-     * @orm:Column(type="datetime")
+     * @ORM\Column(type="datetime")
      */
     protected $startDate;
 
     /**
-     * @orm:Column(type="datetime")
+     * @ORM\Column(type="datetime")
      */
     protected $endDate;
 
     /**
-     * @orm:Column(type="boolean")
+     * @ORM\Column(type="boolean")
      */
     protected $ended;
 
     /**
-     * @orm:Column(type="integer")
+     * @ORM\Column(type="integer")
      */
     protected $wins;
 
     /**
-     * @orm:Column(type="integer")
+     * @ORM\Column(type="integer")
      */
     protected $draws;
 
     /**
-     * @orm:Column(type="integer")
+     * @ORM\Column(type="integer")
      */
     protected $losses;
 
     /**
-     * @orm:Column(type="integer")
+     * @ORM\Column(type="integer")
      */
     protected $position;
 
     /**
-     * @orm:OneToMany(targetEntity="War", mappedBy="season")
+     * @ORM\OneToMany(targetEntity="War", mappedBy="season")
      */
     protected $wars;
 

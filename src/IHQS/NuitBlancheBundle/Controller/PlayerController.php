@@ -3,11 +3,13 @@
 namespace IHQS\NuitBlancheBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 class PlayerController extends Controller
 {
     /**
-     * @extra:Template()
+     * @Template()
      */
     public function _connectedAction()
     {
@@ -17,8 +19,8 @@ class PlayerController extends Controller
     }
 
     /**
-     * @extra:Route("/player/{player_id}/show", name="player_show")
-     * @extra:Template()
+     * @Route("/player/{player_id}/show", name="player_show")
+     * @Template()
      */
     public function showAction($player_id)
     {
@@ -28,8 +30,8 @@ class PlayerController extends Controller
     }
 
     /**
-     * @extra:Route("/users", name="player_list")
-     * @extra:Template("IHQSNuitBlancheBundle:Team:show.html.twig")
+     * @Route("/users", name="player_list")
+     * @Template("IHQSNuitBlancheBundle:Team:show.html.twig")
      */
     public function listAction()
     {
