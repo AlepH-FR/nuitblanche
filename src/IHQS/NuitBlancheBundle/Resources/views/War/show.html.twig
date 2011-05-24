@@ -27,8 +27,8 @@
     <div class="replay-info war-info">
         <div class="teams">
             <div class="team1"><strong>{{ war.team.tag }}</strong></div>
-            <div class="score win">{{ war.teamScore }}</div>
-            <div class="score loss">{{ war.opponentScore }}</div>
+            <div class="score {{ war.result }}">{{ war.teamScore }}</div>
+            <div class="score {{ war.opponentResult }}">{{ war.opponentScore }}</div>
             <div class="team2"><strong>{{ war.opponentName }}</strong></div>
             <div class="spacer"></div>
         </div>

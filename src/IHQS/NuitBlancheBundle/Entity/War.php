@@ -78,10 +78,17 @@ class War
 	 */
 	public function prePersist()
 	{
+		// result
 		if($this->teamScore > $this->opponentScore)		{ $this->setResult(WarGame::RESULT_WIN); }
 		if($this->teamScore < $this->opponentScore)		{ $this->setResult(WarGame::RESULT_LOSS); }
 		if($this->teamScore == $this->opponentScore)	{ $this->setResult(WarGame::RESULT_DRAW); }
 
+		// season scores
+		if($this->season && $this->teamScore > $this->opponentScore)	{ $this->season->incrWins(); }
+		if($this->season && $this->teamScore < $this->opponentScore)	{ $this->season->incrLosses(); }
+		if($this->season && $this->teamScore == $this->opponentScore)	{ $this->season->incrDraws(); }
+
+		// game dates
 		foreach($this->games as $warGame)
 		{
 			foreach($warGame->getGames() as $game)
@@ -171,9 +178,29 @@ class War
         $this->result = $result;
     }
 
+	public function getOpponentResult()
+	{
+		switch($this->result)
+		{
+			case WarGame::RESULT_DRAW: return WarGame::RESULT_DRAW;
+			case WarGame::RESULT_WIN: return WarGame::RESULT_LOSS;
+			case WarGame::RESULT_LOSS: return WarGame::RESULT_WIN;
+		}
+	}
+
     public function getGames() {
         return $this->games;
     }
+	
+	public function addGame(WarGame $warGame)
+	{
+		$this->games->add($warGame);
+	}
+
+	public function removeGame(WarGame $warGame)
+	{
+		$this->games->remove($warGame);
+	}
 
 	public function setGames(\Doctrine\Common\Collections\ArrayCollection $games)
 	{

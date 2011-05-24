@@ -21,12 +21,16 @@ class ControllerListener
     {
         if (HttpKernelInterface::MASTER_REQUEST === $event->getRequestType())
 		{
-            $user = $this->container->get('security.context')->getToken()->getUser();
-			if($user instanceof User)
+			$token = $this->container->get('security.context')->getToken();
+			if($token)
 			{
-				$user->setLastActivity(new \Datetime());
-				$this->container->get('nb.entity_manager')->persist($user);
-				$this->container->get('nb.entity_manager')->flush();
+				$user = $token->getUser();
+				if($user instanceof User)
+				{
+					$user->setLastActivity(new \Datetime());
+					$this->container->get('nb.entity_manager')->persist($user);
+					$this->container->get('nb.entity_manager')->flush();
+				}
 			}
         }
     }

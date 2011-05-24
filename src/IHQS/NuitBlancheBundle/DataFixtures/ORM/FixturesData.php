@@ -22,6 +22,8 @@ class FixturesData extends BaseFixturesData implements FixtureInterface
 {
     public function load($manager)
     {
+		$this->manager = $manager;
+		
         $this->createPlayers();
         $this->createTeams();
 		$this->createNews();
@@ -47,6 +49,7 @@ class FixturesData extends BaseFixturesData implements FixtureInterface
 		$user->setTwitter('AlepH-FR');
 		$user->setSkype('aleph_44');
 		$user->setEmail('lysimaque@gmail.com');
+		$user->setMsn('lysimaque@hotmail.com');
 
 		$o = new Player();
 		$o->setUser($user);
@@ -57,7 +60,6 @@ class FixturesData extends BaseFixturesData implements FixtureInterface
 		$o->setSc2ProfileEsl('5335303');
 		$o->setSc2ProfileSc2cl('513123');
 		$o->setSc2ProfilePandaria('AlepH_FR');
-		$o->
 		$data['AlepH'] = $o;
 
         $this->registerObjects('player', $data);
@@ -72,6 +74,7 @@ class FixturesData extends BaseFixturesData implements FixtureInterface
 		$user->setCountry('France');
 		$user->setTwitter('');
 		$user->setSkype('');
+		$user->setEmail('nbfzero@hotmail.com');
 		$user->setMsn('nbfzero@hotmail.com');
 
 		$o = new Player();
@@ -85,6 +88,30 @@ class FixturesData extends BaseFixturesData implements FixtureInterface
 		$o->setSc2ProfilePandaria('NbFzero');
 		$data['Fzero'] = $o;
 
+		// loveeyes
+        $user = new User();
+		$user->setUsername('loveeyes');
+		$user->setPassword('rnyman96pass');
+		$user->setFirstName('Robert');
+		$user->setLastName('Nyman');
+		$user->setCity('');
+		$user->setCountry('Finland');
+		$user->setTwitter('');
+		$user->setSkype('');
+		$user->setEmail('nyman_84@hotmail.com');
+		$user->setMsn('nyman_84@hotmail.com');
+
+		$o = new Player();
+		$o->setUser($user);
+		$o->setSc2Role('Admin');
+		$o->setSc2Account('loveeyes');
+		$o->setSc2Id('226');
+		$o->setSc2Race(Player::SC2RACE_ZERG);
+		$o->setSc2ProfileEsl('5337702');
+		$o->setSc2ProfileSc2cl('513333');
+		$o->setSc2ProfilePandaria('loveeyes.226');
+		$data['loveeyes'] = $o;
+
         $this->registerObjects('player', $data);
 	}
 
@@ -93,23 +120,24 @@ class FixturesData extends BaseFixturesData implements FixtureInterface
         $data = array();
 
 		$o = new Team();
-		$o->setIcon('nB)');
+		$o->setTag('nB)');
 		$o->setName('nB.SC2');
-		$o->setTag('/bundles/ihqsnuitblanche/images/ico/nb_boy.png');
+		$o->setIcon('/bundles/ihqsnuitblanche/images/ico/nb_boy.png');
 		$o->addPlayer($this->objects['player']['AlepH']);
 		$o->addPlayer($this->objects['player']['Fzero']);
+		$o->addPlayer($this->objects['player']['loveeyes']);
         $data['nB.SC2'] = $o;
 
 		$o = new Team();
-		$o->setIcon('nB)');
+		$o->setTag('nB)');
 		$o->setName('nB.SC2 Ladies');
-		$o->setTag('/bundles/ihqsnuitblanche/images/ico/nb_girl.png');
+		$o->setIcon('/bundles/ihqsnuitblanche/images/ico/nb_girl.png');
         $data['nB.SC2 Ladies'] = $o;
 
 		$o = new Team();
-		$o->setIcon('nB)');
+		$o->setTag('nB)');
 		$o->setName('nB.SC2 Oldies');
-		$o->setTag('/bundles/ihqsnuitblanche/images/ico/nb_boy.png');
+		$o->setIcon('/bundles/ihqsnuitblanche/images/ico/nb_boy.png');
         $data['nB.SC2 Oldies'] = $o;
 
         $this->registerObjects('team', $data);
@@ -211,7 +239,7 @@ class FixturesData extends BaseFixturesData implements FixtureInterface
 		$o->setDivision(0);
 		$o->setLeague($leagues['friendly']);
 		$o->setNumber(0);
-		$o->setStartDate('2010-09-01 00:00:00');
+		$o->setStartDate(new \Datetime('2010-09-01 00:00:00'));
 		$o->setEnded(false);
 		$seasons['friendly_0'] = $o;
 
@@ -220,8 +248,8 @@ class FixturesData extends BaseFixturesData implements FixtureInterface
 		$o->setLeague($leagues['pandaria']);
 		$o->setNumber(1);
 		$o->setPosition(1);
-		$o->setStartDate('2010-09-19 00:00:00');
-		$o->setEndDate('2010-11-14 00:00:00');
+		$o->setStartDate(new \Datetime('2010-09-19 00:00:00'));
+		$o->setEndDate(new \Datetime('2010-11-14 00:00:00'));
 		$o->setEnded(true);
 		$seasons['pandaria_1'] = $o;
 
@@ -230,8 +258,8 @@ class FixturesData extends BaseFixturesData implements FixtureInterface
 		$o->setLeague($leagues['sc2cl']);
 		$o->setNumber(1);
 		$o->setPosition(2);
-		$o->setStartDate('2010-09-26 00:00:00');
-		$o->setEndDate('2010-11-31 00:00:00');
+		$o->setStartDate(new \Datetime('2010-09-26 00:00:00'));
+		$o->setEndDate(new \Datetime('2010-11-31 00:00:00'));
 		$o->setEnded(true);
 		$seasons['sc2cl_1'] = $o;
 
@@ -240,8 +268,8 @@ class FixturesData extends BaseFixturesData implements FixtureInterface
 		$o->setLeague($leagues['sc2f']);
 		$o->setNumber(1);
 		$o->setPosition(3);
-		$o->setStartDate('2010-11-28 00:00:00');
-		$o->setEndDate('2011-01-23 00:00:00');
+		$o->setStartDate(new \Datetime('2010-11-28 00:00:00'));
+		$o->setEndDate(new \Datetime('2011-01-23 00:00:00'));
 		$o->setEnded(true);
 		$seasons['sc2f_1'] = $o;
 
@@ -249,8 +277,8 @@ class FixturesData extends BaseFixturesData implements FixtureInterface
 		$o->setDivision('3b');
 		$o->setLeague($leagues['sc2cl']);
 		$o->setNumber(2);
-		$o->setStartDate('2011-04-10 00:00:00');
-		$o->setEndDate('2011-06-27 00:00:00');
+		$o->setStartDate(new \Datetime('2011-04-10 00:00:00'));
+		$o->setEndDate(new \Datetime('2011-06-27 00:00:00'));
 		$o->setEnded(false);
 		$seasons['sc2cl_2'] = $o;
 
@@ -258,8 +286,8 @@ class FixturesData extends BaseFixturesData implements FixtureInterface
 		$o->setDivision(3);
 		$o->setLeague($leagues['pandaria']);
 		$o->setNumber(2);
-		$o->setStartDate('2011-04-24 00:00:00');
-		$o->setEndDate('2011-07-03 00:00:00');
+		$o->setStartDate(new \Datetime('2011-04-24 00:00:00'));
+		$o->setEndDate(new \Datetime('2011-07-03 00:00:00'));
 		$o->setEnded(false);
 		$seasons['pandaria_2'] = $o;
 
@@ -269,9 +297,10 @@ class FixturesData extends BaseFixturesData implements FixtureInterface
 
 	public function createWars()
 	{
+		// Pandaria Saison 1
 		$wars = array(
 			0 => array(
-				"war"	=> array(5, 0, 'NbT',		'FR', '2010-09-19 21:00:00'),
+				"war"	=> array(5, 0, 'NbT',		'FR', new \Datetime('2010-09-19 21:00:00')),
 				"games"	=> array(
 					array(2, 1, array("Kura" => Player::SC2RACE_TERRAN),	array("yanhamu" => Player::SC2RACE_PROTOSS)),
 					array(2, 0, array("BaGhLa" => Player::SC2RACE_TERRAN),	array("SyDe" => Player::SC2RACE_TERRAN)),
@@ -282,7 +311,7 @@ class FixturesData extends BaseFixturesData implements FixtureInterface
 			),
 
 			1 => array(
-				"war"	=> array(3, 2, 'aW',		'FR', '2010-09-26 21:00:00'),
+				"war"	=> array(3, 2, 'aW',		'FR', new \Datetime('2010-09-26 21:00:00')),
 				"games"	=> array(
 					array(2, 0, array("BaGhLa" => Player::SC2RACE_TERRAN),		array("Wallen" => Player::SC2RACE_ZERG)),
 					array(1, 2, array("RaptorS" => Player::SC2RACE_PROTOSS),	array("Khoral" => Player::SC2RACE_TERRAN)),
@@ -293,10 +322,10 @@ class FixturesData extends BaseFixturesData implements FixtureInterface
 			),
 
 			2 => array(
-				"war"	=> array(2, 3, 'JPFF',	'FR', '2010-10-03 21:00:00'),
+				"war"	=> array(2, 3, 'JPFF',	'FR', new \Datetime('2010-10-03 21:00:00')),
 				"games"	=> array(
 					array(0, 0, array("BaGhLa" => Player::SC2RACE_TERRAN),		array("Sweety" => Player::SC2RACE_PROTOSS)),
-					array(0, 2, array("loveyes" => Player::SC2RACE_TERRAN),		array("Rasmuth" => Player::SC2RACE_PROTOSS)),
+					array(0, 2, array("loveeyes" => Player::SC2RACE_TERRAN),		array("Rasmuth" => Player::SC2RACE_PROTOSS)),
 					array(2, 0, array("MttN" => Player::SC2RACE_TERRAN),		array("Sangui" => Player::SC2RACE_ZERG)),
 					array(2, 0, array("Clafter" => Player::SC2RACE_TERRAN),		array("Tartiflette" => Player::SC2RACE_TERRAN)),
 					array(0, 2, array("BaGhLa" => Player::SC2RACE_TERRAN, "Kura" => Player::SC2RACE_ZERG), array("Sweety" => Player::SC2RACE_PROTOSS, "Sangui" => Player::SC2RACE_ZERG)),
@@ -304,7 +333,7 @@ class FixturesData extends BaseFixturesData implements FixtureInterface
 			),
 
 			3 => array(
-				"war"	=> array(3, 2, 'FOX',		'FR', '2010-10-08 21:00:00'),
+				"war"	=> array(3, 2, 'FOX',		'FR', new \Datetime('2010-10-08 21:00:00')),
 				"games"	=> array(
 					array(0, 0, array("BaGhLa" => Player::SC2RACE_TERRAN),		array("Jim" => Player::SC2RACE_TERRAN)),
 					array(2, 0, array("MttN" => Player::SC2RACE_TERRAN),		array("ZerGo" => Player::SC2RACE_ZERG)),
@@ -315,7 +344,7 @@ class FixturesData extends BaseFixturesData implements FixtureInterface
 			),
 
 			4 => array(
-				"war"	=> array(5, 0, 'MoX',		'FR', '2010-10-17 21:00:00'),
+				"war"	=> array(5, 0, 'MoX',		'FR', new \Datetime('2010-10-17 21:00:00')),
 				"games"	=> array(
 					array(2, 0, array("BaGhLa" => Player::SC2RACE_TERRAN),		array("Tevou" => Player::SC2RACE_TERRAN)),
 					array(2, 0, array("MttN" => Player::SC2RACE_TERRAN),		array("Fyl" => Player::SC2RACE_ZERG)),
@@ -326,7 +355,7 @@ class FixturesData extends BaseFixturesData implements FixtureInterface
 			),
 
 			5 => array(
-				"war"	=> array(2, 3, 'AdC',		'FR', '2010-10-24 21:00:00'),
+				"war"	=> array(2, 3, 'AdC',		'FR', new \Datetime('2010-10-24 21:00:00')),
 				"games"	=> array(
 					array(0, 2, array("MttN" => Player::SC2RACE_TERRAN),		array("Zym" => Player::SC2RACE_PROTOSS)),
 					array(1, 2, array("loveeyes" => Player::SC2RACE_TERRAN),	array("Fyl" => Player::SC2RACE_TERRAN)),
@@ -336,7 +365,7 @@ class FixturesData extends BaseFixturesData implements FixtureInterface
 				)
 			),
 			6 => array(
-				"war"	=> array(5, 0, 'BriT',	'FR', '2010-11-01 21:00:00'),
+				"war"	=> array(5, 0, 'BriT',	'FR', new \Datetime('2010-11-01 21:00:00')),
 				"games"	=> array(
 					array(2, 0, array("MttN" => Player::SC2RACE_TERRAN),		array("Oseam" => Player::SC2RACE_PROTOSS)),
 					array(2, 0, array("loveeyes" => Player::SC2RACE_TERRAN),	array("Madman" => Player::SC2RACE_TERRAN)),
@@ -347,7 +376,7 @@ class FixturesData extends BaseFixturesData implements FixtureInterface
 
 			),
 			7 => array(
-				"war"	=> array(4, 1, 'Fae',		'BE', '2010-11-07 21:00:00'),
+				"war"	=> array(4, 1, 'Fae',		'BE', new \Datetime('2010-11-07 21:00:00')),
 				"games"	=> array(
 					array(2, 1, array("Clafter" => Player::SC2RACE_TERRAN),		array("Eboceixa" => Player::SC2RACE_PROTOSS)),
 					array(2, 0, array("loveeyes" => Player::SC2RACE_TERRAN),	array("BEPChomage" => Player::SC2RACE_ZERG)),
@@ -359,7 +388,7 @@ class FixturesData extends BaseFixturesData implements FixtureInterface
 			),
 
 			8 => array(
-				"war"	=> array(3, 2, 'RCA',		'FR', '2010-11-14 21:00:00'),
+				"war"	=> array(3, 2, 'RCA',		'FR', new \Datetime('2010-11-14 21:00:00')),
 				"games"	=> array(
 					array(2, 0, array("Clafter" => Player::SC2RACE_TERRAN),		array("Rowa" => Player::SC2RACE_TERRAN)),
 					array(1, 2, array("loveeyes" => Player::SC2RACE_TERRAN),	array("GGs" => Player::SC2RACE_TERRAN)),
@@ -370,21 +399,198 @@ class FixturesData extends BaseFixturesData implements FixtureInterface
 			),
 		);
 		$this->processLeagueWars('pandaria_1', $wars);
+
+		// SC2CL Saison 1
+		$wars = array(
+			0 => array(
+				"war"	=> array(3, 3, 'nuBreed',		'DE', new \Datetime('2010-09-26 19:00:00')),
+				"games"	=> array(
+					array(1, 2, array("MttN" => Player::SC2RACE_TERRAN),		array("Tempest" => Player::SC2RACE_PROTOSS)),
+					array(0, 2, array("loveeyes" => Player::SC2RACE_TERRAN),	array("Shizanu" => Player::SC2RACE_ZERG)),
+					array(2, 0, array("Clafter" => Player::SC2RACE_TERRAN),		array("RokuWa" => Player::SC2RACE_TERRAN)),
+					array(1, 2, array("YoPYoP" => Player::SC2RACE_TERRAN),		array("Dexxer" => Player::SC2RACE_PROTOSS)),
+					array(2, 0, array("Clafter" => Player::SC2RACE_TERRAN, "loveeyes" => Player::SC2RACE_TERRAN),	array("Dexxer" => Player::SC2RACE_PROTOSS, "RokuWa" => Player::SC2RACE_TERRAN)),
+					array(2, 0, array("BaGhLa" => Player::SC2RACE_TERRAN, "Kura" => Player::SC2RACE_ZERG),			array("Tempest" => Player::SC2RACE_PROTOSS, "Shizanu" => Player::SC2RACE_ZERG)),
+				)
+			),
+
+			1 => array(
+				"war"	=> array(4, 2, 'nSK',		'DE', new \Datetime('2010-03-10 19:00:00')),
+				"games"	=> array(
+					array(2, 0, array("MttN" => Player::SC2RACE_TERRAN),		array("KyRoN" => Player::SC2RACE_PROTOSS)),
+					array(2, 0, array("loveeyes" => Player::SC2RACE_TERRAN),	array("fiDZz" => Player::SC2RACE_PROTOSS)),
+					array(1, 2, array("Kura" => Player::SC2RACE_TERRAN),		array("OthUnKnown" => Player::SC2RACE_TERRAN)),
+					array(2, 0, array("nBLiO" => Player::SC2RACE_ZERG),			array("Silver" => Player::SC2RACE_TERRAN)),
+					array(1, 2, array("BaGhLa" => Player::SC2RACE_TERRAN, "Kura" => Player::SC2RACE_ZERG),		array("fiDZz" => Player::SC2RACE_PROTOSS, "OthUnKnown" => Player::SC2RACE_TERRAN)),
+					array(2, 0, array("MttN" => Player::SC2RACE_TERRAN, "loveeyes" => Player::SC2RACE_TERRAN),	array("KyRoN" => Player::SC2RACE_PROTOSS, "Silver" => Player::SC2RACE_TERRAN)),
+				)
+			),
+
+			2 => array(
+				"war"	=> array(2, 4, 'GL',		'NO', new \Datetime('2010-10-10 19:00:00')),
+				"games"	=> array(
+					array(2, 0, array("Clafter" => Player::SC2RACE_TERRAN),		array("Thorgrim" => Player::SC2RACE_TERRAN)),
+					array(0, 2, array("BaGhLa" => Player::SC2RACE_TERRAN),		array("Erlingho" => Player::SC2RACE_TERRAN)),
+					array(0, 2, array("RaptorS" => Player::SC2RACE_PROTOSS),	array("Meltzy" => Player::SC2RACE_ZERG)),
+					array(1, 2, array("Kura" => Player::SC2RACE_TERRAN),		array("Richy" => Player::SC2RACE_PROTOSS)),
+					array(2, 0, array("Clafter" => Player::SC2RACE_TERRAN, "loveeyes" => Player::SC2RACE_TERRAN),	array("Metalon" => Player::SC2RACE_PROTOSS, "Meltzy" => Player::SC2RACE_ZERG)),
+					array(0, 2, array("BaGhLa" => Player::SC2RACE_TERRAN, "Kura" => Player::SC2RACE_ZERG),			array("Richy" => Player::SC2RACE_PROTOSS, "Knutzy" => Player::SC2RACE_PROTOSS)),
+				)
+			),
+
+			3 => array(
+				"war"	=> array(6, 0, 'Baby',		'DE', new \Datetime('2010-10-17 19:00:00')),
+				"games"	=> array(
+					array(2, 0, array("Pepem" => Player::SC2RACE_ZERG),			array("Newman" => Player::SC2RACE_TERRAN)),
+					array(2, 1, array("loveeyes" => Player::SC2RACE_TERRAN),	array("Gremlino" => Player::SC2RACE_TERRAN)),
+					array(2, 0, array("nBLiO" => Player::SC2RACE_ZERG),			array("nae" => Player::SC2RACE_PROTOSS)),
+					array(2, 0, array("Kura" => Player::SC2RACE_RANDOM),		array("Wuuuuwup" => Player::SC2RACE_TERRAN)),
+					array(2, 0, array("nBLiO" => Player::SC2RACE_ZERG, "Kura" => Player::SC2RACE_TERRAN),	array("nae" => Player::SC2RACE_PROTOSS, "Gremlino" => Player::SC2RACE_TERRAN)),
+					array(2, 0, array("mYst" => Player::SC2RACE_RANDOM, "Acid" => Player::SC2RACE_PROTOSS),	array("Nuramon" => Player::SC2RACE_PROTOSS, "Newman" => Player::SC2RACE_TERRAN)),
+				)
+			),
+
+			4 => array(
+				"war"	=> array(4, 2, 'dnc',		'DE', new \Datetime('2010-10-31 19:00:00')),
+				"games"	=> array(
+					array(0, 2, array("Acid" => Player::SC2RACE_PROTOSS),		array("EvilRine" => Player::SC2RACE_TERRAN)),
+					array(2, 0, array("loveeyes" => Player::SC2RACE_TERRAN),	array("Sheeperich" => Player::SC2RACE_ZERG)),
+					array(2, 0, array("Clafter" => Player::SC2RACE_TERRAN),		array("selti" => Player::SC2RACE_PROTOSS)),
+					array(2, 0, array("mYst" => Player::SC2RACE_RANDOM),		array("LukeEndMint" => Player::SC2RACE_ZERG)),
+					array(2, 0, array("Clafter" => Player::SC2RACE_TERRAN, "loveeyes" => Player::SC2RACE_TERRAN),	array("Sheeperich" => Player::SC2RACE_ZERG, "LukeEndMint" => Player::SC2RACE_ZERG)),
+					array(0, 2, array("mYst" => Player::SC2RACE_RANDOM, "Acid" => Player::SC2RACE_PROTOSS),			array("EvilRine" => Player::SC2RACE_TERRAN, "SaTe" => Player::SC2RACE_ZERG)),
+				)
+			),
+		);
+		$this->processLeagueWars('sc2cl_1', $wars);
+
+		// SC2F 1
+		$wars = array(
+			0 => array(
+				"war"	=> array(0, 3, 'SYHPER',		'BE', new \Datetime('2010-10-04 17:00:00')),
+				"games"	=> array(
+					array(1, 2, array("Clafter" => Player::SC2RACE_TERRAN),		array("Feast" => Player::SC2RACE_PROTOSS)),
+					array(0, 2, array("MttN" => Player::SC2RACE_TERRAN),		array("BeNSeN" => Player::SC2RACE_ZERG)),
+					array(0, 2, array("BaGhLa" => Player::SC2RACE_TERRAN),		array("Cosmos" => Player::SC2RACE_TERRAN)),
+				)
+			),
+
+			1 => array(
+				"war"	=> array(1, 4, 'CN',		'FR', new \Datetime('2010-10-11 17:00:00')),
+				"games"	=> array(
+					array(0, 2, array("MttN" => Player::SC2RACE_TERRAN),		array("Didzz" => Player::SC2RACE_PROTOSS)),
+					array(0, 2, array("Clafter" => Player::SC2RACE_TERRAN),		array("Hysteria" => Player::SC2RACE_ZERG)),
+					array(0, 2, array("YoPYoP" => Player::SC2RACE_PROTOSS),		array("SeaW" => Player::SC2RACE_PROTOSS)),
+					array(2, 1, array("Pepem" => Player::SC2RACE_ZERG),		array("Qwerty" => Player::SC2RACE_ZERG)),
+					array(0, 2, array("Clafter" => Player::SC2RACE_TERRAN, "MttN" => Player::SC2RACE_TERRAN),	array("Didzz" => Player::SC2RACE_PROTOSS, "Qwerty" => Player::SC2RACE_ZERG)),
+				)
+			),
+
+			2 => array(
+				"war"	=> array(3, 2, 'Prod',		'FR', new \Datetime('2010-11-28 17:00:00')),
+				"games"	=> array(
+					array(1, 2, array("Bouh" => Player::SC2RACE_PROTOSS),		array("Arca" => Player::SC2RACE_PROTOSS)),
+					array(2, 0, array("Clafter" => Player::SC2RACE_TERRAN),		array("Velith" => Player::SC2RACE_TERRAN)),
+					array(1, 2, array("beerwithme" => Player::SC2RACE_ZERG),		array("NiFi" => Player::SC2RACE_RANDOM)),
+					array(2, 1, array("Pepem" => Player::SC2RACE_ZERG),		array("JeremGS" => Player::SC2RACE_PROTOSS)),
+					array(2, 0, array("Clafter" => Player::SC2RACE_TERRAN, "loveeyes" => Player::SC2RACE_TERRAN),	array("KoDeNi" => Player::SC2RACE_PROTOSS, "Velith" => Player::SC2RACE_TERRAN)),
+				)
+			),
+
+			3 => array(
+				"war"	=> array(2, 3, '3D',		'FR', new \Datetime('2010-12-06 17:00:00')),
+				"games"	=> array(
+					array(0, 2, array("Bouh" => Player::SC2RACE_PROTOSS),		array("Cosmos" => Player::SC2RACE_TERRAN)),
+					array(2, 1, array("Clafter" => Player::SC2RACE_TERRAN),		array("AbY" => Player::SC2RACE_ZERG)),
+					array(0, 2, array("beerwithme" => Player::SC2RACE_ZERG),	array("BiGuP" => Player::SC2RACE_TERRAN)),
+					array(1, 2, array("Pepem" => Player::SC2RACE_ZERG),			array("MaSter" => Player::SC2RACE_PROTOSS)),
+					array(2, 0, array("Clafter" => Player::SC2RACE_TERRAN, "loveeyes" => Player::SC2RACE_TERRAN),	array("AbY" => Player::SC2RACE_ZERG, "Cosmos" => Player::SC2RACE_TERRAN)),
+				)
+			),
+
+			4 => array(
+				"war"	=> array(4, 1, 'MgZ',		'FR', new \Datetime('2010-12-12 17:00:00')),
+				"games"	=> array(
+					array(2, 0, array("Bouh" => Player::SC2RACE_PROTOSS),		array("KeYsEr" => Player::SC2RACE_ZERG)),
+					array(2, 1, array("Clafter" => Player::SC2RACE_TERRAN),		array("ShuttleS" => Player::SC2RACE_ZERG)),
+					array(0, 2, array("Naudar" => Player::SC2RACE_ZERG),		array("Ptak" => Player::SC2RACE_ZERG)),
+					array(2, 0, array("Pepem" => Player::SC2RACE_ZERG),			array("ManneR" => Player::SC2RACE_ZERG)),
+					array(2, 0, array("Clafter" => Player::SC2RACE_TERRAN, "loveeyes" => Player::SC2RACE_TERRAN),	array("KeYsEr" => Player::SC2RACE_ZERG, "cymp" => Player::SC2RACE_PROTOSS)),
+				)
+			),
+
+			5 => array(
+				"war"	=> array(4, 1, 'JPFF',		'FR', new \Datetime('2010-12-17 17:00:00')),
+				"games"	=> array(
+					array(2, 1, array("Clafter" => Player::SC2RACE_TERRAN),		array("Rasmuth" => Player::SC2RACE_PROTOSS)),
+					array(2, 0, array("beerwithme" => Player::SC2RACE_ZERG),	array("Sangui" => Player::SC2RACE_ZERG)),
+					array(2, 1, array("Pepem" => Player::SC2RACE_ZERG),			array("Sweety" => Player::SC2RACE_PROTOSS)),
+					array(0, 2, array("Bouh" => Player::SC2RACE_PROTOSS),		array("Tartiflette" => Player::SC2RACE_TERRAN)),
+					array(2, 0, array("Clafter" => Player::SC2RACE_TERRAN, "loveeyes" => Player::SC2RACE_TERRAN),	array("Sangui" => Player::SC2RACE_ZERG, "Sweety" => Player::SC2RACE_PROTOSS)),
+				)
+			),
+
+			6 => array(
+				"war"	=> array(3, 2, 'CsT',		'FR', new \Datetime('2011-01-16 17:00:00')),
+				"games"	=> array(
+					array(0, 2, array("beerwithme" => Player::SC2RACE_ZERG),	array("Lidwyn" => Player::SC2RACE_TERRAN)),
+					array(0, 2, array("Clafter" => Player::SC2RACE_TERRAN),		array("Tarki" => Player::SC2RACE_ZERG)),
+					array(2, 0, array("Pepem" => Player::SC2RACE_ZERG),			array("Eeel" => Player::SC2RACE_ZERG)),
+					array(2, 0, array("Bouh" => Player::SC2RACE_PROTOSS),		array("Klusty" => Player::SC2RACE_TERRAN)),
+					array(2, 1, array("Clafter" => Player::SC2RACE_TERRAN, "loveeyes" => Player::SC2RACE_TERRAN),	array("Tarki" => Player::SC2RACE_ZERG, "ParadoX" => Player::SC2RACE_PROTOSS)),
+				)
+			),
+
+			7 => array(
+				"war"	=> array(3, 2, 'SN',		'FR', new \Datetime('2011-01-23 17:00:00')),
+				"games"	=> array(
+					array(2, 0, array("Clafter" => Player::SC2RACE_TERRAN),		array("RenZaN" => Player::SC2RACE_ZERG)),
+					array(2, 1, array("Pepem" => Player::SC2RACE_ZERG),			array("iZno" => Player::SC2RACE_TERRAN)),
+					array(0, 2, array("beerwithme" => Player::SC2RACE_ZERG),	array("Moi" => Player::SC2RACE_PROTOSS)),
+					array(2, 1, array("Bouh" => Player::SC2RACE_PROTOSS),		array("BOMBER" => Player::SC2RACE_PROTOSS)),
+					array(0, 2, array("Clafter" => Player::SC2RACE_TERRAN, "loveeyes" => Player::SC2RACE_TERRAN),	array("RenZaN" => Player::SC2RACE_ZERG, "iZno" => Player::SC2RACE_TERRAN)),
+				)
+			),
+
+			8 => array(
+				"war"	=> array(1, 4, 'Virus',		'EU', new \Datetime('2011-02-08 17:00:00')),
+				"games"	=> array(
+					array(0, 2, array("MttN" => Player::SC2RACE_TERRAN),		array("Satiini" => Player::SC2RACE_TERRAN)),
+					array(0, 2, array("Bouh" => Player::SC2RACE_PROTOSS),		array("Laukyo" => Player::SC2RACE_TERRAN)),
+					array(0, 2, array("beerwithme" => Player::SC2RACE_ZERG),	array("effecto" => Player::SC2RACE_TERRAN)),
+					array(0, 2, array("Pepem" => Player::SC2RACE_ZERG),			array("Unleashed" => Player::SC2RACE_ZERG)),
+					array(2, 0, array("Pepem" => Player::SC2RACE_ZERG, "mYst" => Player::SC2RACE_RANDOM),	array("SonG" => Player::SC2RACE_TERRAN, "XiriS" => Player::SC2RACE_PROTOSS)),
+				)
+			),
+
+			9 => array(
+				"war"	=> array(1, 3, 'Oo',		'FR', new \Datetime('2011-02-20 17:00:00')),
+				"games"	=> array(
+					array(1, 2, array("Clafter" => Player::SC2RACE_TERRAN),		array("Swilice" => Player::SC2RACE_TERRAN)),
+					array(2, 0, array("Bouh" => Player::SC2RACE_PROTOSS),		array("TrynFly" => Player::SC2RACE_TERRAN)),
+					array(0, 2, array("beerwithme" => Player::SC2RACE_ZERG),	array("FooFigther" => Player::SC2RACE_TERRAN)),
+					array(1, 2, array("loveeyes" => Player::SC2RACE_TERRAN, "swArm" => Player::SC2RACE_TERRAN),	array("Trynfly" => Player::SC2RACE_TERRAN, "Isaer" => Player::SC2RACE_ZERG)),
+				)
+			),
+		);
+		$this->processLeagueWars('sc2f_1', $wars);
 	}
 
-	public function processLeagueWar($seasonName, array $wars)
+	public function processLeagueWars($seasonName, array $wars)
 	{
+		$data = array();
 		foreach($wars as $war)
 		{
 			$date = $war['war'][4];
 
 			$o = new War();
+			$o->setTeam($this->objects['team']['nB.SC2']);
 			$o->setTeamScore($war['war'][0]);
 			$o->setOpponentScore($war['war'][1]);
 			$o->setOpponentName($war['war'][2]);
 			$o->setOpponentCountry($war['war'][3]);
 			$o->setDate($date);
-			$o->setSeason($this->objects['season'][$seasonName]);
+			$o->setSeason($this->objects['seasons'][$seasonName]);
 
 			foreach($war['games'] as $game)
 			{
@@ -394,30 +600,66 @@ class FixturesData extends BaseFixturesData implements FixtureInterface
 				$wg->setWar($o);
 
 				$g = new Game();
-				$g->setWarGame($wg);
 				$g->setDate($date);
-				$g->setWar($o);
 
-				foreach($game[2] as $race => $name)
+				foreach($game[2] as $name => $race)
 				{
 					$gp = new GamePlayer();
+					if(isset($this->objects['player'][$name]))
+					{
+						$gp->setPlayer($this->objects['player'][$name]);
+					}
 					$gp->setName($name);
 					$gp->setRace($race);
 					$gp->setTeam(1);
 					$gp->setWarGame($wg);
+					$gp->setGame($g);
 					$g->addPlayer($gp);
 				}
 
-				foreach($game[3] as $race => $name)
+				foreach($game[3] as $name => $race)
 				{
 					$gp = new GamePlayer();
+					if(isset($this->objects['player'][$name]))
+					{
+						$gp->setPlayer($this->objects['player'][$name]);
+					}
 					$gp->setName($name);
 					$gp->setRace($race);
 					$gp->setTeam(2);
 					$gp->setWarGame($wg);
+					$gp->setGame($g);
 					$g->addPlayer($gp);
 				}
+
+				if($game[0] > 0)
+				{
+					foreach(range(1, $game[0]) as $i)
+					{
+						$clone = clone $g;
+						$clone->setWarGame($wg);
+						$clone->setWar($o);
+						$clone->setWinner(1);
+						$wg->addGame($clone);
+					}
+				}
+
+				if($game[1] > 0)
+				{
+					foreach(range(1, $game[1]) as $i)
+					{
+						$clone = clone $g;
+						$clone->setWinner(2);
+						$wg->addGame($clone);
+					}
+				}
+
+				$o->addGame($wg);
 			}
+
+			$data[] = $o;
 		}
+
+		$this->registerObjects($seasonName.'_wars', $data);
 	}
 }

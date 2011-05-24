@@ -77,23 +77,23 @@ class User implements UserInterface
     protected $country;
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", nullable="true")
      * @Assert\Url()
      */
     protected $facebook;
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", nullable="true")
      */
     protected $twitter;
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", nullable="true")
      */
     protected $skype;
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", nullable="true")
      * @Assert\Email()
      */
     protected $msn;

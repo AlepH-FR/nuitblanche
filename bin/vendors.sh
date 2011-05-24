@@ -52,13 +52,13 @@ install_git assetic http://github.com/kriswallsmith/assetic.git v1.0.0alpha2
 install_git symfony http://github.com/symfony/symfony.git v$VERSION
 
 # Doctrine ORM
-install_git doctrine http://github.com/doctrine/doctrine2.git 2.0.4
+install_git doctrine http://github.com/doctrine/doctrine2.git 35a318148cd891347f489e64140b724beb267849
 
 # Doctrine DBAL
 install_git doctrine-dbal http://github.com/doctrine/dbal.git 2.0.4
 
 # Doctrine Common
-install_git doctrine-common http://github.com/doctrine/common.git 3.0.x
+install_git doctrine-common http://github.com/doctrine/common.git fb845829afbd7e1821f608417894629bbb1b2a48
 
 # Swiftmailer
 install_git swiftmailer http://github.com/swiftmailer/swiftmailer.git origin/4.1
@@ -68,6 +68,9 @@ install_git twig http://github.com/fabpot/Twig.git
 
 # Twig Extensions
 install_git twig-extensions http://github.com/fabpot/Twig-extensions.git
+
+# MetaData
+install_git metadata http://github.com/schmittjoh/metadata.git 2350020f8d33f30aba891145ffa8bcb9bcdec38d
 
 # Monolog
 install_git monolog http://github.com/Seldaek/monolog.git

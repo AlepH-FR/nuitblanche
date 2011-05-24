@@ -173,6 +173,10 @@ class WarGame extends BaseGame
 		}
 
 		return implode(' ', $infos);
-
 	}
+
+	protected function getTeam($team_id)
+    {
+        return $this->games[0]->getTeam($team_id);
+    }
 }

@@ -54,6 +54,28 @@ class Game extends BaseGame
      */
     protected $replay;
 
+	public function __construct()
+	{
+		$this->players = new \Doctrine\Common\Collections\ArrayCollection();
+	}
+	
+	public function __clone()
+	{
+		if(is_object($this->players))
+		{
+			$clones = new \Doctrine\Common\Collections\ArrayCollection();
+
+			foreach($this->players as $player)
+			{
+				$clone = clone $player;
+				$clone->setGame($this);
+				$clones->add($clone);
+			}
+
+			$this->players = $clones;
+		}
+	}
+
     public function getId() {
         return $this->id;
     }
@@ -75,11 +97,6 @@ class Game extends BaseGame
     }
 
     public function getPlayers() {
-        if(!$this->players)
-		{
-			$this->players = new \Doctrine\Common\Collections\ArrayCollection();
-		}
-
 		return $this->players;
     }
 

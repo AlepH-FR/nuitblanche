@@ -38,7 +38,7 @@ class Season
     protected $startDate;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime", nullable="true")
      */
     protected $endDate;
 
@@ -48,22 +48,22 @@ class Season
     protected $ended;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", nullable="true")
      */
     protected $wins;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", nullable="true")
      */
     protected $draws;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", nullable="true")
      */
     protected $losses;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", nullable="true")
      */
     protected $position;
 
@@ -132,6 +132,11 @@ class Season
         $this->wins = $wins;
     }
 
+	public function incrWins()
+	{
+		$this->wins++;
+	}
+
     public function getDraws() {
         return $this->draws;
     }
@@ -140,6 +145,11 @@ class Season
         $this->draws = $draws;
     }
 
+	public function incrDraws()
+	{
+		$this->draws++;
+	}
+
     public function getLosses() {
         return $this->losses;
     }
@@ -147,6 +157,11 @@ class Season
     public function setLosses($losses) {
         $this->losses = $losses;
     }
+
+	public function incrLosses()
+	{
+		$this->losses++;
+	}
 
     public function getPosition() {
         return $this->position;

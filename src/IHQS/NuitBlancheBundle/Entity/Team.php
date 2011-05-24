@@ -38,6 +38,11 @@ class Team
      */
     protected $players;
 
+	public function __construct()
+	{
+		$this->players = new \Doctrine\Common\Collections\ArrayCollection();
+	}
+
     public function getId() {
         return $this->id;
     }

@@ -61,19 +61,19 @@ class Player
     protected $sc2Race;
 
     /**
-     * @ORM\Column(type="string")
-     * @Assert\Url()
+     * @ORM\Column(type="string", nullable="true")
+     * @Assert\Regex("/\d+/")
      */
     protected $sc2ProfileEsl;
 
     /**
-     * @ORM\Column(type="string")
-     * @Assert\Url()
+     * @ORM\Column(type="string", nullable="true")
+     * @Assert\Regex("/\d+/")
      */
     protected $sc2ProfileSc2cl;
     
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", nullable="true")
      * @Assert\Url()
      */
     protected $sc2ProfilePandaria;
@@ -216,7 +216,7 @@ class Player
         $this->initStatsVariables();
 
         $counter = 0;
-        foreach($this->getGames() as $game)
+        foreach($this->getWarGames() as $game)
         {
             $type = "_" . $game->getType();
             
@@ -266,6 +266,59 @@ class Player
 
     public function get2v2Teams()
     {
-        
+		$teams = array();
+		
+        foreach($this->getWarGames() as $game)
+        {
+            if($game->getType() != Game::TYPE_2v2)
+            {
+				continue; 
+			}
+
+			// looking for ally
+			$ally = null;
+			$members = $game->getTeam1();
+			foreach($members as $member)
+			{
+				if($member->getName() != $this->getSc2Account())
+				{
+					$ally = $member;
+					break;
+				}
+			}
+
+			// updating hash table
+			$key = $ally->getName(). '_' . $ally->getRace();
+			if(!isset($teams[$key]))
+			{
+				$teams[$key] = array(
+					"allyName"	=> $ally->getName(),
+					"allyRace"	=> $ally->getRace(),
+					"wins"		=> 0,
+					"losses"	=> 0
+				);
+			}
+
+			if($game->getTeam1Result() == Game::RESULT_WIN)     { $teams[$key]["wins"]++; }
+			if($game->getTeam1Result() == Game::RESULT_LOSS)    { $teams[$key]["losses"]++; }
+		}
+
+        foreach($teams as $key => $team)
+        {
+            $teams[$key]["ratio"] = (($team["losses"] + $team["wins"]) == 0)
+                    ? 0
+                    : round(100 * $team["wins"] / ($team["losses"] + $team["wins"]));
+        }
+
+		uksort($teams, function($a, $b) {
+			if($a['wins'] == $b['wins'])
+			{
+				if($a['losses'] == $b['losses']) { return 0; }
+				return $a['losses'] < $b['losses'] ? 1 : -1;
+			}
+
+			return $a['wins'] > $b['wins'] ? 1 : -1;
+		});
+		return $teams;
     }
 }

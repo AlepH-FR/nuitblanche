@@ -10,7 +10,7 @@
     <div class="notice notice-war">
         <h2><a class="no-color" href="{{ url('league_show', { 'league_id' : league.id }) }}">
             <span>
-                <img src="{{ asset('bundles/ihqsnuitblanche/images/flags/' ~ league.country ~ '.gif') }}" alt="{{ league.country }}" />
+                <img src="{{ asset('bundles/ihqsnuitblanche/images/flags/' ~ league.country | lower  ~ '.gif') }}" alt="{{ league.country }}" />
                 {{ league.name }}
             </span>
         </a></h2>
@@ -31,16 +31,16 @@
                 <li>
                     <span class="league">{{ "stats" | trans }}</span>
                     <span class="opponent">
-                        <strong class="win">{{ league.lastSeason.wins }}</strong> -
-                        <strong class="draw">{{ league.lastSeason.draws }}</strong> -
-                        <strong class="loss">{{ league.lastSeason.losses }}</strong>
+                        <strong class="win">{{ league.lastSeason.wins | default(0) }}</strong> -
+                        <strong class="draw">{{ league.lastSeason.draws | default(0) }}</strong> -
+                        <strong class="loss">{{ league.lastSeason.losses | default(0) }}</strong>
                     </span>
                 </li>
                 <li>
                     <span class="league">{{ "next war" | trans }}</span>
                     {% if league.lastSeason.nextWar %}
                     <span class="opponent">
-                         <img src="{{ asset('bundles/ihqsnuitblanche/images/flags/' ~ league.lastSeason.nextWar.opponentCountry ~ '.gif') }}" alt="{{ league.lastSeason.nextWar.opponentCountry }}" class="flag" />
+                         <img src="{{ asset('bundles/ihqsnuitblanche/images/flags/' ~ league.lastSeason.nextWar.opponentCountry | lower  ~ '.gif') }}" alt="{{ league.lastSeason.nextWar.opponentCountry }}" class="flag" />
                         {{ league.lastSeason.nextWar.opponentName }}
                     </span>
                     <span class="date">{{ league.lastSeason.nextWar.date.format('d m Y - H:i') }}</span>

@@ -25,7 +25,7 @@ class ReplayRepository extends EntityRepository
 	{
 		$replay = new Replay();
         $replay->setReplayProcessor($this->replayProcessor);
-		return $reply;
+		return $replay;
 	}
 
     public function findAll()

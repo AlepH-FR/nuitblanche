@@ -14,6 +14,7 @@ $loader->registerNamespaces(array(
     'Monolog'          => __DIR__.'/../vendor/monolog/src',
     'Assetic'          => __DIR__.'/../vendor/assetic/src',
     'SC2Chart'         => __DIR__.'/../vendor/sc2chart/src',
+    'Metadata'         => __DIR__.'/../vendor/metadata/src',
     'IHQS'             => __DIR__.'/../src',
 ));
 $loader->registerPrefixes(array(

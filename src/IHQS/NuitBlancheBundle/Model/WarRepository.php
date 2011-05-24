@@ -18,6 +18,14 @@ class WarRepository extends EntityRepository
 		
 	}
 
+    public function findAll()
+    {
+        return $this->createQueryBuilder('n')->
+            orderBy('n.date', 'DESC')->
+            getQuery()->
+            execute();
+    }
+
     public function findLatest()
     {
         return $this->createQueryBuilder('w')->

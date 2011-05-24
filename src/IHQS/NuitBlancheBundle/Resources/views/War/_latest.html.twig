@@ -6,7 +6,7 @@
             <a href="{{ url('war_show', { 'war_id': war.id }) }}">
                 <span class="team">
                     <img src="{{ asset('bundles/ihqsnuitblanche/images/ico/result_' ~ war.result ~ '.gif') }}" alt="{{ war.result }}" />
-                    <img src="{{ asset('bundles/ihqsnuitblanche/images/flags/' ~ war.opponentCountry ~ '.gif') }}" alt="{{ war.opponentCountry }}" class="flag" />
+                    <img src="{{ asset('bundles/ihqsnuitblanche/images/flags/' ~ war.opponentCountry | lower  ~ '.gif') }}" alt="{{ war.opponentCountry}}" class="flag" />
                     {{ war.opponentName }}
                 </span>
                 <span class="{{ war.result }}">{{ war.teamScore }}-{{ war.opponentScore }}</span>

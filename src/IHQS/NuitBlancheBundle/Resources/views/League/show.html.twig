@@ -28,9 +28,9 @@
             <li>
                 <span class="league">{{ "stats" | trans }}</span>
                 <span class="opponent">
-                    <strong class="win">{{ season.wins }}</strong> -
-                    <strong class="draw">{{ season.draws }}</strong> -
-                    <strong class="loss">{{ season.losses }}</strong>
+                    <strong class="win">{{ season.wins | default(0) }}</strong> -
+                    <strong class="draw">{{ season.draws | default(0) }}</strong> -
+                    <strong class="loss">{{ season.losses | default(0) }}</strong>
                 </span>
             </li>
 
@@ -44,7 +44,7 @@
                 <span class="league">{{ "next war" | trans }}</span>
                 {% if season.nextWar %}
                 <span class="opponent">
-                     <img src="{{ asset('bundles/ihqsnuitblanche/images/flags/' ~ season.nextWar.opponentCountry ~ '.gif') }}" alt="{{ season.nextWar.opponentCountry }}" class="flag" />
+                     <img src="{{ asset('bundles/ihqsnuitblanche/images/flags/' ~ season.nextWar.opponentCountry | lower  ~ '.gif') }}" alt="{{ season.nextWar.opponentCountry }}" class="flag" />
                     {{ season.nextWar.opponentName }}
                 </span>
                 <span class="date">{{ season.nextWar.date.format('d m Y - H:i') }}</span>

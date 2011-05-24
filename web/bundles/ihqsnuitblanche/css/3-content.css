@@ -410,10 +410,15 @@ div.wide ul li span.little
 /**
  * News
  */
-.news p
+.news p,
+.news ul
 {
     margin-bottom: 10px;
     text-align: justify;
+}
+.news ul li
+{
+    list-style: circle inside;
 }
 .news .meta
 {
@@ -451,7 +456,8 @@ img.flag
     vertical-align:middle;
 }
 
-div.wars table
+div.wars table,
+div.replays table
 {
 }
 div.replays table caption,
@@ -459,12 +465,18 @@ div.wars table caption
 {
     display: none;
 }
-
 div.replays table tr,
 div.wars table tr
 {
     height: 20px;
-    border-bottom: 2px solid white;
+    border-bottom: 1px solid #eee;
+    margin: 3px 0;
+}
+
+div.replays table tr.last,
+div.wars table tr.last
+{
+    border-bottom: 1px solid white;
 }
 div.replays table td,
 div.wars table td
@@ -516,8 +528,8 @@ div.wars table td.match-win
     background: -webkit-gradient(linear, left top, left bottom, from(#0f0), to(#fff));
     background: -moz-linear-gradient(bottom, #0f0, #fff);
     -ms-filter: "progid:DXImageTransform.Microsoft.gradient (GradientType=0, startColorstr=#0f0, endColorstr=#fff)";
-
 }
+
 div.wars table td.match-loss
 {
     text-align: center;
@@ -526,6 +538,12 @@ div.wars table td.match-loss
     background: -webkit-gradient(linear, left top, left bottom, from(#f00), to(#fff));
     background: -moz-linear-gradient(bottom, #f00, #fff);
     -ms-filter: "progid:DXImageTransform.Microsoft.gradient (GradientType=0, startColorstr=#f00, endColorstr=#fff)";
+}
+
+div.wars table td.match-draw
+{
+    text-align: center;
+    font-weight: bold;
 }
 
 div.replays table td.map

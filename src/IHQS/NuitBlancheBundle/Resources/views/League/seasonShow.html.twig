@@ -35,9 +35,9 @@
             <li>
                 <span class="league">{{ "stats" | trans }}</span>
                 <span class="opponent">
-                    <strong class="win">{{ season.wins }}</strong> -
-                    <strong class="draw">{{ season.draws }}</strong> -
-                    <strong class="loss">{{ season.losses }}</strong>
+                    <strong class="win">{{ season.wins | default(0) }}</strong> -
+                    <strong class="draw">{{ season.draws | default(0) }}</strong> -
+                    <strong class="loss">{{ season.losses | default(0) }}</strong>
                 </span>
             </li>
 
@@ -51,7 +51,7 @@
                 <span class="league">{{ "next war" | trans }}</span>
                 {% if season.nextWar %}
                 <span class="opponent">
-                     <img src="{{ asset('bundles/ihqsnuitblanche/images/flags/' ~ season.nextWar.opponentCountry ~ '.gif') }}" alt="{{ season.nextWar.opponentCountry }}" class="flag" />
+                     <img src="{{ asset('bundles/ihqsnuitblanche/images/flags/' ~ season.nextWar.opponentCountry | lower  ~ '.gif') }}" alt="{{ season.nextWar.opponentCountry }}" class="flag" />
                     {{ season.nextWar.opponentName }}
                 </span>
                 <span class="date">{{ season.nextWar.date.format('d m Y - H:i') }}</span>
@@ -82,11 +82,11 @@
                         <img class="flag" src="{{ asset('bundles/ihqsnuitblanche/images/flags/FR.gif') }}" />
                         {{ war.team.tag }}
                     </td>
-                    <td class="score match-win">{{ war.teamScore}}</td>
+                    <td class="score match-{{ war.result }}">{{ war.teamScore}}</td>
                     <td class="separator"></td>
-                    <td class="score match-loss">{{ war.opponentScore }}</td>
+                    <td class="score match-{{ war.opponentResult }}">{{ war.opponentScore }}</td>
                     <td class="player player-right">
-                         <img src="{{ asset('bundles/ihqsnuitblanche/images/flags/' ~ war.opponentCountry ~ '.gif') }}" alt="{{ war.opponentCountry }}" class="flag" />
+                         <img src="{{ asset('bundles/ihqsnuitblanche/images/flags/' ~ war.opponentCountry | lower  ~ '.gif') }}" alt="{{ war.opponentCountry }}" class="flag" />
                         {{ war.opponentName }}
                     </td>
                     <td class="date">{{ war.date.format('d m Y') }}</td>

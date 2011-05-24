@@ -106,18 +106,26 @@ class NewsController extends BaseController
 
     /**
      * @Route("contribute/news/add", name="contribute_news_new")
+     * @Route("contribute/news/{news_id}/edit", name="contribute_news_edit")
      * @Template("IHQSNuitBlancheBundle:Main:adminForm.html.twig")
      */
-    public function newAction()
+    public function newAction($news_id = null)
     {
         $user = $this->get('security.context')->getToken()->getUser();
 
         // creating default object
-        $news = new News();
-        $news
-            ->setAuthor($user)
-            ->setDate(new \Datetime())
-        ;
+		if(!is_null($news_id))
+		{
+			$news = $this->get('nb.manager.news')->findOneById($news_id);
+		}
+		else
+		{
+			$news = new News();
+			$news
+				->setAuthor($user)
+				->setDate(new \Datetime())
+			;
+		}
 
         // creating form
         $formType = $this->container->getParameter('nb.form.news.class');

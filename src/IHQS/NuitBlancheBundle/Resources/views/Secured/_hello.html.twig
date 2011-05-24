@@ -1,6 +1,6 @@
 <div class="block-login">
     <div class="log">
-        <img class="avatar" src="{{ user.avatar }}" />
+        <img class="avatar" src="{{ user.avatar | default('/upload/avatar/default.gif') }}" />
         <div class="userdata">
             {{ "Logged as" | trans }}<br />
             <span class="username">{{ user.username }}</span>
@@ -44,12 +44,11 @@
     <br /><br />
     <p>for version <strong>1.0</strong> :</p>
     <ul>
-        <li>back office</li>
+        <li>back office on news</li>
     </ul>
     <p>Then website will be online !</p>
     <p>for version <strong>1.1</strong> :</p>
     <ul>
-        <li>2on2 stats</li>
         <li>account edition</li>
         <li>fr_FR, en_US translations</li>
         <li>internationalized dates</li>
