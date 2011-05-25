@@ -9,14 +9,22 @@
 {% block right %}
     {% if not is_granted('ROLE_USER') %}
         <div class="register">
-            <a href="{{ url('_secured_register') }}">{{ "Register" | trans }}</a>
+            <ul>
+                <li>
+                    <a href="{{ url('_secured_register') }}">{{ "Register" | trans }}</a>
+                </li>
+            </ul>
         </div>
     {% else %}
         <div class="register">
-            <a href="{{ url('_secured_profile_edition') }}">{{ "Edit my profile" | trans }}</a>
-        </div>
-        <div class="register">
-            <a href="{{ url('_secured_profile_password') }}">{{ "Change password" | trans }}</a>
+            <ul>
+                <li>
+                    <a href="{{ url('_secured_profile_edition') }}">{{ "Edit my profile" | trans }}</a>
+                </li>
+                <li>
+                    <a href="{{ url('_secured_profile_password') }}">{{ "Change password" | trans }}</a>
+                </li>
+            </ul>
         </div>
     {% endif %}
     {% render "IHQSNuitBlancheBundle:War:_latest" %}
