@@ -45,6 +45,7 @@ class PlayerController extends Controller
             'teams'	=> $this->get('nb.manager.team')->findAll(),
             'team'      => $team,
             'players'   => $players,
+            'stats'     => false
         );
     }
 }

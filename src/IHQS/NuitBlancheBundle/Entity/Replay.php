@@ -59,22 +59,22 @@ class Replay
      */
     protected $version;
 
-	/**
-	 * @ORM\Column(type="integer", nullable="true")
-	 */
-	protected $downloads;
+    /**
+     * @ORM\Column(type="integer", nullable="true")
+     */
+    protected $downloads;
 
     /**
      * @ORM\Column(type="text")
      */
-	protected $chatLog;
+    protected $chatLog;
 
     /**
      * @ORM\ManyToOne(targetEntity="Player")
      */
-	protected $uploader;
+    protected $uploader;
 
-	private $processor;
+    private $processor;
 
     public function getId() {
         return $this->id;

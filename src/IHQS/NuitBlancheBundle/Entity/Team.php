@@ -38,10 +38,18 @@ class Team
      */
     protected $players;
 
-	public function __construct()
-	{
-		$this->players = new \Doctrine\Common\Collections\ArrayCollection();
-	}
+    /**
+     * @ORM\OneToMany(targetEntity="War", mappedBy="team")
+     */
+    protected $wars;
+
+    protected $statsInit = false;
+    protected $stats;
+
+    public function __construct()
+    {
+        $this->players = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     public function getId() {
         return $this->id;
@@ -71,6 +79,10 @@ class Team
         $this->tag = $tag;
     }
 
+    public function getWars() {
+        return $this->wars;
+    }
+
     public function getPlayers() {
         return $this->players;
     }
@@ -85,8 +97,75 @@ class Team
         $this->players->remove($player);
     }
 
-	public function __toString()
-	{
-		return $this->name;
-	}
+    public function __toString()
+    {
+        return $this->name;
+    }
+
+    public function getStats()
+    {
+        if($this->statsInit) { return $this->stats; }
+
+        $this->initStatsVariables();
+
+        foreach($this->getWars() as $war)
+        {
+            switch($war->getResult())
+            {
+                case Game::RESULT_WIN:
+                    $this->stats['wars']['wins']++;
+                    break;
+                case Game::RESULT_LOSS:
+                    $this->stats['wars']['losses']++;
+                    break;
+                default:
+                case Game::RESULT_DRAW:
+                    $this->stats['wars']['draws']++;
+                    break;
+            }
+
+            foreach($war->getGames() as $game)
+            {
+                if($game->getGames()->count() == 0)
+                {
+                    print "<pre>"; print $game->getId(); print "</pre>";
+                    continue;
+                }
+                $type = "_" . $game->getType();
+
+                if($game->getTeam1Result() == Game::RESULT_WIN)     { $this->stats[$type]["wins"]++; }
+                if($game->getTeam1Result() == Game::RESULT_LOSS)    { $this->stats[$type]["losses"]++; }
+            }
+        }
+
+        foreach($this->stats as $type => $data)
+        {
+            $this->stats[$type]["ratio"] = (($data["losses"] + $data["wins"]) == 0)
+                ? 0
+                : round(100 * $data["wins"] / ($data["losses"] + $data["wins"]));
+        }
+
+        $this->statsInit = true;
+        return $this->stats;
+    }
+
+    public function initStatsVariables()
+    {
+        $this->stats = array(
+            "_1v1" => array(),
+            "_2v2" => array(),
+            "wars" => array(),
+        );
+
+        foreach($this->stats as $type => $data)
+        {
+            $this->stats[$type] = array(
+                "wins"      => 0,
+                "losses"    => 0,
+                "ratio"     => 0
+            );
+        }
+
+        $this->stats['wars']['draws'] = 0;
+    }
 }

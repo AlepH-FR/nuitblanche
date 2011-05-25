@@ -125,43 +125,43 @@ class Season
     }
 
     public function getWins() {
-        return $this->wins;
+        return $this->wins ?: 0;
     }
 
     public function setWins($wins) {
         $this->wins = $wins;
     }
 
-	public function incrWins()
-	{
-		$this->wins++;
-	}
+    public function incrWins($count = 1)
+    {
+        $this->wins += $count;
+    }
 
     public function getDraws() {
-        return $this->draws;
+        return $this->draws ?: 0;
     }
 
     public function setDraws($draws) {
         $this->draws = $draws;
     }
 
-	public function incrDraws()
-	{
-		$this->draws++;
-	}
+    public function incrDraws($count = 1)
+    {
+        $this->draws += $count;
+    }
 
     public function getLosses() {
-        return $this->losses;
+        return $this->losses ?: 0;
     }
 
     public function setLosses($losses) {
         $this->losses = $losses;
     }
 
-	public function incrLosses()
-	{
-		$this->losses++;
-	}
+    public function incrLosses($count = 1)
+    {
+        $this->losses += $count;
+    }
 
     public function getPosition() {
         return $this->position;
@@ -180,8 +180,8 @@ class Season
         return current($this->wars);
     }
 
-	public function __toString()
-	{
-		return $this->league->__toString() . ' - Season #' . $this->number;
-	}
+    public function __toString()
+    {
+        return $this->league->__toString() . ' - Season #' . $this->number;
+    }
 }

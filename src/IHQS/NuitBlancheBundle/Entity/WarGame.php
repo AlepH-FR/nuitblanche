@@ -46,46 +46,46 @@ class WarGame extends BaseGame
 
     private $_listeners = array();
 
-	public function __construct()
-	{
-		$this->games	= new \Doctrine\Common\Collections\ArrayCollection();
-		$this->players	= new \Doctrine\Common\Collections\ArrayCollection();
-	}
+    public function __construct()
+    {
+        $this->games	= new \Doctrine\Common\Collections\ArrayCollection();
+        $this->players	= new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
-	public function getId()
-	{
-		return $this->id;
-	}
+    public function getId()
+    {
+        return $this->id;
+    }
 
-	public function getWar()
-	{
-		return $this->war;
-	}
+    public function getWar()
+    {
+        return $this->war;
+    }
 
-	public function setWar(War $war)
-	{
-		$this->war = $war;
-	}
+    public function setWar(War $war)
+    {
+        $this->war = $war;
+    }
 
-	public function getGames()
-	{
-		return $this->games;
-	}
+    public function getGames()
+    {
+        return $this->games;
+    }
 
-	public function addGame(Game $game)
-	{
-		$this->games->add($game);
-	}
+    public function addGame(Game $game)
+    {
+        $this->games->add($game);
+    }
 
-	public function removeGame(Game $game)
-	{
-		$this->games->remove($game);
-	}
+    public function removeGame(Game $game)
+    {
+        $this->games->remove($game);
+    }
 
-	public function setGames(\Doctrine\Common\Collections\ArrayCollection $games)
-	{
-		$this->games = $games;
-	}
+    public function setGames(\Doctrine\Common\Collections\ArrayCollection $games)
+    {
+        $this->games = $games;
+    }
 
     public function getPlayers() {
         return $this->players;
@@ -95,87 +95,87 @@ class WarGame extends BaseGame
         $this->players = $players;
     }
 
-	public function addPlayer(Player $player) {
-		$this->players->add($player);
-	}
+    public function addPlayer(Player $player) {
+        $this->players->add($player);
+    }
 
-	public function removePlayer(Player $player) {
-		$this->players->remove($player);
-	}
+    public function removePlayer(Player $player) {
+        $this->players->remove($player);
+    }
 
     public function getType()
     {
-		return $this->games[0]->getType();
+        return $this->games[0]->getType();
     }
 
-	public function getTeam1Score()
-	{
-		return $this->team1Score;
-	}
+    public function getTeam1Score()
+    {
+        return $this->team1Score;
+    }
 
-	public function setTeam1Score($team1Score)
-	{
-		$this->team1Score = $team1Score;
-	}
+    public function setTeam1Score($team1Score)
+    {
+        $this->team1Score = $team1Score;
+    }
 
-	public function getTeam2Score()
-	{
-		return $this->team2Score;
-	}
+    public function getTeam2Score()
+    {
+        return $this->team2Score;
+    }
 
-	public function setTeam2Score($team2Score)
-	{
-		$this->team2Score = $team2Score;
-	}
+    public function setTeam2Score($team2Score)
+    {
+        $this->team2Score = $team2Score;
+    }
 
-	/**
-	 * @ORM\PrePersist
-	 */
-	public function prePersist()
-	{
-		$this->updateTeamScores();
-	}
+    /**
+     * @ORM\PrePersist
+     */
+    public function prePersist()
+    {
+        $this->updateTeamScores();
+    }
 
-	/**
-	 * @ORM\PreUpdate
-	 */
-	public function preUpdate()
-	{
-		$this->updateTeamScores();
-	}
+    /**
+     * @ORM\PreUpdate
+     */
+    public function preUpdate()
+    {
+        $this->updateTeamScores();
+    }
 
-	public function updateTeamScores()
-	{
-		$team1score = 0;
-		$team2score = 0;
+    public function updateTeamScores()
+    {
+        $team1score = 0;
+        $team2score = 0;
 
-		foreach($this->games as $game)
-		{
-			$var = "team" . $game->getWinner() . "score";
-			${$var}++;
-		}
+        foreach($this->games as $game)
+        {
+            $var = "team" . $game->getWinner() . "score";
+            ${$var}++;
+        }
 
-		$this->setTeam1Score($team1score);
-		$this->setTeam2Score($team2score);
-	}
+        $this->setTeam1Score($team1score);
+        $this->setTeam2Score($team2score);
+    }
 
-	public function __toString()
-	{
-		$infos = array(
-			'vs',
-			$this->getWar()->getOpponentName(),
-			'-',
-		);
-		
-		foreach($this->players as $player)
-		{
-			$infos[] = (string) $player;
-		}
+    public function __toString()
+    {
+        $infos = array(
+            'vs',
+            $this->getWar()->getOpponentName(),
+            '-',
+        );
 
-		return implode(' ', $infos);
-	}
+        foreach($this->players as $player)
+        {
+            $infos[] = (string) $player;
+        }
 
-	protected function getTeam($team_id)
+        return implode(' ', $infos);
+    }
+
+    protected function getTeam($team_id)
     {
         return $this->games[0]->getTeam($team_id);
     }

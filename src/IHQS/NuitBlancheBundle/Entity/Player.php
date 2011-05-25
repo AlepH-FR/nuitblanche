@@ -85,6 +85,7 @@ class Player
 
     /**
      * @ORM\OneToMany(targetEntity="GamePlayer", mappedBy="player")
+     * @ORM\OrderBy({"id" = "DESC"})
      */
     protected $games;
 

@@ -170,8 +170,8 @@ class FixturesData extends BaseFixturesData implements FixtureInterface
 			</p>
 			<ul>
 				<li>leagues and seasons recaps</li>
-				<li>detail clan war page with related replays</li>
-				<li>detail profiles with statistics, clan war games and replays related</li>
+				<li>detailled clan war page with related replays</li>
+				<li>detailled profiles with statistics, clan war games and replays related</li>
 				<li>cute replay page with apm chart, chat log and more</li>
 				<li>... and more you'll discover while browsing this website</li>
 			</ul>
@@ -181,7 +181,6 @@ class FixturesData extends BaseFixturesData implements FixtureInterface
 			</p>
 			<ul>
 				<li>forum</li>
-				<li>profile edition</li>
 				<li>embedded stream pages, with live stream, show history, ...</li>
 				<li>replay notes and comments</li>
 				<li>internationalization for french only speakers (they suck I know !)</li>
@@ -324,7 +323,7 @@ class FixturesData extends BaseFixturesData implements FixtureInterface
 			2 => array(
 				"war"	=> array(2, 3, 'JPFF',	'FR', new \Datetime('2010-10-03 21:00:00')),
 				"games"	=> array(
-					array(0, 0, array("BaGhLa" => Player::SC2RACE_TERRAN),		array("Sweety" => Player::SC2RACE_PROTOSS)),
+					array(0, 2, array("BaGhLa" => Player::SC2RACE_TERRAN),		array("Sweety" => Player::SC2RACE_PROTOSS)),
 					array(0, 2, array("loveeyes" => Player::SC2RACE_TERRAN),		array("Rasmuth" => Player::SC2RACE_PROTOSS)),
 					array(2, 0, array("MttN" => Player::SC2RACE_TERRAN),		array("Sangui" => Player::SC2RACE_ZERG)),
 					array(2, 0, array("Clafter" => Player::SC2RACE_TERRAN),		array("Tartiflette" => Player::SC2RACE_TERRAN)),
@@ -335,7 +334,7 @@ class FixturesData extends BaseFixturesData implements FixtureInterface
 			3 => array(
 				"war"	=> array(3, 2, 'FOX',		'FR', new \Datetime('2010-10-08 21:00:00')),
 				"games"	=> array(
-					array(0, 0, array("BaGhLa" => Player::SC2RACE_TERRAN),		array("Jim" => Player::SC2RACE_TERRAN)),
+					array(0, 2, array("BaGhLa" => Player::SC2RACE_TERRAN),		array("Jim" => Player::SC2RACE_TERRAN)),
 					array(2, 0, array("MttN" => Player::SC2RACE_TERRAN),		array("ZerGo" => Player::SC2RACE_ZERG)),
 					array(2, 0, array("YoPYoP" => Player::SC2RACE_PROTOSS),		array("jerome" => Player::SC2RACE_PROTOSS)),
 					array(2, 0, array("Clafter" => Player::SC2RACE_TERRAN),		array("Osgiliath" => Player::SC2RACE_ZERG)),
@@ -415,7 +414,7 @@ class FixturesData extends BaseFixturesData implements FixtureInterface
 			),
 
 			1 => array(
-				"war"	=> array(4, 2, 'nSK',		'DE', new \Datetime('2010-03-10 19:00:00')),
+				"war"	=> array(4, 2, 'nSK',		'DE', new \Datetime('2010-10-03 19:00:00')),
 				"games"	=> array(
 					array(2, 0, array("MttN" => Player::SC2RACE_TERRAN),		array("KyRoN" => Player::SC2RACE_PROTOSS)),
 					array(2, 0, array("loveeyes" => Player::SC2RACE_TERRAN),	array("fiDZz" => Player::SC2RACE_PROTOSS)),
@@ -576,90 +575,92 @@ class FixturesData extends BaseFixturesData implements FixtureInterface
 		$this->processLeagueWars('sc2f_1', $wars);
 	}
 
-	public function processLeagueWars($seasonName, array $wars)
-	{
-		$data = array();
-		foreach($wars as $war)
-		{
-			$date = $war['war'][4];
+    public function processLeagueWars($seasonName, array $wars)
+    {
+        $data = array();
+        foreach($wars as $war)
+        {
+            $date = $war['war'][4];
 
-			$o = new War();
-			$o->setTeam($this->objects['team']['nB.SC2']);
-			$o->setTeamScore($war['war'][0]);
-			$o->setOpponentScore($war['war'][1]);
-			$o->setOpponentName($war['war'][2]);
-			$o->setOpponentCountry($war['war'][3]);
-			$o->setDate($date);
-			$o->setSeason($this->objects['seasons'][$seasonName]);
+            $o = new War();
+            $o->setTeam($this->objects['team']['nB.SC2']);
+            $o->setTeamScore($war['war'][0]);
+            $o->setOpponentScore($war['war'][1]);
+            $o->setOpponentName($war['war'][2]);
+            $o->setOpponentCountry($war['war'][3]);
+            $o->setDate($date);
+            $o->setSeason($this->objects['seasons'][$seasonName]);
 
-			foreach($war['games'] as $game)
-			{
-				$wg = new WarGame();
-				$wg->setTeam1Score($game[0]);
-				$wg->setTeam2Score($game[1]);
-				$wg->setWar($o);
+            foreach($war['games'] as $game)
+            {
+                $wg = new WarGame();
+                $wg->setTeam1Score($game[0]);
+                $wg->setTeam2Score($game[1]);
+                $wg->setWar($o);
 
-				$g = new Game();
-				$g->setDate($date);
+                $g = new Game();
+                $g->setDate($date);
 
-				foreach($game[2] as $name => $race)
-				{
-					$gp = new GamePlayer();
-					if(isset($this->objects['player'][$name]))
-					{
-						$gp->setPlayer($this->objects['player'][$name]);
-					}
-					$gp->setName($name);
-					$gp->setRace($race);
-					$gp->setTeam(1);
-					$gp->setWarGame($wg);
-					$gp->setGame($g);
-					$g->addPlayer($gp);
-				}
+                foreach($game[2] as $name => $race)
+                {
+                    $gp = new GamePlayer();
+                    if(isset($this->objects['player'][$name]))
+                    {
+                        $gp->setPlayer($this->objects['player'][$name]);
+                    }
+                    $gp->setName($name);
+                    $gp->setRace($race);
+                    $gp->setTeam(1);
+                    $gp->setWarGame($wg);
+                    $gp->setGame($g);
+                    $g->addPlayer($gp);
+                }
 
-				foreach($game[3] as $name => $race)
-				{
-					$gp = new GamePlayer();
-					if(isset($this->objects['player'][$name]))
-					{
-						$gp->setPlayer($this->objects['player'][$name]);
-					}
-					$gp->setName($name);
-					$gp->setRace($race);
-					$gp->setTeam(2);
-					$gp->setWarGame($wg);
-					$gp->setGame($g);
-					$g->addPlayer($gp);
-				}
+                foreach($game[3] as $name => $race)
+                {
+                    $gp = new GamePlayer();
+                    if(isset($this->objects['player'][$name]))
+                    {
+                        $gp->setPlayer($this->objects['player'][$name]);
+                    }
+                    $gp->setName($name);
+                    $gp->setRace($race);
+                    $gp->setTeam(2);
+                    $gp->setWarGame($wg);
+                    $gp->setGame($g);
+                    $g->addPlayer($gp);
+                }
 
-				if($game[0] > 0)
-				{
-					foreach(range(1, $game[0]) as $i)
-					{
-						$clone = clone $g;
-						$clone->setWarGame($wg);
-						$clone->setWar($o);
-						$clone->setWinner(1);
-						$wg->addGame($clone);
-					}
-				}
+                if($game[0] > 0)
+                {
+                    foreach(range(1, $game[0]) as $i)
+                    {
+                        $clone = clone $g;
+                        $clone->setWarGame($wg);
+                        $clone->setWar($o);
+                        $clone->setWinner(1);
+                        $wg->addGame($clone);
+                    }
+                }
 
-				if($game[1] > 0)
-				{
-					foreach(range(1, $game[1]) as $i)
-					{
-						$clone = clone $g;
-						$clone->setWinner(2);
-						$wg->addGame($clone);
-					}
-				}
+                if($game[1] > 0)
+                {
+                    foreach(range(1, $game[1]) as $i)
+                    {
+                        $clone = clone $g;
+                        $clone->setWarGame($wg);
+                        $clone->setWar($o);
+                        $clone->setWinner(2);
+                        $wg->addGame($clone);
+                    }
+                }
 
-				$o->addGame($wg);
-			}
+                $o->addGame($wg);
+            }
 
-			$data[] = $o;
-		}
+            $data[] = $o;
+        }
 
-		$this->registerObjects($seasonName.'_wars', $data);
-	}
+        $this->registerObjects($seasonName.'_wars', $data);
+    }
 }

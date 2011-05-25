@@ -59,7 +59,7 @@ class GamePlayer
      */
     protected $team;
 
-	protected $playerRepo;
+    protected $playerRepo;
 
     public function getId() {
         return $this->id;

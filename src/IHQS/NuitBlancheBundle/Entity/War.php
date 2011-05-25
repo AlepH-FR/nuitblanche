@@ -29,7 +29,7 @@ class War
     protected $maps;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Team")
+     * @ORM\ManyToOne(targetEntity="Team", inversedBy="wars")
      */
     protected $team;
 
@@ -68,10 +68,10 @@ class War
      */
     protected $games;
 
-	public function __construct()
-	{
-		$this->games = new \Doctrine\Common\Collections\ArrayCollection();
-	}
+    public function __construct()
+    {
+        $this->games = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
 	/**
 	 * @ORM\PrePersist

@@ -18,9 +18,10 @@ class TeamController extends Controller
         $players    = $team->getPlayers();
         
         return array(
-			'teams'		=> $this->get('nb.manager.team')->findAll(),
+            'teams'	=> $this->get('nb.manager.team')->findAll(),
             'team'      => $team,
             'players'   => $players,
+            'stats'     => true
         );
     }
 

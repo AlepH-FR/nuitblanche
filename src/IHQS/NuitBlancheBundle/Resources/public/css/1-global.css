@@ -69,6 +69,7 @@ div.note-container
     -ms-filter: "progid:DXImageTransform.Microsoft.gradient (GradientType=1, startColorstr=#ddd, endColorstr=#395674)";
 
     vertical-align: middle;
+    float:right;
 }
 div.note-container span
 { 
@@ -79,6 +80,11 @@ div.note-container span
     font-size: 8px;
     line-height: 12px;
     text-align: right;
+}
+div.note-container span.note-ratio
+{
+     position: relative;
+     background: transparent;
 }
 
 ul.filters li

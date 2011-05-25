@@ -318,14 +318,14 @@ div.replay-info  span.stat,
 div.sub-section span.stat
 {
     padding-left: 30px;
-    width: 55px;
+    width: 40px;
     font-weight: bold;
     display:inline-block;
 }
 div.replay-info ul li span.long,
 div.sub-section ul li span.long
 {
-    width: 105px;
+    width: 92px;
 }
 div.replay-info img.chart
 {
@@ -385,7 +385,7 @@ div.sub-section ul.long
 }
 div.sub-section ul.long span.data
 {
-    width: 130px;
+    width: 145px;
     display: inline-block;
 }
 

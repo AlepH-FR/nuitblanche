@@ -57,28 +57,40 @@
             <span class="stat">1on1</span>
                 <span class="data">
                     {{ player.stats._1v1.wins }}-{{ player.stats._1v1.losses }}
-                    <div class="note-container"><span style="width: {{ 100 - player.stats._1v1.ratio }}px;">{{ player.stats._1v1.ratio }}%&nbsp;</span></div>
+                    <div class="note-container">
+                        <span style="width: {{ 100 - player.stats._1v1.ratio }}px;"></span>
+                        <span class="note-ratio" style="margin-right: -{{ 100 - player.stats._1v1.ratio }}px;">{{player.stats._1v1.ratio }}%&nbsp;</span>
+                    </div>
                 </span>
             </li>
             <li>
                 <span class="stat">vs <img class="race-icon" src="{{ asset('bundles/ihqsnuitblanche/images/ico/protoss_icon.png') }}" /></span>
                 <span class="data">
                     {{ player.stats._1v1protoss.wins }}-{{ player.stats._1v1protoss.losses }}
-                    <div class="note-container"><span style="width: {{ 100 - player.stats._1v1protoss.ratio }}px;">{{player.stats._1v1protoss.ratio }}%&nbsp;</span></div>
+                    <div class="note-container">
+                        <span style="width: {{ 100 - player.stats._1v1protoss.ratio }}px;"></span>
+                        <span class="note-ratio" style="margin-right: -{{ 100 - player.stats._1v1protoss.ratio }}px;">{{player.stats._1v1protoss.ratio }}%&nbsp;</span>
+                    </div>
                 </span>
             </li>
             <li>
                 <span class="stat">vs <img class="race-icon" src="{{ asset('bundles/ihqsnuitblanche/images/ico/terran_icon.png') }}" /></span>
                 <span class="data">
                     {{ player.stats._1v1terran.wins }}-{{ player.stats._1v1terran.losses }}
-                    <div class="note-container"><span style="width: {{ 100 - player.stats._1v1terran.ratio }}px;">{{player.stats._1v1terran.ratio }}%&nbsp;</span></div>
+                    <div class="note-container">
+                        <span style="width: {{ 100 - player.stats._1v1terran.ratio }}px;"></span>
+                        <span class="note-ratio" style="margin-right: -{{ 100 - player.stats._1v1terran.ratio }}px;">{{player.stats._1v1terran.ratio }}%&nbsp;</span>
+                    </div>
                 </span>
             </li>
             <li>
                 <span class="stat">vs <img class="race-icon" src="{{ asset('bundles/ihqsnuitblanche/images/ico/zerg_icon.png') }}" /></span>
                 <span class="data">
                     {{ player.stats._1v1zerg.wins }}-{{ player.stats._1v1zerg.losses }}
-                    <div class="note-container"><span style="width: {{ 100 - player.stats._1v1zerg.ratio }}px;">{{player.stats._1v1zerg.ratio }}%&nbsp;</span></div>
+                    <div class="note-container">
+                        <span style="width: {{ 100 - player.stats._1v1zerg.ratio }}px;"></span>
+                        <span class="note-ratio" style="margin-right: -{{ 100 - player.stats._1v1zerg.ratio }}px;">{{player.stats._1v1zerg.ratio }}%&nbsp;</span>
+                    </div>
                 </span>
             </li>
         </ul>
@@ -87,19 +99,25 @@
                 <span class="stat">2on2</span>
                 <span class="data">
                     {{ player.stats._2v2.wins }}-{{ player.stats._2v2.losses }}
-                    <div class="note-container"><span style="width: {{ 100 - player.stats._2v2.ratio }}px;">{{ player.stats._2v2.ratio }}%&nbsp;</span></div>
+                    <div class="note-container">
+                        <span style="width: {{ 100 - player.stats._2v2.ratio }}px;"></span>
+                        <span class="note-ratio" style="margin-right: -{{ 100 - player.stats._2v2.ratio }}px;">{{player.stats._2v2.ratio }}%&nbsp;</span>
+                    </div>
                 </span>
             </li>
             {% for team in player.get2v2Teams %}
             <li>
                 <span class="stat long">
-                    with
+                    w/
                     <img class="race-icon" src="{{ asset('bundles/ihqsnuitblanche/images/ico/' ~ team.allyRace ~ '_fond.png') }}" />
                     {{ team.allyName }}
                 </span>
                 <span class="data">
                     {{ team.wins }}-{{ team.losses }}
-                    <div class="note-container"><span style="width: {{ 100 - team.ratio }}px;">{{ team.ratio }}%&nbsp;</span></div>
+                    <div class="note-container">
+                        <span style="width: {{ 100 - team.ratio }}px;"></span>
+                        <span class="note-ratio" style="margin-right: -{{ 100 - team.ratio }}px;">{{ team.ratio }}%&nbsp;</span>
+                    </div>
                 </span>
             </li>
             {% endfor %}
