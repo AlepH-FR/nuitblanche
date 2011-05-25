@@ -9,6 +9,7 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 /**
  * @ORM\Entity(repositoryClass="IHQS\NuitBlancheBundle\Model\ReplayRepository")
  * @ORM\Table(name="replay")
+ * @ORM\HasLifecycleCallbacks
  */
 class Replay
 {
@@ -75,6 +76,7 @@ class Replay
     protected $uploader;
 
     private $processor;
+	private $tempFile = false;
 
     public function getId() {
         return $this->id;
@@ -90,8 +92,18 @@ class Replay
 			throw new \RuntimeException('No replay processor defined');
 		}
 
-		$this->processor->updateFile($this, $file);
-		$this->downloads = 0;
+		$this->tempFile = $file;
+	}
+
+	/**
+	 * @ORM\PrePersist
+	 */
+	public function prePersist() {
+		if($this->tempFile)
+		{
+			$this->processor->updateFile($this, $this->tempFile);
+			$this->downloads = 0;
+		}
     }
 
 	public function doSetFile($file)

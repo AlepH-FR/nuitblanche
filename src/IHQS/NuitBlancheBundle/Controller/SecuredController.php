@@ -7,6 +7,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use IHQS\NuitBlancheBundle\Entity\User;
 use IHQS\NuitBlancheBundle\Entity\Player;
+use IHQS\NuitBlancheBundle\Form\UserFormType;
 
 class SecuredController extends BaseController
 {
@@ -16,8 +17,6 @@ class SecuredController extends BaseController
      */
     public function registerAction()
     {
-        $user = $this->get('security.context')->getToken()->getUser();
-
         // creating default object
         $user = new User();
         $player = new Player();
@@ -33,7 +32,51 @@ class SecuredController extends BaseController
             'Register Nuit Blanche website',
             $form,
             "Thx for you registration. You can now log on the website.",
-            false
+            true
+        );
+    }
+
+    /**
+     * @Route("profile/edit", name="_secured_profile_edition")
+     * @Template("IHQSNuitBlancheBundle:Main:adminForm.html.twig")
+     */
+    public function profileEditionAction()
+    {
+        $user = $this->get('security.context')->getToken()->getUser();
+		$player = $user->getPlayer();
+		
+        // creating form
+        $formType = $this->container->getParameter('nb.form.player.class');
+
+        $form = $this->get('form.factory')->create(new $formType(), $player, array('password' => UserFormType::PASSWORD_NONE));
+
+        return $this->_adminFormAction(
+            'Edit my profile',
+            $form,
+            "Your profile has been updated",
+            true
+        );
+    }
+
+    /**
+     * @Route("profile/password", name="_secured_profile_password")
+     * @Template("IHQSNuitBlancheBundle:Main:adminForm.html.twig")
+     */
+    public function profilePasswordAction()
+    {
+        $user = $this->get('security.context')->getToken()->getUser();
+		$player = $user->getPlayer();
+
+        // creating form
+        $formType = $this->container->getParameter('nb.form.player.class');
+
+        $form = $this->get('form.factory')->create(new $formType(), $player, array('password' => UserFormType::PASSWORD_ALONE));
+
+        return $this->_adminFormAction(
+            'Change my password',
+            $form,
+            "Your password has been changed successfully.",
+            true
         );
     }
 

@@ -76,6 +76,16 @@ class Game extends BaseGame
 		}
 	}
 
+	public function __toString()
+	{
+		$name = array();
+		$name[] = '#' . $this->getId();
+		$name[] = $this->getDate()->format('Y-m-d');
+		$name[] = $this->getTeamName(1) . ' vs ' . $this->getTeamName(2);
+
+		return implode(' - ', $name);
+	}
+
     public function getId() {
         return $this->id;
     }

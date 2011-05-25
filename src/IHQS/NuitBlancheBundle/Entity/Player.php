@@ -31,7 +31,7 @@ class Player
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="User", cascade={"persist"})
+     * @ORM\OneToOne(targetEntity="User", inversedBy="player", cascade={"persist"})
      * @Assert\Valid()
      */
     protected $user;
@@ -43,14 +43,14 @@ class Player
 
     /**
      * @ORM\Column(type="integer")
-     * @Assert\NotBlank(message = "Please add your SC2 account id")
+     * @Assert\NotBlank(groups="Registration", message = "Please add your SC2 account id")
      * @Assert\Regex("/\d+/")
      */
     protected $sc2Id;
 
     /**
      * @ORM\Column(type="string")
-     * @Assert\NotBlank(message = "Please add your SC2 account")
+     * @Assert\NotBlank(groups="Registration", message = "Please add your SC2 account")
      */
     protected $sc2Account;
 
@@ -74,7 +74,6 @@ class Player
     
     /**
      * @ORM\Column(type="string", nullable="true")
-     * @Assert\Url()
      */
     protected $sc2ProfilePandaria;
 
@@ -140,7 +139,7 @@ class Player
     public function setSc2Race($sc2Race) {
         if(!in_array($sc2Race, Player::$_sc2races))
         {
-            throw new \InvalidArgumentException('Invalid parameter for StarCraft 2 Race');
+            throw new \InvalidArgumentException('Invalid parameter "' . $sc2Race . '" for StarCraft 2 Race');
         }
         $this->sc2Race = $sc2Race;
     }
@@ -252,7 +251,8 @@ class Player
             "_4v4" => array(),
             "_1v1protoss"   => array(),
             "_1v1terran"    => array(),
-            "_1v1zerg"      => array()
+            "_1v1zerg"      => array(),
+            "_1v1random"    => array()
         );
 
         foreach($this->stats as $type => $data)
@@ -311,14 +311,14 @@ class Player
                     : round(100 * $team["wins"] / ($team["losses"] + $team["wins"]));
         }
 
-		uksort($teams, function($a, $b) {
+		usort($teams, function($a, $b) {
 			if($a['wins'] == $b['wins'])
 			{
 				if($a['losses'] == $b['losses']) { return 0; }
-				return $a['losses'] < $b['losses'] ? 1 : -1;
+				return $a['losses'] > $b['losses'] ? 1 : -1;
 			}
 
-			return $a['wins'] > $b['wins'] ? 1 : -1;
+			return $a['wins'] < $b['wins'] ? 1 : -1;
 		});
 		return $teams;
     }

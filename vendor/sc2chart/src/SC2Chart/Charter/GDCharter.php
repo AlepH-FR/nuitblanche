@@ -83,19 +83,19 @@ class GDCharter implements CharterInterface
 			
 			foreach(range($this->precision + 1, $this->width, $this->precision) as $i)
 			{
-				if(!isset($plots[$i  - $this->precision]))
-				{
-					continue;
-				}
+				$previous_plot = isset($plots[$i  - $this->precision]) ? $plots[$i  - $this->precision] : 0;
+				$plot = isset($plots[$i]) ? $plots[$i] : 0;
+
+				$end = ($this->width - $i < $this->precision) ? $this->width : $i;
 
 				imagesetthickness($this->imgh, 1);
 				imagefilledpolygon(
 					$this->imgh,
 					array(
 						$i - $this->precision + 1, $this->height,
-						$i - $this->precision + 1, $this->height - $plots[$i  - $this->precision],
-						$i, $this->height - $plots[$i] / $this->max_apm * $this->height,
-						$i, $this->height ,
+						$i - $this->precision + 1,  $this->height - $previous_plot / $this->max_apm * $this->height,
+						$end, $this->height - $plot / $this->max_apm * $this->height,
+						$end, $this->height ,
 					),
 					4,
 					$this->colors[$player->getName().'_bg']
@@ -104,10 +104,8 @@ class GDCharter implements CharterInterface
 				imagesetthickness($this->imgh, 3);
 				imageline(
 					$this->imgh,
-					$i - $this->precision + 1,
-					$this->height - $plots[$i - $this->precision] / $this->max_apm * $this->height,
-					$i,
-					$this->height - $plots[$i] / $this->max_apm * $this->height,
+					$i - $this->precision + 1, $this->height - $previous_plot / $this->max_apm * $this->height,
+					$end, $this->height - $plot / $this->max_apm * $this->height,
 					$this->colors[$player->getName().'_fg']
 				);
 			}

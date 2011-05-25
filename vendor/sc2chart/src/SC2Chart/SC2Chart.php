@@ -19,7 +19,7 @@ class SC2Chart
 	protected $analyzer;
 	protected $charter;
 
-	protected $chartWidth		= 481;
+	protected $chartWidth		= 480;
 	protected $chartHeight		= 160;
 	protected $chartPrecision	= 5;
 

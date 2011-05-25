@@ -77,11 +77,7 @@ class ReplayController extends BaseController
         $user = $this->get('security.context')->getToken()->getUser();
 
         // creating default object
-        $game = new Game();
-        $game->setDate(new \Datetime());
-
         $replay = $this->get('nb.manager.replay')->createOne();
-        $replay->setGame($game);
         $replay->setUploader($user);
 
 		// creating form

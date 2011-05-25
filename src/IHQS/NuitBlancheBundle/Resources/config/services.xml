@@ -27,6 +27,10 @@
             <tag name="doctrine.event_subscriber" connection="default" />
         </service>
 
+        <service id="nb.doctrine.listener.player" class="IHQS\NuitBlancheBundle\EventSubscriber\PlayerEventSubscriber">
+            <tag name="doctrine.event_subscriber" connection="default" />
+        </service>
+
         <!-- Validators -->
         <service id="validator.unique.unique" class="IHQS\NuitBlancheBundle\Validator\UniqueValidator">
             <argument type="service" id="nb.entity_manager" />

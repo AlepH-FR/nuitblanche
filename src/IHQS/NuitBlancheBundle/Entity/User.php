@@ -27,22 +27,22 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string")
-     * @Unique(message = "This username is already used. Please choose another one")
-     * @Assert\NotBlank(message = "Please choose a username")
+     * @Unique(message = "This username is already used. Please choose another one.")
+     * @Assert\NotBlank(groups="Registration", message = "Please choose a username")
      * @Assert\MinLength(4)
      */
     protected $username;
 
     /**
      * @ORM\Column(type="string")
-     * @Assert\NotBlank(message = "Please choose a password")
+     * @Assert\NotBlank(groups="Password", message = "Please choose a password")
      * @Assert\MinLength(8)
      */
     protected $password;
 
     /**
      * @ORM\Column(type="string")
-     * @Assert\NotBlank(message = "Please add your email adress")
+     * @Assert\NotBlank(groups="Registration", message = "Please add your email adress")
      * @Assert\Email()
      */
     protected $email;
@@ -55,13 +55,13 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string")
-     * @Assert\NotBlank(message = "Please add your first name")
+     * @Assert\NotBlank(groups="Registration", message = "Please add your first name")
      */
     protected $firstName;
 
     /**
      * @ORM\Column(type="string")
-     * @Assert\NotBlank(message = "Please add your last name")
+     * @Assert\NotBlank(groups="Registration", message = "Please add your last name")
      */
     protected $lastName;
 
@@ -72,7 +72,7 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string")
-     * @Assert\NotBlank(message = "Please choose your country")
+     * @Assert\NotBlank(groups="Registration", message = "Please choose your country")
      */
     protected $country;
 
@@ -113,6 +113,11 @@ class User implements UserInterface
      */
     protected $lastActivity;
 
+    /**
+     * @ORM\OneToOne(targetEntity="Player", mappedBy="user", cascade={"persist"})
+     */
+    protected $player;
+
     public function getId() {
         return $this->id;
     }
@@ -145,15 +150,18 @@ class User implements UserInterface
         return $this->avatar;
     }
 
-    public function setAvatar(UploadedFile $avatar) {
-        chmod($avatar->getPath(), 0777);
+    public function setAvatar($avatar) {
+		if(is_object($avatar) && $avatar instanceof UploadedFile)
+		{
+			chmod($avatar->getPath(), 0777);
 
-        $rootDir = __DIR__.'/../../../../web/';
-        $dir = 'upload/avatar';
-        $filename = strtolower($this->username) . '.' . pathinfo($avatar->getOriginalName(), PATHINFO_EXTENSION);
+			$rootDir = __DIR__.'/../../../../web/';
+			$dir = 'upload/avatar';
+			$filename = strtolower($this->username) . '.' . pathinfo($avatar->getOriginalName(), PATHINFO_EXTENSION);
 
-        $avatar->move($rootDir . $dir, $filename);
-        $this->avatar = $dir . '/' . $filename;
+			$avatar->move($rootDir . $dir, $filename);
+			$this->avatar = $dir . '/' . $filename;
+		}
     }
     
     public function getFirstName() {
@@ -250,6 +258,11 @@ class User implements UserInterface
 
         return $account . '@' . substr($domain, 0, 1) . '....' . $region;
     }
+
+	public function getPlayer()
+	{
+		return $this->player;
+	}
 
     public function getRoles() {
         return array('ROLE_ADMIN');

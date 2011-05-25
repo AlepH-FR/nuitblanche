@@ -108,26 +108,43 @@ class ReplayProcessor
             $name = $player->getName();
             $db_player = $this->em->getRepository('IHQS\NuitBlancheBundle\Entity\Player')->findOneBySc2Account($name);
 
-            $gp = new GamePlayer();
-            $gp->setGame($game);
-            $gp->setName($name);
-            if(!is_null($db_player)) { $gp->setPlayer($db_player); }
-            $gp->setRace(strtolower($player->getRace()));
-            $gp->setColor($player->getColor());
-            $gp->setApm($apm);
-            $gp->setTeam($player->getTeam());
+			// looking for an existing game player
+			$gp = null;
+			foreach($game->getPlayers() as $gameplayer)
+			{
+				if($gameplayer->getName() === $name)
+				{
+					$gp = $gameplayer;
+					break;
+				}
+			}
 
-            $wg = $game->getWarGame();
-            if($wg instanceof WarGame)
-            {
-                $gp->setWarGame($wg);
-            }
-            $game->addPlayer($gp);
+			// creating a new one if need
+			if(!$gp)
+			{
+				$gp = new GamePlayer();
+				$gp->setGame($game);
+				$gp->setName($name);
+				$gp->setTeam($player->getTeam());
+				if(!is_null($db_player)) { $gp->setPlayer($db_player); }
 
-            if($player->isWinner())
-            {
-                $game->setWinner($player->getTeam());
-            }
+				// binding war games
+				$wg = $game->getWarGame();
+				if($wg instanceof WarGame)
+				{
+					$gp->setWarGame($wg);
+				}
+				$game->addPlayer($gp);
+
+				if($player->isWinner())
+				{
+					$game->setWinner($player->getTeam());
+				}
+			}
+
+			$gp->setRace(strtolower($player->getRace()));
+			$gp->setColor($player->getColor());
+			$gp->setApm($apm);
         }
     }
 }

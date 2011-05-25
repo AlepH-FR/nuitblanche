@@ -33,8 +33,8 @@ class BaseController extends Controller
         }
 
         return array(
-            'title'	=> $title,
-            'form'	=> ($valid && !$redisplay) ? false : $form->createView(),
+            'title'		=> $title,
+            'form'		=> ($valid && !$redisplay) ? false : $form->createView(),
             'message'	=> $valid ? $message : $error,
         );
     }
