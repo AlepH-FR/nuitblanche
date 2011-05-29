@@ -35,9 +35,11 @@ install_git()
         REV=origin/HEAD
     fi
 
-    if [ ! -d $INSTALL_DIR ]; then
-        git clone $CLONE_OPTIONS $SOURCE_URL $INSTALL_DIR
+    if [ -d $INSTALL_DIR ]; then
+    	rm -R $INSTALL_DIR	
     fi
+
+    git clone $CLONE_OPTIONS $SOURCE_URL $INSTALL_DIR
 
     cd $INSTALL_DIR
     git fetch origin

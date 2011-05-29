@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
  * @ORM\Entity(repositoryClass="IHQS\NuitBlancheBundle\Model\UserRepository")
- * @ORM\Table(name="user")
+ * @ORM\Table(name="nb_user")
  */
 class User implements UserInterface
 {
