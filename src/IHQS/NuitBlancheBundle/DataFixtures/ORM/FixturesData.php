@@ -233,6 +233,8 @@ class FixturesData extends BaseFixturesData implements FixtureInterface
         $o->setName('SC2F');
         $leagues['sc2f'] = $o;
 
+        $this->registerObjects('leagues', $leagues);
+        
         // Seasons
         $o = new Season();
         $o->setDivision(0);
@@ -290,7 +292,6 @@ class FixturesData extends BaseFixturesData implements FixtureInterface
         $o->setEnded(false);
         $seasons['pandaria_2'] = $o;
 
-        $this->registerObjects('leagues', $leagues);
         $this->registerObjects('seasons', $seasons);
     }
 
