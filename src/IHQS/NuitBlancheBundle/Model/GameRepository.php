@@ -3,6 +3,7 @@
 namespace IHQS\NuitBlancheBundle\Model;
 
 use Doctrine\ORM\EntityRepository;
+use IHQS\NuitBlancheBundle\Entity\Game;
 use IHQS\NuitBlancheBundle\Entity\Replay;
 
 /**
@@ -15,10 +16,11 @@ class GameRepository extends EntityRepository
 {
     public function findAll()
     {
-        return $this->createQueryBuilder('g')->
-            orderBy('g.id', 'DESC')->
-            getQuery()->
-            execute();
+        return $this->createQueryBuilder('g')
+            ->orderBy('g.id', 'DESC')
+            ->getQuery()
+            ->execute()
+        ;
     }
 
     public function findAllWithReplay()
@@ -35,5 +37,14 @@ class GameRepository extends EntityRepository
         }
 
         return $result;
+    }
+
+    public function findAllWithoutReplay()
+    {
+        return $this->createQueryBuilder('g')
+            ->leftJoin('g.replay', 'r')
+            ->where('r.game IS NULL')
+            ->orderBy('g.id', 'DESC')
+        ;
     }
 }

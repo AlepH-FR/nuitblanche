@@ -101,6 +101,12 @@ class Replay
     public function prePersist() {
         if($this->tempFile)
         {
+            if(!$this->game)
+            {
+                $game = new Game();
+                $game->setDate(new \Datetime());
+                $this->game = $game;
+            }
             $this->processor->updateFile($this, $this->tempFile);
             $this->downloads = 0;
         }
