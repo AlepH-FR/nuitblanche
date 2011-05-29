@@ -87,29 +87,29 @@ class Replay
     }
 
     public function setFile(UploadedFile $file) {
-		if(is_null($this->processor))
-		{
-			throw new \RuntimeException('No replay processor defined');
-		}
+        if(is_null($this->processor))
+        {
+            throw new \RuntimeException('No replay processor defined');
+        }
 
-		$this->tempFile = $file;
-	}
-
-	/**
-	 * @ORM\PrePersist
-	 */
-	public function prePersist() {
-		if($this->tempFile)
-		{
-			$this->processor->updateFile($this, $this->tempFile);
-			$this->downloads = 0;
-		}
+        $this->tempFile = $file;
     }
 
-	public function doSetFile($file)
-	{
-		$this->file = $file;
-	}
+    /**
+     * @ORM\PrePersist
+     */
+    public function prePersist() {
+        if($this->tempFile)
+        {
+            $this->processor->updateFile($this, $this->tempFile);
+            $this->downloads = 0;
+        }
+    }
+
+    public function doSetFile($file)
+    {
+        $this->file = $file;
+    }
 
     public function getChart() {
         return $this->chart;
@@ -167,60 +167,60 @@ class Replay
         $this->version = $version;
     }
 
-	public function getDownloads() {
-		return $this->downloads;
-	}
+    public function getDownloads() {
+        return $this->downloads;
+    }
 
-	public function incrementDownloads() {
-		$this->downloads++;
-	}
+    public function incrementDownloads() {
+        $this->downloads++;
+    }
 
-	public function getChatLog()
-	{
-		return unserialize($this->chatLog);
-	}
+    public function getChatLog()
+    {
+        return unserialize($this->chatLog);
+    }
 
-	public function setChatLog(array $chatLog)
-	{
-		$this->chatLog = serialize($chatLog);
-	}
+    public function setChatLog(array $chatLog)
+    {
+        $this->chatLog = serialize($chatLog);
+    }
 
-	public function getUploader()
-	{
-		return $this->uploader;
-	}
+    public function getUploader()
+    {
+        return $this->uploader;
+    }
 
-	public function setUploader(User $uploader)
-	{
-		$this->uploader = $uploader;
-	}
+    public function setUploader(User $uploader)
+    {
+        $this->uploader = $uploader;
+    }
 
-	public function getNormalizedFileName() {
-		$data = array();
-		$data[] = $this->game->getDate()->format('Y-m-d');
-		$data[] = '-';
-		$data[] = $this->game->getTeam1Name();
-		$data[] = 'vs';
-		$data[] = $this->game->getTeam2Name();
+    public function getNormalizedFileName() {
+        $data = array();
+        $data[] = $this->game->getDate()->format('Y-m-d');
+        $data[] = '-';
+        $data[] = $this->game->getTeam1Name();
+        $data[] = 'vs';
+        $data[] = $this->game->getTeam2Name();
 
-		return implode(' ', $data).'.SC2Replay';
-	}
+        return implode(' ', $data).'.SC2Replay';
+    }
 
-	public function getNormalizedLength() {
-		$secs = $this->getLength();
+    public function getNormalizedLength() {
+        $secs = $this->getLength();
 
-		$mins	= floor($secs / 60);
-		$secs	= $secs % 60;
+        $mins	= floor($secs / 60);
+        $secs	= $secs % 60;
 
-		$values = array();
-		if ($mins > 0)	{ $values[] = $mins . ' mins'; }
-		$values[] = $secs . ' secs';
+        $values = array();
+        if ($mins > 0)	{ $values[] = $mins . ' mins'; }
+        $values[] = $secs . ' secs';
 
-		return implode(', ', $values);
-	}
+        return implode(', ', $values);
+    }
 
-	public function setReplayProcessor(ReplayProcessor $processor)
-	{
-		$this->processor = $processor;
-	}
+    public function setReplayProcessor(ReplayProcessor $processor)
+    {
+            $this->processor = $processor;
+    }
 }

@@ -25,8 +25,7 @@ class SecuredController extends BaseController
         // creating form
         $formType = $this->container->getParameter('nb.form.player.class');
 
-        $form = $this->get('form.factory')->create(new $formType());
-        $form->setData($player);
+        $form = $this->get('form.factory')->create(new $formType(), $player, array('password' => UserFormType::PASSWORD_NESTED));
 
         return $this->_adminFormAction(
             'Register Nuit Blanche website',
@@ -43,7 +42,7 @@ class SecuredController extends BaseController
     public function profileEditionAction()
     {
         $user = $this->get('security.context')->getToken()->getUser();
-		$player = $user->getPlayer();
+        $player = $user->getPlayer();
 		
         // creating form
         $formType = $this->container->getParameter('nb.form.player.class');
@@ -65,7 +64,7 @@ class SecuredController extends BaseController
     public function profilePasswordAction()
     {
         $user = $this->get('security.context')->getToken()->getUser();
-		$player = $user->getPlayer();
+        $player = $user->getPlayer();
 
         // creating form
         $formType = $this->container->getParameter('nb.form.player.class');

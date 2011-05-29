@@ -175,33 +175,28 @@ div.register a
     padding-right: 10px;
 }
 
-#header ul.menu li.stream-live
+li.stream-live
 {
     background: url("/bundles/ihqsnuitblanche/images/ico/result_win.gif") no-repeat scroll 8px 15px transparent;
 }
+ul.filters-video li.stream-live,
+ul.filters-video li.stream-off
+{
+    background-position: 3px 3px;
+    padding-left: 16px;
+}
 
-#header ul.menu li.stream-off
+li.stream-off
 {
     background: url("/bundles/ihqsnuitblanche/images/ico/result_loss.gif") no-repeat scroll 8px 15px transparent;
 }
 
-#header div.user-menu
-{
-    position: fixed;
-    right: 0;
-    top: 0;
-
-    margin: 10px;
-    padding: 10px;
-    border: 1px dotted #395674;
-
-    background: white;
-    opacity: 0.7;
-    -moz-opacity: 0.7;
-}
-
-#header div.user-menu ul li
+div.user-menu ul li
 {
     display: list-item;
     list-style: circle inside none;
+}
+div.user-menu ul li a
+{
+    display: inline;
 }

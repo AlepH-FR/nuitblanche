@@ -426,6 +426,10 @@ div.wide ul li span.little
     font-style: italic;
 }
 
+.videos img
+{
+    height: 100px;
+}
 .comments li
 {
     margin: 20px 0;
@@ -439,16 +443,31 @@ div.wide ul li span.little
     background: white;
 }
 
-.comments li img
+.comments li a.avatar
 {
     float: left;
     margin-right: 10px;
+    height: 100px;
 }
 .comments li .meta
 {
     padding: 5px 0;
     font-style: italic;
     font-size: 10px;
+}
+.comments span.play
+{
+    background: none;
+    height: 100px;
+    width: 178px;
+    position: relative;
+    display: block;
+    left: 0;
+    top: -100px;
+}
+.comments span.play:hover
+{
+    background: url('../images/ico/play.png') 65px 26px no-repeat transparent;
 }
 
 img.flag

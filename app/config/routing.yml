@@ -18,6 +18,10 @@ replay:
     resource: "@IHQSNuitBlancheBundle/Controller/ReplayController.php"
     type:     annotation
 
+stream:
+    resource: "@IHQSNuitBlancheBundle/Controller/StreamController.php"
+    type:     annotation
+
 team:
     resource: "@IHQSNuitBlancheBundle/Controller/TeamController.php"
     type:     annotation
