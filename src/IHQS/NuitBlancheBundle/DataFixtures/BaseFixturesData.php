@@ -21,9 +21,8 @@ abstract class BaseFixturesData extends AbstractFixture
 		try
 		{
 			$this->getReference($name);
-		}
-		catch(\ErrorException $e)
-		{
+		} 
+		catch(\ErrorException $e) {
 			return false;
 		}
 
@@ -32,7 +31,14 @@ abstract class BaseFixturesData extends AbstractFixture
 
 	public function getReference($name)
 	{
-		return $this->manager->merge(parent::getReference($name));
+		try {
+                return $this->manager->merge(parent::getReference($name));
+		} 
+		catch(\Doctrine\ORM\EntityNotFoundException $e) {
+		}
+			var_dump($name);
+			die;
+		}
 	}
 	
     public function registerObjects($namespace, array $objects)
