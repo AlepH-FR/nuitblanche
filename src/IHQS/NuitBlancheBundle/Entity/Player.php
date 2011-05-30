@@ -322,4 +322,8 @@ class Player
 		});
 		return $teams;
     }
+
+	public function __toString() {
+		return $this->getSc2Account();
+	}
 }

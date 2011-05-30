@@ -18,7 +18,7 @@ class Season
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="League")
+     * @ORM\ManyToOne(targetEntity="League", cascade={"persist"})
      */
     protected $league;
 

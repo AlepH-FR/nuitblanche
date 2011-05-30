@@ -29,12 +29,12 @@ class War
     protected $maps;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Team", inversedBy="wars")
+     * @ORM\ManyToOne(targetEntity="Team", inversedBy="wars", cascade={"persist"})
      */
     protected $team;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Season")
+     * @ORM\ManyToOne(targetEntity="Season", cascade={"persist"})
      */
     protected $season;
 

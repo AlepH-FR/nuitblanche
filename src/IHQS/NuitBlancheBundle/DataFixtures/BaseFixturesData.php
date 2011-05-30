@@ -2,42 +2,52 @@
 
 namespace IHQS\NuitBlancheBundle\DataFixtures;
 
-class BaseFixturesData
+use Doctrine\Common\DataFixtures\AbstractFixture;
+
+abstract class BaseFixturesData extends AbstractFixture
 {
-    protected $objects;
-    protected $order;
+	protected $manager;
+	
+	public function load($manager)
+	{
+		$this->manager = $manager;
+		$this->doLoad();
+	}
 
-    public function __construct()
+	abstract function doLoad();
+
+	public function hasReference($name)
+	{
+		try
+		{
+			$this->getReference($name);
+		}
+		catch(\ErrorException $e)
+		{
+			return false;
+		}
+
+		return true;
+	}
+
+	public function getReference($name)
+	{
+		return $this->manager->merge(parent::getReference($name));
+	}
+	
+    public function registerObjects($namespace, array $objects)
     {
-        $this->order   = array();
-        $this->objects = array();
-    }
+		foreach($objects as $key => $object)
+		{
+			$this->registerObject($namespace.':'.$key, $object);
+		}
+	}
 
-    public function persistAll($manager)
-    {
-        foreach($this->order as $namespace)
-        {
-            print "\t. persisting " . $namespace . "\n";
-            foreach($this->objects[$namespace] as $name => $o)
-            {
-                $manager->persist($o);
-            }
-        }
-    }
+    public function registerObject($name, $object)
+	{
+		$this->manager->persist($object);
+		$this->manager->flush();
 
-    public function registerObjects($namespace, $objects)
-    {
-        if(!array_key_exists($namespace, $this->objects))
-        {
-            $this->objects[$namespace] = $objects;
-        }
-
-        else
-        {
-            $this->objects[$namespace] = array_merge($objects, $this->objects[$namespace]);
-        }
-
-        $this->{$namespace} =& $this->objects[$namespace];
-        array_push($this->order, $namespace);
+		$this->addReference($name, $object);
     }
 }

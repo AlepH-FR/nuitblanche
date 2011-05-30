@@ -31,7 +31,7 @@ class News
     protected $body;
 
     /**
-     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\ManyToOne(targetEntity="User", cascade={"persist"})
      */
     protected $author;
 
@@ -41,7 +41,7 @@ class News
     protected $date;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Team")
+     * @ORM\ManyToOne(targetEntity="Team", cascade={"persist"})
      */
     protected $team;
 
