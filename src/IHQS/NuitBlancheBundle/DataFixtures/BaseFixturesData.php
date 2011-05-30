@@ -18,8 +18,7 @@ abstract class BaseFixturesData extends AbstractFixture
 
 	public function hasReference($name)
 	{
-		try
-		{
+		try {
 			$this->getReference($name);
 		} 
 		catch(\ErrorException $e) {
@@ -32,10 +31,11 @@ abstract class BaseFixturesData extends AbstractFixture
 	public function getReference($name)
 	{
 		try {
-                return $this->manager->merge(parent::getReference($name));
+			$o = parent::getReference($name);
+			return $this->manager->merge($o);
 		} 
 		catch(\Doctrine\ORM\EntityNotFoundException $e) {
-			throw new \InvalidArgumentException('Unable to find entity reference "' . $name . '"');
+			throw new \InvalidArgumentException('Unable to find entity reference "' . $name . '" of class "' . get_class($o) . '" and id #' . $o->getId());
 			die;
 		}
 	}

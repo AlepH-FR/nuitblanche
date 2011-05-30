@@ -34,7 +34,7 @@ class War
     protected $team;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Season", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="Season")
      */
     protected $season;
 

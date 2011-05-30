@@ -48,7 +48,8 @@ class Team
 
     public function __construct()
     {
-        $this->players = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->wars		= new \Doctrine\Common\Collections\ArrayCollection();
+        $this->players	= new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     public function getId() {
