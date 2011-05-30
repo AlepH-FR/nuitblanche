@@ -82,6 +82,7 @@ class Game extends BaseGame
 		$name[] = '#' . $this->getId();
 		$name[] = $this->getDate()->format('Y-m-d');
 		$name[] = $this->getTeamName(1) . ' vs ' . $this->getTeamName(2);
+		$name[] = $this->getMap();
 
 		return implode(' - ', $name);
 	}
