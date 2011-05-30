@@ -35,7 +35,6 @@ abstract class BaseFixturesData extends AbstractFixture
                 return $this->manager->merge(parent::getReference($name));
 		} 
 		catch(\Doctrine\ORM\EntityNotFoundException $e) {
-		}
 			var_dump($name);
 			die;
 		}
