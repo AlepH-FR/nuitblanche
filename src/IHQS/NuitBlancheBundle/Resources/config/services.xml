@@ -23,6 +23,10 @@
             <argument type="service" id="service_container" />
         </service>
 
+        <service id="nb.doctrine.listener.game" class="IHQS\NuitBlancheBundle\EventSubscriber\GameEventSubscriber">
+            <tag name="doctrine.event_subscriber" connection="default" />
+        </service>
+
         <service id="nb.doctrine.listener.gameplayer" class="IHQS\NuitBlancheBundle\EventSubscriber\GamePlayerEventSubscriber">
             <tag name="doctrine.event_subscriber" connection="default" />
         </service>

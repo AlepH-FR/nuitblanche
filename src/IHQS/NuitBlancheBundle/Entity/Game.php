@@ -128,10 +128,6 @@ class Game extends BaseGame
 
     public function setWinner($winner) {
         $this->winner = $winner;
-		if(!is_null($this->warGame))
-		{
-			$this->warGame->updateTeamScores();
-		}
     }
 
     public function getMap() {
