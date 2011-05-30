@@ -18,7 +18,7 @@ class Season
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="League", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="League")
      */
     protected $league;
 
@@ -28,7 +28,7 @@ class Season
     protected $number;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column()
      */
     protected $division;
 

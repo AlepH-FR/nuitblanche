@@ -30,8 +30,9 @@ abstract class BaseFixturesData extends AbstractFixture
 
 	public function getReference($name)
 	{
+		$o = parent::getReference($name);
+		
 		try {
-			$o = parent::getReference($name);
 			return $this->manager->merge($o);
 		} 
 		catch(\Doctrine\ORM\EntityNotFoundException $e) {
