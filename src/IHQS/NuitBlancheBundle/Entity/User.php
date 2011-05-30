@@ -13,7 +13,7 @@ use Symfony\Component\HttpFoundation\File\File;
  * @ORM\Entity(repositoryClass="IHQS\NuitBlancheBundle\Model\UserRepository")
  * @ORM\Table(name="nb_user")
  */
-class User implements UserInterface
+class User implements UserInterface, \Serializable
 {
     const STATUS_ONLINE     = "online";
     const STATUS_OFFLINE    = "offline";
@@ -118,6 +118,19 @@ class User implements UserInterface
      * @ORM\OneToOne(targetEntity="Player", mappedBy="user", cascade={"persist"})
      */
     protected $player;
+
+	public function serialize() {
+		return serialize(array(
+			$this->username,
+			$this->password
+		));
+	}
+
+	public function unserialize($data) {
+		list($username, $password) = unserialize($data);
+		$this->username = $username;
+		$this->password = $password;
+	}
 
     public function getId() {
         return $this->id;
