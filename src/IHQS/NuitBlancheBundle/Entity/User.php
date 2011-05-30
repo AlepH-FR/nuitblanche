@@ -7,6 +7,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 use IHQS\NuitBlancheBundle\Validator\Unique;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\HttpFoundation\File\File;
 
 /**
  * @ORM\Entity(repositoryClass="IHQS\NuitBlancheBundle\Model\UserRepository")
@@ -52,6 +53,11 @@ class User implements UserInterface
      * @Assert\File()
      */
     protected $avatar;
+
+    /**
+     * @ORM\Column(type="string", nullable="true")
+     */
+    protected $avatarUrl;
 
     /**
      * @ORM\Column(type="string")
@@ -147,6 +153,14 @@ class User implements UserInterface
     }
 
     public function getAvatar() {
+		if(!is_null($this->avatar))
+		{
+			$rootDir = __DIR__.'/../../../../web';
+			return new File($rootDir . $this->avatar);
+		}
+    }
+
+    public function getAvatarUrl() {
         return $this->avatar;
     }
 
@@ -155,10 +169,10 @@ class User implements UserInterface
 		{
 			chmod($avatar->getPath(), 0777);
 
-			$rootDir = __DIR__.'/../../../../web/';
-			$dir = 'upload/avatar';
+			$dir = '/upload/avatar';
 			$filename = strtolower($this->username) . '.' . pathinfo($avatar->getOriginalName(), PATHINFO_EXTENSION);
 
+			$rootDir = __DIR__.'/../../../../web';
 			$avatar->move($rootDir . $dir, $filename);
 			$this->avatar = $dir . '/' . $filename;
 		}

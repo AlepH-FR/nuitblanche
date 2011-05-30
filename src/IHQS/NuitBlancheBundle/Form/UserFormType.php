@@ -48,7 +48,7 @@ class UserFormType extends AbstractType
 		{
 			$builder
 				->add('email')
-				->add('avatar', 'file', array('type' => 'string'))
+				->add('avatar', 'file', array('type' => 'file'))
 				->add('firstName')
 				->add('lastName')
 				->add('city')
