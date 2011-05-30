@@ -25,11 +25,11 @@ class LoadWarData extends BaseFixturesData implements OrderedFixtureInterface
                 "war"	=> array(3, 5, 'NJ',		'FR', new \Datetime('2010-09-06 21:00:00')),
                 "games"	=> array(
                     array(1, 2, array("loveeyes" => Player::SC2RACE_TERRAN),	array("KayO" => Player::SC2RACE_PROTOSS)),
-                    array(2, 1, array("Clafter" => Player::SC2RACE_TERRAN),		array("deco" => Player::SC2RACE_PROTOSS)),
-                    array(0, 2, array("AlepH" => Player::SC2RACE_PROTOSS),		array("m00nty" => Player::SC2RACE_PROTOSS)),
-                    array(2, 1, array("Naudar" => Player::SC2RACE_RANDOM),		array("Inside" => Player::SC2RACE_PROTOSS)),
-                    array(2, 1, array("YoPYoP" => Player::SC2RACE_PROTOSS),		array("Chemist" => Player::SC2RACE_TERRAN)),
-                    array(0, 2, array("HammeR" => Player::SC2RACE_RANDOM),		array("Naoned" => Player::SC2RACE_RANDOM)),
+                    array(2, 1, array("Clafter" => Player::SC2RACE_TERRAN),	array("deco" => Player::SC2RACE_PROTOSS)),
+                    array(0, 2, array("AlepH" => Player::SC2RACE_PROTOSS),	array("m00nty" => Player::SC2RACE_PROTOSS)),
+                    array(2, 1, array("Naudar" => Player::SC2RACE_RANDOM),	array("Inside" => Player::SC2RACE_PROTOSS)),
+                    array(2, 1, array("YoPYoP" => Player::SC2RACE_PROTOSS),	array("Chemist" => Player::SC2RACE_TERRAN)),
+                    array(0, 2, array("HammeR" => Player::SC2RACE_RANDOM),	array("Naoned" => Player::SC2RACE_RANDOM)),
                     array(0, 2, array("Clafter" => Player::SC2RACE_TERRAN, "loveeyes" => Player::SC2RACE_TERRAN),	array("deco" => Player::SC2RACE_PROTOSS, "Naoned" => Player::SC2RACE_ZERG)),
                     array(0, 2, array("Acid" => Player::SC2RACE_PROTOSS, "HammeR" => Player::SC2RACE_RANDOM),		array("Amaley" => Player::SC2RACE_RANDOM, "Inside" => Player::SC2RACE_RANDOM)),
                 )
@@ -38,10 +38,10 @@ class LoadWarData extends BaseFixturesData implements OrderedFixtureInterface
             1 => array(
                 "war"	=> array(2, 3, '3D',		'FR', new \Datetime('2010-09-10 21:00:00')),
                 "games"	=> array(
-                    array(2, 1, array("MttN" => Player::SC2RACE_TERRAN),		array("nAm" => Player::SC2RACE_PROTOSS)),
+                    array(2, 1, array("MttN" => Player::SC2RACE_TERRAN),	array("nAm" => Player::SC2RACE_PROTOSS)),
                     array(0, 2, array("loveeyes" => Player::SC2RACE_TERRAN),	array("Crappy" => Player::SC2RACE_PROTOSS)),
-                    array(1, 2, array("BaGhLa" => Player::SC2RACE_TERRAN),		array("Zwey" => Player::SC2RACE_PROTOSS)),
-                    array(0, 2, array("Kura" => Player::SC2RACE_TERRAN),		array("NaSh" => Player::SC2RACE_RANDOM)),
+                    array(1, 2, array("BaGhLa" => Player::SC2RACE_TERRAN),	array("Zwey" => Player::SC2RACE_PROTOSS)),
+                    array(0, 2, array("Kura" => Player::SC2RACE_TERRAN),	array("NaSh" => Player::SC2RACE_RANDOM)),
                     array(2, 1, array("BaGhLa" => Player::SC2RACE_TERRAN, "Kura" => Player::SC2RACE_ZERG), array("nAm" => Player::SC2RACE_PROTOSS, "NaSh" => Player::SC2RACE_TERRAN)),
                 )
             ),
@@ -50,11 +50,11 @@ class LoadWarData extends BaseFixturesData implements OrderedFixtureInterface
                 "war"	=> array(3, 5, 'FOX',		'FR', new \Datetime('2010-09-17 21:00:00')),
                 "games"	=> array(
                     array(2, 0, array("loveeyes" => Player::SC2RACE_TERRAN),	array("SaJa" => Player::SC2RACE_PROTOSS)),
-                    array(2, 0, array("MttN" => Player::SC2RACE_TERRAN),		array("ZerGo" => Player::SC2RACE_ZERG)),
-                    array(0, 2, array("Kura" => Player::SC2RACE_TERRAN),		array("Jim" => Player::SC2RACE_TERRAN)),
-                    array(0, 2, array("HammeR" => Player::SC2RACE_RANDOM),		array("HaN" => Player::SC2RACE_RANDOM)),
-                    array(0, 2, array("Acid" => Player::SC2RACE_PROTOSS),		array("Osgiliath" => Player::SC2RACE_ZERG)),
-                    array(0, 2, array("AlepH" => Player::SC2RACE_PROTOSS),		array("DaRa" => Player::SC2RACE_PROTOSS)),
+                    array(2, 0, array("MttN" => Player::SC2RACE_TERRAN),	array("ZerGo" => Player::SC2RACE_ZERG)),
+                    array(0, 2, array("Kura" => Player::SC2RACE_TERRAN),	array("Jim" => Player::SC2RACE_TERRAN)),
+                    array(0, 2, array("HammeR" => Player::SC2RACE_RANDOM),	array("HaN" => Player::SC2RACE_RANDOM)),
+                    array(0, 2, array("Acid" => Player::SC2RACE_PROTOSS),	array("Osgiliath" => Player::SC2RACE_ZERG)),
+                    array(0, 2, array("AlepH" => Player::SC2RACE_PROTOSS),	array("DaRa" => Player::SC2RACE_PROTOSS)),
                     array(2, 1, array("MttN" => Player::SC2RACE_TERRAN, "Kura" => Player::SC2RACE_ZERG),			array("DaRa" => Player::SC2RACE_PROTOSS, "Jim" => Player::SC2RACE_TERRAN)),
                     array(0, 2, array("loveeyes" => Player::SC2RACE_TERRAN, "AlepH" => Player::SC2RACE_PROTOSS),	array("HaN" => Player::SC2RACE_ZERG, "PiVoR" => Player::SC2RACE_TERRAN)),
                 )
@@ -63,22 +63,22 @@ class LoadWarData extends BaseFixturesData implements OrderedFixtureInterface
             3 => array(
                 "war"	=> array(3, 2, 'SN',		'FR', new \Datetime('2011-01-30 21:00:00')),
                 "games"	=> array(
-                    array(2, 1, array("Lunatic" => Player::SC2RACE_TERRAN),		array("RenZaN" => Player::SC2RACE_ZERG)),
-                    array(2, 0, array("MttN" => Player::SC2RACE_TERRAN),		array("BOMBER" => Player::SC2RACE_PROTOSS)),
-                    array(1, 2, array("swArm" => Player::SC2RACE_TERRAN),		array("GKCDQ" => Player::SC2RACE_PROTOSS)),
+                    array(2, 1, array("Lunatic" => Player::SC2RACE_TERRAN),	array("RenZaN" => Player::SC2RACE_ZERG)),
+                    array(2, 0, array("MttN" => Player::SC2RACE_TERRAN),	array("BOMBER" => Player::SC2RACE_PROTOSS)),
+                    array(1, 2, array("swArm" => Player::SC2RACE_TERRAN),	array("GKCDQ" => Player::SC2RACE_PROTOSS)),
                     array(1, 2, array("Whiteman" => Player::SC2RACE_TERRAN),	array("Ktn" => Player::SC2RACE_RANDOM)),
-                    array(2, 0, array("mYst" => Player::SC2RACE_RANDOM),		array("Wrath" => Player::SC2RACE_PROTOSS)),
+                    array(2, 0, array("mYst" => Player::SC2RACE_RANDOM),	array("Wrath" => Player::SC2RACE_PROTOSS)),
                 )
             ),
 
             4 => array(
                 "war"	=> array(3, 4, 'FOX',		'FR', new \Datetime('2011-02-06 21:00:00')),
                 "games"	=> array(
-                    array(0, 2, array("BaGhLa" => Player::SC2RACE_TERRAN),		array("MetalMaster" => Player::SC2RACE_ZERG)),
-                    array(1, 2, array("Lunatic" => Player::SC2RACE_TERRAN),		array("sMiLe" => Player::SC2RACE_ZERG)),
-                    array(2, 0, array("MttN" => Player::SC2RACE_TERRAN),		array("Foumiz" => Player::SC2RACE_PROTOSS)),
-                    array(2, 1, array("mYst" => Player::SC2RACE_RANDOM),		array("jakilau" => Player::SC2RACE_TERRAN)),
-                    array(0, 2, array("Milla" => Player::SC2RACE_PROTOSS),		array("SalSal" => Player::SC2RACE_TERRAN)),
+                    array(0, 2, array("BaGhLa" => Player::SC2RACE_TERRAN),	array("MetalMaster" => Player::SC2RACE_ZERG)),
+                    array(1, 2, array("Lunatic" => Player::SC2RACE_TERRAN),	array("sMiLe" => Player::SC2RACE_ZERG)),
+                    array(2, 0, array("MttN" => Player::SC2RACE_TERRAN),	array("Foumiz" => Player::SC2RACE_PROTOSS)),
+                    array(2, 1, array("mYst" => Player::SC2RACE_RANDOM),	array("jakilau" => Player::SC2RACE_TERRAN)),
+                    array(0, 2, array("Milla" => Player::SC2RACE_PROTOSS),	array("SalSal" => Player::SC2RACE_TERRAN)),
                     array(2, 1, array("MttN" => Player::SC2RACE_TERRAN, "mYst" => Player::SC2RACE_RANDOM),			array("HaN" => Player::SC2RACE_ZERG, "PiVoR" => Player::SC2RACE_TERRAN)),
                     array(0, 2, array("Bouh" => Player::SC2RACE_PROTOSS, "Lapin" => Player::SC2RACE_ZERG),	array("DaRa" => Player::SC2RACE_PROTOSS, "boyyy" => Player::SC2RACE_ZERG)),
                 )
@@ -87,10 +87,10 @@ class LoadWarData extends BaseFixturesData implements OrderedFixtureInterface
             5 => array(
                 "war"	=> array(3, 2, 'FOX',		'FR', new \Datetime('2011-02-13 21:00:00')),
                 "games"	=> array(
-                    array(2, 0, array("MttN" => Player::SC2RACE_TERRAN),		array("MetalMaster" => Player::SC2RACE_ZERG)),
-                    array(2, 0, array("Bouh" => Player::SC2RACE_PROTOSS),		array("boyyy" => Player::SC2RACE_ZERG)),
-                    array(0, 2, array("Lunatic" => Player::SC2RACE_TERRAN),		array("jakilau" => Player::SC2RACE_TERRAN)),
-                    array(0, 2, array("Clafter" => Player::SC2RACE_TERRAN),		array("Foumiz" => Player::SC2RACE_PROTOSS)),
+                    array(2, 0, array("MttN" => Player::SC2RACE_TERRAN),	array("MetalMaster" => Player::SC2RACE_ZERG)),
+                    array(2, 0, array("Bouh" => Player::SC2RACE_PROTOSS),	array("boyyy" => Player::SC2RACE_ZERG)),
+                    array(0, 2, array("Lunatic" => Player::SC2RACE_TERRAN),	array("jakilau" => Player::SC2RACE_TERRAN)),
+                    array(0, 2, array("Clafter" => Player::SC2RACE_TERRAN),	array("Foumiz" => Player::SC2RACE_PROTOSS)),
                     array(2, 0, array("Clafter" => Player::SC2RACE_PROTOSS, "BattleStad" => Player::SC2RACE_ZERG),	array("DaRa" => Player::SC2RACE_PROTOSS, "boyyy" => Player::SC2RACE_ZERG)),
                 )
             ),
@@ -113,10 +113,10 @@ class LoadWarData extends BaseFixturesData implements OrderedFixtureInterface
             1 => array(
                 "war"	=> array(3, 2, 'aW',		'FR', new \Datetime('2010-09-26 21:00:00')),
                 "games"	=> array(
-                    array(2, 0, array("BaGhLa" => Player::SC2RACE_TERRAN),		array("Wallen" => Player::SC2RACE_ZERG)),
+                    array(2, 0, array("BaGhLa" => Player::SC2RACE_TERRAN),	array("Wallen" => Player::SC2RACE_ZERG)),
                     array(1, 2, array("RaptorS" => Player::SC2RACE_PROTOSS),	array("Khoral" => Player::SC2RACE_TERRAN)),
                     array(1, 2, array("nBSpOoN" => Player::SC2RACE_PROTOSS),	array("AvenGeR" => Player::SC2RACE_PROTOSS)),
-                    array(2, 0, array("YoPYoP" => Player::SC2RACE_PROTOSS),		array("AjiRa" => Player::SC2RACE_ZERG)),
+                    array(2, 0, array("YoPYoP" => Player::SC2RACE_PROTOSS),	array("AjiRa" => Player::SC2RACE_ZERG)),
                     array(2, 0, array("BaGhLa" => Player::SC2RACE_TERRAN, "Kura" => Player::SC2RACE_ZERG), array("AvenGeR" => Player::SC2RACE_PROTOSS, "AjiRa" => Player::SC2RACE_ZERG)),
                 )
             ),
@@ -124,10 +124,10 @@ class LoadWarData extends BaseFixturesData implements OrderedFixtureInterface
             2 => array(
                 "war"	=> array(2, 3, 'JPFF',	'FR', new \Datetime('2010-10-03 21:00:00')),
                 "games"	=> array(
-                    array(0, 2, array("BaGhLa" => Player::SC2RACE_TERRAN),		array("Sweety" => Player::SC2RACE_PROTOSS)),
-                    array(0, 2, array("loveeyes" => Player::SC2RACE_TERRAN),		array("Rasmuth" => Player::SC2RACE_PROTOSS)),
-                    array(2, 0, array("MttN" => Player::SC2RACE_TERRAN),		array("Sangui" => Player::SC2RACE_ZERG)),
-                    array(2, 0, array("Clafter" => Player::SC2RACE_TERRAN),		array("Tartiflette" => Player::SC2RACE_TERRAN)),
+                    array(0, 2, array("BaGhLa" => Player::SC2RACE_TERRAN),	array("Sweety" => Player::SC2RACE_PROTOSS)),
+                    array(0, 2, array("loveeyes" => Player::SC2RACE_TERRAN),	array("Rasmuth" => Player::SC2RACE_PROTOSS)),
+                    array(2, 0, array("MttN" => Player::SC2RACE_TERRAN),	array("Sangui" => Player::SC2RACE_ZERG)),
+                    array(2, 0, array("Clafter" => Player::SC2RACE_TERRAN),	array("Tartiflette" => Player::SC2RACE_TERRAN)),
                     array(0, 2, array("BaGhLa" => Player::SC2RACE_TERRAN, "Kura" => Player::SC2RACE_ZERG), array("Sweety" => Player::SC2RACE_PROTOSS, "Sangui" => Player::SC2RACE_ZERG)),
                 )
             ),
@@ -135,10 +135,10 @@ class LoadWarData extends BaseFixturesData implements OrderedFixtureInterface
             3 => array(
                 "war"	=> array(3, 2, 'FOX',		'FR', new \Datetime('2010-10-08 21:00:00')),
                 "games"	=> array(
-                    array(0, 2, array("BaGhLa" => Player::SC2RACE_TERRAN),		array("Jim" => Player::SC2RACE_TERRAN)),
-                    array(2, 0, array("MttN" => Player::SC2RACE_TERRAN),		array("ZerGo" => Player::SC2RACE_ZERG)),
-                    array(2, 0, array("YoPYoP" => Player::SC2RACE_PROTOSS),		array("jerome" => Player::SC2RACE_PROTOSS)),
-                    array(2, 0, array("Clafter" => Player::SC2RACE_TERRAN),		array("Osgiliath" => Player::SC2RACE_ZERG)),
+                    array(0, 2, array("BaGhLa" => Player::SC2RACE_TERRAN),	array("Jim" => Player::SC2RACE_TERRAN)),
+                    array(2, 0, array("MttN" => Player::SC2RACE_TERRAN),	array("ZerGo" => Player::SC2RACE_ZERG)),
+                    array(2, 0, array("YoPYoP" => Player::SC2RACE_PROTOSS),	array("jerome" => Player::SC2RACE_PROTOSS)),
+                    array(2, 0, array("Clafter" => Player::SC2RACE_TERRAN),	array("Osgiliath" => Player::SC2RACE_ZERG)),
                     array(0, 2, array("BaGhLa" => Player::SC2RACE_TERRAN, "Kura" => Player::SC2RACE_ZERG), array("Han" => Player::SC2RACE_PROTOSS, "PiVoR" => Player::SC2RACE_TERRAN)),
                 )
             ),
@@ -146,10 +146,10 @@ class LoadWarData extends BaseFixturesData implements OrderedFixtureInterface
             4 => array(
                 "war"	=> array(5, 0, 'MoX',		'FR', new \Datetime('2010-10-17 21:00:00')),
                 "games"	=> array(
-                    array(2, 0, array("BaGhLa" => Player::SC2RACE_TERRAN),		array("Tevou" => Player::SC2RACE_TERRAN)),
-                    array(2, 0, array("MttN" => Player::SC2RACE_TERRAN),		array("Fyl" => Player::SC2RACE_ZERG)),
+                    array(2, 0, array("BaGhLa" => Player::SC2RACE_TERRAN),	array("Tevou" => Player::SC2RACE_TERRAN)),
+                    array(2, 0, array("MttN" => Player::SC2RACE_TERRAN),	array("Fyl" => Player::SC2RACE_ZERG)),
                     array(2, 0, array("loveeyes" => Player::SC2RACE_TERRAN),	array("ChrisC" => Player::SC2RACE_TERRAN)),
-                    array(2, 1, array("nBLiO" => Player::SC2RACE_ZERG),			array("sendozzz" => Player::SC2RACE_PROTOSS)),
+                    array(2, 1, array("nBLiO" => Player::SC2RACE_ZERG),		array("sendozzz" => Player::SC2RACE_PROTOSS)),
                     array(2, 0, array("loveeyes" => Player::SC2RACE_TERRAN, "MttN" => Player::SC2RACE_TERRAN), array("sendozzz" => Player::SC2RACE_PROTOSS, "ChrisC" => Player::SC2RACE_TERRAN)),
                 )
             ),
@@ -157,20 +157,20 @@ class LoadWarData extends BaseFixturesData implements OrderedFixtureInterface
             5 => array(
                 "war"	=> array(2, 3, 'AdC',		'FR', new \Datetime('2010-10-24 21:00:00')),
                 "games"	=> array(
-                    array(0, 2, array("MttN" => Player::SC2RACE_TERRAN),		array("Zym" => Player::SC2RACE_PROTOSS)),
+                    array(0, 2, array("MttN" => Player::SC2RACE_TERRAN),	array("Zym" => Player::SC2RACE_PROTOSS)),
                     array(1, 2, array("loveeyes" => Player::SC2RACE_TERRAN),	array("Fyl" => Player::SC2RACE_TERRAN)),
-                    array(2, 1, array("Clafter" => Player::SC2RACE_TERRAN),		array("MaSteR" => Player::SC2RACE_PROTOSS)),
-                    array(1, 2, array("Naudar" => Player::SC2RACE_RANDOM),		array("MysTfaN" => Player::SC2RACE_PROTOSS)),
+                    array(2, 1, array("Clafter" => Player::SC2RACE_TERRAN),	array("MaSteR" => Player::SC2RACE_PROTOSS)),
+                    array(1, 2, array("Naudar" => Player::SC2RACE_RANDOM),	array("MysTfaN" => Player::SC2RACE_PROTOSS)),
                     array(2, 0, array("loveeyes" => Player::SC2RACE_TERRAN, "Clafter" => Player::SC2RACE_TERRAN), array("NewEra" => Player::SC2RACE_PROTOSS, "Heaven" => Player::SC2RACE_ZERG)),
                 )
             ),
             6 => array(
                 "war"	=> array(5, 0, 'BriT',	'FR', new \Datetime('2010-11-01 21:00:00')),
                 "games"	=> array(
-                    array(2, 0, array("MttN" => Player::SC2RACE_TERRAN),		array("Oseam" => Player::SC2RACE_PROTOSS)),
+                    array(2, 0, array("MttN" => Player::SC2RACE_TERRAN),	array("Oseam" => Player::SC2RACE_PROTOSS)),
                     array(2, 0, array("loveeyes" => Player::SC2RACE_TERRAN),	array("Madman" => Player::SC2RACE_TERRAN)),
-                    array(2, 0, array("Clafter" => Player::SC2RACE_TERRAN),		array("Raymonde" => Player::SC2RACE_TERRAN)),
-                    array(2, 0, array("mYst" => Player::SC2RACE_RANDOM),		array("Zeuhl" => Player::SC2RACE_PROTOSS)),
+                    array(2, 0, array("Clafter" => Player::SC2RACE_TERRAN),	array("Raymonde" => Player::SC2RACE_TERRAN)),
+                    array(2, 0, array("mYst" => Player::SC2RACE_RANDOM),	array("Zeuhl" => Player::SC2RACE_PROTOSS)),
                     array(2, 0, array("loveeyes" => Player::SC2RACE_TERRAN, "Clafter" => Player::SC2RACE_TERRAN), array("Thad" => Player::SC2RACE_PROTOSS, "Seno" => Player::SC2RACE_TERRAN)),
                 )
 
@@ -178,10 +178,10 @@ class LoadWarData extends BaseFixturesData implements OrderedFixtureInterface
             7 => array(
                 "war"	=> array(4, 1, 'Fae',		'BE', new \Datetime('2010-11-07 21:00:00')),
                 "games"	=> array(
-                    array(2, 1, array("Clafter" => Player::SC2RACE_TERRAN),		array("Eboceixa" => Player::SC2RACE_PROTOSS)),
+                    array(2, 1, array("Clafter" => Player::SC2RACE_TERRAN),	array("Eboceixa" => Player::SC2RACE_PROTOSS)),
                     array(2, 0, array("loveeyes" => Player::SC2RACE_TERRAN),	array("BEPChomage" => Player::SC2RACE_ZERG)),
-                    array(0, 2, array("MttN" => Player::SC2RACE_TERRAN),		array("niilzon" => Player::SC2RACE_PROTOSS)),
-                    array(2, 0, array("Pepem" => Player::SC2RACE_ZERG),			array("Taupinambour" => Player::SC2RACE_TERRAN)),
+                    array(0, 2, array("MttN" => Player::SC2RACE_TERRAN),	array("niilzon" => Player::SC2RACE_PROTOSS)),
+                    array(2, 0, array("Pepem" => Player::SC2RACE_ZERG),		array("Taupinambour" => Player::SC2RACE_TERRAN)),
                     array(2, 0, array("loveeyes" => Player::SC2RACE_TERRAN, "MttN" => Player::SC2RACE_TERRAN), array("niilzon" => Player::SC2RACE_PROTOSS, "Oodgeroo" => Player::SC2RACE_ZERG)),
                 )
 
@@ -190,10 +190,10 @@ class LoadWarData extends BaseFixturesData implements OrderedFixtureInterface
             8 => array(
                 "war"	=> array(3, 2, 'RCA',		'FR', new \Datetime('2010-11-14 21:00:00')),
                 "games"	=> array(
-                    array(2, 0, array("Clafter" => Player::SC2RACE_TERRAN),		array("Rowa" => Player::SC2RACE_TERRAN)),
+                    array(2, 0, array("Clafter" => Player::SC2RACE_TERRAN),	array("Rowa" => Player::SC2RACE_TERRAN)),
                     array(1, 2, array("loveeyes" => Player::SC2RACE_TERRAN),	array("GGs" => Player::SC2RACE_TERRAN)),
-                    array(2, 0, array("MttN" => Player::SC2RACE_TERRAN),		array("Kanon" => Player::SC2RACE_TERRAN)),
-                    array(1, 2, array("Pepem" => Player::SC2RACE_ZERG),			array("Foumiz" => Player::SC2RACE_PROTOSS)),
+                    array(2, 0, array("MttN" => Player::SC2RACE_TERRAN),	array("Kanon" => Player::SC2RACE_TERRAN)),
+                    array(1, 2, array("Pepem" => Player::SC2RACE_ZERG),		array("Foumiz" => Player::SC2RACE_PROTOSS)),
                     array(2, 0, array("loveeyes" => Player::SC2RACE_TERRAN, "Clafter" => Player::SC2RACE_TERRAN), array("Foumiz" => Player::SC2RACE_PROTOSS, "GGs" => Player::SC2RACE_TERRAN)),
                 )
             ),
@@ -220,7 +220,7 @@ class LoadWarData extends BaseFixturesData implements OrderedFixtureInterface
                                 array(2, 0, array("MttN" => Player::SC2RACE_TERRAN),		array("KyRoN" => Player::SC2RACE_PROTOSS)),
                                 array(2, 0, array("loveeyes" => Player::SC2RACE_TERRAN),	array("fiDZz" => Player::SC2RACE_PROTOSS)),
                                 array(1, 2, array("Kura" => Player::SC2RACE_TERRAN),		array("OthUnKnown" => Player::SC2RACE_TERRAN)),
-                                array(2, 0, array("nBLiO" => Player::SC2RACE_ZERG),			array("Silver" => Player::SC2RACE_TERRAN)),
+                                array(2, 0, array("nBLiO" => Player::SC2RACE_ZERG),		array("Silver" => Player::SC2RACE_TERRAN)),
                                 array(1, 2, array("BaGhLa" => Player::SC2RACE_TERRAN, "Kura" => Player::SC2RACE_ZERG),		array("fiDZz" => Player::SC2RACE_PROTOSS, "OthUnKnown" => Player::SC2RACE_TERRAN)),
                                 array(2, 0, array("MttN" => Player::SC2RACE_TERRAN, "loveeyes" => Player::SC2RACE_TERRAN),	array("KyRoN" => Player::SC2RACE_PROTOSS, "Silver" => Player::SC2RACE_TERRAN)),
                         )
@@ -241,9 +241,9 @@ class LoadWarData extends BaseFixturesData implements OrderedFixtureInterface
                 3 => array(
                         "war"	=> array(6, 0, 'Baby',		'DE', new \Datetime('2010-10-17 19:00:00')),
                         "games"	=> array(
-                                array(2, 0, array("Pepem" => Player::SC2RACE_ZERG),			array("Newman" => Player::SC2RACE_TERRAN)),
+                                array(2, 0, array("Pepem" => Player::SC2RACE_ZERG),		array("Newman" => Player::SC2RACE_TERRAN)),
                                 array(2, 1, array("loveeyes" => Player::SC2RACE_TERRAN),	array("Gremlino" => Player::SC2RACE_TERRAN)),
-                                array(2, 0, array("nBLiO" => Player::SC2RACE_ZERG),			array("nae" => Player::SC2RACE_PROTOSS)),
+                                array(2, 0, array("nBLiO" => Player::SC2RACE_ZERG),		array("nae" => Player::SC2RACE_PROTOSS)),
                                 array(2, 0, array("Kura" => Player::SC2RACE_RANDOM),		array("Wuuuuwup" => Player::SC2RACE_TERRAN)),
                                 array(2, 0, array("nBLiO" => Player::SC2RACE_ZERG, "Kura" => Player::SC2RACE_TERRAN),	array("nae" => Player::SC2RACE_PROTOSS, "Gremlino" => Player::SC2RACE_TERRAN)),
                                 array(2, 0, array("mYst" => Player::SC2RACE_RANDOM, "Acid" => Player::SC2RACE_PROTOSS),	array("Nuramon" => Player::SC2RACE_PROTOSS, "Newman" => Player::SC2RACE_TERRAN)),
@@ -291,7 +291,7 @@ class LoadWarData extends BaseFixturesData implements OrderedFixtureInterface
                         "games"	=> array(
                                 array(1, 2, array("Bouh" => Player::SC2RACE_PROTOSS),		array("Arca" => Player::SC2RACE_PROTOSS)),
                                 array(2, 0, array("Clafter" => Player::SC2RACE_TERRAN),		array("Velith" => Player::SC2RACE_TERRAN)),
-                                array(1, 2, array("beerwithme" => Player::SC2RACE_ZERG),		array("NiFi" => Player::SC2RACE_RANDOM)),
+                                array(1, 2, array("beerwithme" => Player::SC2RACE_ZERG),	array("NiFi" => Player::SC2RACE_RANDOM)),
                                 array(2, 1, array("Pepem" => Player::SC2RACE_ZERG),		array("JeremGS" => Player::SC2RACE_PROTOSS)),
                                 array(2, 0, array("Clafter" => Player::SC2RACE_TERRAN, "loveeyes" => Player::SC2RACE_TERRAN),	array("KoDeNi" => Player::SC2RACE_PROTOSS, "Velith" => Player::SC2RACE_TERRAN)),
                         )
@@ -303,7 +303,7 @@ class LoadWarData extends BaseFixturesData implements OrderedFixtureInterface
                                 array(0, 2, array("Bouh" => Player::SC2RACE_PROTOSS),		array("Cosmos" => Player::SC2RACE_TERRAN)),
                                 array(2, 1, array("Clafter" => Player::SC2RACE_TERRAN),		array("AbY" => Player::SC2RACE_ZERG)),
                                 array(0, 2, array("beerwithme" => Player::SC2RACE_ZERG),	array("BiGuP" => Player::SC2RACE_TERRAN)),
-                                array(1, 2, array("Pepem" => Player::SC2RACE_ZERG),			array("MaSter" => Player::SC2RACE_PROTOSS)),
+                                array(1, 2, array("Pepem" => Player::SC2RACE_ZERG),		array("MaSter" => Player::SC2RACE_PROTOSS)),
                                 array(2, 0, array("Clafter" => Player::SC2RACE_TERRAN, "loveeyes" => Player::SC2RACE_TERRAN), array("AbY" => Player::SC2RACE_ZERG, "Cosmos" => Player::SC2RACE_TERRAN)),
                         )
                 ),
@@ -314,7 +314,7 @@ class LoadWarData extends BaseFixturesData implements OrderedFixtureInterface
                                 array(2, 0, array("Bouh" => Player::SC2RACE_PROTOSS),		array("KeYsEr" => Player::SC2RACE_ZERG)),
                                 array(2, 1, array("Clafter" => Player::SC2RACE_TERRAN),		array("ShuttleS" => Player::SC2RACE_ZERG)),
                                 array(0, 2, array("Naudar" => Player::SC2RACE_ZERG),		array("Ptak" => Player::SC2RACE_ZERG)),
-                                array(2, 0, array("Pepem" => Player::SC2RACE_ZERG),			array("ManneR" => Player::SC2RACE_ZERG)),
+                                array(2, 0, array("Pepem" => Player::SC2RACE_ZERG),		array("ManneR" => Player::SC2RACE_ZERG)),
                                 array(2, 0, array("Clafter" => Player::SC2RACE_TERRAN, "loveeyes" => Player::SC2RACE_TERRAN), array("KeYsEr" => Player::SC2RACE_ZERG, "cymp" => Player::SC2RACE_PROTOSS)),
                         )
                 ),
@@ -324,7 +324,7 @@ class LoadWarData extends BaseFixturesData implements OrderedFixtureInterface
                         "games"	=> array(
                                 array(2, 1, array("Clafter" => Player::SC2RACE_TERRAN),		array("Rasmuth" => Player::SC2RACE_PROTOSS)),
                                 array(2, 0, array("beerwithme" => Player::SC2RACE_ZERG),	array("Sangui" => Player::SC2RACE_ZERG)),
-                                array(2, 1, array("Pepem" => Player::SC2RACE_ZERG),			array("Sweety" => Player::SC2RACE_PROTOSS)),
+                                array(2, 1, array("Pepem" => Player::SC2RACE_ZERG),		array("Sweety" => Player::SC2RACE_PROTOSS)),
                                 array(0, 2, array("Bouh" => Player::SC2RACE_PROTOSS),		array("Tartiflette" => Player::SC2RACE_TERRAN)),
                                 array(2, 0, array("Clafter" => Player::SC2RACE_TERRAN, "loveeyes" => Player::SC2RACE_TERRAN), array("Sangui" => Player::SC2RACE_ZERG, "Sweety" => Player::SC2RACE_PROTOSS)),
                         )
@@ -335,7 +335,7 @@ class LoadWarData extends BaseFixturesData implements OrderedFixtureInterface
                         "games"	=> array(
                                 array(0, 2, array("beerwithme" => Player::SC2RACE_ZERG),	array("Lidwyn" => Player::SC2RACE_TERRAN)),
                                 array(0, 2, array("Clafter" => Player::SC2RACE_TERRAN),		array("Tarki" => Player::SC2RACE_ZERG)),
-                                array(2, 0, array("Pepem" => Player::SC2RACE_ZERG),			array("Eeel" => Player::SC2RACE_ZERG)),
+                                array(2, 0, array("Pepem" => Player::SC2RACE_ZERG),             array("Eeel" => Player::SC2RACE_ZERG)),
                                 array(2, 0, array("Bouh" => Player::SC2RACE_PROTOSS),		array("Klusty" => Player::SC2RACE_TERRAN)),
                                 array(2, 1, array("Clafter" => Player::SC2RACE_TERRAN, "loveeyes" => Player::SC2RACE_TERRAN), array("Tarki" => Player::SC2RACE_ZERG, "ParadoX" => Player::SC2RACE_PROTOSS)),
                         )
@@ -345,7 +345,7 @@ class LoadWarData extends BaseFixturesData implements OrderedFixtureInterface
                         "war"	=> array(3, 2, 'SN',		'FR', new \Datetime('2011-01-23 17:00:00')),
                         "games"	=> array(
                                 array(2, 0, array("Clafter" => Player::SC2RACE_TERRAN),		array("RenZaN" => Player::SC2RACE_ZERG)),
-                                array(2, 1, array("Pepem" => Player::SC2RACE_ZERG),			array("iZno" => Player::SC2RACE_TERRAN)),
+                                array(2, 1, array("Pepem" => Player::SC2RACE_ZERG),		array("iZno" => Player::SC2RACE_TERRAN)),
                                 array(0, 2, array("beerwithme" => Player::SC2RACE_ZERG),	array("Moi" => Player::SC2RACE_PROTOSS)),
                                 array(2, 1, array("Bouh" => Player::SC2RACE_PROTOSS),		array("BOMBER" => Player::SC2RACE_PROTOSS)),
                                 array(0, 2, array("Clafter" => Player::SC2RACE_TERRAN, "loveeyes" => Player::SC2RACE_TERRAN), array("RenZaN" => Player::SC2RACE_ZERG, "iZno" => Player::SC2RACE_TERRAN)),
@@ -358,7 +358,7 @@ class LoadWarData extends BaseFixturesData implements OrderedFixtureInterface
                                 array(0, 2, array("MttN" => Player::SC2RACE_TERRAN),		array("Satiini" => Player::SC2RACE_TERRAN)),
                                 array(0, 2, array("Bouh" => Player::SC2RACE_PROTOSS),		array("Laukyo" => Player::SC2RACE_TERRAN)),
                                 array(0, 2, array("beerwithme" => Player::SC2RACE_ZERG),	array("effecto" => Player::SC2RACE_TERRAN)),
-                                array(0, 2, array("Pepem" => Player::SC2RACE_ZERG),			array("Unleashed" => Player::SC2RACE_ZERG)),
+                                array(0, 2, array("Pepem" => Player::SC2RACE_ZERG),             array("Unleashed" => Player::SC2RACE_ZERG)),
                                 array(2, 0, array("Pepem" => Player::SC2RACE_ZERG, "mYst" => Player::SC2RACE_RANDOM), array("SonG" => Player::SC2RACE_TERRAN, "XiriS" => Player::SC2RACE_PROTOSS)),
                         )
                 ),
@@ -388,7 +388,7 @@ class LoadWarData extends BaseFixturesData implements OrderedFixtureInterface
                         )
                 ),
 
-                2 => array(
+                1 => array(
                         "war"	=> array(0, 4, 'eyes',		'DE', new \Datetime('2011-04-24 19:00:00')),
                         "games"	=> array(
                                 array(1, 2, array("Bouh" => Player::SC2RACE_PROTOSS),		array("saltthewound" => Player::SC2RACE_ZERG)),
@@ -398,7 +398,7 @@ class LoadWarData extends BaseFixturesData implements OrderedFixtureInterface
                         )
                 ),
 
-                3 => array(
+                2 => array(
                         "war"	=> array(3, 2, 'oOa',		'DE', new \Datetime('2011-05-01 19:00:00')),
                         "games"	=> array(
                                 array(0, 2, array("GsHeeRo" => Player::SC2RACE_ZERG),		array("sAuROn" => Player::SC2RACE_TERRAN)),
@@ -409,18 +409,18 @@ class LoadWarData extends BaseFixturesData implements OrderedFixtureInterface
                         )
                 ),
 
-                4 => array(
+                3 => array(
                         "war"	=> array(0, 5, 'dw.',		'DE', new \Datetime('2011-05-08 19:00:00')),
                         "games"	=> array(
                                 array(0, 2, array("Hane" => Player::SC2RACE_PROTOSS),		array("Justify" => Player::SC2RACE_PROTOSS)),
                                 array(1, 2, array("Sweety" => Player::SC2RACE_PROTOSS),		array("iRa" => Player::SC2RACE_PROTOSS)),
-                                array(0, 2, array("-" => Player::SC2RACE_RANDOM),			array("Defwin" => Player::SC2RACE_RANDOM)),
+                                array(0, 2, array("-" => Player::SC2RACE_RANDOM),		array("Defwin" => Player::SC2RACE_RANDOM)),
                                 array(0, 2, array("mYst" => Player::SC2RACE_RANDOM),		array("Drunken" => Player::SC2RACE_TERRAN)),
                                 array(1, 2, array("Sweety" => Player::SC2RACE_PROTOSS, "Tartiflette" => Player::SC2RACE_TERRAN), array("FLamer" => Player::SC2RACE_ZERG, "Justify" => Player::SC2RACE_PROTOSS)),
                         )
                 ),
 
-                6 => array(
+                4 => array(
                         "war"	=> array(2, 3, 'hwbg',		'BG', new \Datetime('2011-05-22 19:00:00')),
                         "games"	=> array(
                                 array(0, 2, array("Hane" => Player::SC2RACE_PROTOSS),		array("Jei" => Player::SC2RACE_PROTOSS)),
@@ -450,7 +450,7 @@ class LoadWarData extends BaseFixturesData implements OrderedFixtureInterface
                         "war"	=> array(3, 2, 'FOX',		'FR', new \Datetime('2011-05-08 17:00:00')),
                         "games"	=> array(
                                 array(0, 2, array("Sweety" => Player::SC2RACE_TERRAN),		array("sMiLe" => Player::SC2RACE_ZERG)),
-                                array(0, 2, array("MttN" => Player::SC2RACE_ZERG),			array("Foumiz" => Player::SC2RACE_PROTOSS)),
+                                array(0, 2, array("MttN" => Player::SC2RACE_ZERG),		array("Foumiz" => Player::SC2RACE_PROTOSS)),
                                 array(2, 1, array("Pepem" => Player::SC2RACE_TERRAN),		array("FOXTristaR" => Player::SC2RACE_TERRAN)),
                                 array(2, 0, array("Rasmuth" => Player::SC2RACE_PROTOSS),	array("SaJa" => Player::SC2RACE_PROTOSS)),
                                 array(2, 1, array("Sweety" => Player::SC2RACE_PROTOSS, "Tartiflette" => Player::SC2RACE_TERRAN), array("DaRa" => Player::SC2RACE_PROTOSS, "boyyy" => Player::SC2RACE_ZERG)),
@@ -462,7 +462,7 @@ class LoadWarData extends BaseFixturesData implements OrderedFixtureInterface
                         "games"	=> array(
                                 array(1, 2, array("GsHeeRo" => Player::SC2RACE_ZERG),		array("NeOAnGeL" => Player::SC2RACE_PROTOSS)),
                                 array(1, 2, array("Sweety" => Player::SC2RACE_PROTOSS),		array("Diegopyc" => Player::SC2RACE_ZERG)),
-                                array(2, 1, array("Pepem" => Player::SC2RACE_ZERG),			array("Burimiche" => Player::SC2RACE_PROTOSS)),
+                                array(2, 1, array("Pepem" => Player::SC2RACE_ZERG),		array("Burimiche" => Player::SC2RACE_PROTOSS)),
                                 array(2, 1, array("Rasmuth" => Player::SC2RACE_PROTOSS),	array("Rexar" => Player::SC2RACE_PROTOSS)),
                                 array(2, 1, array("Sweety" => Player::SC2RACE_PROTOSS, "Tartiflette" => Player::SC2RACE_TERRAN), array("NeOAnGeL" => Player::SC2RACE_PROTOSS, "Thadortin" => Player::SC2RACE_ZERG)),
                         )
@@ -472,7 +472,7 @@ class LoadWarData extends BaseFixturesData implements OrderedFixtureInterface
                         "war"	=> array(2, 3, 'sAs',		'FR', new \Datetime('2011-05-22 17:00:00')),
                         "games"	=> array(
                                 array(0, 2, array("Rasmuth" => Player::SC2RACE_PROTOSS),	array("WiCkeDTeRRaN" => Player::SC2RACE_TERRAN)),
-                                array(2, 0, array("Pepem" => Player::SC2RACE_ZERG),			array("sAsPCK" => Player::SC2RACE_TERRAN)),
+                                array(2, 0, array("Pepem" => Player::SC2RACE_ZERG),		array("sAsPCK" => Player::SC2RACE_TERRAN)),
                                 array(1, 2, array("Sweety" => Player::SC2RACE_PROTOSS),		array("sAsUrice" => Player::SC2RACE_PROTOSS)),
                                 array(1, 2, array("Bouh" => Player::SC2RACE_PROTOSS),		array("sAsGanil" => Player::SC2RACE_TERRAN)),
                                 array(2, 1, array("Sweety" => Player::SC2RACE_PROTOSS, "Tartiflette" => Player::SC2RACE_TERRAN), array("Olinous" => Player::SC2RACE_TERRAN, "TaMoCk" => Player::SC2RACE_ZERG)),
