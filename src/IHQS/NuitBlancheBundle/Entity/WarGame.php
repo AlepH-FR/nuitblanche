@@ -152,7 +152,7 @@ class WarGame extends BaseGame
         foreach($this->games as $game)
         {
             $var = "team" . $game->getWinner() . "score";
-            ${$var}++;
+			if($var) { ${$var}++; }
         }
 
         $this->setTeam1Score($team1score);
