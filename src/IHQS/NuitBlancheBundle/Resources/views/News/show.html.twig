@@ -10,7 +10,7 @@
         <ol class="comments">
         {% for comment in news.comments %}
             <li>
-                <img src="{{ comment.author.avatarUrl | default('/bundles/ihqsnuitblanche/image/avatar/default.gif') }}" />
+                <img src="{{ comment.author.avatarUrl | default('/bundles/ihqsnuitblanche/images/avatar/default.gif') }}" />
                 <p class="meta">
                     #{{ loop.index }}
                     - <a href="{{ url('player_show', {'player_id': comment.author.id}) }}">{{ comment.author.username }}</a>
