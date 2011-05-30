@@ -55,11 +55,6 @@ class User implements UserInterface
     protected $avatar;
 
     /**
-     * @ORM\Column(type="string", nullable="true")
-     */
-    protected $avatarUrl;
-
-    /**
      * @ORM\Column(type="string")
      * @Assert\NotBlank(groups="Registration", message = "Please add your first name")
      */
