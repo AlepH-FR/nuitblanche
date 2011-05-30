@@ -35,7 +35,7 @@ abstract class BaseFixturesData extends AbstractFixture
                 return $this->manager->merge(parent::getReference($name));
 		} 
 		catch(\Doctrine\ORM\EntityNotFoundException $e) {
-			throw new \InvalidExceptionArgument('Unable to find entity reference "' . $name . '"');
+			throw new \InvalidArgumentException('Unable to find entity reference "' . $name . '"');
 			die;
 		}
 	}
