@@ -32,10 +32,6 @@ assetic:
     use_controller: false
     filters:
         cssrewrite: ~
-        # closure:
-        #     jar: %kernel.root_dir%/java/compiler.jar
-        # yui_css:
-        #     jar: %kernel.root_dir%/java/yuicompressor-2.4.2.jar
 
 # Doctrine Configuration
 doctrine:
@@ -54,7 +50,8 @@ doctrine:
         auto_mapping: false
         mappings:
             IHQSNuitBlancheBundle: { type: annotation, dir: Entity/ }
-            StofDoctrineExtensionsBundle: ~
+            ForumBundle: { type: xml, dir: Entity/ }
+            IHQSForumBundle: { type: annotation, dir: Entity/ }
 
 # Swiftmailer Configuration
 swiftmailer:
@@ -80,11 +77,6 @@ forum:
     db_driver: orm
     class:
         model:
-            category: IHQS\ForumBundle\Entity\Category
+            category: IHQSForumBundle\Entity\Category
             topic: IHQS\ForumBundle\Entity\Topic
             post: IHQS\ForumBundle\Entity\Post
-
-stof_doctrine_extensions:
-    default_locale: en_US
-    orm:
-        default: ~

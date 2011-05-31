@@ -19,3 +19,15 @@
 [submodule "vendor/gedmo-doctrine-extensions"]
 	path = vendor/gedmo-doctrine-extensions
 	url = git://github.com/l3pp4rd/DoctrineExtensions.git
+[submodule "vendor/zend"]
+	path = vendor/zend
+	url = git://github.com/zendframework/zf2.git
+[submodule "vendor/zend-paginator-adapter"]
+	path = vendor/zend-paginator-adapter
+	url = https://github.com/ornicar/ZendPaginatorAdapter/
+[submodule "vendor/doctrine-extensions"]
+	path = vendor/doctrine-extensions
+	url = https://github.com/beberlei/DoctrineExtensions
+[submodule "vendor/doctrine-extensions-sluggable"]
+	path = vendor/doctrine-extensions-sluggable
+	url = git://github.com/ornicar/Doctrine2-Sluggable-Functional-Behavior.git

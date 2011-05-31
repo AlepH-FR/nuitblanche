@@ -22,7 +22,6 @@ class AppKernel extends Kernel
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
 			new Bundle\ForumBundle\ForumBundle(),
             new JMS\SecurityExtraBundle\JMSSecurityExtraBundle(),
-            new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
             new IHQS\NuitBlancheBundle\IHQSNuitBlancheBundle(),
             new IHQS\ForumBundle\IHQSForumBundle(),
 			new IHQS\WysiwygBundle\IHQSWysiwygBundle(),
