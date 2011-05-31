@@ -66,6 +66,15 @@
     top: 31px;
     left: 730px;
 }
+#header .block-login div.error
+{
+    position: absolute;
+    padding: 3px;
+    background: none repeat scroll 0% 0% rgba(255, 0, 0, 0.5);
+    border: 1px solid rgb(255, 0, 0);
+    z-index: 2;
+    top: 88px;
+}
 #header form fieldset,
 #header .block-login div.log
 {

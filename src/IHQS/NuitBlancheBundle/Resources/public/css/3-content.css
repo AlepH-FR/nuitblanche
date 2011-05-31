@@ -530,6 +530,10 @@ div.wars table td.date
     width: 100px;
     font-size: 10px;
 }
+div.replays table td.downloads
+{
+    width: 30px;
+}
 div.wars table td.player
 {
     width: 135px;
@@ -775,10 +779,12 @@ table.team-player-list caption
     display: none;
 }
 
-table.team-player-list thead tr th
+table.team-player-list thead tr th,
+table.team-player-list tfoot tr th
 {
     font-weight: bold;
     text-align: center;
+    vertical-align: middle;
 }
 
 table.team-player-list tbody tr

@@ -75,6 +75,14 @@
                 </tr>
             </thead>
 
+            <tfoot>
+                <tr>
+                    <th></th>
+                    <th>{{ players | length }} {{ "players" | trans }}</th>
+                    <th colspan="7"></th>
+                </tr>
+            </tfoot>
+
             <tbody>
                 {% for player in players %}
                 <tr class="last">
