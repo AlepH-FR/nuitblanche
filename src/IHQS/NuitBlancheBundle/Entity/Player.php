@@ -221,7 +221,7 @@ class Player
 			$team2 = false;
 			foreach($game->getTeam2() as $p2)
 			{
-				if($p2->getPlayer() == $this->getId()) { $team2 = true; break; }
+				if($p2->getPlayer() && $p2->getPlayer()->getId() == $this->getId()) { $team2 = true; break; }
 			}
 			if($team2) { continue; }
 
@@ -287,7 +287,7 @@ class Player
 			$team2 = false;
 			foreach($game->getTeam2() as $p2)
 			{
-				if($p2->getPlayer() == $this->getId()) { $team2 = true; break; }
+				if($p2->getPlayer() && $p2->getPlayer()->getId() == $this->getId()) { $team2 = true; break; }
 			}
 			if($team2) { continue; }
 
