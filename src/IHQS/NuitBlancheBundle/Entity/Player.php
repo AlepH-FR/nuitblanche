@@ -218,6 +218,14 @@ class Player
         $counter = 0;
         foreach($this->getWarGames() as $game)
         {
+			$team2 = false;
+			foreach($game->getTeam2() as $p2)
+			{
+				if($p2->getPlayer() == $this->getId()) { $team2 = true; break; }
+			}
+			if($team2) { continue; }
+
+
             $type = "_" . $game->getType();
             
             if($game->getTeam1Result() == Game::RESULT_WIN)     { $this->stats[$type]["wins"]++; }
@@ -275,6 +283,13 @@ class Player
             {
 				continue; 
 			}
+			
+			$team2 = false;
+			foreach($game->getTeam2() as $p2)
+			{
+				if($p2->getPlayer() == $this->getId()) { $team2 = true; break; }
+			}
+			if($team2) { continue; }
 
 			// looking for ally
 			$ally = null;
