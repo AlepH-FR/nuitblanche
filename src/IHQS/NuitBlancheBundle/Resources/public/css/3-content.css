@@ -326,6 +326,10 @@ div.game-info span.stat
 {
     width: 60px;
 }
+div.stats ul li span.stat
+{
+    font-size: 10px;
+}
 div.replay-info ul li span.long,
 div.sub-section ul li span.long
 {

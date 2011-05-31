@@ -5,9 +5,18 @@
 {% block content %}
     <h2>{{ "Replays" | trans }}</h2>
     <div class="sub-section replays">
-        <table>
+        <table class="team-player-list">
             <caption>{{ "Replays" | trans }}</caption>
-            <thead></thead>
+            <thead>
+                <tr>
+                    <th>{{ "map" | trans }}</th>
+                    <th colspan="3">players</th>
+                    <th>{{ "date" | trans }}</th>
+                    <th>{{ "dls" | trans }}</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
             <tfoot></tfoot>
             <tbody>
                 {% for replay in replays %}

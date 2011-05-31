@@ -149,7 +149,7 @@ div.player-item ul
 div.player-item ul li
 {
     padding: 3px 0;
-    oveflow:hidden;
+/*  overflow: hidden; */
 }
 
 div.player-item ul li span.stat
@@ -322,6 +322,14 @@ div.sub-section span.stat
     font-weight: bold;
     display:inline-block;
 }
+div.game-info span.stat
+{
+    width: 60px;
+}
+div.stats ul li span.stat
+{
+    font-size: 10px;
+}
 div.replay-info ul li span.long,
 div.sub-section ul li span.long
 {
@@ -449,6 +457,10 @@ div.wide ul li span.little
     margin-right: 10px;
     height: 100px;
 }
+.comments li img {
+    height: 100px;
+}
+
 .comments li .meta
 {
     padding: 5px 0;

@@ -18,6 +18,9 @@
                          {% endfor %}
                     </td>
                     <td class="date">{{ replay.date.format('d/m/Y') }}</td>
+                    <td class="downloads">
+                        {{ replay.replay.downloads }}
+                    </td>
                     <td class="view">
                         <a href="{{ url('replay_show', { 'replay_id' : replay.replay.id }) }}">
                             <img class="ico" src="{{ asset('bundles/ihqsnuitblanche/images/ico/watch.png') }}" alt="{{ "details" | trans }}">

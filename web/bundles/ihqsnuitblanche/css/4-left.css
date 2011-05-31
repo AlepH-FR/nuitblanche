@@ -98,3 +98,7 @@ ul.calendar li.war {
     background-position: 169px -4px;
     cursor: pointer;
 }
+
+div#left div.online-users span.team {
+    width: 130px;
+}

@@ -13,7 +13,6 @@ nb.contributeWarGame = function()
             var key = $(this).attr('id').charAt(24);
             for(var j = 1; j < nb_games; j++)
             {
-                alert('#wargame_games_' + j + '_players_' + key + '_name');
                 $('#wargame_games_' + j + '_players_' + key + '_name').val($(this).val());
             }
         });
@@ -24,7 +23,6 @@ nb.contributeWarGame = function()
             var key = $(this).attr('id').charAt(24);
             for(var j = 1; j < nb_games; j++)
             {
-                alert('#wargame_games_' + j + '_players_' + key + '_race');
                 $('#wargame_games_' + j + '_players_' + key + '_race').val($(this).val());
             }
         });
@@ -36,7 +34,6 @@ nb.contributeWarGame = function()
         var key = $(this).attr('id').substr(15);
         for(var j = 1; j < nb_games; j++)
         {
-            alert('#wargame_games_' + j + key);
             $('#wargame_games_' + j + key).val($(this).val());
         }
     });
