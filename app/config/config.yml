@@ -54,6 +54,7 @@ doctrine:
         auto_mapping: false
         mappings:
             IHQSNuitBlancheBundle: { type: annotation, dir: Entity/ }
+            StofDoctrineExtensionsBundle: ~
 
 # Swiftmailer Configuration
 swiftmailer:
@@ -68,7 +69,22 @@ jms_security_extra:
 
 ihqs_nuit_blanche: ~
 
+ihqs_forum: ~
+
 ihqs_wysiwyg:
     selector: wysiwyg_editor
     editor:
         set: custom
+
+forum:
+    db_driver: orm
+    class:
+        model:
+            category: IHQS\ForumBundle\Entity\Category
+            topic: IHQS\ForumBundle\Entity\Topic
+            post: IHQS\ForumBundle\Entity\Post
+
+stof_doctrine_extensions:
+    default_locale: en_US
+    orm:
+        default: ~

@@ -20,8 +20,11 @@ class AppKernel extends Kernel
             new Symfony\Bundle\AsseticBundle\AsseticBundle(),
             new Symfony\Bundle\MonologBundle\MonologBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
+			new Bundle\ForumBundle\ForumBundle(),
             new JMS\SecurityExtraBundle\JMSSecurityExtraBundle(),
+            new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
             new IHQS\NuitBlancheBundle\IHQSNuitBlancheBundle(),
+            new IHQS\ForumBundle\IHQSForumBundle(),
 			new IHQS\WysiwygBundle\IHQSWysiwygBundle(),
         );
 

@@ -33,3 +33,15 @@ war:
 secured:
     resource: "@IHQSNuitBlancheBundle/Controller/SecuredController.php"
     type:     annotation
+
+forum:
+    resource: "@ForumBundle/Resources/config/routing/forum.xml"
+    prefix:     /forum
+
+forum_category:
+    resource: "@ForumBundle/Resources/config/routing/category.xml"
+    prefix:     /forum
+    
+forum_topic:
+    resource: "@ForumBundle/Resources/config/routing/topic.xml"
+    prefix:     /forum

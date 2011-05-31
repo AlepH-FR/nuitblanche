@@ -4,3 +4,18 @@
 [submodule "vendor/doctrine-datafixtures"]
 	path = vendor/doctrine-datafixtures
 	url = git://github.com/doctrine/data-fixtures.git
+[submodule "vendor/bundles/ForumBundle"]
+	path = vendor/bundles/ForumBundle
+	url = https://github.com/Herzult/ForumBundle.git
+[submodule "vendor/bundles/Bundle/ForumBundle"]
+	path = vendor/bundles/Bundle/ForumBundle
+	url = https://github.com/Herzult/ForumBundle.git
+[submodule "vendor/bundles/Stof/DoctrineExtensionsBundle"]
+	path = vendor/bundles/Stof/DoctrineExtensionsBundle
+	url = https://github.com/stof/DoctrineExtensionsBundle.git
+[submodule "vendor/bundles/Stof/Bundle/DoctrineExtensionsBundle"]
+	path = vendor/bundles/Stof/Bundle/DoctrineExtensionsBundle
+	url = https://github.com/stof/DoctrineExtensionsBundle.git
+[submodule "vendor/gedmo-doctrine-extensions"]
+	path = vendor/gedmo-doctrine-extensions
+	url = git://github.com/l3pp4rd/DoctrineExtensions.git
