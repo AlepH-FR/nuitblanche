@@ -3,7 +3,6 @@
 {% block title %}{{ "Replay" | trans }} : {{ replay.game.team1Name }} vs {{ replay.game.team2Name }} - {{ replay.game.date.format('d m Y') }}{% endblock %}
 
 {% block content %}
-<h2>{{ "Replay" | trans }}</h2>
 <ul class="action">
     <li>
         <a href="{{ url('replay_file_download', { "replay_id" : replay.id }) }}">

@@ -1,7 +1,7 @@
 {% extends 'IHQSNuitBlancheBundle::layout_standard.html.twig' %}
 
+{% block title %}{{ title }}{% endblock %}
 {% block content %}
-        <h2>{{ title | trans }}</h2>
         {% if message is not empty %}<div class="flash">{{ message | trans }}</div>{% endif %}
         <form id="admin-form" method="post" action="" {{ form_enctype(form) }}>
             {{ form_widget(form) }}
