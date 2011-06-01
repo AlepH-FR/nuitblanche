@@ -69,6 +69,7 @@ div.notice ul li span.league
 div.notice ul li span.date
 {
     font-size: 11px;
+    font-weight: bold;
 }
 
 /**
@@ -820,4 +821,13 @@ div.flash
     border: 1px solid red;
     padding: 10px;
     margin-bottom: 20px;
+}
+
+div.upgrades
+{
+    margin-bottom: 20px;
+}
+div.upgrades ol li
+{
+    list-style: decimal inside;
 }
