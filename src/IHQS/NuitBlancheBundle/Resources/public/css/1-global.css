@@ -94,6 +94,7 @@ ul.filters li
     font-weight: normal;
     padding: 0 5px;
 }
+
 ul.filters li.first
 {
     padding-left: 0;
@@ -101,4 +102,15 @@ ul.filters li.first
 ul.filters li.last
 {
     border: 0;
+}
+
+ul.crumbs li
+{
+    display: inline-block;
+    font-weight: normal;
+}
+ul.crumbs li a
+{
+    border-right: 1px solid #888;
+    padding: 0 5px;
 }
