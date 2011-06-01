@@ -18,6 +18,28 @@ class MainController extends Controller
             'news'  => $this->get('nb.manager.news')->findLast()
         );
     }
+    /**
+     * @Route("/to_come", name="to_come")
+     * @Template()
+     */
+    public function toComeAction()
+    {
+        return array(
+            'items' => array(
+                'v1.0' => array(
+                    'forum',
+                ),
+
+                'v2.0' => array(
+                    'comments edition',
+                    'replay notes and comments',
+                    'filters on replay and war lists',
+                    'dumb stats page',
+                    'backoffice for admins',
+                ),
+            )
+        );
+    }
 
     /**
      * @Route("/404", name="exception")
