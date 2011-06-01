@@ -177,7 +177,17 @@ class Season
 
     public function getNextWar()
     {
-        return current($this->wars);
+        $nextWar = false;
+        foreach($this->wars as $war)
+        {
+            if($war->getDate()->getTimestamp() > time())
+            {
+                $nextWar = $war;
+                break;
+            }
+        }
+
+        return $nextWar;
     }
 
     public function __toString()

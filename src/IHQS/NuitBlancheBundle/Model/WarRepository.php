@@ -26,9 +26,28 @@ class WarRepository extends EntityRepository
             execute();
     }
 
+    public function findNextWars()
+    {
+        $qb = $this->createQueryBuilder('w');
+
+        return $qb->
+            where(
+               $qb->expr()->gte('w.date', $qb->expr()->literal(date('Y-m-d H:i:s')))
+            )->
+            orderBy('w.date', 'DESC')->
+            setMaxResults(5)->
+            getQuery()->
+            execute();
+    }
+
     public function findLatest()
     {
-        return $this->createQueryBuilder('w')->
+        $qb = $this->createQueryBuilder('w');
+
+        return $qb->
+            where(
+               $qb->expr()->lte('w.date', $qb->expr()->literal(date('Y-m-d H:i:s')))
+            )->
             orderBy('w.date', 'DESC')->
             setMaxResults(5)->
             getQuery()->

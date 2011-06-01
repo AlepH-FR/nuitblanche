@@ -34,7 +34,7 @@ class War
     protected $team;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Season")
+     * @ORM\ManyToOne(targetEntity="Season", inversedBy="wars")
      */
     protected $season;
 
