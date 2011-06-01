@@ -47,10 +47,9 @@ doctrine:
 
     orm:
         auto_generate_proxy_classes: %kernel.debug%
-        auto_mapping: false
+        auto_mapping: true
         mappings:
             IHQSNuitBlancheBundle: { type: annotation, dir: Entity/ }
-            ForumBundle: { type: xml, dir: Entity/ }
             IHQSForumBundle: { type: annotation, dir: Entity/ }
 
 # Swiftmailer Configuration
@@ -77,6 +76,12 @@ forum:
     db_driver: orm
     class:
         model:
-            category: IHQSForumBundle\Entity\Category
+            category: IHQS\ForumBundle\Entity\Category
             topic: IHQS\ForumBundle\Entity\Topic
             post: IHQS\ForumBundle\Entity\Post
+        blamer:
+            post: IHQS\ForumBundle\Blamer\PostBlamer
+    paginator:
+        topics_per_page: 10
+        posts_per_page: 10
+        search_results_per_page: 10

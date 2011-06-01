@@ -9,7 +9,7 @@
 	url = https://github.com/Herzult/ForumBundle.git
 [submodule "vendor/bundles/Bundle/ForumBundle"]
 	path = vendor/bundles/Bundle/ForumBundle
-	url = https://github.com/Herzult/ForumBundle.git
+	url = git@github.com:AlepH-FR/ForumBundle
 [submodule "vendor/bundles/Stof/DoctrineExtensionsBundle"]
 	path = vendor/bundles/Stof/DoctrineExtensionsBundle
 	url = https://github.com/stof/DoctrineExtensionsBundle.git

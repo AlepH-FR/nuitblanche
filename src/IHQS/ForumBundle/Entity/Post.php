@@ -12,20 +12,14 @@ use IHQS\NuitBlancheBundle\Entity\User;
 class Post extends BasePost
 {
 	/**
-     * @ORM\Id
-     * @ORM\Column(type="integer")
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    protected $id;
-
-	/**
 	 * @ORM\ManyToOne(targetEntity="IHQS\NuitBlancheBundle\Entity\User")
 	 */
 	protected $author;
 
-    public function getId() {
-        return $this->id;
-    }
+	/**
+	 * @ORM\ManyToOne(targetEntity="Topic")
+	 */
+	protected $topic;
 
 	public function getAuthor()
 	{

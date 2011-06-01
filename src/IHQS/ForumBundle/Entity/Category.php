@@ -11,13 +11,12 @@ use Doctrine\ORM\Mapping as ORM;
 class Category extends BaseCategory
 {
 	/**
-     * @ORM\Id
-     * @ORM\Column(type="integer")
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    protected $id;
+	 * @ORM\OneToOne(targetEntity="Topic")
+	 */
+	protected $lastTopic;
 
-    public function getId() {
-        return $this->id;
-    }
+	/**
+	 * @ORM\OneToOne(targetEntity="Post")
+	 */
+	protected $lastPost;
 }

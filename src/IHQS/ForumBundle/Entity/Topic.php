@@ -12,16 +12,20 @@ use Doctrine\ORM\Mapping as ORM;
 class Topic extends BaseTopic
 {
 	/**
-     * @ORM\Id
-     * @ORM\Column(type="integer")
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    protected $id;
+	 * @ORM\OneToOne(targetEntity="Post")
+	 */
+	protected $firstPost;
 
-    public function getId() {
-        return $this->id;
-    }
+	/**
+	 * @ORM\OneToOne(targetEntity="Post")
+	 */
+	protected $lastPost;
 
+	/**
+	 * @ORM\ManyToOne(targetEntity="Category")
+	 */
+	protected $category;
+	
 	/**
      * Get authorName
      * @return string
