@@ -1,0 +1,21 @@
+{% extends 'ForumBundle::layout.html.twig' %}
+
+{% block title %}{{ "Topics list" | trans }}{% endblock %}
+
+{% block content %}
+<div class="forum category_show">
+    <ul class="crumbs filters">
+        <li><a href="{{ path('forum_index') }}">{{ "Forum" | trans }}</a></li>
+        <li class="last">{{ category.name }}</li>
+    </ul>
+    <div class="main topics">
+        <h2>{{ category.name }}</h2>
+        <a href="{{ forum_urlForCategoryAtomFeed(category) }}" title="Atom feed" class="feed atom">{{ "Atom feed" | trans }}</a>
+        {% render 'ForumBundle:Topic:list' with {'category': category, "page": page} %}
+    </div>
+
+    <div class="register">
+        <a href="{{ path('forum_category_topic_new', {'slug': category.slug} ) }}">{{ "Create a new topic" | trans }}</a>
+    </div>
+</div>
+{% endblock %}

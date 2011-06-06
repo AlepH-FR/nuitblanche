@@ -103,14 +103,3 @@ ul.filters li.last
 {
     border: 0;
 }
-
-ul.crumbs li
-{
-    display: inline-block;
-    font-weight: normal;
-}
-ul.crumbs li a
-{
-    border-right: 1px solid #888;
-    padding: 0 5px;
-}

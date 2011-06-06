@@ -1,0 +1,19 @@
+<ul class="forum_topics_list">
+{% for topic in topics %}
+    <li class="topic">
+        <div class="content">
+            <a class="subject" href="{{ forum_urlForTopic(topic) }}">{{ topic.subject }}</a>
+        </div>
+        <div class="metas">
+            <span class="createdAt">{{ topic.createdAt|date }}</span> 
+            - {{ "by" | trans }} <strong><span class="author">{{ topic.authorName }}</span></strong>
+            - <span class="numPosts">{{ topic.numPosts - 1 }} {{ topic.numPosts > 2 ? 'replies' : 'reply' }}</span>
+            - <a class="category" href="{{ forum_urlForCategory(topic.category) }}">{{ topic.category.name }}</a>
+        </div>
+    </li>
+{% endfor %}
+</ul>
+
+{% if category %}
+{% include 'ForumBundle::pagination.html.twig' with {'pager': topics.pages, 'url': forum_urlForCategory(category)} %}
+{% endif %}

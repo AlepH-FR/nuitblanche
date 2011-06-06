@@ -1,0 +1,33 @@
+{% if pager.pageCount %}
+<div class="pagination">
+
+    <p class="previous">
+    {% if pager.previous is defined %}
+        <a href="{{ url }}?page={{ pager.previous }}">&laquo; {{ "Previous" | trans }}</a>
+    {% else %}
+        <span>&laquo; {{ "Previous" | trans }}</span>
+    {% endif %}
+    </p>
+
+    <ul class="pages">
+    {% for page in pager.pagesInRange %}
+        <li>
+        {% if page == pager.current %}
+            <span class="page current">{{ page }}</span>
+        {% else %}
+            <a class="page" href="{{ url }}?page={{ page }}">{{ page }}</a>
+        {% endif %}
+        </li>
+    {% endfor %}
+    </ul>
+    
+    <p class="next">
+    {% if pager.next is defined %}
+        <a href="{{ url }}?page={{ pager.next }}">{{ "Next" | trans }} &raquo;</a>
+    {% else %}
+        <span>{{ "Next" | trans }} &raquo;</span>
+    {% endif %}
+    </p>
+
+</div>
+{% endif %}
