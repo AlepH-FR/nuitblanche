@@ -447,7 +447,7 @@ div.wide ul li span.little
 .comments li
 {
     margin: 20px 0;
-    height: 100px;
+    min-height: 100px;
     width: 520px;
 
     box-shadow: 0 0 10px #888;
@@ -465,6 +465,11 @@ div.wide ul li span.little
 }
 .comments li img {
     height: 100px;
+}
+.comments li p
+{
+    padding-bottom: 10px;
+    border-left: 1px solid #EEE;
 }
 
 .comments li .meta

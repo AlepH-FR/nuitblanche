@@ -36,4 +36,8 @@ class Post extends BasePost
 		return ($this->author instanceof User) ? $this->author->getUsername() : 'Anonymous';
 	}
 
+	public function getMessage()
+	{
+		return str_replace("\n", "<br />", $this->message);
+	}
 }

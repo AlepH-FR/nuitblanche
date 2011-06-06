@@ -10,7 +10,7 @@
             - {{ post.createdAt.format('d/m/Y - H:i') }}
         </p>
         <p>
-            {{ post.message }}
+            {{ post.message | raw }}
         </p>
     </li>
     {% endfor %}
