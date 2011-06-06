@@ -43,3 +43,4 @@ security:
         - { path: /login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: /contribute/.*, roles: ROLE_MEMBER }
         - { path: /forum/.*, roles: ROLE_MEMBER }
+        - { path: /forum/admin.*, roles: ROLE_ADMIN }
