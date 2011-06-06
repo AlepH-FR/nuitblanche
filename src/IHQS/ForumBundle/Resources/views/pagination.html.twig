@@ -15,7 +15,7 @@
         {% if page == pager.current %}
             <span class="page current">{{ page }}</span>
         {% else %}
-            <a class="page" href="{{ url }}?page={{ page }}">{{ page }}</a>
+            <strong><a class="page" href="{{ url }}?page={{ page }}">{{ page }}</a></strong>
         {% endif %}
         </li>
     {% endfor %}

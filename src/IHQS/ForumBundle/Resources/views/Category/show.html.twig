@@ -10,7 +10,6 @@
     </ul>
     <div class="main topics">
         <h2>{{ category.name }}</h2>
-        <a href="{{ forum_urlForCategoryAtomFeed(category) }}" title="Atom feed" class="feed atom">{{ "Atom feed" | trans }}</a>
         {% render 'ForumBundle:Topic:list' with {'category': category, "page": page} %}
     </div>
 
