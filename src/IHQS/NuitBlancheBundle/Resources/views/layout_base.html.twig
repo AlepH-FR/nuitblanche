@@ -47,7 +47,7 @@
                         <a href="{{ url('homepage') }}">{{ "Home" | trans }}</a>
                     </li>
                     <li>
-                        <a href="{{ url('homepage') }}">{{ "News" | trans }}</a>
+                        <a href="{{ url('news_archives') }}">{{ "News" | trans }}</a>
                     </li>
                     <li>
                         <a href="{{ url('team_list') }}">{{ "Team" | trans }}</a>
@@ -114,13 +114,9 @@
                         </ul>
                     </li>
                     <li class="footer-item-category">
-                        <p>{{ "Website map" | trans }}</p>
+                        <p>{{ "Misc." | trans }}</p>
                         <ul>
-                            <li>news</li>
-                            <li>team</li>
-                            <li>users</li>
-                            <li>leagues</li>
-                            <li>replays</li>
+                            <li><a href="{{ url('to_come') }}">to come</a></li>
                         </ul>
                     </li>
                 </ul>
