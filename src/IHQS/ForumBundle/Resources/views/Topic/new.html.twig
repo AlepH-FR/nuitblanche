@@ -8,14 +8,22 @@
         <li><a href="{{ path('forum_index') }}">{{ "Forum" | trans }}</a></li>
         <li class="last">{{ "New topic" | trans }}</li>
     </ul>
-    <div class="main">
-        <form id="admin-form"  action="{{ path("forum_category_topic_create", {"slug": category.slug}) }}" method="post">
-            {{ form_widget(form) }}
-            <button type="submit" name="create">{{ "Create topic" | trans }}</button>
-            <div class="cancel">
-                <a href="{{ path('forum_index') }}">{{ "Cancel" | trans }}</a>
-            </div>
-        </form>
-    </div>
+    {% if not_connected %}
+    <p class="login">
+        Please <strong>log in</strong> or <a href="{{ url('_secured_register') }}">register</a> in order to post comments
+    </p>
+    {% else %}
+        <div class="main">
+            <form id="admin-form"  action="{{ path("forum_category_topic_create", {"slug": category.slug}) }}" method="post">
+                {{ form_widget(form) }}
+                <button type="submit" name="create">{{ "Create topic" | trans }}</button>
+                <div class="cancel">
+                    <a href="{{ path('forum_index') }}">{{ "Cancel" | trans }}</a>
+                </div>
+            </form>
+        </div>
+
+        {% include 'IHQSForumBundle:Post:list.html.twig' with {'posts': posts | reverse } %}
+    {% endif %}
 </div>
 {% endblock %}

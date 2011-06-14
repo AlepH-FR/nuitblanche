@@ -12,8 +12,8 @@
     </ul>
 
     <div class="main topic">
-        {% include 'ForumBundle:Post:list.html.twig' with {'posts': posts} %}
-        {% include 'ForumBundle::pagination.html.twig' with {'pager': posts.pages, 'url': forum_urlForTopic(topic)} %}
+        {% include 'IHQSForumBundle:Post:list.html.twig' with {'posts': posts} %}
+        {% include 'IHQSForumBundle::pagination.html.twig' with {'pager': posts.pages, 'url': forum_urlForTopic(topic)} %}
     </div>
 
     <div class="register">

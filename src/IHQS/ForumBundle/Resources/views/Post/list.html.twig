@@ -1,12 +1,14 @@
 <ol class="forum_posts_list comments">
     {% for post in posts %}
     <li>
+        {% if post.author %}
         <a class="avatar" href="{{ url('player_show', {'player_id': post.author.id}) }}">
             <img src="{{ post.author.avatarUrl | default('/bundles/ihqsnuitblanche/images/avatar/default.gif') }}" />
         </a>
+        {% endif %}
         <p class="meta">
             #{{ loop.index }}
-            - <a href="{{ url('player_show', {'player_id': post.author.id}) }}">{{ post.author.username }}</a>
+            - {% if post.author %}<a href="{{ url('player_show', {'player_id': post.author.id}) }}">{{ post.author.username }}</a>{% else %}Anonymous{% endif %}
             - {{ post.createdAt.format('d/m/Y - H:i') }}
         </p>
         <p>
