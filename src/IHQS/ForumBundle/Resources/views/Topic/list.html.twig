@@ -10,6 +10,11 @@
             - <span class="numPosts">{{ topic.numPosts - 1 }} {{ topic.numPosts > 2 ? 'replies' : 'reply' }}</span>
             - <a class="category" href="{{ forum_urlForCategory(topic.category) }}">{{ topic.category.name }}</a>
         </div>
+        <div class="lasts">
+            {{ "last post" | trans }}<br />
+            {{ "by" | trans }} <strong><span class="author">{{ topic.lastPost.authorName }}</span></strong><br />
+            <span class="createdAt">{{ topic.lastPost.createdAt|date }}</span>
+        </div>
     </li>
 {% endfor %}
 </ul>

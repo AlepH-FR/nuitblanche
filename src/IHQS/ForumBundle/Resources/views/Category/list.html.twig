@@ -1,4 +1,4 @@
-<ul class="forum_topics_list">
+<ul class="forum_topics_list forum_categories_list">
     {% for category in categories %}
     <li>
         <div class="content">
@@ -7,6 +7,11 @@
         <p style="color:#888;">{{ category.description }}</p>
         <div class="metas">
             <span class="numTopics">{{ category.numTopics }} {{ category.numTopics > 1 ? 'topics' : 'topic' }}</span>
+        </div>
+        <div class="lasts">
+            {{ "last post" | trans }} : <a href="{{ forum_urlForTopic(category.lastPost.topic) }}">{{ category.lastPost.topic.subject }}</a><br />
+            {{ "by" | trans }} <strong><span class="author">{{ category.lastPost.authorName }}</span></strong><br />
+            <span class="createdAt">{{ category.lastPost.createdAt|date }}</span>
         </div>
     </li>
     {% endfor %}
