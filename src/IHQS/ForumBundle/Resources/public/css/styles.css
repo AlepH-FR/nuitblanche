@@ -63,6 +63,9 @@ ul.forum_topics_list {
         ul.forum_topics_list li div.content {
             font-size: 14px;
             font-weight: bold;
+            height: 16px;
+            max-width: 350px;
+            overflow: hidden;
         }
         ul.forum_topics_list li div.lasts {
             float: right;
