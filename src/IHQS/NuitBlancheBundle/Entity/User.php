@@ -172,6 +172,18 @@ class User implements UserInterface, \Serializable
         return $this->avatar;
     }
 
+	public function getAvatarMargin() {
+		if(is_null($this->avatar)) { return 0; }
+
+		$rootDir = __DIR__.'/../../../../web';
+		list($width, $height) = getimagesize($rootDir . $this->avatar);
+
+		if($width <= $height) { return 0; }
+
+		$resizedWidth = $width * 100 / $height;
+		return floor(($resizedWidth - 100) / 2);
+	}
+
     public function setAvatar($avatar) {
 		if(is_object($avatar) && $avatar instanceof UploadedFile)
 		{

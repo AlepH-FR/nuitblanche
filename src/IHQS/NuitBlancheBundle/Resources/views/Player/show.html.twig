@@ -23,7 +23,16 @@
 
     <a name="info"></a>
     <div class="player-item item-wide">
-        <img class="avatar" src="{{ player.user.avatarUrl | default('/bundles/ihqsnuitblanche/images/avatar/default.gif') }}" />
+        
+        <div class="avatar-canvas">
+            <style type="text/css">
+                div.player-item div.avatar-canvas img.avatar
+                {
+                    margin-left: -{{ player.user.avatarMargin }}px;
+                }
+            </style>
+            <img class="avatar" src="{{ player.user.avatarUrl | default('/bundles/ihqsnuitblanche/images/avatar/default.gif') }}" />
+        </div>
         <h2><span>{{ player.sc2Account }}#{{ player.sc2Id }}</span></h2>
         <ul class="terran">
             <li>

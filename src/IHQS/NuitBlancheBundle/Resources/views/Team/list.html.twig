@@ -12,7 +12,9 @@
         {% for player in team.players %}
         <div class="player-item {% if loop.index is even %}right{% endif %}">
             <a href="{{ url('player_show', { 'player_id': player.id }) }}">
-                <img class="avatar" src="{{ player.user.avatarUrl | default('/bundles/ihqsnuitblanche/images/avatar/default.gif') }}" />
+                <div class="avatar-canvas">
+                    <img style="margin-left: -{{ player.user.avatarMargin }}px;" class="avatar" src="{{ player.user.avatarUrl | default('/bundles/ihqsnuitblanche/images/avatar/default.gif') }}" />
+                </div>
                 <h2><span>{{ player.sc2Account }} #{{ player.sc2Id }}</span></h2>
                 <img class="race" src="{{ asset('bundles/ihqsnuitblanche/images/ico/' ~ player.sc2Race ~ '_fond.png') }}" />
             </a>
