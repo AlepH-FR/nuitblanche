@@ -20,6 +20,7 @@ div.notice h2
     float: left;
     background: url(../images/logo_notice.jpg);
 
+    margin-top: 0px;
     margin-right: 10px;
     color: white;
     text-align: center;
@@ -118,7 +119,7 @@ div.player-item h2
 div.player-item h2 span
 {
     display: block;
-    margin-top:-12px;
+    margin-top:-24px;
 
     height:24px;
     padding-left:30px;
@@ -278,7 +279,7 @@ div.replay-info div.obs
 div.replay-info div.obs span.stat,
 div.replay-info div.obs span.data
 {
-    display: block; 
+    display: block;
     float: left;
 }
 div.replay-info div.obs span.stat
@@ -468,8 +469,9 @@ div.wide ul li span.little
 }
 .comments li p
 {
-    padding-bottom: 10px;
     border-left: 1px solid #EEE;
+    padding: 15px;
+    text-align: justify;
 }
 
 .comments li .meta

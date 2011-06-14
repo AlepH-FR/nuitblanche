@@ -42,6 +42,9 @@ fieldset legend
     font-weight: bold;
     color: #395674;
     font-size: 18px;
+}
+fieldset legend
+{
     margin-bottom: 10px;
 }
 

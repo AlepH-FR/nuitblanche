@@ -19,5 +19,9 @@
             </div>
         </form>
     </div>
+
+    <div class="spacer"></div>
+    
+    {% include 'ForumBundle:Post:list.html.twig' with {'posts': posts | reverse } %}
 </div>
 {% endblock %}
