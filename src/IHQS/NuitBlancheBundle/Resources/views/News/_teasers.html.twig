@@ -1,0 +1,22 @@
+<div class="">
+    {% for new in news %}
+    <div class="news-teaser">
+        <h3><a href="{{ url('news_show', { "news_id": new.id }) }}">{{ new.title }}</a></h3>
+        <div class="news">
+            <p class="meta">{{ "by" | trans }}
+                <a href="{{ url('player_show', {'player_id': new.author.id}) }}">{{ new.author.username }}</a>
+                - {{ new.date.format('d/m/Y - H:i') }}
+                - <strong>{{ new.comments | length }}</strong> {{ "comments" | trans }}
+            </p>
+            {{ new.teaser | innerBlocks }}
+        </div>
+        <div id="comment-form">
+            <p class="login">
+                <a href="{{ url('news_show', { "news_id": new.id }) }}">
+                    {{ "Read more and view comments" | trans }}
+                </a>
+            </p>
+        </div>
+    </div>
+    {% endfor %}
+</div>

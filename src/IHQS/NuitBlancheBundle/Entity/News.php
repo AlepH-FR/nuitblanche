@@ -102,4 +102,8 @@ class News
     public function getComments() {
         return $this->comments;
     }
+
+	public function getTeaser() {
+		return substr($this->body, 0, strpos($this->body, '</p>'));
+	}
 }

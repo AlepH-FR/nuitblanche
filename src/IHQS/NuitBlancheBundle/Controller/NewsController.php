@@ -12,7 +12,7 @@ class NewsController extends BaseController
 {
     protected function getFormComment(News $news, User $user)
     {
-	// default object
+		// default object
         $comment = new Comment();
         $comment
             ->setDate(new \Datetime())
@@ -20,7 +20,7 @@ class NewsController extends BaseController
             ->setAuthor($user)
         ;
 
-	// creating form
+		// creating form
         $form = $this->get('form.factory')
             ->createBuilder('form', $comment)
             ->add('body')
@@ -51,7 +51,7 @@ class NewsController extends BaseController
         }
 		$form = $this->getFormComment($news, $user);
 
-	// handling response
+		// handling response
         return array(
             'not_connected'     => false,
             'submit_path'	=> $this->generateUrl('news_show', array('news_id' => $news->getId())),

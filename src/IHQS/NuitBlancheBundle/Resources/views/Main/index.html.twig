@@ -1,22 +1,10 @@
 {% extends 'IHQSNuitBlancheBundle::layout_standard.html.twig' %}
 
 {% block title %}
-    {{ news.title }}
-    {% if is_granted('ROLE_ADMIN') %}
-        <div class="admin_actions">
-        <a class="edit" href="{{ url('contribute_news_edit', {'news_id': news.id}) }}">({{ "edit" | trans }})</a>
-        </div>
-    {% endif %}
+    {{ "Welcome to Nuit Blanche website" | trans }}
 {% endblock %}
 
 {% block content %}
-    {% include "IHQSNuitBlancheBundle:News:details.html.twig" with { 'news': news } %}
-    <div id="comment-form">
-        <p class="login">
-            <a href="{{ url('news_show', { "news_id": news.id }) }}">
-                {{ "Read more and view comments" | trans }}
-            </a>
-        </p>
-    </div>
+    {% include "IHQSNuitBlancheBundle:News:_teasers.html.twig" with { 'news': news } %}
     <br/>
 {% endblock %}

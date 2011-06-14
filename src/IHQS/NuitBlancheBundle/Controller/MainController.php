@@ -15,7 +15,7 @@ class MainController extends Controller
     public function indexAction()
     {
         return array(
-            'news'  => $this->get('nb.manager.news')->findLast()
+            'news'  => $this->get('nb.manager.news')->findLatest()
         );
     }
     /**
