@@ -5,7 +5,7 @@
 {% block content %}
 <div class="forum forum_search">
     <ul class="crumbs filters">
-        <li><a href="{{ path('forum_index') }}">{{ "Forum" | trans }}</a></li>
+        <li class="first"><a href="{{ path('forum_index') }}">{{ "Forum" | trans }}</a></li>
         <li class="last">{{ "Search" | trans }}</li>
     </ul>
     <form class="clearfix" action="{{ url('forum_search') }}" method="get">

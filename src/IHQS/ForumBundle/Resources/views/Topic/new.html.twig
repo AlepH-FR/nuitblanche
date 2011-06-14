@@ -5,7 +5,7 @@
 {% block content %}
 <div class="forum topic_new">
     <ul class="crumbs filters">
-        <li><a href="{{ path('forum_index') }}">{{ "Forum" | trans }}</a></li>
+        <li class="first"><a href="{{ path('forum_index') }}">{{ "Forum" | trans }}</a></li>
         <li class="last">{{ "New topic" | trans }}</li>
     </ul>
     {% if not_connected %}

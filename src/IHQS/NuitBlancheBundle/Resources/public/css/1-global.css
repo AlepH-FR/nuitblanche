@@ -87,6 +87,10 @@ div.note-container span.note-ratio
      background: transparent;
 }
 
+ul.filters
+{
+    margin-top: 5px;
+}
 ul.filters li
 {
     display: inline-block;
