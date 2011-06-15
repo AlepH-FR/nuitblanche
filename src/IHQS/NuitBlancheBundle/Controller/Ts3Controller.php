@@ -42,6 +42,8 @@ class Ts3Controller extends Controller
      */
 	public function _channelsAction()
 	{
+		$message = '';
+		
 		try
 		{
 			$ts3 = \TeamSpeak3_TeamSpeak3::factory($this->api_url);
@@ -52,10 +54,12 @@ class Ts3Controller extends Controller
 		catch(\Exception $e)
 		{
 			$channels = array();
+			$message  = 'Query over limit... please wait';
 		}
 		
 		return array(
 			'channels' => $channels,
+			'message'  => $message,
 		);
 	}
 }
