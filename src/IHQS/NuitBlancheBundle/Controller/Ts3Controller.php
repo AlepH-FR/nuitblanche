@@ -42,12 +42,20 @@ class Ts3Controller extends Controller
      */
 	public function _channelsAction()
 	{
-		$ts3 = \TeamSpeak3_TeamSpeak3::factory($this->api_url);
-		$ts3->serverSelect(1);
-		$channels = array($ts3->serverGetSelected()->channelGetByName('Nuit Blanche'));
-
+		try
+		{
+			$ts3 = \TeamSpeak3_TeamSpeak3::factory($this->api_url);
+			$ts3->serverSelect(1);
+			$channels = array($ts3->serverGetSelected()->channelGetByName('Nuit Blanche'));
+			$channels = $this->getChannelsInfo($channels);
+		}
+		catch(Exception $e)
+		{
+			$channels = array();
+		}
+		
 		return array(
-			'channels' => $this->getChannelsInfo($channels),
+			'channels' => $channels,
 		);
 	}
 }
