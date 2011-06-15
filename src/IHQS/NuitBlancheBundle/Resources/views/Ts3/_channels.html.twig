@@ -1,0 +1,11 @@
+<div class="widget last-wars online-users ts3-channels">
+    <h3>{{ "Online TS3 users" | trans }}</h3>
+    <ul>
+        {% for name,info in channels %}
+        {% include "IHQSNuitBlancheBundle:Ts3:_channel.html.twig" with { "name": name, "info": info } %}
+        {% endfor %}
+    </ul>
+    <div class="bottom-link">
+        <a href="ts3server://ks364780.kimsufi.com">{{ "Connect"  | trans }}</a>
+    </div>
+</div>

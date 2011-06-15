@@ -22,6 +22,10 @@ stream:
     resource: "@IHQSNuitBlancheBundle/Controller/StreamController.php"
     type:     annotation
 
+ts3:
+    resource: "@IHQSNuitBlancheBundle/Controller/Ts3Controller.php"
+    type:     annotation
+
 team:
     resource: "@IHQSNuitBlancheBundle/Controller/TeamController.php"
     type:     annotation

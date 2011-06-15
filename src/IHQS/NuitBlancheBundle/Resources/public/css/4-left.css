@@ -102,3 +102,11 @@ ul.calendar li.war {
 div#left div.online-users span.team {
     width: 130px;
 }
+
+div.ts3-channels ul ul {
+    padding-left: 10px;
+}
+
+div.ts3-channels ul.ts3-users {
+    margin-bottom: 5px;
+}
