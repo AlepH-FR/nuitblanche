@@ -49,7 +49,7 @@ class Ts3Controller extends Controller
 			$channels = array($ts3->serverGetSelected()->channelGetByName('Nuit Blanche'));
 			$channels = $this->getChannelsInfo($channels);
 		}
-		catch(Exception $e)
+		catch(\Exception $e)
 		{
 			$channels = array();
 		}
