@@ -23,10 +23,17 @@ class StreamController extends Controller
                 $uri.= '&';
             }
         }
-        $content = file_get_contents($uri);
-        $data = json_decode($content);
 
-        return $data;
+		try
+		{
+			$content = file_get_contents($uri);
+			$data = json_decode($content);
+			return $data;
+		} 
+		catch(Exception $e)
+		{
+			return array();
+		}
     }
 
     /**

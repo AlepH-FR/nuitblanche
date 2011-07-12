@@ -146,6 +146,8 @@ class WarGame extends BaseGame
 
     public function updateTeamScores()
     {
+		$prev = $this->getTeam1Result();
+
         $team1score = 0;
         $team2score = 0;
 
@@ -160,6 +162,17 @@ class WarGame extends BaseGame
 
         $this->setTeam1Score($team1score);
         $this->setTeam2Score($team2score);
+
+		$next = $this->getTeam1Result();
+
+		if($this->war && $next != $prev)
+		{
+			if($prev == WarGame::RESULT_WIN)	{ $this->war->incrTeamScore(-1); }
+			if($prev == WarGame::RESULT_LOSS)	{ $this->war->incrOpponentScore(-1); }
+
+			if($next == WarGame::RESULT_WIN)	{ $this->war->incrTeamScore(1);  }
+			if($next == WarGame::RESULT_LOSS)	{ $this->war->incrOpponentScore(1); }
+		}
     }
 
     public function __toString()

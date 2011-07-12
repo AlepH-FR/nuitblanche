@@ -134,7 +134,7 @@ class Season
 
     public function incrWins($count = 1)
     {
-        $this->wins += $count;
+        $this->wins += intval($count);
     }
 
     public function getDraws() {
@@ -147,7 +147,7 @@ class Season
 
     public function incrDraws($count = 1)
     {
-        $this->draws += $count;
+        $this->draws += intval($count);
     }
 
     public function getLosses() {
@@ -160,7 +160,7 @@ class Season
 
     public function incrLosses($count = 1)
     {
-        $this->losses += $count;
+        $this->losses += intval($count);
     }
 
     public function getPosition() {

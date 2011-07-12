@@ -75,18 +75,30 @@ class War
 
 	/**
 	 * @ORM\PrePersist
+	 * @ORM\PreUpdate
 	 */
-	public function prePersist()
+	public function updateTeamScores()
 	{
+		$prev = $this->getResult();
+		
 		// result
 		if($this->teamScore > $this->opponentScore)		{ $this->setResult(WarGame::RESULT_WIN); }
 		if($this->teamScore < $this->opponentScore)		{ $this->setResult(WarGame::RESULT_LOSS); }
 		if($this->teamScore == $this->opponentScore)	{ $this->setResult(WarGame::RESULT_DRAW); }
 
+		$next = $this->getResult();
+
 		// season scores
-		if($this->season && $this->teamScore > $this->opponentScore)	{ $this->season->incrWins(); }
-		if($this->season && $this->teamScore < $this->opponentScore)	{ $this->season->incrLosses(); }
-		if($this->season && $this->teamScore == $this->opponentScore)	{ $this->season->incrDraws(); }
+		if($this->season && $next != $prev)
+		{
+			if($prev == WarGame::RESULT_WIN)	{ $this->season->incrWins(-1); }
+			if($prev == WarGame::RESULT_LOSS)	{ $this->season->incrLosses(-1); }
+			if($prev == WarGame::RESULT_DRAW)	{ $this->season->incrDraws(-1); }
+
+			if($next == WarGame::RESULT_WIN)	{ $this->season->incrWins(); }
+			if($next == WarGame::RESULT_LOSS)	{ $this->season->incrLosses(); }
+			if($next == WarGame::RESULT_DRAW)	{ $this->season->incrDraws(); }
+		}
 
 		// game dates
 		foreach($this->games as $warGame)
@@ -138,6 +150,10 @@ class War
         return $this->teamScore;
     }
 
+    public function incrTeamScore($count = 1) {
+        $this->teamScore += intval($count);
+    }
+
     public function setTeamScore($teamScore) {
         $this->teamScore = $teamScore;
     }
@@ -152,6 +168,10 @@ class War
 
     public function getOpponentScore() {
         return $this->opponentScore;
+    }
+
+    public function incrOpponentScore($count = 1) {
+        $this->opponentScore += intval($count);
     }
 
     public function setOpponentScore($opponentScore) {

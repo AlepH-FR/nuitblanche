@@ -9,11 +9,6 @@ class GamePlayerEventSubscriber extends BaseEventSubscriber
 {
     public function updateEntity($entity)
     {
-        if(!$entity instanceof GamePlayer)
-        {
-			return ;
-		}
-
 		$name = $entity->getName();
 		if(!$name)
 		{

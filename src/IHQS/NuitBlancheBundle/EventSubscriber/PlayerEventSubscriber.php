@@ -9,8 +9,6 @@ class PlayerEventSubscriber extends BaseEventSubscriber
 {
     public function updateEntity($entity)
     {
-        if(!$entity instanceof Player) { return; }
-
         $account = $entity->getSc2Account();
         if(!$account) {  return ; }
 

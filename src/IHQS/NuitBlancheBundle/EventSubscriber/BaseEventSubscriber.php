@@ -18,15 +18,29 @@ abstract class BaseEventSubscriber implements EventSubscriber
 
             foreach ($this->uow->getScheduledEntityInsertions() AS $entity)
             {
-                $this->updateEntity($entity);
+                $this->doUpdateEntity($entity);
             }
 
             foreach ($this->uow->getScheduledEntityUpdates() AS $entity)
             {
-                $this->updateEntity($entity);
+                $this->doUpdateEntity($entity);
             }
     }
 
+	public function doUpdateEntity($entity)
+	{
+		$matches = array();
+		preg_match('|([\w]+)EventSubscriber|', get_class($this), $matches);
+		$class = 'IHQS\\NuitBlancheBundle\\Entity\\' . $matches[1];
+
+		if(!$entity instanceof $class)
+        { 
+			return ;
+		}
+
+		return $this->updateEntity($entity);
+	}
+	
     abstract public function updateEntity($entity);
 
     public function getSubscribedEvents()

@@ -8,13 +8,30 @@ class GameEventSubscriber extends BaseEventSubscriber
 {
     public function updateEntity($entity)
     {
-        if(!$entity instanceof Game) { return; }
-
+		// war game update
         $warGame = $entity->getWarGame();
-        if(!$warGame) {  return ; }
+        if(!$warGame) { return ; }
 
 		$warGame->updateTeamScores();
 		$this->em->persist($warGame);
 		$this->uow->computeChangeSet($this->em->getClassMetadata('IHQS\NuitBlancheBundle\Entity\WarGame'), $warGame);
+
+		// war update
+		$war = $warGame->getWar();
+        if(!$war) {  return ; }
+		print_r($war->getResult());
+		print ' ';
+		$war->updateTeamScores();
+		print_r($war->getResult());
+		print '<br />';
+		$this->em->persist($war);
+		$this->uow->computeChangeSet($this->em->getClassMetadata('IHQS\NuitBlancheBundle\Entity\War'), $war);
+
+		// season update
+		$season = $war->getSeason();
+        if(!$season) {  return ; }
+		$this->em->persist($season);
+		$this->uow->computeChangeSet($this->em->getClassMetadata('IHQS\NuitBlancheBundle\Entity\Season'), $season);
+
 	}
 }

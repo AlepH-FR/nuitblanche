@@ -43,6 +43,8 @@ class Ts3Controller extends Controller
 	public function _channelsAction()
 	{
 		$message = '';
+
+		$cache = $this->container->get('kernel')->getCacheDir() . 'ts3channels.tmp';
 		
 		try
 		{
@@ -50,11 +52,11 @@ class Ts3Controller extends Controller
 			$ts3->serverSelect(1);
 			$channels = array($ts3->serverGetSelected()->channelGetByName('Nuit Blanche'));
 			$channels = $this->getChannelsInfo($channels);
+			file_put_contents($cache, serialize($channels));
 		}
 		catch(\Exception $e)
 		{
-			$channels = array();
-			$message  = 'Query over limit... please wait';
+			$channels = unserialize(file_get_contents($cache));
 		}
 		
 		return array(
