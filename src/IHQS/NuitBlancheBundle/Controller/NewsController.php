@@ -66,7 +66,7 @@ class NewsController extends BaseController
     public function archivesAction()
     {
         return array(
-            'news' => $this->get('nb.manager.news')->findLatest()
+            'news' => $this->get('nb.manager.news')->findAll()
         );
     }
     
