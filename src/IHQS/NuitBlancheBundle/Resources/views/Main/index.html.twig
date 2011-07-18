@@ -5,6 +5,8 @@
 
 {% block content %}
     {% render "IHQSNuitBlancheBundle:War:_next" %}
+
+    <h1>{{ "Latest news" | trans }}</h1>
     {% include "IHQSNuitBlancheBundle:News:_teasers.html.twig" with { 'news': news } %}
     <br/>
 {% endblock %}
