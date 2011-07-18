@@ -129,7 +129,6 @@ class Team
             {
                 if($game->getGames()->count() == 0)
                 {
-                    print "<pre>"; print $game->getId(); print "</pre>";
                     continue;
                 }
                 $type = "_" . $game->getType();

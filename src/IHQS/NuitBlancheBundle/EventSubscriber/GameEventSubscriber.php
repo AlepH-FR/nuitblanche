@@ -19,11 +19,8 @@ class GameEventSubscriber extends BaseEventSubscriber
 		// war update
 		$war = $warGame->getWar();
         if(!$war) {  return ; }
-		print_r($war->getResult());
-		print ' ';
+
 		$war->updateTeamScores();
-		print_r($war->getResult());
-		print '<br />';
 		$this->em->persist($war);
 		$this->uow->computeChangeSet($this->em->getClassMetadata('IHQS\NuitBlancheBundle\Entity\War'), $war);
 

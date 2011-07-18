@@ -480,6 +480,18 @@ div.wide ul li span.little
 
     background: white;
 }
+.comments li li
+{
+    margin: 0px 0;
+    min-height: 0px;
+    width: auto;
+
+    box-shadow: 0 0 0px #888;
+    -moz-box-shadow: 0 0 0px #888;
+    -webkit-box-shadow: 0 0 0px #888;
+
+    background: none;
+}
 
 .comments li a.avatar
 {
