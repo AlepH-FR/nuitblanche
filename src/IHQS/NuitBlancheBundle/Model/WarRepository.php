@@ -34,8 +34,8 @@ class WarRepository extends EntityRepository
             where(
                $qb->expr()->gte('w.date', $qb->expr()->literal(date('Y-m-d H:i:s')))
             )->
-            orderBy('w.date', 'DESC')->
-            setMaxResults(5)->
+            orderBy('w.date', 'ASC')->
+            setMaxResults(4)->
             getQuery()->
             execute();
     }
