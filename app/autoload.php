@@ -19,6 +19,7 @@ $loader->registerNamespaces(array(
     'DoctrineExtensions' => __DIR__.'/../vendor/doctrine-extensions/lib',
     'DoctrineExtensions\\Sluggable' => __DIR__.'/../vendor/doctrine-extensions-sluggable/lib',
     'SC2Chart'         => __DIR__.'/../vendor/sc2chart/src',
+    'SC2Ranks'         => __DIR__.'/../vendor/sc2ranks/src',
     'Metadata'         => __DIR__.'/../vendor/metadata/src',
     'IHQS'             => __DIR__.'/../src',
 ));

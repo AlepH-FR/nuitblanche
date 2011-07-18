@@ -8,7 +8,10 @@
             <a href="#info">{{ "Info" | trans }}</a>
         </li>
         <li>
-            <a href="#stats">{{ "Stats" | trans }}</a>
+            <a href="#stats">{{ "Clan War Stats" | trans }}</a>
+        </li>
+        <li>
+            <a href="#bnet">{{ "Battle Net Stats" | trans }}</a>
         </li>
         <li>
             <a href="#social">{{ "Social" | trans }}</a>
@@ -34,7 +37,7 @@
             <img class="avatar" src="{{ player.user.avatarUrl | default('/bundles/ihqsnuitblanche/images/avatar/default.gif') }}" />
         </div>
         <h2><span>{{ player.sc2Account }}#{{ player.sc2Id }}</span></h2>
-        <ul class="terran">
+        <ul class="short">
             <li>
                 <span class="stat">{{ "name" | trans }}</span>
                 <span class="data">{{ player.user.firstName }} "<strong>{{ player.username }}</strong>" {{ player.user.lastName }}.</span>
@@ -59,7 +62,7 @@
 
     <a name="stats"></a>
     <div class="sub-section stats">
-    <h2>{{ "Stats" | trans }}</h2>
+    <h2>{{ "Clan War Stats" | trans }}</h2>
         <ul class="short">
         <li>
             <span class="stat">1on1</span>
@@ -132,6 +135,52 @@
         </ul>
         <div class="spacer"></div>
     </div>
+    {% include "IHQSNuitBlancheBundle:Layout:back_on_top.html.twig" %}
+
+    <div class="spacer"></div>
+
+    <a name="bnet"></a>
+    <div class="player-item item-wide bnet">
+
+        <div class="avatar-canvas">
+            <style type="text/css">
+                div.bnet div.avatar-canvas
+                {
+                    background: url('{{ asset("bundles/ihqsnuitblanche/images/sc2portraits/portraits-" ~ player.sc2Ranks.base.portrait.icon_id ~ "-90.jpg") }}') -{{ 90 * player.sc2Ranks.base.portrait.column }}px -{{ 90 * player.sc2Ranks.base.portrait.row }}px no-repeat; width: 90px; height: 90px;
+                }
+            </style>
+        </div>
+        <h2><span>{{ "Battle Net Stats" | trans }}</span></h2>
+        <ul class="short">
+            <li>
+                <span class="stat">{{ "1on1" | trans }}</span>
+                <span class="data">
+                    <img class="bnet-rank" src="{{ asset(player.sc2Ranks._1v1.teams[0].leaguePic) }}" />
+                    {{ player.sc2Ranks._1v1.teams[0].wins }}-{{ player.sc2Ranks._1v1.teams[0].losses }}
+                    <div class="note-container">
+                        <span style="width: {{ 100 - player.sc2Ranks._1v1.teams[0].ratio }}px;"></span>
+                        <span class="note-ratio" style="margin-right: -{{ 100 - player.sc2Ranks._1v1.teams[0].ratio }}px;">{{ player.sc2Ranks._1v1.teams[0].ratio }}%&nbsp;</span>
+                    </div>
+		</span>
+            </li>
+        </ul>
+        <ul class="long">
+	{% for team in player.sc2Ranks._2v2.teams %}
+            <li>
+                <span class="stat long">w/ {{ team.members[0].name }}</span>
+                <span class="data">
+                    <img class="bnet-rank" src="{{ asset(team.leaguePic) }}" />
+                    {{ team.wins }}-{{ team.losses }}
+                    <div class="note-container">
+                        <span style="width: {{ 100 - team.ratio }}px;"></span>
+                        <span class="note-ratio" style="margin-right: -{{ 100 - team.ratio }}px;">{{ team.ratio }}%&nbsp;</span>
+                    </div>
+		</span>
+            </li>
+	{% endfor %}
+        </ul>
+    </div>
+    {% include "IHQSNuitBlancheBundle:Layout:back_on_top.html.twig" %}
 
     <div class="spacer"></div>
 
@@ -180,6 +229,7 @@
         </ul>
         <div class="spacer"></div>
     </div>
+    {% include "IHQSNuitBlancheBundle:Layout:back_on_top.html.twig" %}
 
     <div class="spacer"></div>
 
@@ -224,6 +274,7 @@
                 </tbody>
         </table>
     </div>
+    {% include "IHQSNuitBlancheBundle:Layout:back_on_top.html.twig" %}
 
     <div class="spacer"></div>
     <a name="replays"></a>

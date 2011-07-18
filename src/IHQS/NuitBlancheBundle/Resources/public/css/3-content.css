@@ -899,3 +899,10 @@ div.upgrades ol li
     border-top: 1px solid #EEE;
     border-bottom: 1px solid #EEE;
 }
+
+img.bnet-rank
+{
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+}

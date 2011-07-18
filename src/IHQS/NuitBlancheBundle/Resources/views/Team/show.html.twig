@@ -66,6 +66,7 @@
                     <th></th>
                     <th>{{ "name" | trans }}</th>
                     <th>{{ "sc2 account" | trans }}</th>
+                    <th>{{ "bnet" | trans }}</th>
                     <th>{{ "role" | trans }}</th>
                     <th title="{{ "win" | trans }}">W</th>
                     <th title="{{ "loss" | trans }}">L</th>
@@ -92,6 +93,7 @@
                     <td><img src="{{ asset('bundles/ihqsnuitblanche/images/flags/' ~ player.user.countryCode | lower  ~ '.gif') }}" alt="{{ player.user.countryCode }}" class="flag" /></td>
                     <td><a href="{{ url('player_show', { "player_id": player.id }) }}">{{ player.username }}</a></td>
                     <td>{{ player.sc2Account }}#{{ player.sc2Id }}</td>
+                    <td>{% if player.sc2Ranks._1v1.teams is defined %}<img  class="bnet-rank" src="{{ asset(player.sc2Ranks._1v1.teams[0].leaguePic) }}" />{% endif %}</td>
                     <td>{{ player.sc2Role }}</td>
                     <td>{{ player.stats._1v1.wins }}</td>
                     <td>{{ player.stats._1v1.losses }}</td>

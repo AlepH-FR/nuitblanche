@@ -52,10 +52,18 @@ div.notice ul
 {
     padding-top: 10px;
 }
+div.next-wars ul
+{
+    padding-top: 8px;
+}
 
 div.notice ul li
 {
     padding: 3px 0;
+}
+div.next-wars ul li
+{
+    padding: 2px 0;
 }
 
 div.notice ul li span
@@ -890,4 +898,11 @@ div.upgrades ol li
     background-color: white;
     border-top: 1px solid #EEE;
     border-bottom: 1px solid #EEE;
+}
+
+img.bnet-rank
+{
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
 }

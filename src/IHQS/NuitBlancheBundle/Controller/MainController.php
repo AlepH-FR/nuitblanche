@@ -14,6 +14,8 @@ class MainController extends Controller
      */
     public function indexAction()
     {
+		$ranks = new \SC2Ranks\SC2Ranks('clan-nuitblanche.org');
+		
         return array(
             'news'  => $this->get('nb.manager.news')->findLatest()
         );
