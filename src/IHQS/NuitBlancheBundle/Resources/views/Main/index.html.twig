@@ -1,10 +1,10 @@
 {% extends 'IHQSNuitBlancheBundle::layout_standard.html.twig' %}
 
 {% block title %}
-    {{ "Welcome to Nuit Blanche website" | trans }}
 {% endblock %}
 
 {% block content %}
+    {% render "IHQSNuitBlancheBundle:War:_next" %}
     {% include "IHQSNuitBlancheBundle:News:_teasers.html.twig" with { 'news': news } %}
     <br/>
 {% endblock %}

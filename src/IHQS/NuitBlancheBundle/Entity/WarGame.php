@@ -167,11 +167,7 @@ class WarGame extends BaseGame
 
 		if($this->war && $next != $prev)
 		{
-			if($prev == WarGame::RESULT_WIN)	{ $this->war->incrTeamScore(-1); }
-			if($prev == WarGame::RESULT_LOSS)	{ $this->war->incrOpponentScore(-1); }
-
-			if($next == WarGame::RESULT_WIN)	{ $this->war->incrTeamScore(1);  }
-			if($next == WarGame::RESULT_LOSS)	{ $this->war->incrOpponentScore(1); }
+			$this->war->updateTeamScores();
 		}
     }
 

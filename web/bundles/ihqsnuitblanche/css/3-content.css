@@ -28,6 +28,12 @@ div.notice h2
     -moz-text-shadow: 0 0 10px #888;
     -webkit-text-shadow: 0 0 10px #888;
 }
+div.next-wars h2
+{
+    line-height: 100px;
+    text-align: center;
+    font-size: 20px;
+}
 div.notice-war h2
 {
     background: url(../images/logo_league.jpg);
@@ -479,6 +485,21 @@ div.wide ul li span.little
     -webkit-box-shadow: 0 0 10px #888;
 
     background: white;
+}
+.comments li li
+{
+    list-style: circle inside;
+    padding-left: 15px;
+
+    margin: 0px 0;
+    min-height: 0px;
+    width: auto;
+
+    box-shadow: 0 0 0px #888;
+    -moz-box-shadow: 0 0 0px #888;
+    -webkit-box-shadow: 0 0 0px #888;
+
+    background: none;
 }
 
 .comments li a.avatar

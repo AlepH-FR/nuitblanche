@@ -28,6 +28,12 @@ div.notice h2
     -moz-text-shadow: 0 0 10px #888;
     -webkit-text-shadow: 0 0 10px #888;
 }
+div.next-wars h2
+{
+    line-height: 100px;
+    text-align: center;
+    font-size: 20px;
+}
 div.notice-war h2
 {
     background: url(../images/logo_league.jpg);

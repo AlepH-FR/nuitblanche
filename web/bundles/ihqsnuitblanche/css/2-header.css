@@ -24,6 +24,15 @@
 {
     display: none;
 }
+#header .baseline
+{
+    position: absolute;
+    color: white;
+    font-family: 'Give You Glory', cursive;
+    font-size: 22px;
+    top: 70px;
+    margin-left: 10px;
+}
 #header .lang
 {
     float: right;

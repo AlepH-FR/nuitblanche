@@ -50,6 +50,16 @@ class WarController extends BaseController
         );
     }
 
+	/**
+     * @Template()
+     */
+    public function _nextAction()
+    {
+        return array(
+            'wars' => $this->get('nb.manager.war')->findNextWars()
+        );
+    }
+
     /**
      * @Template()
      */
