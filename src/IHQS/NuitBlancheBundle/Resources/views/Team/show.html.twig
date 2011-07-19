@@ -94,7 +94,7 @@
                     <td><a href="{{ url('player_show', { "player_id": player.id }) }}">{{ player.username }}</a></td>
                     <td>{{ player.sc2Account }}#{{ player.sc2Id }}</td>
                     <td>
-                        {% if player.sc2Ranks.base is defined %}
+                        {% if player.sc2Ranks.base is defined and player.sc2Ranks.base[1] is defined %}
                             <img  class="bnet-rank" src="{{ asset(player.sc2Ranks.base[1].leaguePic) }}" title="{{ player.sc2Ranks.base[1].points }} points, {{ player.sc2Ranks.base[1].ratio }}% "/>
                         {% endif %}
                     </td>
