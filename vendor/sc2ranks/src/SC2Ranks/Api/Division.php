@@ -31,7 +31,7 @@ class Division extends BaseApi
 		self::LEVEL_BRONZE,
 		self::LEVEL_SILVER,
 		self::LEVEL_GOLD,
-		self::LEVEL_PLATINIUM,
+		self::LEVEL_PLATINUM,
 		self::LEVEL_DIAMOND,
 		self::LEVEL_MASTER,
 		self::LEVEL_GRANDMASTER,
