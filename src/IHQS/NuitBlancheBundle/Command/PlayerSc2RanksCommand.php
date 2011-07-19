@@ -60,7 +60,10 @@ EOT
 		if(!isset($teams->error))
 		{
 			$sc2ranks['base'] = array();
-			$sc2ranks['portrait'] = $teams->portrait;
+			if($teams->portrait)
+			{
+				$sc2ranks['portrait'] = $teams->portrait;
+			}
 
 			foreach($teams->teams as $team)
 			{
