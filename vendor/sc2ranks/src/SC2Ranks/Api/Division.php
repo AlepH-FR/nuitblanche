@@ -22,7 +22,7 @@ class Division extends BaseApi
 	const LEVEL_GRANDMASTER = "grandmaster";
 	const LEVEL_MASTER		= "master";
 	const LEVEL_DIAMOND		= "diamond";
-	const LEVEL_PLATINIUM	= "platinium";
+	const LEVEL_PLATINUM	= "platinum";
 	const LEVEL_GOLD		= "gold";
 	const LEVEL_SILVER		= "silver";
 	const LEVEL_BRONZE		= "bronze";
