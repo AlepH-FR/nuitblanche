@@ -49,6 +49,11 @@ class Player
     protected $sc2Id;
 
     /**
+     * @ORM\Column(type="integer")
+     */
+    protected $sc2RanksId;
+
+    /**
      * @ORM\Column(type="string")
      * @Assert\NotBlank(groups="Registration", message = "Please add your SC2 account")
      */
@@ -130,6 +135,16 @@ class Player
         $this->sc2Id = $sc2Id;
     }
 
+	public function getSc2RanksId()
+	{
+		 return $this->sc2RanksId;
+	}
+
+	public function setSc2RanksId($sc2RanksId)
+	{
+		$this->sc2RanksId = $sc2RanksId;
+	}
+	
     public function getSc2Account() {
         return $this->sc2Account;
     }

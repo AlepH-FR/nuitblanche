@@ -34,7 +34,7 @@ EOT
 
 		foreach($players as $player)
 		{
-			if(!$player->getSc2Id() || !is_int($player->getSc2Id())) { continue; }
+			if(!$player->getSc2Id() && !$player->getSc2RanksId()) { continue; }
 
             $output->writeln(sprintf('<info>Importing sc2ranks data for</info> <comment>%s#%s</comment>', $player->getSc2Account(), $player->getSc2Id()));
 			$this->importSc2Ranks($player);
@@ -46,14 +46,17 @@ EOT
 
 	protected function importSc2Ranks(Player $player)
 	{
-		if(!$player->getSc2Id() || !is_int($player->getSc2Id())) { return; }
-		
 		$this->api->setAccount($player->getSc2Account(), $player->getSc2Id());
-
-		$sc2ranks = array();
 
 		// random teams and portraits
 		$teams	= $this->api->baseTeams();
+		if(isset($teams->error))
+		{
+			$this->api->setAccountById($player->getSc2Account(), $player->getSc2RanksId());
+			$teams	= $this->api->baseTeams();
+		}
+
+		$sc2ranks = array();
 		if(!isset($teams->error))
 		{
 			$sc2ranks['base'] = array();

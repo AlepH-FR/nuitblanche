@@ -74,6 +74,17 @@ class Player extends BaseApi
 		return $this;
 	}
 
+	public function setAccountById($name, $id, $region = "eu")
+	{
+		if(!in_array($region, self::$regions))
+		{
+			throw new \InvalidArgumentException("Unknown region '" . $region . "'.");
+		}
+
+		$this->account =  $region . '/' . $name . '!' . $id;
+		return $this;
+	}
+
 	public function getAccount()
 	{
 		return $this->account;
