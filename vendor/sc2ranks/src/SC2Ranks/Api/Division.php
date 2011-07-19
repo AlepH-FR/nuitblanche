@@ -27,14 +27,14 @@ class Division extends BaseApi
 	const LEVEL_SILVER		= "silver";
 	const LEVEL_BRONZE		= "bronze";
 
-	static protected $levels = array(
-		self::LEVEL_GRANDMASTER,
-		self::LEVEL_MASTER,
-		self::LEVEL_DIAMOND,
-		self::LEVEL_PLATINIUM,
-		self::LEVEL_GOLD,
+	static public $levels = array(
+		self::LEVEL_BRONZE,
 		self::LEVEL_SILVER,
-		self::LEVEL_BRONZE
+		self::LEVEL_GOLD,
+		self::LEVEL_PLATINIUM,
+		self::LEVEL_DIAMOND,
+		self::LEVEL_MASTER,
+		self::LEVEL_GRANDMASTER,
 	);
 
 	protected function init()

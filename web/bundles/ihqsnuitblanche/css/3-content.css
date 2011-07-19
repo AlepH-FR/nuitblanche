@@ -361,7 +361,7 @@ div.sub-section ul
 div.replay-info  span.stat,
 div.sub-section span.stat
 {
-    padding-left: 30px;
+    padding-left: 15px;
     width: 40px;
     font-weight: bold;
     display:inline-block;
@@ -437,7 +437,7 @@ div.sub-section ul.long
 }
 div.sub-section ul.long span.data
 {
-    width: 145px;
+    width: 160px;
     display: inline-block;
 }
 
@@ -902,7 +902,7 @@ div.upgrades ol li
 
 img.bnet-rank
 {
-    width: 20px;
-    height: 20px;
+    width: 16px;
+    height: 16px;
     vertical-align: middle;
 }

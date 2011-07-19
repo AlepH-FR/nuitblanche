@@ -140,34 +140,43 @@
     <div class="spacer"></div>
 
     <a name="bnet"></a>
-    <div class="player-item item-wide bnet">
+    <div class="sub-section stats bnet">
 
-        <div class="avatar-canvas">
-            <style type="text/css">
-                div.bnet div.avatar-canvas
-                {
-                    background: url('{{ asset("bundles/ihqsnuitblanche/images/sc2portraits/portraits-" ~ player.sc2Ranks.base.portrait.icon_id ~ "-90.jpg") }}') -{{ 90 * player.sc2Ranks.base.portrait.column }}px -{{ 90 * player.sc2Ranks.base.portrait.row }}px no-repeat; width: 90px; height: 90px;
-                }
-            </style>
-        </div>
         <h2><span>{{ "Battle Net Stats" | trans }}</span></h2>
         <ul class="short">
             <li>
-                <span class="stat">{{ "1on1" | trans }}</span>
-                <span class="data">
-                    <img class="bnet-rank" src="{{ asset(player.sc2Ranks._1v1.teams[0].leaguePic) }}" />
-                    {{ player.sc2Ranks._1v1.teams[0].wins }}-{{ player.sc2Ranks._1v1.teams[0].losses }}
-                    <div class="note-container">
-                        <span style="width: {{ 100 - player.sc2Ranks._1v1.teams[0].ratio }}px;"></span>
-                        <span class="note-ratio" style="margin-right: -{{ 100 - player.sc2Ranks._1v1.teams[0].ratio }}px;">{{ player.sc2Ranks._1v1.teams[0].ratio }}%&nbsp;</span>
-                    </div>
-		</span>
+                <span class="stat">solo</span>
+                <span class="data"></span>
             </li>
+            {% if player.sc2Ranks.base is defined %}
+                {% for key,stats in player.sc2Ranks.base %}
+                <li>
+                    <span class="stat">{{ key ~ "on" ~ key | trans }}</span>
+                    <span class="data">
+                        <img class="bnet-rank" src="{{ asset(stats.leaguePic) }}" />
+                        {{ stats.wins }}-{{ stats.losses }}
+                        <div class="note-container">
+                            <span style="width: {{ 100 - stats.ratio }}px;"></span>
+                            <span class="note-ratio" style="margin-right: -{{ 100 - stats.ratio }}px;">{{ stats.ratio }}%&nbsp;</span>
+                        </div>
+                    </span>
+                </li>
+                {% endfor %}
+            {% endif %}
         </ul>
         <ul class="long">
-	{% for team in player.sc2Ranks._2v2.teams %}
             <li>
-                <span class="stat long">w/ {{ team.members[0].name }}</span>
+                <span class="stat">2on2</span>
+                <span class="data"></span>
+            </li>
+        {% if player.sc2Ranks._2v2teams is defined %}
+            {% for team in player.sc2Ranks._2v2teams %}
+            {% if loop.index <= 4 %}
+            <li>
+                <span class="stat long">w/
+                    <img class="race-icon" src="{{ asset('bundles/ihqsnuitblanche/images/ico/' ~ team.members[0].fav_race ~ '_fond.png') }}" />
+                    {{ team.members[0].name }}
+                </span>
                 <span class="data">
                     <img class="bnet-rank" src="{{ asset(team.leaguePic) }}" />
                     {{ team.wins }}-{{ team.losses }}
@@ -175,10 +184,13 @@
                         <span style="width: {{ 100 - team.ratio }}px;"></span>
                         <span class="note-ratio" style="margin-right: -{{ 100 - team.ratio }}px;">{{ team.ratio }}%&nbsp;</span>
                     </div>
-		</span>
+                </span>
             </li>
-	{% endfor %}
+            {% endif %}
+            {% endfor %}
+        {% endif %}
         </ul>
+        <div class="spacer"></div>
     </div>
     {% include "IHQSNuitBlancheBundle:Layout:back_on_top.html.twig" %}
 

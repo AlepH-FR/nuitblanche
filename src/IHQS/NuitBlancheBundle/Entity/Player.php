@@ -76,6 +76,11 @@ class Player
      * @ORM\Column(type="string", nullable="true")
      */
     protected $sc2ProfilePandaria;
+    
+    /**
+     * @ORM\Column(type="text")
+     */
+    protected $sc2Ranks;
 
     /**
      * @ORM\ManyToMany(targetEntity="Team", mappedBy="players")
@@ -90,7 +95,6 @@ class Player
 
     protected $stats;
 
-    protected $ranks;
 
     protected $statsInit = false;
     
@@ -340,52 +344,14 @@ class Player
 		return $teams;
     }
 
+	public function setSc2Ranks(array $sc2ranks)
+	{
+		$this->sc2Ranks = serialize($sc2ranks);
+	}
+
 	public function getSc2Ranks()
 	{
-		if(!isset($this->sc2ranks))
-		{
-			$ranks = new \SC2Ranks\SC2Ranks('clan-nuitblanche.org');
-			$api = $ranks->getApi('player')->setAccount($this->sc2Account, $this->sc2Id);
-
-			$sc2ranks = array();
-			$sc2ranks['base']	= $api->baseChar();
-			$sc2ranks['_1v1']	= $api->charTeams(1);
-			$sc2ranks['_2v2']	= $api->charTeams(2);
-
-			foreach($sc2ranks as $type => $data)
-			{
-				if(!isset($data->teams)) { continue; }
-
-				foreach($data->teams as $key => $team)
-				{
-					$level = 1;
-					if($team->division_rank < 50) { $level = 2; }
-					if($team->division_rank < 16) { $level = 3; }
-					if($team->division_rank < 8)  { $level = 4; }
-					$sc2ranks[$type]->teams[$key]->leaguePic = 'bundles/ihqsnuitblanche/images/sc2ranks/' . $team->league . '-' . $level . '.png';
-
-					$sc2ranks[$type]->teams[$key]->ratio = '-';
-					if($team->wins + $team->losses > 0)
-					{
-						$sc2ranks[$type]->teams[$key]->ratio = floor(100 * $team->wins / ($team->wins + $team->losses));
-					}
-				}
-
-				usort($data->teams, function($a, $b) {
-					if($a->wins == $b->wins)
-					{
-						if($a->losses == $b->losses) { return 0; }
-						return $a->losses > $b->losses ? 1 : -1;
-					}
-
-					return $a->wins < $b->wins ? 1 : -1;
-				});
-			}
-
-			$this->ranks = $sc2ranks;
-		}
-
-		return $this->ranks;
+		return unserialize($this->sc2Ranks);
 	}
 
 	public function __toString() {
