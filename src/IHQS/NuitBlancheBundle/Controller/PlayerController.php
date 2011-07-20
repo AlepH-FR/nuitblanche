@@ -19,6 +19,19 @@ class PlayerController extends Controller
     }
 
     /**
+     * @Template()
+     */
+    public function _widgetAction($player_name)
+    {
+		$player = $this->get('nb.manager.player')->findOneBySc2Account($player_name);
+
+        return array(
+            'player' => $player,
+			'playerName' => $player_name,
+        );
+    }
+
+    /**
      * @Route("/player/{player_id}/show", name="player_show")
      * @Template()
      */

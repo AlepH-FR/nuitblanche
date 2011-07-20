@@ -70,7 +70,9 @@ ihqs_forum: ~
 ihqs_wysiwyg:
     selector: wysiwyg_editor
     editor:
-        set: custom
+        library: ckeditor
+        set: default
+        theme: kama
 
 forum:
     db_driver: orm

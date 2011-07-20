@@ -37,6 +37,14 @@ class InnerBlocksExtension extends \Twig_Extension
 			$template = str_replace($match[0], $replace, $template);
 		}
 
+		preg_match_all('/\{player:([\w]+)\}/', $template, $matches, PREG_SET_ORDER);
+
+		foreach($matches as $match)
+		{
+			$replace  = $this->container->get('http_kernel')->render('IHQSNuitBlancheBundle:Player:_widget', array('attributes' => array('player_name' => $match[1])));
+			$template = str_replace($match[0], $replace, $template);
+		}
+
 		return $template;
     }
 
