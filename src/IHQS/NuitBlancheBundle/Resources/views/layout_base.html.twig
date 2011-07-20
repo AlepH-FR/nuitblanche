@@ -105,7 +105,7 @@
                             <li>see source code at <a href="http://github.com/AlepH-FR/nuitblanche" target="_blank">github</a></li>
                             <li>powered by Symfony 2</li>
                             <li>using  <a href="http://github.com/AlepH-FR/SC2Chart" target="_blank">SC2Chart</a> & SC2Replay</li>
-                            <li>using  <a href="http://github.com/AlepH-FR/SC2Ranks" target="_blank">SC2Ranks</a> thanks to <a href="http://www.sc2ranks.com">sc2ranks.com</a></li>
+                            <li>using  <a href="http://github.com/AlepH-FR/SC2Ranks" target="_blank">SC2Ranks</a></li>
                         </ul>
                     </li>
                     <li class="footer-item-category">
@@ -114,6 +114,7 @@
                             <li>(<a target="_blank" href="http://www.pandaria-wars.com">see</a>) pandaria</li>
                             <li>(<a target="_blank" href="http://www.sc2cl.com">see</a>) sc2cl</li>
                             <li>(<a target="_blank" href="http://www.esl.eu">see</a>) esl</li>
+                            <li>(<a target="_blank" href="http://www.sc2ranks.com">see</a>) sc2ranks</li>
                         </ul>
                     </li>
                     <li class="footer-item-category">
@@ -127,7 +128,9 @@
         </div>
 
         <script type="text/javascript">
-            CKEDITOR.plugins.addExternal( 'nuitblanche', '/bundles/ihqsnuitblanche/js/ckeditor/plugins/nuitblanche/' );
+            $(document).ready(function() {
+                CKEDITOR.plugins.addExternal( 'nuitblanche', '/bundles/ihqsnuitblanche/js/ckeditor/plugins/nuitblanche/' );
+            });
             ihqs.wysiwyg.setSettings({
                 extraPlugins : 'nuitblanche',
                 toolbar : [

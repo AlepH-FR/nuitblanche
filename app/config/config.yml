@@ -71,7 +71,7 @@ ihqs_wysiwyg:
     selector: wysiwyg_editor
     editor:
         library: ckeditor
-        set: default
+        set: custom
         theme: kama
 
 forum:
