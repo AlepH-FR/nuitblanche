@@ -127,8 +127,12 @@
         </div>
 
         <script type="text/javascript">
+            CKEDITOR.plugins.addExternal( 'nuitblanche', '/bundles/ihqsnuitblanche/js/ckeditor/plugins/nuitblanche/' );
             ihqs.wysiwyg.setSettings({
-                
+                extraPlugins : 'nuitblanche',
+                toolbar : [
+                    ['Format', 'Bold', 'Italic', 'Strike', 'RemoveFormat', '-', 'Image', 'Link', '-', 'AddPlayer', 'AddClanWar', 'AddRaceImage', '-', 'Clean', 'Preview']
+                ]
             });
         </script>
         {% render "IHQSWysiwygBundle:Script:init" %}
