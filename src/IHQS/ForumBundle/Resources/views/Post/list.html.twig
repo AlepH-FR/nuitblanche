@@ -11,9 +11,9 @@
             - {% if post.author %}<a href="{{ url('player_show', {'player_id': post.author.id}) }}">{{ post.author.username }}</a>{% else %}Anonymous{% endif %}
             - {{ post.createdAt.format('d/m/Y - H:i') }}
         </p>
-        <p>
+        <div class="main">
             {{ post.message | raw }}
-        </p>
+        </div>
     </li>
     {% endfor %}
 </ol>

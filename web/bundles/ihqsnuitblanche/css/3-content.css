@@ -516,10 +516,10 @@ div.wide ul li span.little
     margin-right: 10px;
     height: 100px;
 }
-.comments li img {
+.comments li a.avatar img {
     height: 100px;
 }
-.comments li p
+.comments li div.main
 {
     border-left: 1px solid #EEE;
     padding: 15px;

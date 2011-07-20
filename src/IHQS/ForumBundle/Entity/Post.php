@@ -38,6 +38,6 @@ class Post extends BasePost
 
 	public function getMessage()
 	{
-		return str_replace("\n", "<br />", $this->message);
+		return $this->message;
 	}
 }
