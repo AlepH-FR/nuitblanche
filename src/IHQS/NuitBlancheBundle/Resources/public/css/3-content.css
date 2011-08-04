@@ -163,6 +163,7 @@ div.player-item div.avatar-canvas img.avatar
     width:auto; 
 }
 
+/*
 div.player-item div.avatar-canvas:hover
 {
     position:absolute;
@@ -177,7 +178,7 @@ div.player-item div.avatar-canvas:hover img.avatar
     z-index: 1001;
     margin-left: 0;
 }
-
+*/
 
 div.player-item ul
 {
