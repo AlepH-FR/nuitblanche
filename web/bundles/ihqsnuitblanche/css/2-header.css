@@ -151,6 +151,23 @@ div.register a
     vertical-align: middle;
     line-height: 30px;
     margin-bottom: 20px;
+
+    transition: background 2s;
+    -o-transition: background 2s;
+    -moz-transition: background 2s;
+    -webkit-transition: background 2s;
+}
+
+div.register a:hover
+{
+    background: -webkit-gradient(linear, left top, right top, from(#ddd), to(#395674));
+    background: -moz-linear-gradient(left,#ddd,#395674);
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient (GradientType=1, startColorstr=#ddd, endColorstr=#395674)";
+
+    transition: background 2s;
+    -o-transition: background 2s;
+    -moz-transition: background 2s;
+    -webkit-transition: background 2s;
 }
 
 #header ul.menu

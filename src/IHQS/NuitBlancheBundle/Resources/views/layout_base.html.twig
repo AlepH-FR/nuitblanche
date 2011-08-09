@@ -74,27 +74,8 @@
                 <div style="clear: both"></div>
             </div>
 
-            <div id="left">
-                {% block left %}
-                {% endblock %}
-            </div>
-
-            <div id="content">
-                {% if app.session.flash('notice') %}
-                    <div class="flash-message">
-                        <em>Notice</em>: {{ app.session.flash('notice') }}
-                    </div>
-                {% endif %}
-
-                <h1>{{ block ('title') }}</h1>
-                {% block content %}
-                {% endblock %}
-            </div>
-
-            <div id="right">
-                {% block right %}
-                {% endblock %}
-            </div>
+            {% block main %}
+            {% endblock %}
 
             <div id="footer">
                 <ul>

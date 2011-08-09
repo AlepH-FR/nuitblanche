@@ -23,9 +23,14 @@ class NewsRepository extends EntityRepository
         return $news;
     }
 
-    public function findLatest()
+    public function findLatest($community = false)
     {
-        return $this->createQueryBuilder('n')->
+        $qb = $this->createQueryBuilder('n');
+
+        $where_community = $community ? 'IS NULL' : 'IS NOT NULL';
+
+        return $qb->
+            where('n.team ' . $where_community)->
             orderBy('n.date', 'DESC')->
             setMaxResults(5)->
             getQuery()->

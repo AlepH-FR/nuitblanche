@@ -1,63 +1,81 @@
 {% extends 'IHQSNuitBlancheBundle::layout_base.html.twig' %}
 
-{% block left %}
-    {% render "IHQSNuitBlancheBundle:Team:_sections" %}
-    {% render "IHQSNuitBlancheBundle:War:_calendar" %}
-    {% render "IHQSNuitBlancheBundle:Player:_connected" %}
-    {% render "IHQSNuitBlancheBundle:Ts3:_channels" %}
-    <h3>{{ "Partners" | trans }}</h3>
-    <a href="http://www.ihqs.net/" target="_blank">
-        <img src="{{ asset('bundles/ihqsnuitblanche/images/logo_ihqs.png') }}" alt="ihqs, développement web sous Symfony 2 et NodeJS" title="ihqs, développement web sous Symfony 2 et NodeJS" />
-    </a>
-{% endblock %}
 
-{% block right %}
-    {% if not is_granted('ROLE_USER') %}
-        <div class="register">
-            <ul>
-                <li>
-                    <a href="{{ url('_secured_register') }}">{{ "Register" | trans }}</a>
-                </li>
-            </ul>
-        </div>
-    {% else %}
-        <div class="widget user-menu">
-            <ul>
-                <li>
-                    <a href="{{ url('_secured_profile_edition') }}">
-                        {{ "Edit my profile" | trans }}
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ url('_secured_profile_password') }}">
-                        {{ "Change password" | trans }}
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ url('contribute_replay_new') }}">
-                        {{ "Add a replay" | trans }}
-                    </a>
-                </li>
-            </ul>
-            <hr />
-            {% if is_granted('ROLE_ADMIN') %}
-            <ul>
-                <li>
-                    <a href="{{ url('contribute_news_new') }}">
-                        {{ "Add a news" | trans }}
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ url('contribute_war_new') }}">
-                        {{ "Add a clan war" | trans }}
-                    </a>
-                </li>
-            </ul>
+{% block main %}
+
+    <div id="left">
+        {% block left %}
+            {% render "IHQSNuitBlancheBundle:Team:_sections" %}
+            {% render "IHQSNuitBlancheBundle:War:_calendar" %}
+            {% render "IHQSNuitBlancheBundle:Player:_connected" %}
+            {% render "IHQSNuitBlancheBundle:Ts3:_channels" %}
+            {% include "IHQSNuitBlancheBundle:Main:_partners.html.twig" %}
+        {% endblock %}
+    </div>
+
+    <div id="content">
+        {% if app.session.flash('notice') %}
+            <div class="flash-message">
+                <em>Notice</em>: {{ app.session.flash('notice') }}
+            </div>
+        {% endif %}
+
+        <h1>{{ block ('title') }}</h1>
+        {% block content %}
+        {% endblock %}
+    </div>
+
+    <div id="right">
+        {% block right %}
+            {% if not is_granted('ROLE_USER') %}
+                <div class="register">
+                    <ul>
+                        <li>
+                            <a href="{{ url('_secured_register') }}">{{ "Register" | trans }}</a>
+                        </li>
+                    </ul>
+                </div>
+            {% else %}
+                <div class="widget user-menu">
+                    <ul>
+                        <li>
+                            <a href="{{ url('_secured_profile_edition') }}">
+                                {{ "Edit my profile" | trans }}
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ url('_secured_profile_password') }}">
+                                {{ "Change password" | trans }}
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ url('contribute_replay_new') }}">
+                                {{ "Add a replay" | trans }}
+                            </a>
+                        </li>
+                    </ul>
+                    <hr />
+                    {% if is_granted('ROLE_ADMIN') %}
+                    <ul>
+                        <li>
+                            <a href="{{ url('contribute_news_new') }}">
+                                {{ "Add a news" | trans }}
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ url('contribute_war_new') }}">
+                                {{ "Add a clan war" | trans }}
+                            </a>
+                        </li>
+                    </ul>
+                    {% endif %}
+                </div>
             {% endif %}
-        </div>
-    {% endif %}
-    {% render "IHQSNuitBlancheBundle:War:_latest" %}
-    {% render "IHQSForumBundle:Topic:_latest" %}
-    {% render "IHQSNuitBlancheBundle:Replay:_latest" %}
-    {% render "IHQSNuitBlancheBundle:News:_latest" %}
+            {% render "IHQSNuitBlancheBundle:War:_latest" %}
+            {% render "IHQSForumBundle:Topic:_latest" %}
+            {% render "IHQSNuitBlancheBundle:Replay:_latest" %}
+            {% render "IHQSNuitBlancheBundle:News:_latest" %}
+        {% endblock %}
+    </div>
+
 {% endblock %}

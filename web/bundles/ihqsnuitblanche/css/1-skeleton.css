@@ -87,3 +87,18 @@ hr
     height: 1px;
     margin-bottom: 1px;
 }
+
+.block
+{
+    float: left;
+    min-height: 100px;
+    margin-right: 20px;
+    margin-bottom: 10px;
+}
+
+.block-last { margin-right: 0px; }
+.block-1 { width: 150px; }
+.block-2 { width: 158px; }
+.block-2-mid { width: 157px; }
+.block-3 { width: 335px; }
+.block-4 { width: 520px; }
