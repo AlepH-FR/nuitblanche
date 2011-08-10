@@ -18,20 +18,20 @@ framework:
         default_locale: %locale%
         lifetime:       72000
         auto_start:     true
-    
+
+sensio_framework_extra:
+    router:  { annotations: true }
+    request: { converters: true }
+    view:    { annotations: true }
+    cache:   { annotations: true }
+
+        
 # Twig Configuration
 twig:
     debug:            %kernel.debug%
     strict_variables: %kernel.debug%
     form:
         resources: [IHQSNuitBlancheBundle::form.html.twig]
-
-# Assetic Configuration
-assetic:
-    debug:          %kernel.debug%
-    use_controller: false
-    filters:
-        cssrewrite: ~
 
 # Doctrine Configuration
 doctrine:
@@ -62,6 +62,18 @@ swiftmailer:
 jms_security_extra:
     secure_controllers:  true
     secure_all_services: false
+
+# Admin Configuration
+white_october_admin:
+    data_managers:
+        doctrine:
+            orm:    true
+            odm:    false
+        mandango:   false
+    admins:
+        - { class: IHQS\NuitBlancheBundle\Admin\NewsAdmin }
+        - { class: IHQS\NuitBlancheBundle\Admin\UserAdmin }
+        - { class: IHQS\NuitBlancheBundle\Admin\WarAdmin }
 
 ihqs_nuit_blanche: ~
 

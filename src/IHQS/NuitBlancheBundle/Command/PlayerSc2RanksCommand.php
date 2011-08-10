@@ -4,10 +4,10 @@ namespace IHQS\NuitBlancheBundle\Command;
 
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use Symfony\Bundle\FrameworkBundle\Command\Command;
+use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use IHQS\NuitBlancheBundle\Entity\Player;
 
-class PlayerSc2RanksCommand extends Command
+class PlayerSc2RanksCommand extends ContainerAwareCommand
 {
 	protected $api;
 	

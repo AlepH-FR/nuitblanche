@@ -1,6 +1,7 @@
 <?php
 
 use Symfony\Component\ClassLoader\UniversalClassLoader;
+use Doctrine\Common\Annotations\AnnotationRegistry;
 
 $loader = new UniversalClassLoader();
 $loader->registerNamespaces(array(
@@ -22,6 +23,8 @@ $loader->registerNamespaces(array(
     'SC2Ranks'         => __DIR__.'/../vendor/sc2ranks/src',
     'Metadata'         => __DIR__.'/../vendor/metadata/src',
     'IHQS'             => __DIR__.'/../src',
+	'WhiteOctober'		=> __DIR__.'/../vendor/bundles',
+    'Pagerfanta'		=> __DIR__.'/../vendor/pagerfanta/src',
 ));
 $loader->registerPrefixes(array(
     'Twig_Extensions_' => __DIR__.'/../vendor/twig-extensions/lib',
@@ -30,6 +33,13 @@ $loader->registerPrefixes(array(
     'TeamSpeak3_'      => __DIR__.'/../vendor/ts3/libraries',
 ));
 $loader->register();
-$loader->registerPrefixFallback(array(
+$loader->registerPrefixFallbacks(array(
     __DIR__.'/../vendor/symfony/src/Symfony/Component/Locale/Resources/stubs',
 ));
+
+
+AnnotationRegistry::registerLoader(function($class) use ($loader) {
+    $loader->loadClass($class);
+    return class_exists($class, false);
+});
+AnnotationRegistry::registerFile(__DIR__.'/../vendor/doctrine/lib/Doctrine/ORM/Mapping/Driver/DoctrineAnnotations.php');

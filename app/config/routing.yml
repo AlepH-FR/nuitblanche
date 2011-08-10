@@ -53,3 +53,11 @@ forum_topic:
 forum_post:
     resource: "@ForumBundle/Resources/config/routing/post.xml"
     prefix:     /forum
+    
+_white_october_admin:
+    resource: .
+    type: white_october_admin
+
+white_october_admin:
+    resource: "@WhiteOctoberAdminBundle/Resources/config/routing/admin.xml"
+    prefix:   /admin

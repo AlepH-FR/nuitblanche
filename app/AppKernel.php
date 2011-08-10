@@ -14,22 +14,28 @@ class AppKernel extends Kernel
             new Symfony\Bundle\FrameworkBundle\FrameworkBundle(),
             new Symfony\Bundle\SecurityBundle\SecurityBundle(),
             new Symfony\Bundle\TwigBundle\TwigBundle(),
+            new Symfony\Bundle\MonologBundle\MonologBundle(),
+
             new Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle(),
             new Symfony\Bundle\DoctrineBundle\DoctrineBundle(),
 			new Symfony\Bundle\DoctrineFixturesBundle\DoctrineFixturesBundle(),
+
             new Symfony\Bundle\AsseticBundle\AsseticBundle(),
-            new Symfony\Bundle\MonologBundle\MonologBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
 			new Bundle\ForumBundle\ForumBundle(),
+			
             new JMS\SecurityExtraBundle\JMSSecurityExtraBundle(),
             new IHQS\NuitBlancheBundle\IHQSNuitBlancheBundle(),
             new IHQS\ForumBundle\IHQSForumBundle(),
 			new IHQS\WysiwygBundle\IHQSWysiwygBundle(),
+			new WhiteOctober\PagerfantaBundle\WhiteOctoberPagerfantaBundle(),
+			new WhiteOctober\AdminBundle\WhiteOctoberAdminBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
             $bundles[] = new Symfony\Bundle\WebProfilerBundle\WebProfilerBundle();
             $bundles[] = new Symfony\Bundle\WebConfiguratorBundle\SymfonyWebConfiguratorBundle();
+			$bundles[] = new Sensio\Bundle\DistributionBundle\SensioDistributionBundle();
         }
 
         return $bundles;

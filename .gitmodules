@@ -31,3 +31,15 @@
 [submodule "vendor/doctrine-extensions-sluggable"]
 	path = vendor/doctrine-extensions-sluggable
 	url = git://github.com/ornicar/Doctrine2-Sluggable-Functional-Behavior.git
+[submodule "vendor/bundles/WhiteOctober/AdminBundle"]
+	path = vendor/bundles/WhiteOctober/AdminBundle
+	url = git://github.com/whiteoctober/WhiteOctoberAdminBundle.git
+[submodule "vendor/bundles/WhiteOctober/PagerfantaBundle"]
+	path = vendor/bundles/WhiteOctober/PagerfantaBundle
+	url = git://github.com/whiteoctober/WhiteOctoberPagerfantaBundle.git
+[submodule "vendor/pagerfanta"]
+	path = vendor/pagerfanta
+	url = git://github.com/whiteoctober/Pagerfanta.git
+[submodule "vendor/bundles/Sensio/Bundle/DistributionBundle"]
+	path = vendor/bundles/Sensio/Bundle/DistributionBundle
+	url = http://github.com/sensio/SensioDistributionBundle.git

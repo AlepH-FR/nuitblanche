@@ -10,7 +10,7 @@
  * file that was distributed with this source code.
  */
 
-require_once __DIR__.'/../src/vendor/symfony/src/Symfony/Component/ClassLoader/UniversalClassLoader.php';
+require_once __DIR__.'/../vendor/symfony/src/Symfony/Component/ClassLoader/UniversalClassLoader.php';
 
 /*
  * This file is part of the Symfony package.

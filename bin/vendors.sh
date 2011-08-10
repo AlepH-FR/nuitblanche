@@ -1,107 +1,127 @@
-#!/bin/sh
+#!/usr/bin/env php
+<?php
 
-DIR=`php -r "echo dirname(dirname(realpath('$0')));"`
-VENDOR="$DIR/vendor"
-VERSION=`cat "$DIR/VERSION"`
-BUNDLES=$VENDOR/bundles
+/*
+ * This file is part of the Symfony Standard Edition.
+ *
+ * (c) Fabien Potencier <fabien@symfony.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
 
-# initialization
-if [ "$1" = "--reinstall" -o "$2" = "--reinstall" ]; then
-    rm -rf $VENDOR
-fi
+$rootDir = dirname(__DIR__);
+$vendorDir = $rootDir.'/vendor';
 
-# just the latest revision
-CLONE_OPTIONS=''
-if [ "$1" = "--min" -o "$2" = "--min" ]; then
-    CLONE_OPTIONS='--depth 1'
-fi
+array_shift($argv);
+if (!isset($argv[0])) {
+    exit(<<<EOF
+Symfony2 vendors script management.
 
-mkdir -p "$VENDOR" && cd "$VENDOR"
+Specify a command to run:
 
-##
-# @param destination directory (e.g. "doctrine")
-# @param URL of the git remote (e.g. http://github.com/doctrine/doctrine2.git)
-# @param revision to point the head (e.g. origin/HEAD)
-#
-install_git()
-{
-    INSTALL_DIR=$1
-    SOURCE_URL=$2
-    REV=$3
+ install: install vendors as specified in deps or deps.lock (recommended)
+ update:  update vendors to their latest versions (as specified in deps)
 
-    echo "> Installing/Updating " $INSTALL_DIR
 
-    if [ -z $REV ]; then
-        REV=origin/HEAD
-    fi
-
-    if [ -d $INSTALL_DIR ]; then
-    	rm -R $INSTALL_DIR	
-    fi
-
-    git clone $CLONE_OPTIONS $SOURCE_URL $INSTALL_DIR
-
-    cd $INSTALL_DIR
-    git fetch origin
-    git reset --hard $REV
-    cd ..
+EOF
+    );
 }
 
-# Assetic
-install_git assetic http://github.com/kriswallsmith/assetic.git v1.0.0alpha2
+if (!in_array($command = array_shift($argv), array('install', 'update'))) {
+    exit(sprintf("Command \"%s\" does not exist.\n", $command));
+}
 
-# Symfony
-install_git symfony http://github.com/symfony/symfony.git v$VERSION
+/*
+ * Check wether this project is based on the Standard Edition that was
+ * shipped with vendors or not.
+ */
+if (is_dir($vendorDir.'/symfony') && !is_dir($vendorDir.'/symfony/.git') && !in_array('--reinstall', $argv)) {
+    exit(<<<EOF
+Your project seems to be based on a Standard Edition that includes vendors.
 
-# Doctrine ORM
-install_git doctrine http://github.com/doctrine/doctrine2.git 35a318148cd891347f489e64140b724beb267849
+Try to run ./bin/vendors install --reinstall
 
-# Doctrine DBAL
-install_git doctrine-dbal http://github.com/doctrine/dbal.git 2.0.4
 
-# Doctrine Common
-install_git doctrine-common http://github.com/doctrine/common.git fb845829afbd7e1821f608417894629bbb1b2a48
+EOF
+    );
+}
 
-# Swiftmailer
-install_git swiftmailer http://github.com/swiftmailer/swiftmailer.git origin/4.1
+if (!is_dir($vendorDir)) {
+    mkdir($vendorDir, 0777, true);
+}
 
-# Twig
-install_git twig http://github.com/fabpot/Twig.git
+// versions
+$versions = array();
+if ('install' === $command && file_exists($rootDir.'/deps.lock')) {
+    foreach (file($rootDir.'/deps.lock', FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES) as $line) {
+        $parts = array_values(array_filter(explode(' ', $line)));
+        if (2 !== count($parts)) {
+            exit(sprintf('The deps version file is not valid (near "%s")', $line));
+        }
+        $versions[$parts[0]] = $parts[1];
+    }
+}
 
-# Twig Extensions
-install_git twig-extensions http://github.com/fabpot/Twig-extensions.git
+$newversions = array();
+$deps = parse_ini_file($rootDir.'/deps', true, INI_SCANNER_RAW);
+if (false === $deps) {
+    exit("The deps file is not valid ini syntax. Perhaps missing a trailing newline?\n");
+}
+foreach ($deps as $name => $dep) {
+    $dep = array_map('trim', $dep);
 
-# MetaData
-install_git metadata http://github.com/schmittjoh/metadata.git 2350020f8d33f30aba891145ffa8bcb9bcdec38d
+    // revision
+    if (isset($versions[$name])) {
+        $rev = $versions[$name];
+    } else {
+        $rev = isset($dep['version']) ? $dep['version'] : 'origin/HEAD';
+    }
 
-# Monolog
-install_git monolog http://github.com/Seldaek/monolog.git
+    // install dir
+    $installDir = isset($dep['target']) ? $vendorDir.'/'.$dep['target'] : $vendorDir.'/'.$name;
+    if (in_array('--reinstall', $argv)) {
+        if (PHP_OS == 'WINNT') {
+            system(sprintf('rmdir /S /Q %s', escapeshellarg(realpath($installDir))));
+        } else {
+            system(sprintf('rm -rf %s', escapeshellarg($installDir)));
+        }
+    }
 
-# Doctrine Fixtures
-install_git doctrine-fixtures https://github.com/doctrine/data-fixtures.git
+    echo "> Installing/Updating $name\n";
 
-# SensioFrameworkExtraBundle
-mkdir -p $BUNDLES/Sensio/Bundle
-cd $BUNDLES/Sensio/Bundle
-install_git FrameworkExtraBundle http://github.com/sensio/SensioFrameworkExtraBundle.git
+    // url
+    if (!isset($dep['git'])) {
+        exit(sprintf('The "git" value for the "%s" dependency must be set.', $name));
+    }
+    $url = $dep['git'];
 
-# SecurityExtraBundle
-mkdir -p $BUNDLES/JMS
-cd $BUNDLES/JMS
-install_git SecurityExtraBundle http://github.com/schmittjoh/SecurityExtraBundle.git
+    if (!is_dir($installDir)) {
+        system(sprintf('git clone %s %s', escapeshellarg($url), escapeshellarg($installDir)));
+    }
 
-# Symfony bundles
-mkdir -p $BUNDLES/Symfony/Bundle
-cd $BUNDLES/Symfony/Bundle
+    system(sprintf('cd %s && git fetch origin && git reset --hard %s', escapeshellarg($installDir), escapeshellarg($rev)));
 
-# WebConfiguratorBundle
-install_git WebConfiguratorBundle http://github.com/symfony/WebConfiguratorBundle.git
+    if ('update' === $command) {
+        ob_start();
+        system(sprintf('cd %s && git log -n 1 --format=%%H', escapeshellarg($installDir)));
+        $newversions[] = trim($name.' '.ob_get_clean());
+    }
+}
 
-# DoctrineFixturesBundle
-install_git DoctrineFixturesBundle https://github.com/symfony/DoctrineFixturesBundle.git
+// update?
+if ('update' === $command) {
+    file_put_contents($rootDir.'/deps.lock', implode("\n", $newversions));
+}
 
-# Update the bootstrap files
-$DIR/bin/build_bootstrap.php
+// php on windows can't use the shebang line from system()
+$interpreter = PHP_OS == 'WINNT' ? 'php.exe' : '';
 
-# Update assets
-$DIR/app/console assets:install $DIR/web/
+// Update the bootstrap files
+system(sprintf('%s %s', $interpreter, escapeshellarg($rootDir.'/vendor/bundles/Sensio/Bundle/DistributionBundle/Resources/bin/build_bootstrap.php')));
+
+// Update assets
+system(sprintf('%s %s assets:install %s', $interpreter, escapeshellarg($rootDir.'/app/console'), escapeshellarg($rootDir.'/web/')));
+
+// Remove the cache
+system(sprintf('%s %s cache:clear --no-warmup', $interpreter, escapeshellarg($rootDir.'/app/console')));
