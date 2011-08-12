@@ -19,6 +19,7 @@
     -moz-box-shadow: 0 0 10px #888;
     -webkit-box-shadow: 0 0 10px #888;
     background: url(../images/logo.png) 0 0 no-repeat;
+    margin-bottom: 0;
 }
 #header h1 span
 {

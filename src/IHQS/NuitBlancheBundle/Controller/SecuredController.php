@@ -25,7 +25,6 @@ class SecuredController extends BaseController
         $user->setSc2($sc2);
         $wow = new WoWProfile();
         $wow->setUser($user);
-        $user->setWow($wow);
 
         // creating form
         $formType = $this->container->getParameter('nb.form.user.class');

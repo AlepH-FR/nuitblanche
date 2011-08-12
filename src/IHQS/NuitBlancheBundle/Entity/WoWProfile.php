@@ -114,6 +114,7 @@ class WoWProfile
 
     public function setUser(User $user) {
         $this->user = $user;
+        $user->setWow($this);
     }
 
     public function getName() {
