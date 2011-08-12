@@ -55,11 +55,11 @@
 }
 #header .lang li a.fr
 {
-    background: url(../images/flags/FR.gif);
+    background: url(../images/flags/fr.gif);
 }
 #header .lang li a.en
 {
-    background: url(../images/flags/UK.gif);
+    background: url(../images/flags/uk.gif);
 }
 
 #header .block-login
