@@ -143,7 +143,7 @@ class WoWProfile
     public function setRace($race) {
         if(!in_array($class, WoWProfile::$_races))
         {
-            throw new \InvalidArgumentException('Invalid parameter "' . $class . '" for WoW race');
+            throw new \InvalidArgumentException('Invalid parameter "' . $race . '" for WoW race');
         }
         $this->race = $race;
     }
