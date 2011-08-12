@@ -11,22 +11,27 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Topic extends BaseTopic
 {
-	/**
-	 * @ORM\OneToOne(targetEntity="Post")
-	 */
-	protected $firstPost;
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    protected $postIt;
+    
+    /**
+     * @ORM\OneToOne(targetEntity="Post")
+     */
+    protected $firstPost;
 
-	/**
-	 * @ORM\OneToOne(targetEntity="Post")
-	 */
-	protected $lastPost;
+    /**
+     * @ORM\OneToOne(targetEntity="Post")
+     */
+    protected $lastPost;
 
-	/**
-	 * @ORM\ManyToOne(targetEntity="Category")
-	 */
-	protected $category;
-	
-	/**
+    /**
+     * @ORM\ManyToOne(targetEntity="Category")
+     */
+    protected $category;
+
+    /**
      * Get authorName
      * @return string
      */
@@ -34,4 +39,15 @@ class Topic extends BaseTopic
     {
         return $this->getFirstPost()->getAuthorName();
     }
+
+    public function getPostIt() {
+        return ($this->postIt);
+    }
+
+    public function setPostIt($postIt) {
+        $this->postIt = ($postIt);
+    }
+
+
+
 }

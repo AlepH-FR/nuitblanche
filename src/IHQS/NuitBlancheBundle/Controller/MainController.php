@@ -14,12 +14,21 @@ class MainController extends Controller
      */
     public function indexAction()
     {
-		$ranks = new \SC2Ranks\SC2Ranks('clan-nuitblanche.org');
-		
         return array(
-            'news'  => $this->get('nb.manager.news')->findLatest()
+            'news'           => $this->get('nb.manager.news')->findLatest(false),
+            'newsCommunity'  => $this->get('nb.manager.news')->findLatest(true)
         );
     }
+
+    /**
+     * @Route("/lang/{lang}", name="lang")
+     */
+    public function langAction($lang)
+    {
+        $this->get('session')->setLocale($lang);
+        return $this->redirect($_SERVER['HTTP_REFERER']);
+    }
+
     /**
      * @Route("/to_come", name="to_come")
      * @Template()
@@ -28,12 +37,8 @@ class MainController extends Controller
     {
         return array(
             'items' => array(
-                'v1.0' => array(
-                    'forum',
-                    'news edition form - wysiwyg'
-                ),
-
                 'v2.0' => array(
+                    'tournaments',
                     'comments edition',
                     'replay notes and comments',
                     'filters on replay and war lists',
@@ -43,7 +48,6 @@ class MainController extends Controller
             ),
 
             'ideas' => array(
-                'add team baseline to the banner "fair gamers since 1996"',
                 'remake team logos for other websites',
                 'add Atom or RSS feeds',
                 'news on facebook'

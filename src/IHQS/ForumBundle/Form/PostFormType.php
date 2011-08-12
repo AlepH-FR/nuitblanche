@@ -8,8 +8,8 @@ use IHQS\NuitBlancheBundle\Form\WysiwygTextareaType;
 
 class PostFormType extends AbstractType
 {
-	public function buildForm(FormBuilder $builder, array $options)
-	{
-        $builder->add('message', 'textarea');
+    public function buildForm(FormBuilder $builder, array $options)
+    {
+        $builder->add('message', new WysiwygTextareaType());
     }
 }

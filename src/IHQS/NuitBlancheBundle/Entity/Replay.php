@@ -71,7 +71,7 @@ class Replay
     protected $chatLog;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Player")
+     * @ORM\ManyToOne(targetEntity="SC2Profile")
      */
     protected $uploader;
 

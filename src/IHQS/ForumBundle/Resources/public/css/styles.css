@@ -52,6 +52,12 @@ div.pagination {
 ul.forum_topics_list {
 
 }
+    ul.forum_topics_list img {
+        height: 40px;
+        float: left;
+        margin-right: 10px;
+    }
+
     ul.forum_topics_list li {
         height: 40px;
         border-top: 1px solid #EEE;

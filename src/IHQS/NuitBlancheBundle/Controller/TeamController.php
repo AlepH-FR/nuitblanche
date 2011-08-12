@@ -10,18 +10,20 @@ class TeamController extends Controller
 {
     /**
      * @Route("/team/{team_id}/show", name="team_show")
-     * @Template()
      */
     public function showAction($team_id)
     {
         $team       = $this->get('nb.manager.team')->findOneById($team_id);
         $players    = $team->getPlayers();
         
-        return array(
-            'teams'	=> $this->get('nb.manager.team')->findAll(),
-            'team'      => $team,
-            'players'   => $players,
-            'stats'     => true
+        return $this->render(
+            "IHQSNuitBlancheBundle:Team:show_" . $team->getTeamGame()->getShortName() . ".html.twig",
+            array(
+                'teams'     => $this->get('nb.manager.team')->findAll(),
+                'team'      => $team,
+                'players'   => $players,
+                'stats'     => true
+            )
         );
     }
 

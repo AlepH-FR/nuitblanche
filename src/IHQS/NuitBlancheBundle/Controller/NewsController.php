@@ -12,7 +12,7 @@ class NewsController extends BaseController
 {
     protected function getFormComment(News $news, User $user)
     {
-		// default object
+        // default object
         $comment = new Comment();
         $comment
             ->setDate(new \Datetime())
@@ -20,14 +20,14 @@ class NewsController extends BaseController
             ->setAuthor($user)
         ;
 
-		// creating form
+        // creating form
         $form = $this->get('form.factory')
             ->createBuilder('form', $comment)
             ->add('body')
             ->getForm();
 
-		return $form;
-	}
+        return $form;
+    }
 
     /**
      * @Template()
@@ -49,9 +49,9 @@ class NewsController extends BaseController
         {
             return array('not_connected' => true);
         }
-		$form = $this->getFormComment($news, $user);
+        $form = $this->getFormComment($news, $user);
 
-		// handling response
+        // handling response
         return array(
             'not_connected'     => false,
             'submit_path'	=> $this->generateUrl('news_show', array('news_id' => $news->getId())),
@@ -114,18 +114,18 @@ class NewsController extends BaseController
         $user = $this->get('security.context')->getToken()->getUser();
 
         // creating default object
-		if(!is_null($news_id))
-		{
-			$news = $this->get('nb.manager.news')->findOneById($news_id);
-		}
-		else
-		{
-			$news = new News();
-			$news
-				->setAuthor($user)
-				->setDate(new \Datetime())
-			;
-		}
+        if(!is_null($news_id))
+        {
+            $news = $this->get('nb.manager.news')->findOneById($news_id);
+        }
+        else
+        {
+            $news = new News();
+            $news
+                    ->setAuthor($user)
+                    ->setDate(new \Datetime())
+            ;
+        }
 
         // creating form
         $formType = $this->container->getParameter('nb.form.news.class');

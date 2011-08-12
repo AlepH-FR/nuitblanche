@@ -12,7 +12,11 @@
     </ul>
     {% if not is_granted('ROLE_MEMBER') %}
     <p class="login">
-        Please <strong>log in</strong> or <a href="{{ url('_secured_register') }}">register</a> in order to post comments
+        {{ "Please" | trans }}
+        <strong>{{ "log in" | trans }} </strong>
+        {{ "or" | trans }}
+        <a href="{{ url('_secured_register') }}">{{ "register" | trans }}</a>
+        {{ "in order to post comments" | trans }}
     </p>
     {% else %}
         <div class="main">

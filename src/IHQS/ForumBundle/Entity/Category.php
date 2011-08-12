@@ -10,13 +10,13 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Category extends BaseCategory
 {
-	/**
-	 * @ORM\OneToOne(targetEntity="Topic")
-	 */
-	protected $lastTopic;
+    /**
+     * @ORM\OneToOne(targetEntity="Topic")
+     */
+    protected $lastTopic;
 
-	/**
-	 * @ORM\OneToOne(targetEntity="Post")
-	 */
-	protected $lastPost;
+    /**
+     * @ORM\OneToOne(targetEntity="Post")
+     */
+    protected $lastPost;
 }

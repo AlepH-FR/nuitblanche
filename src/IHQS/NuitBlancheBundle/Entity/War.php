@@ -266,7 +266,7 @@ class War
 					$gamePlayer = new GamePlayer();
 					$gamePlayer->setGame($clone);
 					$gamePlayer->setWarGame($warGame);
-					$gamePlayer->setRace(Player::SC2RACE_RANDOM);
+					$gamePlayer->setRace(SC2Profile::SC2RACE_RANDOM);
 					$gamePlayer->setTeam(round($i / $type));
 					$clone->addPlayer($gamePlayer);
 				}

@@ -19,6 +19,11 @@ class User implements UserInterface, \Serializable
     const STATUS_OFFLINE    = "offline";
     const STATUS_IDLE       = "idle";
 
+    static public $_sexes = array(
+        'female'    => 'female',
+        'male'      => 'male',
+    );
+
     /**
      * @ORM\Id
      * @ORM\Column(type="integer")
@@ -115,22 +120,27 @@ class User implements UserInterface, \Serializable
     protected $lastActivity;
 
     /**
-     * @ORM\OneToOne(targetEntity="Player", mappedBy="user", cascade={"persist"})
+     * @ORM\OneToOne(targetEntity="SC2Profile", mappedBy="user", cascade={"persist"})
      */
-    protected $player;
+    protected $sc2;
 
-	public function serialize() {
-		return serialize(array(
-			$this->username,
-			$this->password
-		));
-	}
+    /**
+     * @ORM\OneToOne(targetEntity="WoWProfile", mappedBy="user", cascade={"persist"})
+     */
+    protected $wow;
 
-	public function unserialize($data) {
-		list($username, $password) = unserialize($data);
-		$this->username = $username;
-		$this->password = $password;
-	}
+    public function serialize() {
+        return serialize(array(
+            $this->username,
+            $this->password
+        ));
+    }
+
+    public function unserialize($data) {
+        list($username, $password) = unserialize($data);
+        $this->username = $username;
+        $this->password = $password;
+    }
 
     public function getId() {
         return $this->id;
@@ -161,41 +171,41 @@ class User implements UserInterface, \Serializable
     }
 
     public function getAvatar() {
-		if(!is_null($this->avatar))
-		{
-			$rootDir = __DIR__.'/../../../../web';
-			return new File($rootDir . $this->avatar);
-		}
+        if(!is_null($this->avatar))
+        {
+            $rootDir = __DIR__.'/../../../../web';
+            return new File($rootDir . $this->avatar);
+        }
     }
 
     public function getAvatarUrl() {
-        return $this->avatar;
+        return $this->avatar ?: '/bundles/ihqsnuitblanche/images/avatar/default.gif';
     }
 
-	public function getAvatarMargin() {
-		if(is_null($this->avatar)) { return 0; }
+    public function getAvatarMargin() {
+        if(is_null($this->avatar)) { return 0; }
 
-		$rootDir = __DIR__.'/../../../../web';
-		list($width, $height) = getimagesize($rootDir . $this->avatar);
+        $rootDir = __DIR__.'/../../../../web';
+        list($width, $height) = getimagesize($rootDir . $this->avatar);
 
-		if($width <= $height) { return 0; }
+        if($width <= $height) { return 0; }
 
-		$resizedWidth = $width * 100 / $height;
-		return floor(($resizedWidth - 100) / 2);
-	}
+        $resizedWidth = $width * 100 / $height;
+        return floor(($resizedWidth - 100) / 2);
+    }
 
     public function setAvatar($avatar) {
-		if(is_object($avatar) && $avatar instanceof UploadedFile)
-		{
-			chmod($avatar->getPath(), 0777);
+        if(is_object($avatar) && $avatar instanceof UploadedFile)
+        {
+            chmod($avatar->getPath(), 0777);
 
-			$dir = '/upload/avatar';
-			$filename = strtolower($this->username) . '.' . pathinfo($avatar->getOriginalName(), PATHINFO_EXTENSION);
+            $dir = '/upload/avatar';
+            $filename = strtolower($this->username) . '.' . pathinfo($avatar->getOriginalName(), PATHINFO_EXTENSION);
 
-			$rootDir = __DIR__.'/../../../../web';
-			$avatar->move($rootDir . $dir, $filename);
-			$this->avatar = $dir . '/' . $filename;
-		}
+            $rootDir = __DIR__.'/../../../../web';
+            $avatar->move($rootDir . $dir, $filename);
+            $this->avatar = $dir . '/' . $filename;
+        }
     }
     
     public function getFirstName() {
@@ -293,10 +303,42 @@ class User implements UserInterface, \Serializable
         return $account . '@' . substr($domain, 0, 1) . '....' . $region;
     }
 
-	public function getPlayer()
-	{
-		return $this->player;
-	}
+    public function getSc2()
+    {
+        return $this->sc2;
+    }
+
+    public function setSc2(SC2Profile $sc2)
+    {
+        if(!$sc2->getSc2Account())
+        {
+            return ;
+        }
+        $this->sc2 = $sc2;
+    }
+
+    public function getWow()
+    {
+        return $this->wow;
+    }
+
+    public function setWow(WoWProfile $wow)
+    {
+        if(!$wow->getName())
+        {
+            return ;
+        }
+        $this->wow = $wow;
+    }
+
+    public function getProfiles()
+    {
+        $profiles = array();
+        if($this->sc2 instanceof SC2Profile) { $profiles['sc2'] = "StarCraft 2"; }
+        if($this->wow instanceof WoWProfile) { $profiles['wow'] = "World Of WarCraft"; }
+
+        return $profiles;
+    }
 
     public function getRoles() {
         return array('ROLE_ADMIN');
@@ -314,8 +356,23 @@ class User implements UserInterface, \Serializable
         return ($user->getUsername() == $this->getUsername());
     }
 
-    static public function getRaces()
+    static public function getSC2Races()
     {
-        return array_keys(Player::$_sc2races);
+        return array_keys(SC2Profile::$_sc2races);
+    }
+
+    static public function getWoWClasses()
+    {
+        return array_keys(WoWProfile::$_classes);
+    }
+
+    static public function getWoWRaces()
+    {
+        return array_keys(WoWProfile::$_races);
+    }
+
+    static public function getSexes()
+    {
+        return array_keys(User::$_sexes);
     }
 }

@@ -11,33 +11,33 @@ use IHQS\NuitBlancheBundle\Entity\User;
  */
 class Post extends BasePost
 {
-	/**
-	 * @ORM\ManyToOne(targetEntity="IHQS\NuitBlancheBundle\Entity\User")
-	 */
-	protected $author;
+    /**
+     * @ORM\ManyToOne(targetEntity="IHQS\NuitBlancheBundle\Entity\User")
+     */
+    protected $author;
 
-	/**
-	 * @ORM\ManyToOne(targetEntity="Topic")
-	 */
-	protected $topic;
+    /**
+     * @ORM\ManyToOne(targetEntity="Topic")
+     */
+    protected $topic;
 
-	public function getAuthor()
-	{
-		return $this->author;
-	}
+    public function getAuthor()
+    {
+        return $this->author;
+    }
 
-	public function setAuthor(User $author)
-	{
-		$this->author = $author;
-	}
+    public function setAuthor(User $author)
+    {
+        $this->author = $author;
+    }
 
-	public function getAuthorName()
-	{
-		return ($this->author instanceof User) ? $this->author->getUsername() : 'Anonymous';
-	}
+    public function getAuthorName()
+    {
+        return ($this->author instanceof User) ? $this->author->getUsername() : 'Anonymous';
+    }
 
-	public function getMessage()
-	{
-		return $this->message;
-	}
+    public function getMessage()
+    {
+        return $this->message;
+    }
 }

@@ -1,22 +1,15 @@
-<div class="">
+<div class="news-teaser">
+    <h3>{{ title | trans }}</h3>
     {% for new in news %}
-    <div class="news-teaser">
-        <h3><a href="{{ url('news_show', { "news_id": new.id }) }}">{{ new.title }}</a></h3>
-        <div class="news">
-            <p class="meta">{{ "by" | trans }}
-                <a href="{{ url('player_show', {'player_id': new.author.id}) }}">{{ new.author.username }}</a>
-                - {{ new.date.format('d/m/Y - H:i') }}
-                - <strong>{{ new.comments | length }}</strong> {{ "comments" | trans }}
-            </p>
-            {{ new.teaser | innerBlocks }}
-        </div>
-        <div id="comment-form">
-            <p class="login">
-                <a href="{{ url('news_show', { "news_id": new.id }) }}">
-                    {{ "Read more and view comments" | trans }}
-                </a>
-            </p>
-        </div>
+    <div class="news" style="clear:both;">
+        <span class="meta">{{ new.formattedDate | raw }}</span>
+        <img src="{% if new.team %}{{ new.team.icon }}{% else %}{{ new.teamGame.icon }}{% endif %}" class="flag" />
+        <img src="{{ asset('bundles/ihqsnuitblanche/images/flags/' ~ new.lang ~ '.gif') }}" alt="{{ new.lang }}" class="flag" />
+
+        <a href="{{ url('news_show', { 'news_id' : new.id }) }}"><strong>{{ new.title }}</strong></a>
+        <p class="meta" style="float:right;">
+            <strong>{{ new.comments | length }}</strong> com(s)
+        </p>
     </div>
     {% endfor %}
 </div>

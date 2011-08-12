@@ -14,7 +14,7 @@ class PlayerController extends Controller
     public function _connectedAction()
     {
         return array(
-            'players' => $this->get('nb.manager.player')->findConnected()
+            'players' => $this->get('nb.manager.user')->findConnected()
         );
     }
 
@@ -23,28 +23,34 @@ class PlayerController extends Controller
      */
     public function _widgetAction($player_name)
     {
-		$player = $this->get('nb.manager.player')->findOneBySc2Account($player_name);
+        $player = $this->get('nb.manager.sc2profile')->findOneBySc2Account($player_name);
 
         return array(
             'player' => $player,
-			'playerName' => $player_name,
+            'playerName' => $player_name,
         );
     }
 
     /**
-     * @Route("/player/{player_id}/show", name="player_show")
+     * @Route("/player/{user_id}/show", name="player_show")
+     * @Route("/player/{user_id}/show/{profile}", name="player_show_profile")
      * @Template()
      */
-    public function showAction($player_id)
+    public function showAction($user_id, $profile = null)
     {
+        $user = $this->get('nb.manager.user')->findOneById($user_id);
+        if(!$profile && $user->getWoW()) { $profile = "wow"; }
+        if(!$profile && $user->getSc2()) { $profile = "sc2"; }
+
         return array(
-            'player' => $this->get('nb.manager.player')->findOneById($player_id)
+            'user'      => $user,
+            'profile'   => $profile,
         );
     }
 
     /**
      * @Route("/users", name="player_list")
-     * @Template("IHQSNuitBlancheBundle:Team:show.html.twig")
+     * @Template("IHQSNuitBlancheBundle:Team:show_sc2.html.twig")
      */
     public function listAction()
     {
@@ -52,7 +58,7 @@ class PlayerController extends Controller
             "name"  => "Website's",
             "tag"   => ""
         );
-        $players = $this->get('nb.manager.player')->findAll();
+        $players = $this->get('nb.manager.user')->findAll();
 
         return array(
             'teams'	=> $this->get('nb.manager.team')->findAll(),

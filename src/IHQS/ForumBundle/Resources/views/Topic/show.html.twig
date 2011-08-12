@@ -8,7 +8,7 @@
     <ul class="crumbs filters">
         <li class="first"><a href="{{ path('forum_index') }}">{{ "Forum" | trans }}</a></li>
         <li><a href="{{ forum_urlForCategory(topic.category) }}">{{ topic.category.name }}</a></li>
-        <li class="last">{{ topic.subject }}</li>
+        <li class="last">{{ topic.subject }} {% if topic.postIt %}(Post-It){% endif %}</li>
     </ul>
 
     <div class="main topic">

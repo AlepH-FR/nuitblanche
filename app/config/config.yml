@@ -11,6 +11,7 @@ framework:
     validation:
         enabled: true
         enable_annotations: true
+    translator: { fallback: en }
     form:
         enabled: true
     templating:    { engines: ['twig'] } #assets_version: SomeVersionScheme

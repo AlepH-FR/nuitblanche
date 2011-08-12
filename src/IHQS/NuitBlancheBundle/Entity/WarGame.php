@@ -95,11 +95,11 @@ class WarGame extends BaseGame
         $this->players = $players;
     }
 
-    public function addPlayer(Player $player) {
+    public function addPlayer(SC2Profile $player) {
         $this->players->add($player);
     }
 
-    public function removePlayer(Player $player) {
+    public function removePlayer(SC2Profile $player) {
         $this->players->remove($player);
     }
 

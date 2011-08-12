@@ -2,13 +2,13 @@
     {% for post in posts %}
     <li>
         {% if post.author %}
-        <a class="avatar" href="{{ url('player_show', {'player_id': post.author.id}) }}">
-            <img src="{{ post.author.avatarUrl | default('/bundles/ihqsnuitblanche/images/avatar/default.gif') }}" />
+        <a class="avatar" href="{{ url('player_show', {'user_id': post.author.id}) }}">
+            <img src="{{ post.author.avatarUrl }}" />
         </a>
         {% endif %}
         <p class="meta">
             #{{ loop.index }}
-            - {% if post.author %}<a href="{{ url('player_show', {'player_id': post.author.id}) }}">{{ post.author.username }}</a>{% else %}Anonymous{% endif %}
+            - {% if post.author %}<a href="{{ url('player_show', {'user_id': post.author.id}) }}">{{ post.author.username }}</a>{% else %}Anonymous{% endif %}
             - {{ post.createdAt.format('d/m/Y - H:i') }}
         </p>
         <div class="main">

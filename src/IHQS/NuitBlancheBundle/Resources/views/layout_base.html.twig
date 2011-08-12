@@ -34,8 +34,8 @@
                 <h1><span>Nuit Blanche - {{ block('title') }}</span></h1>
                 <span class="baseline">fair gamers since 1996.</span>
                 <ul class="lang">
-                    <li><a href="" class="fr"><span>fr</span></a></li>
-                    <li><a href="" class="en"><span>en</span></a></li>
+                    <li><a href="{{ url('lang', {'lang': 'fr_FR'}) }}" class="fr"><span>fr</span></a></li>
+                    <li><a href="{{ url('lang', {'lang': 'en_US'}) }}" class="en"><span>en</span></a></li>
                 </ul>
 
                 {% if is_granted('ROLE_USER') %}
@@ -74,27 +74,8 @@
                 <div style="clear: both"></div>
             </div>
 
-            <div id="left">
-                {% block left %}
-                {% endblock %}
-            </div>
-
-            <div id="content">
-                {% if app.session.flash('notice') %}
-                    <div class="flash-message">
-                        <em>Notice</em>: {{ app.session.flash('notice') }}
-                    </div>
-                {% endif %}
-
-                <h1>{{ block ('title') }}</h1>
-                {% block content %}
-                {% endblock %}
-            </div>
-
-            <div id="right">
-                {% block right %}
-                {% endblock %}
-            </div>
+            {% block main %}
+            {% endblock %}
 
             <div id="footer">
                 <ul>
@@ -111,22 +92,22 @@
                     <li class="footer-item-category">
                         <p>{{ "Partners" | trans }}</p>
                         <ul>
-                            <li>(<a target="_blank" href="http://www.ihqs.net">see</a>) ihqs</li>
+                            <li>(<a target="_blank" href="http://www.ihqs.net">go</a>) ihqs</li>
                         </ul>
                     </li>
                     <li class="footer-item-category">
                         <p>{{ "Useful links" | trans }}</p>
                         <ul>
-                            <li>(<a target="_blank" href="http://www.pandaria-wars.com">see</a>) pandaria</li>
-                            <li>(<a target="_blank" href="http://www.sc2cl.com">see</a>) sc2cl</li>
-                            <li>(<a target="_blank" href="http://www.esl.eu">see</a>) esl</li>
-                            <li>(<a target="_blank" href="http://www.sc2ranks.com">see</a>) sc2ranks</li>
+                            <li>(<a target="_blank" href="http://www.pandaria-wars.com">go</a>) pandaria</li>
+                            <li>(<a target="_blank" href="http://www.sc2cl.com">go</a>) sc2cl</li>
+                            <li>(<a target="_blank" href="http://www.esl.eu">go</a>) esl</li>
+                            <li>(<a target="_blank" href="http://www.sc2ranks.com">go</a>) sc2ranks</li>
                         </ul>
                     </li>
                     <li class="footer-item-category">
                         <p>{{ "Misc." | trans }}</p>
                         <ul>
-                            <li><a href="{{ url('to_come') }}">to come</a></li>
+                            <li><a href="{{ url('to_come') }}">{{ "to come" | trans }}</a></li>
                         </ul>
                     </li>
                 </ul>

@@ -1,6 +1,9 @@
 {% extends 'IHQSNuitBlancheBundle::layout_standard.html.twig' %}
 
 {% block title %}
+    <img src="{% if news.team %}{{ news.team.icon }}{% else %}{{ news.teamGame.icon }}{% endif %}" class="flag" />
+    <img src="{{ asset('bundles/ihqsnuitblanche/images/flags/' ~ news.lang  ~ '.gif') }}" alt="{{ news.lang }}" class="flag" />
+
     {{ news.title }}
     {% if is_granted('ROLE_ADMIN') %}
         <div class="admin_actions">
@@ -17,12 +20,12 @@
         <ol class="comments">
         {% for comment in news.comments %}
             <li>
-                <a class="avatar" href="{{ url('player_show', {'player_id': comment.author.id}) }}">
-                    <img src="{{ comment.author.avatarUrl | default('/bundles/ihqsnuitblanche/images/avatar/default.gif') }}" />
+                <a class="avatar" href="{{ url('player_show', {'user_id': comment.author.id}) }}">
+                    <img src="{{ comment.author.avatarUrl }}" />
                 </a>
                 <p class="meta">
                     #{{ loop.index }}
-                    - <a href="{{ url('player_show', {'player_id': comment.author.id}) }}">{{ comment.author.username }}</a>
+                    - <a href="{{ url('player_show', {'user_id': comment.author.id}) }}">{{ comment.author.username }}</a>
                     - {{ comment.date.format('d/m/Y - H:i') }}
                 </p>
                 <div class="main">
