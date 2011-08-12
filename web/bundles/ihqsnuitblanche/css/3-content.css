@@ -416,6 +416,14 @@ div.replay-info h3
 div.news-teaser h3
 {
     color: #395674;
+    margin-top: -20px;
+    padding-left: 0px;
+}
+
+div.game-info h3
+{
+    margin-top: -16px;
+    text-align: center;
 }
 
 div.sub-section

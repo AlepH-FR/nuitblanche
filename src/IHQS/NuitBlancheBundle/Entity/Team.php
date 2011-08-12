@@ -33,7 +33,7 @@ class Team
     protected $tag;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Player", inversedBy="teams")
+     * @ORM\ManyToMany(targetEntity="User", inversedBy="teams")
      * @ORM\JoinTable()
      */
     protected $players;
@@ -43,12 +43,17 @@ class Team
      */
     protected $wars;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="TeamGame")
+     */
+    protected $teamGame;
+
     protected $statsInit = false;
     protected $stats;
 
     public function __construct()
     {
-        $this->wars		= new \Doctrine\Common\Collections\ArrayCollection();
+        $this->wars	= new \Doctrine\Common\Collections\ArrayCollection();
         $this->players	= new \Doctrine\Common\Collections\ArrayCollection();
     }
 
@@ -80,6 +85,14 @@ class Team
         $this->tag = $tag;
     }
 
+    public function getTeamGame() {
+        return $this->teamGame;
+    }
+
+    public function setTeamGame(TeamGame $teamGame) {
+        $this->teamGame = $teamGame;
+    }
+
     public function getWars() {
         return $this->wars;
     }
@@ -88,14 +101,14 @@ class Team
         return $this->players;
     }
 
-    public function addPlayer(Player $player)
+    public function addPlayer(User $user)
     {
-        $this->players->add($player);
+        $this->players->add($user);
     }
 
-    public function removePlayer(Player $player)
+    public function removePlayer(User $user)
     {
-        $this->players->remove($player);
+        $this->players->remove($user);
     }
 
     public function __toString()

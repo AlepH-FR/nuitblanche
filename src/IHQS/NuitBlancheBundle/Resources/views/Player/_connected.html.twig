@@ -1,12 +1,12 @@
 <div class="widget last-wars online-users">
     <h3>{{ "Online users" | trans }}</h3>
     <ul>
-        {% for player in players %}
+        {% for user in players %}
         <li>
-            <a href="{{ url('player_show', { 'player_id': player.id }) }}">
+            <a href="{{ url('player_show', { 'user_id': user.id }) }}">
                 <span class="team">
-                    <img src="{{ asset('bundles/ihqsnuitblanche/images/ico/player_status_' ~ player.user.status ~ '.gif') }}" alt="{{ player.user.status }}" />
-                    {{ player.username }}
+                    <img src="{{ asset('bundles/ihqsnuitblanche/images/ico/player_status_' ~ user.status ~ '.gif') }}" alt="{{ user.status }}" />
+                    {{ user.username }}
                 </span>
             </a>
         </li>

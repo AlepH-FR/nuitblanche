@@ -23,6 +23,16 @@ class NewsRepository extends EntityRepository
         return $news;
     }
 
+    public function findall()
+    {
+        $qb = $this->createQueryBuilder('n');
+
+        return $qb->
+            orderBy('n.date', 'DESC')->
+            getQuery()->
+            execute();
+    }
+
     public function findLatest($community = false)
     {
         $qb = $this->createQueryBuilder('n');

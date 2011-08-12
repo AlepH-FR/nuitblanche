@@ -6,7 +6,8 @@ use Symfony\Component\Security\Core\SecurityContext;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use IHQS\NuitBlancheBundle\Entity\User;
-use IHQS\NuitBlancheBundle\Entity\Player;
+use IHQS\NuitBlancheBundle\Entity\SC2Profile;
+use IHQS\NuitBlancheBundle\Entity\WoWProfile;
 use IHQS\NuitBlancheBundle\Form\UserFormType;
 
 class SecuredController extends BaseController
@@ -19,13 +20,17 @@ class SecuredController extends BaseController
     {
         // creating default object
         $user = new User();
-        $player = new Player();
-        $player->setUser($user);
+        $sc2 = new SC2Profile();
+        $sc2->setUser($user);
+        $user->setSc2($sc2);
+        $wow = new WoWProfile();
+        $wow->setUser($user);
+        $user->setWow($wow);
 
         // creating form
-        $formType = $this->container->getParameter('nb.form.player.class');
+        $formType = $this->container->getParameter('nb.form.user.class');
 
-        $form = $this->get('form.factory')->create(new $formType(), $player, array('password' => UserFormType::PASSWORD_NESTED));
+        $form = $this->get('form.factory')->create(new $formType(), $user, array('password' => UserFormType::PASSWORD_NESTED));
 
         return $this->_adminFormAction(
             'Register Nuit Blanche website',

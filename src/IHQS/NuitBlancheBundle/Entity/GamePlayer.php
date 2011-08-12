@@ -30,7 +30,7 @@ class GamePlayer
     protected $warGame;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Player")
+     * @ORM\ManyToOne(targetEntity="SC2Profile")
      */
     protected $player;
 
@@ -77,7 +77,7 @@ class GamePlayer
         return $this->player;
     }
 
-    public function setPlayer(Player $player) {
+    public function setPlayer(SC2Profile $player) {
         $this->player = $player;
     }
 
@@ -94,7 +94,7 @@ class GamePlayer
     }
 
     public function setRace($race) {
-        if(!in_array($race, Player::$_sc2races))
+        if(!in_array($race, SC2Profile::$_sc2races))
         {
             throw new \InvalidArgumentException('Invalid race "' . $race . '" for StarCraft 2 Race');
         }
@@ -135,27 +135,27 @@ class GamePlayer
         $this->warGame = $warGame;
     }
 
-	public function setPlayerRepository(PlayerRepository $playerRepo)
-	{
-		$this->playerRepo = $playerRepo;
-	}
-	
-	/**
-	 * @ORM\PrePersist
-	 */
-	public function prePersist()
-	{
-		if(is_null($this->playerRepo))
-		{
-			return;
-		}
-		
-		$player = $this->playerRepo->findOneBySc2Account($this->getName());
-		if($player instanceof Player)
-		{
-			$this->player = $player;
-		}
-	}
+    public function setPlayerRepository(PlayerRepository $playerRepo)
+    {
+        $this->playerRepo = $playerRepo;
+    }
+
+    /**
+     * @ORM\PrePersist
+     */
+    public function prePersist()
+    {
+        if(is_null($this->playerRepo))
+        {
+            return;
+        }
+
+        $player = $this->playerRepo->findOneBySc2Account($this->getName());
+        if($player instanceof SC2Profile)
+        {
+            $this->player = $player;
+        }
+    }
 
     public function __toString()
     {

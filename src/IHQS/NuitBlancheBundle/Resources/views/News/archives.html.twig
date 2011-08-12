@@ -8,7 +8,8 @@
         {% for new in news %}
         <li>
             <a href="{{ url('news_show', { 'news_id' : new.id }) }}">
-                <img class="flag" src="{{ new.team.icon }}" />
+            <img src="{% if new.team %}{{ new.team.icon }}{% else %}{{ new.teamGame.icon }}{% endif %}" class="flag" />
+            <img src="{{ asset('bundles/ihqsnuitblanche/images/flags/' ~ new.lang ~ '.gif') }}" alt="{{ new.lang }}" class="flag" />
                 {{ new.title }}
             </a>
             <span class="little">

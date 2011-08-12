@@ -1,13 +1,14 @@
 <div class="news-teaser">
     <h3>{{ title | trans }}</h3>
     {% for new in news %}
-    <div class="news">
-        {% if new.team %}<img src="{{ new.team.icon }}" class="flag" />{% endif %}
-        <strong>{{ new.title }}</strong>
-        <p class="meta">{{ "by" | trans }}
-            <a href="{{ url('player_show', {'player_id': new.author.id}) }}">{{ new.author.username }}</a>
-            - {{ new.date.format('d/m/Y - H:i') }}
-            - <strong>{{ new.comments | length }}</strong> {{ "comments" | trans }}
+    <div class="news" style="clear:both;">
+        <span class="meta">{{ new.formattedDate | raw }}</span>
+        <img src="{% if new.team %}{{ new.team.icon }}{% else %}{{ new.teamGame.icon }}{% endif %}" class="flag" />
+        <img src="{{ asset('bundles/ihqsnuitblanche/images/flags/' ~ new.lang ~ '.gif') }}" alt="{{ new.lang }}" class="flag" />
+
+        <a href="{{ url('news_show', { 'news_id' : new.id }) }}"><strong>{{ new.title }}</strong></a>
+        <p class="meta" style="float:right;">
+            <strong>{{ new.comments | length }}</strong> com(s)
         </p>
     </div>
     {% endfor %}

@@ -4,7 +4,7 @@
                     </td>
                     <td class="player player-left">
                          {% for player in replay.team1 %}
-                            {% if player.player %}<a href="{{ url('player_show', {"player_id": player.player.id}) }}">{% endif %}
+                            {% if player.player %}<a href="{{ url('player_show', {"user_id": player.player.user.id}) }}">{% endif %}
                             {{ player.name }}
                             {% if player.player %}</a>{% endif %}
                             <img class="race-icon" src="{{ asset('bundles/ihqsnuitblanche/images/ico/' ~ player.race ~ '_icon.png') }}" />
@@ -15,7 +15,7 @@
                     <td class="player player-right">
                          {% for player in replay.team2 %}
                             <img class="race-icon" src="{{ asset('bundles/ihqsnuitblanche/images/ico/' ~ player.race ~ '_icon.png') }}" />
-                            {% if player.player %}<a href="{{ url('player_show', {"player_id": player.player.id}) }}">{% endif %}
+                            {% if player.player %}<a href="{{ url('player_show', {"user_id": player.player.user.id}) }}">{% endif %}
                             {{ player.name }}
                             {% if player.player %}</a>{% endif %}
                             <br />

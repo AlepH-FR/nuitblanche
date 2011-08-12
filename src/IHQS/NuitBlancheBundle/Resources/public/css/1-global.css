@@ -67,6 +67,12 @@ div.promote a
 }
 div.promote-forum a         { background: url('../images/forum.png'); }
 div.promote-tournaments a   { background: url('../images/tournaments.png'); }
+div.promote-replays a   {
+    color: #395674;
+    line-height: 100px;
+    height: 100px;
+    background: url('../images/ad_replay.png');
+}
 
 .widget
 {

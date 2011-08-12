@@ -87,9 +87,9 @@
 #header form fieldset,
 #header .block-login div.log
 {
-	position: absolute;
-	margin: 10px;
-        color: white;
+    position: absolute;
+    margin: 10px;
+    color: white;
 }
 
 #header .block-login div.log div.userdata
@@ -136,6 +136,46 @@
     height: 18px;
     padding: 0;
 }
+#header ul.user-menu
+{
+    padding: 2px;
+    margin: 6px 0;
+    background: #395674;
+    color: white;
+    font-weight: bold;
+    border: 1px solid black;
+    width: 130px;
+    height: 18px;
+    overflow: hidden;
+
+    transition: height 1s;
+}
+#header ul.user-menu:hover
+{
+    height: auto;
+}
+#header ul.user-menu li
+{
+    border-bottom: 1px solid white;
+    line-height: 18px;
+    list-style: circle inside none;
+}
+#header ul.user-menu li a
+{
+    color: white;
+    text-align: left;
+    font-weight: normal;
+}
+#header ul.user-menu li.first
+{
+    list-style: none;
+    text-align: center;
+    border: 0;
+}
+#header ul.user-menu li.last
+{
+    border: 0; 
+}
 
 div.register a
 {
@@ -163,11 +203,6 @@ div.register a:hover
     background: -webkit-gradient(linear, left top, right top, from(#ddd), to(#395674));
     background: -moz-linear-gradient(left,#ddd,#395674);
     -ms-filter: "progid:DXImageTransform.Microsoft.gradient (GradientType=1, startColorstr=#ddd, endColorstr=#395674)";
-
-    transition: background 2s;
-    -o-transition: background 2s;
-    -moz-transition: background 2s;
-    -webkit-transition: background 2s;
 }
 
 #header ul.menu
@@ -224,14 +259,4 @@ ul.filters-video li.stream-off
 li.stream-off
 {
     background: url("/bundles/ihqsnuitblanche/images/ico/result_loss.gif") no-repeat scroll 8px 15px transparent;
-}
-
-div.user-menu ul li
-{
-    display: list-item;
-    list-style: circle inside none;
-}
-div.user-menu ul li a
-{
-    display: inline;
 }

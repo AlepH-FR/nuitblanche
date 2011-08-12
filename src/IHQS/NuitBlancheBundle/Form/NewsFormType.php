@@ -15,6 +15,7 @@ class NewsFormType extends AbstractType
                 'required' => false,
                 'class'    => 'IHQS\NuitBlancheBundle\Entity\Team',
             ))
+            ->add('teamGame')
             ->add('body', new WysiwygTextareaType());
         ;
     }

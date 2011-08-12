@@ -46,9 +46,20 @@ class News
     protected $team;
 
     /**
+     * @ORM\ManyToOne(targetEntity="TeamGame", cascade={"persist"})
+     */
+    protected $teamGame;
+
+    /**
      * @ORM\OneToMany(targetEntity="Comment", mappedBy="news")
      */
     protected $comments;
+
+    /**
+     * @ORM\Column(type="string")
+     * @Assert\Choice(callback = "getLanguages")
+     */
+    protected $lang;
 
     public function getId() {
         return $this->id;
@@ -87,7 +98,16 @@ class News
 
     public function setDate(\DateTime $date) {
         $this->date = $date;
-		return $this;
+	return $this;
+    }
+
+    public function getFormattedDate() {
+        if($this->date->format('Ymd') == date('Ymd'))
+        {
+            return '<strong>' . $this->date->format('H:i') . '</strong>';
+        }
+
+        return $this->date->format('d/m');
     }
 
     public function getTeam() {
@@ -99,11 +119,34 @@ class News
 		return $this;
     }
 
+    public function getTeamGame() {
+        return $this->teamGame;
+    }
+
+    public function setTeamGame(TeamGame $teamGame) {
+        $this->teamGame = $teamGame;
+    }
+
     public function getComments() {
         return $this->comments;
     }
 
-	public function getTeaser() {
-		return substr($this->body, 0, strpos($this->body, '</p>'));
-	}
+    public function getLang() {
+        return $this->lang ?: 'uk';
+    }
+
+    public function setLang($lang) {
+        $this->lang = $lang;
+    }
+
+    public function getTeaser() {
+            return substr($this->body, 0, strpos($this->body, '</p>'));
+    }
+
+    public function getLanguages() {
+        return array(
+            'fr' => "fr",
+            'uk' => "en",
+        );
+    }
 }
