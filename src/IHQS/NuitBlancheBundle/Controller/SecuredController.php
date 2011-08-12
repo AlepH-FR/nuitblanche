@@ -47,12 +47,11 @@ class SecuredController extends BaseController
     public function profileEditionAction()
     {
         $user = $this->get('security.context')->getToken()->getUser();
-        $player = $user->getPlayer();
 		
         // creating form
-        $formType = $this->container->getParameter('nb.form.player.class');
+        $formType = $this->container->getParameter('nb.form.user.class');
 
-        $form = $this->get('form.factory')->create(new $formType(), $player, array('password' => UserFormType::PASSWORD_NONE));
+        $form = $this->get('form.factory')->create(new $formType(), $user, array('password' => UserFormType::PASSWORD_NONE));
 
         return $this->_adminFormAction(
             'Edit my profile',
@@ -69,12 +68,11 @@ class SecuredController extends BaseController
     public function profilePasswordAction()
     {
         $user = $this->get('security.context')->getToken()->getUser();
-        $player = $user->getPlayer();
 
         // creating form
-        $formType = $this->container->getParameter('nb.form.player.class');
+        $formType = $this->container->getParameter('nb.form.user.class');
 
-        $form = $this->get('form.factory')->create(new $formType(), $player, array('password' => UserFormType::PASSWORD_ALONE));
+        $form = $this->get('form.factory')->create(new $formType(), $user, array('password' => UserFormType::PASSWORD_ALONE));
 
         return $this->_adminFormAction(
             'Change my password',
