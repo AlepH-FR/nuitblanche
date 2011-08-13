@@ -143,7 +143,7 @@ class News
             return substr($this->body, 0, strpos($this->body, '</p>'));
     }
 
-    public function getLanguages() {
+    static public function getLanguages() {
         return array(
             'fr' => "fr",
             'uk' => "en",
