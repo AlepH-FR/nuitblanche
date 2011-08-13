@@ -16,6 +16,7 @@ class NewsFormType extends AbstractType
                 'class'    => 'IHQS\NuitBlancheBundle\Entity\Team',
             ))
             ->add('teamGame')
+            ->add('lang', 'choice', array('choices' => array('uk' => 'en', 'fr' => 'fr')))
             ->add('body', new WysiwygTextareaType());
         ;
     }
