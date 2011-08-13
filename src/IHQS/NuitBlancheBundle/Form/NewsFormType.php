@@ -4,6 +4,7 @@ namespace IHQS\NuitBlancheBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilder;
+use IHQS\NuitBlancheBundle\Entity\News;
 
 class NewsFormType extends AbstractType
 {
@@ -16,7 +17,7 @@ class NewsFormType extends AbstractType
                 'class'    => 'IHQS\NuitBlancheBundle\Entity\Team',
             ))
             ->add('teamGame')
-            ->add('lang')
+            ->add('lang', 'choice', array('choices' => News::getLanguages))
             ->add('body', new WysiwygTextareaType());
         ;
     }
