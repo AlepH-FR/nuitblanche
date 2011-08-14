@@ -135,7 +135,7 @@ class GamePlayer
         $this->warGame = $warGame;
     }
 
-    public function setPlayerRepository(PlayerRepository $playerRepo)
+    public function setPlayerRepository(SC2ProfileRepository $playerRepo)
     {
         $this->playerRepo = $playerRepo;
     }
