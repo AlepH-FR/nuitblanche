@@ -3,7 +3,7 @@
 namespace IHQS\NuitBlancheBundle\EventSubscriber;
 
 use IHQS\NuitBlancheBundle\Entity\GamePlayer;
-use IHQS\NuitBlancheBundle\Entity\Player;
+use IHQS\NuitBlancheBundle\Entity\SC2Profile;
 
 class GamePlayerEventSubscriber extends BaseEventSubscriber
 {
@@ -15,7 +15,7 @@ class GamePlayerEventSubscriber extends BaseEventSubscriber
 			return ;
 		}
 
-		$player = $this->em->getRepository('IHQS\NuitBlancheBundle\Entity\Player')->findOneBySc2Account($name);
+		$player = $this->em->getRepository('IHQS\NuitBlancheBundle\Entity\SC2Profile')->findOneBySc2Account($name);
 		if($player)
 		{
 			$entity->setName($name);
