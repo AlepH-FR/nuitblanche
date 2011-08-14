@@ -3,9 +3,9 @@
 namespace IHQS\NuitBlancheBundle\EventSubscriber;
 
 use IHQS\NuitBlancheBundle\Entity\GamePlayer;
-use IHQS\NuitBlancheBundle\Entity\Player;
+use IHQS\NuitBlancheBundle\Entity\SC2Profile;
 
-class PlayerEventSubscriber extends BaseEventSubscriber
+class SC2ProfileEventSubscriber extends BaseEventSubscriber
 {
     public function updateEntity($entity)
     {
