@@ -260,8 +260,8 @@
                         <td class="war-score {{ game.war.result }}">{{ game.war.teamScore }}-{{ game.war.opponentScore }}</td>
                         <td class="player player-left">
                              {% for player in game.games[0].team1 %}
-                                {{ user.sc2.username }}
-                                <img class="race-icon" src="{{ asset('bundles/ihqsnuitblanche/images/ico/' ~ user.sc2.sc2race ~ '_icon.png') }}" />
+                                {{ player.name }}
+                                <img class="race-icon" src="{{ asset('bundles/ihqsnuitblanche/images/ico/' ~ player.race ~ '_icon.png') }}" />
                                 <br />
                              {% endfor %}
                         </td>
@@ -270,8 +270,8 @@
                         <td class="score match-{{ game.team2Result }}">{{ game.team2Score }}</td>
                         <td class="player player-right">
                              {% for player in game.games[0].team2 %}
-                                <img class="race-icon" src="{{ asset('bundles/ihqsnuitblanche/images/ico/' ~ user.sc2.sc2race ~ '_icon.png') }}" />
-                                {{ user.sc2.username }}
+                                <img class="race-icon" src="{{ asset('bundles/ihqsnuitblanche/images/ico/' ~ player.race ~ '_icon.png') }}" />
+                                {{ player.name }}
                                 <br />
                              {% endfor %}
                         </td>
