@@ -31,7 +31,7 @@
             <tag name="doctrine.event_subscriber" connection="default" />
         </service>
 
-        <service id="nb.doctrine.listener.player" class="IHQS\NuitBlancheBundle\EventSubscriber\PlayerEventSubscriber">
+        <service id="nb.doctrine.listener.player" class="IHQS\NuitBlancheBundle\EventSubscriber\SC2ProfileEventSubscriber">
             <tag name="doctrine.event_subscriber" connection="default" />
         </service>
 
