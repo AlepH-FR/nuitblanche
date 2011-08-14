@@ -3,7 +3,7 @@
 namespace IHQS\NuitBlancheBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use IHQS\NuitBlancheBundle\Model\PlayerRepository;
+use IHQS\NuitBlancheBundle\Model\SC2ProfileRepository;
 
 /**
  * @ORM\Entity(repositoryClass="IHQS\NuitBlancheBundle\Model\GamePlayerRepository")
