@@ -15,6 +15,8 @@ $loader->registerNamespaces(array(
     'Assetic'          => __DIR__.'/../vendor/assetic/src',
     'Metadata'         => __DIR__.'/../vendor/metadata/src',
 
+    'DoctrineExtensions' => __DIR__.'/../vendor/doctrine-extensions/lib',
+    'DoctrineExtensions\\Sluggable' => __DIR__.'/../vendor/doctrine-extensions-sluggable/lib',
 	'Bundle\\ForumBundle' => __DIR__.'/../vendor/bundles',
     'SC2Chart'         => __DIR__.'/../vendor/sc2chart/src',
     'SC2Ranks'         => __DIR__.'/../vendor/sc2ranks/src',

@@ -40,6 +40,12 @@
 [pagerfanta]
     git=http://github.com/whiteoctober/Pagerfanta.git
 
+[doctrine-extensions]
+    git=http://github.com/beberlei/DoctrineExtensions.git
+
+[doctrine-extensions-sluggable]
+    git=http://github.com/ornicar/Doctrine2-Sluggable-Functional-Behavior.git
+
 [SensioFrameworkExtraBundle]
     git=http://github.com/sensio/SensioFrameworkExtraBundle.git
     target=/bundles/Sensio/Bundle/FrameworkExtraBundle
