@@ -29,4 +29,9 @@ class WarFormType extends AbstractType
             'data_class' => 'IHQS\NuitBlancheBundle\Entity\War',
         );
     }
+
+	public function getName()
+	{
+		return 'War';
+	}
 }

@@ -13,7 +13,7 @@
 
     <div class="main topic">
         {% include 'IHQSForumBundle:Post:list.html.twig' with {'posts': posts} %}
-        {% include 'IHQSForumBundle::pagination.html.twig' with {'pager': posts.pages, 'url': forum_urlForTopic(topic)} %}
+        <div class="pagerfanta">{{ pagerfanta(posts, 'ihqsforum') }}</div>
     </div>
 
     <div class="register">

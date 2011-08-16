@@ -1,9 +1,8 @@
-{% if pager.pageCount %}
 <div class="pagination">
 
     <p class="previous">
-    {% if pager.previous is defined %}
-        <a href="{{ url }}?page={{ pager.previous }}">&laquo; {{ "Previous" | trans }}</a>
+    {% if pager.hasPreviousPage %}
+        <a href="{{ pager.getPreviousPage }}">&laquo; {{ "Previous" | trans }}</a>
     {% else %}
         <span>&laquo; {{ "Previous" | trans }}</span>
     {% endif %}
@@ -20,7 +19,7 @@
         </li>
     {% endfor %}
     </ul>
-    
+
     <p class="next">
     {% if pager.next is defined %}
         <a href="{{ url }}?page={{ pager.next }}">{{ "Next" | trans }} &raquo;</a>
@@ -30,4 +29,3 @@
     </p>
 
 </div>
-{% endif %}

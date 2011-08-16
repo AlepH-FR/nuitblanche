@@ -4,6 +4,8 @@
     {% endif %}
 
     <form action="{{ path("_security_check") }}" method="post" id="login">
+        <input type="hidden" id="remember_me" name="_remember_me" value="on" />
+
         <fieldset id="log" >
              <legend>Login</legend>
 

@@ -10,7 +10,7 @@ class ReplayFormType extends AbstractType
     public function buildForm(FormBuilder $builder, array $options)
     {
         $builder
-            ->add('file', 'file', array('type' => 'file'))
+            ->add('file', 'file')
             ->add('game', 'entity', array(
                 'required'      => false,
                 'class'         => 'IHQS\NuitBlancheBundle\Entity\Game',
@@ -25,4 +25,9 @@ class ReplayFormType extends AbstractType
             'data_class' => 'IHQS\NuitBlancheBundle\Entity\Replay',
         );
     }
+
+	public function getName()
+	{
+		return 'Replay';
+	}
 }

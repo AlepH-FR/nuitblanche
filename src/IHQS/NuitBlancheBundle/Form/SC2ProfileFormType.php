@@ -27,4 +27,9 @@ class SC2ProfileFormType extends AbstractType
             'validation_groups'	=> 'Registration'
         );
     }
+
+	public function getName()
+	{
+		return 'SC2Profile';
+	}
 }

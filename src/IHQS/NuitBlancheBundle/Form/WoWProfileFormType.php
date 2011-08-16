@@ -26,4 +26,9 @@ class WoWProfileFormType extends AbstractType
             'validation_groups'	=> 'Registration'
         );
     }
+
+	public function getName()
+	{
+		return 'WoWProfile';
+	}
 }
