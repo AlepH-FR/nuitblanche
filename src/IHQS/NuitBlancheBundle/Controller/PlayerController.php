@@ -50,7 +50,7 @@ class PlayerController extends Controller
 
     /**
      * @Route("/users", name="player_list")
-     * @Template("IHQSNuitBlancheBundle:Team:show_sc2.html.twig")
+     * @Template("IHQSNuitBlancheBundle:Team:show_profiles.html.twig")
      */
     public function listAction()
     {
@@ -64,7 +64,6 @@ class PlayerController extends Controller
             'teams'	=> $this->get('nb.manager.team')->findAll(),
             'team'      => $team,
             'players'   => $players,
-            'stats'     => false
         );
     }
 }

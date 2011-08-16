@@ -15,7 +15,7 @@ class WoWProfileFormType extends AbstractType
             ->add('race', 'choice',     array('choices' => WoWProfile::$_races))
             ->add('class', 'choice',    array('choices' => WoWProfile::$_classes))
             ->add('sex', 'choice',      array('choices' => User::$_sexes))
-            ->add('name')
+            ->add('name', 'text')
         ;
     }
 

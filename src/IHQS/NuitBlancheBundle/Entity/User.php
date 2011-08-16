@@ -12,6 +12,7 @@ use Symfony\Component\HttpFoundation\File\File;
 /**
  * @ORM\Entity(repositoryClass="IHQS\NuitBlancheBundle\Model\UserRepository")
  * @ORM\Table(name="nb_user")
+ * @ORM\HasLifecycleCallbacks
  */
 class User implements UserInterface, \Serializable
 {
@@ -140,6 +141,20 @@ class User implements UserInterface, \Serializable
         list($username, $password) = unserialize($data);
         $this->username = $username;
         $this->password = $password;
+    }
+
+    /**
+     * @ORM\PrePersist
+     */
+    public function prePersist() {
+        if($this->sc2 instanceof SC2Profile && !$this->sc2->getSc2Account())
+		{
+			$this->sc2 = null;
+		}
+        if($this->wow instanceof WoWProfile && !$this->wow->getName())
+		{
+			$this->wow = null;
+		}
     }
 
     public function getId() {
@@ -286,6 +301,12 @@ class User implements UserInterface, \Serializable
         $this->lastActivity = $lastActivity;
     }
 
+	public function lastSeen()
+	{
+		if(!$this->getLastActivity()) { return null ; }
+		return $this->getLastActivity()->diff(new \DateTime())->format('%a');
+	}
+
     public function getStatus()
     {
         $diff = time() - $this->getLastActivity()->getTimestamp();
@@ -310,10 +331,6 @@ class User implements UserInterface, \Serializable
 
     public function setSc2(SC2Profile $sc2)
     {
-        if(!$sc2->getSc2Account())
-        {
-            return ;
-        }
         $this->sc2 = $sc2;
     }
 
@@ -324,10 +341,6 @@ class User implements UserInterface, \Serializable
 
     public function setWow(WoWProfile $wow)
     {
-        if(!$wow->getName())
-        {
-            return ;
-        }
         $this->wow = $wow;
     }
 
