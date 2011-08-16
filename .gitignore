@@ -7,6 +7,11 @@
 /app/cache/*
 /app/logs/*
 app/config/config_*local.yml
+web/bundles/
+app/bootstrap*
+build/
+vendor/
+
 tags
 /web/upload/*
 /web/bundles/*
