@@ -17,7 +17,7 @@ class ControllerListener
         $this->container = $container;
     }
 
-    public function onCoreController(FilterControllerEvent $event)
+    public function onKernelController(FilterControllerEvent $event)
     {
         if (HttpKernelInterface::MASTER_REQUEST === $event->getRequestType())
 		{
