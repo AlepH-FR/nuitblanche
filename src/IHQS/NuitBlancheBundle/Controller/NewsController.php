@@ -53,9 +53,9 @@ class NewsController extends BaseController
 
         // handling response
         return array(
-            'not_connected'     => false,
+            'not_connected'    => false,
             'submit_path'	=> $this->generateUrl('news_show', array('news_id' => $news->getId())),
-            'form'		=> $form->createView()
+            'form'			=> $form->createView()
         );
     }
 
@@ -76,7 +76,7 @@ class NewsController extends BaseController
      */
     public function showAction($news_id)
     {
-	$news = $this->get('nb.manager.news')->findOneById($news_id);
+		$news = $this->get('nb.manager.news')->findOneById($news_id);
         $user = $this->get('security.context')->getToken()->getUser();
 
         if($user instanceof User)
@@ -95,6 +95,8 @@ class NewsController extends BaseController
                     $comment = $form->getData();
                     $this->get('nb.entity_manager')->persist($comment);
                     $this->get('nb.entity_manager')->flush();
+
+					return $this->redirect($this->generateUrl('news_show', array('news_id' => $news_id)));
                 }
             }
         }

@@ -20,4 +20,9 @@ class WarGameGameReplayFormType extends AbstractType
             'data_class' => 'IHQS\NuitBlancheBundle\Entity\Replay',
         );
     }
+
+	public function getName()
+	{
+		return 'WarGameGameReplay';
+	}
 }

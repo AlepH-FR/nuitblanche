@@ -10,7 +10,8 @@
     </ul>
     <div class="main topics">
         <h2>{{ category.name }}</h2>
-        {% render 'ForumBundle:Topic:list' with {'category': category, "page": page} %}
+        {% render 'ForumBundle:Topic:list' with {'category': category, "pagerOptions": { 'page': page }} %}
+        <div class="pagerfanta">{{ pagerfanta(category.getTopics(page), 'ihqsforum') }}</div>
     </div>
 
     <div class="register">

@@ -13,4 +13,14 @@ class WysiwygTextareaType extends TextareaType
 		parent::buildView($view, $form);
 		$view->set('attr', array('class' => "wysiwyg_editor"));
 	}
+
+	public function getParent(array $options)
+	{
+		return 'textarea';
+	}
+
+	public function getName()
+	{
+		return 'Wysiwyg';
+	}
 }

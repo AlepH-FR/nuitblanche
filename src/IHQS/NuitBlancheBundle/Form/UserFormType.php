@@ -45,7 +45,7 @@ class UserFormType extends AbstractType
         {
             $builder
                 ->add('email')
-                ->add('avatar', 'file', array('type' => 'file'))
+                ->add('avatar')
                 ->add('firstName')
                 ->add('lastName')
                 ->add('city')
@@ -77,4 +77,9 @@ class UserFormType extends AbstractType
             'password'	=> UserFormType::$_passwordModes,
         );
     }
+
+	public function getName()
+	{
+		return 'User';
+	}
 }

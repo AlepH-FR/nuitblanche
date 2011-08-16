@@ -6,7 +6,7 @@ use Bundle\ForumBundle\Entity\Topic as BaseTopic;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="Bundle\ForumBundle\Entity\TopicRepository")
+ * @ORM\Entity(repositoryClass="IHQS\ForumBundle\Entity\TopicRepository")
  * @ORM\Table(name="forum_topic")
  */
 class Topic extends BaseTopic
@@ -27,7 +27,7 @@ class Topic extends BaseTopic
     protected $lastPost;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Category")
+     * @ORM\ManyToOne(targetEntity="Category", inversedBy="topics")
      */
     protected $category;
 

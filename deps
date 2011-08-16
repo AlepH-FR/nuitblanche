@@ -77,3 +77,6 @@
     git=http://github.com/whiteoctober/WhiteOctoberAdminBundle.git
     target=/bundles/WhiteOctober/AdminBundle
 
+[doctrine-extensions]
+    git=http://github.com/l3pp4rd/DoctrineExtensions.git
+

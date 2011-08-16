@@ -16,7 +16,10 @@ class NewsFormType extends AbstractType
                 'required' => false,
                 'class'    => 'IHQS\NuitBlancheBundle\Entity\Team',
             ))
-            ->add('teamGame')
+            ->add('teamGame', 'entity', array(
+                'required' => true,
+                'class'    => 'IHQS\NuitBlancheBundle\Entity\TeamGame',
+            ))
             ->add('lang', 'choice', array('choices' => News::getLanguages()))
             ->add('body', new WysiwygTextareaType());
         ;
@@ -28,4 +31,9 @@ class NewsFormType extends AbstractType
             'data_class' => 'IHQS\NuitBlancheBundle\Entity\News',
         );
     }
+
+	public function getName()
+	{
+		return 'News';
+	}
 }

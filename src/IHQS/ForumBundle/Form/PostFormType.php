@@ -12,4 +12,9 @@ class PostFormType extends AbstractType
     {
         $builder->add('message', new WysiwygTextareaType());
     }
+
+	public function getName()
+	{
+		return 'Post';
+	}
 }

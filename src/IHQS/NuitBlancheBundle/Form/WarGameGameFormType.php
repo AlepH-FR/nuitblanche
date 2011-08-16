@@ -23,4 +23,9 @@ class WarGameGameFormType extends AbstractType
             'data_class' => 'IHQS\NuitBlancheBundle\Entity\Game',
         );
     }
+
+	public function getName()
+	{
+		return 'WarGameGame';
+	}
 }
