@@ -25,7 +25,6 @@
                 <tr>
                     <th></th>
                     <th>{{ "name" | trans }}</th>
-                    <th>{{ "class" | trans }}</th>
                     <th>{{ "character" | trans }}</th>
                 </tr>
             </thead>
@@ -44,8 +43,7 @@
                 <tr class="last">
                     <td><img src="{{ asset('bundles/ihqsnuitblanche/images/flags/' ~ user.countryCode | lower  ~ '.gif') }}" alt="{{ user.countryCode }}" class="flag" /></td>
                     <td><a href="{{ url('player_show', { "user_id": user.id }) }}">{{ user.username }}</a></td>
-                    <td><img src="{{ asset('bundles/ihqsnuitblanche/images/ico/' ~ user.wow.class | lower  ~ '.png') }}" alt="{{  user.wow.class | lower }}" class="flag" /></td>
-                    <td>
+                    <td style="text-align:left;"><img src="{{ asset('bundles/ihqsnuitblanche/images/ico/' ~ user.wow.class | lower  ~ '.png') }}" alt="{{  user.wow.class | lower }}" class="flag" />
                         <img src="{{ asset('bundles/ihqsnuitblanche/images/ico/' ~ user.wow.race | lower  ~ '_' ~ user.wow.sex ~ '.gif') }}" alt="{{  user.wow.race | lower }}" class="flag" />
                         {{ user.wow.name }}
                     </td>
