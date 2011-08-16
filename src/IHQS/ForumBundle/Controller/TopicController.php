@@ -16,9 +16,8 @@ class TopicController extends BaseTopicController
     {
         $topics = $this->get('forum.repository.topic')->findAll(true);
 
-        $topics->setCurrentPageNumber(1);
-        $topics->setItemCountPerPage(5);
-        $topics->setPageRange(5);
+        $topics->setCurrentPage(1);
+        $topics->setMaxPerPage(5);
 
         return array(
             'topics'    => $topics,

@@ -25,6 +25,7 @@ class AppKernel extends Kernel
             new IHQS\NuitBlancheBundle\IHQSNuitBlancheBundle(),
             new IHQS\ForumBundle\IHQSForumBundle(),
 			new IHQS\WysiwygBundle\IHQSWysiwygBundle(),
+			new WhiteOctober\PagerfantaBundle\WhiteOctoberPagerfantaBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

@@ -7,6 +7,7 @@ $loader = new UniversalClassLoader();
 $loader->registerNamespaces(array(
     'Symfony'          => array(__DIR__.'/../vendor/symfony/src', __DIR__.'/../vendor/bundles'),
     'Sensio'           => __DIR__.'/../vendor/bundles',
+    'WhiteOctober'     => __DIR__.'/../vendor/bundles',
     'JMS'              => __DIR__.'/../vendor/bundles',
     'Doctrine\\Common' => __DIR__.'/../vendor/doctrine-common/lib',
     'Doctrine\\DBAL'   => __DIR__.'/../vendor/doctrine-dbal/lib',
@@ -14,6 +15,7 @@ $loader->registerNamespaces(array(
     'Monolog'          => __DIR__.'/../vendor/monolog/src',
     'Assetic'          => __DIR__.'/../vendor/assetic/src',
     'Metadata'         => __DIR__.'/../vendor/metadata/src',
+    'Pagerfanta'       => __DIR__.'/../vendor/pagerfanta/src',
 
     'DoctrineExtensions' => __DIR__.'/../vendor/doctrine-extensions/lib',
     'DoctrineExtensions\\Sluggable' => __DIR__.'/../vendor/doctrine-extensions-sluggable/lib',
