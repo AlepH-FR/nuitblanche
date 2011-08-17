@@ -105,8 +105,9 @@ class SecuredController extends BaseController
      */
     public function _helloAction()
     {
+		$user = $this->get('security.context')->getToken()->getUser();
         return array(
-            'user' => $this->get('security.context')->getToken()->getUser()
+            'user' => $user
         );
     }
 

@@ -42,7 +42,7 @@ class NewsController extends BaseController
     /**
      * @Template()
      */
-    public function _commentAction($news)
+    public function _commentNewAction($news)
     {
         $user = $this->get('security.context')->getToken()->getUser();
         if(!$user instanceof User)
@@ -53,10 +53,77 @@ class NewsController extends BaseController
 
         // handling response
         return array(
-            'not_connected'    => false,
+            'not_connected' => false,
             'submit_path'	=> $this->generateUrl('news_show', array('news_id' => $news->getId())),
-            'form'			=> $form->createView()
+            'form'			=> $form->createView(),
+			'title'			=> "Add your comment"
         );
+    }
+
+    /**
+     * @Route("/news/comment/{id}/edit", name="news_comment_edit")
+	 * @Template()
+     */
+    public function commentEditAction($id)
+    {
+        $user = $this->get('security.context')->getToken()->getUser();
+        if(!$user instanceof User)
+        {
+            return array('not_connected' => true);
+        }
+
+		$comment = $this->get('nb.manager.comment')->findOneById($id);
+		if(!$comment)
+		{
+			throw new \InvalidArgumentException('Unknown comment for this id');
+		}
+
+        $form = $this->getFormComment($comment->getNews(), $user);
+		$form->setData($comment);
+
+		// handling request
+		$request = $this->get('request');
+		if ($request->getMethod() == 'POST')
+		{
+			$form->bindRequest($request);
+
+			// handling submission
+			if($form->isValid())
+			{
+				$comment = $form->getData();
+				$this->get('nb.entity_manager')->persist($comment);
+				$this->get('nb.entity_manager')->flush();
+
+				return $this->redirect($this->generateUrl('news_show', array('news_id' => $comment->getNews()->getId())));
+			}
+		}
+
+        // handling response
+        return array(
+            'not_connected' => false,
+            'submit_path'	=> '',
+            'form'			=> $form->createView(),
+            'comment'		=> $comment
+        );
+    }
+
+    /**
+     * @Route("/news/comment/{id}/delete", name="news_comment_delete")
+     */
+    public function commentDeleteAction($id)
+    {
+
+		$comment = $this->get('nb.manager.comment')->findOneById($id);
+		if(!$comment)
+		{
+			throw new \InvalidArgumentException('Unknown comment for this id');
+		}
+
+		$news = $comment->getNews();
+		$this->get('nb.entity_manager')->remove($comment);
+		$this->get('nb.entity_manager')->flush();
+
+		return $this->redirect($this->generateUrl('news_show', array('news_id' => $news->getId())));
     }
 
     /**
@@ -124,8 +191,8 @@ class NewsController extends BaseController
         {
             $news = new News();
             $news
-                    ->setAuthor($user)
-                    ->setDate(new \Datetime())
+				->setAuthor($user)
+				->setDate(new \Datetime())
             ;
         }
 

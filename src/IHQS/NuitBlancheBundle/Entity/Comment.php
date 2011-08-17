@@ -76,4 +76,10 @@ class Comment
         $this->author = $author;
         return $this;
     }
+
+	public function isAuthor($user = null)
+	{
+		if(!$user || !$user instanceof User) { return false; }
+		return ( $user->getId() == $this->author->getId() );
+	}
 }
