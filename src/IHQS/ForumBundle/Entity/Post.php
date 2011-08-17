@@ -40,4 +40,10 @@ class Post extends BasePost
     {
         return $this->message;
     }
+
+	public function isAuthor($user = null)
+	{
+		if(!$user || !$user instanceof User) { return false; }
+		return ( $user->getId() == $this->author->getId() );
+	}
 }

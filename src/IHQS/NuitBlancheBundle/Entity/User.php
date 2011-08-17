@@ -106,6 +106,11 @@ class User implements UserInterface, \Serializable
     protected $msn;
 
     /**
+     * @ORM\Column(type="text", nullable="true")
+     */
+    protected $roles;
+
+    /**
      * @ORM\OneToMany(targetEntity="News", mappedBy="author")
      */
     protected $news;
@@ -156,6 +161,11 @@ class User implements UserInterface, \Serializable
 			$this->wow = null;
 		}
     }
+
+	public function __construct()
+	{
+		$this->roles = array('ROLE_USER');
+	}
 
     public function getId() {
         return $this->id;
@@ -353,8 +363,16 @@ class User implements UserInterface, \Serializable
         return $profiles;
     }
 
+	public function addRole($role) {
+		$roles = unserialize($this->roles);
+		$roles[] = $role;
+		$this->roles = serialize($roles);
+	}
+
     public function getRoles() {
-        return array('ROLE_ADMIN');
+		$roles = unserialize($this->roles);
+		if(!$roles || !is_array($roles)) { $roles = array('ROLE_USER'); }
+        return $roles;
     }
 
     public function getSalt() {

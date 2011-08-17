@@ -921,3 +921,28 @@ img.bnet-rank
     height: 16px;
     vertical-align: middle;
 }
+
+
+ol.comments li ul.actions {
+    float: right;
+}
+    ol.comments li ul.actions li {
+        float: left;
+        margin: 5px 5px 0 0;
+        padding: 0;
+        list-style: none;
+    }
+        ol.comments li ul.actions li a {
+            width: 20px;
+            height: 20px;
+            display: block;
+        }
+        ol.comments li ul.actions li.edit a {
+            background: url('/bundles/ihqsnuitblanche/images/ico/edit.jpg');
+        }
+        ol.comments li ul.actions li.delete a {
+            background: url('/bundles/ihqsnuitblanche/images/ico/delete.jpg');
+        }
+            ol.comments li ul.actions li a span {
+                display: none;
+            }
