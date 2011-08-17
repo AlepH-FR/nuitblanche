@@ -12,7 +12,7 @@ class SC2ProfileFormType extends AbstractType
     {
         $builder
             ->add('sc2Id')
-            ->add('sc2Account', 'number', array('required' => false))
+            ->add('sc2Account', 'text', array('required' => false))
             ->add('sc2Race', 'choice', array('choices' => SC2Profile::$_sc2races))
             ->add('sc2ProfileEsl')
             ->add('sc2ProfilePandaria')
