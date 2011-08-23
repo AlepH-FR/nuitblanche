@@ -8,13 +8,14 @@ use IHQS\NuitBlancheBundle\Validator\Unique;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\File\File;
+use IHQS\TournamentBundle\Model\PlayerInterface;
 
 /**
  * @ORM\Entity(repositoryClass="IHQS\NuitBlancheBundle\Model\UserRepository")
  * @ORM\Table(name="nb_user")
  * @ORM\HasLifecycleCallbacks
  */
-class User implements UserInterface, \Serializable
+class User implements PlayerInterface, \Serializable
 {
     const STATUS_ONLINE     = "online";
     const STATUS_OFFLINE    = "offline";
@@ -164,7 +165,7 @@ class User implements UserInterface, \Serializable
 
 	public function __construct()
 	{
-		$this->roles = array('ROLE_USER');
+		$this->roles = serialize(array('ROLE_USER'));
 	}
 
     public function getId() {
