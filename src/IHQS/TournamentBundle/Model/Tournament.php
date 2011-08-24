@@ -90,7 +90,7 @@ abstract class Tournament implements TournamentInterface
 	{
         foreach($this->rounds as $round)
 		{
-			if($round->getOrder() == 1) { return $round; }
+			if($round->getOrder() == $i) { return $round; }
 		}
 		
         return null;

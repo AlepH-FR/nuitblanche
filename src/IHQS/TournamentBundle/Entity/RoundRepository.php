@@ -26,12 +26,13 @@ class RoundRepository extends EntityRepository
 		}
 
 		$manager = new $class($round, $this->_em);
-
 		return $manager;
 	}
 	
 	public function launchRound(RoundInterface $round, Collection $players)
 	{
+		$manager = $this->getRoundTypeManager($round);
+		
 		if($round->getGroups()->count() > 0)
 		{
 			throw new \LogicException('This round has already been launched');

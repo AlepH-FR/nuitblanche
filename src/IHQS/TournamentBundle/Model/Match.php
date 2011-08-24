@@ -89,6 +89,32 @@ abstract class Match implements MatchInterface
 		$this->winner = $winner;
 	}
 
+	public function getWinnerPlayer()
+	{
+		if(!$this->winner) { return null; }
+		return $this->{"player" . $this->winner};
+	}
+
+	public function getLooserPlayer()
+	{
+		if(!$this->winner) { return null; }
+		$looser = ($winner == 1) ? 2 : 1;
+		return $this->{"player" . $looser};
+	}
+
+	public function getWinnerScore()
+	{
+		if(!$this->winner) { return 0; }
+		return $this->{"player" . $this->winner . "Score"};
+	}
+
+	public function getLooserScore()
+	{
+		if(!$this->winner) { return 0; }
+		$looser = ($winner == 1) ? 2 : 1;
+		return $this->{"player" . $looser . "Score"};
+	}
+
 	public function getOrder()
 	{
 		return $this->order;

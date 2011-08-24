@@ -18,6 +18,7 @@ class PoolManager extends AbstractRoundTypeManager implements RoundTypeManagerIn
 		{
 			$g = new RoundGroup();
 			$g->setName('Pool ' . chr(64+$i));
+			$g->setCode($i);
 			$g->setRound($this->round);
 
 			$players = $this->getGroupPlayers($roundPlayers, $nb_groups, $i - 1);

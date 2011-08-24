@@ -10,7 +10,6 @@ class TournamentRepository extends EntityRepository
 	public function launchTournament(TournamentInterface $tournament)
 	{
 		$this->closeTournament($tournament);
-
 		$firstRound = $tournament->getRound(1);
 		
 		try {

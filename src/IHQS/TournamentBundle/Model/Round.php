@@ -49,6 +49,11 @@ abstract class Round implements RoundInterface
 		$this->type = $type;
 	}
 
+	static public function getAllowedTypes()
+	{
+		return self::$_types;
+	}
+
 	public function getPlayerLimit()
 	{
 		return $this->playerLimit;
@@ -107,5 +112,15 @@ abstract class Round implements RoundInterface
 	public function removeGroup(RoundGroupInterface $group)
 	{
 		$this->groups->remove($group);
+	}
+
+	public function getRoundGroup($code)
+	{
+        foreach($this->groups as $group)
+		{
+			if($group->getCode() == $code) { return $group; }
+		}
+
+        return null;
 	}
 }

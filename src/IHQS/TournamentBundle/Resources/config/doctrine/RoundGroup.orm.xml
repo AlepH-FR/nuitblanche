@@ -12,6 +12,8 @@
 
         <field name="name" column="name" type="string" />
 
+        <field name="code" column="code" type="string" />
+
         <one-to-many mapped-by="group" target-entity="Match" field="matches" />
 
         <many-to-one target-entity="Round" field="round" inversed-by="groups">

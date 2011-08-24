@@ -25,7 +25,7 @@ class RoundController extends Controller
     }
 
     /**
-	 * Creating a new tournament
+	 * Creating a new round
 	 *
      * @Route("/{tournament_id}/round/new", name="ihqs_tournament_round_new")
      * @Template()
@@ -35,12 +35,22 @@ class RoundController extends Controller
     }
 
     /**
-	 * Edit a tournament informations
+	 * Edit a round
 	 *
      * @Route("/{tournament_id}/round/{round_id}/edit", name="ihqs_tournament_round_edit")
      * @Template()
      */
     public function editAction($tournament_id, $round_id)
+    {
+    }
+
+    /**
+	 * Closes a round
+	 *
+     * @Route("/{tournament_id}/round/{round_id}/close", name="ihqs_tournament_round_close")
+     * @Template()
+     */
+    public function closeAction($tournament_id, $round_id)
     {
     }
 }
