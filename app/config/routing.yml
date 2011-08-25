@@ -5,6 +5,10 @@ ihqs_forum:
 ihqs_nuitblanche:
     resource: "@IHQSNuitBlancheBundle/Resources/config/routing.yml"
 
+ihqs_tournament:
+    resource: "@IHQSTournamentBundle/Resources/config/routing.yml"
+    prefix:     /tournament
+
 forum:
     resource: "@ForumBundle/Resources/config/routing/forum.xml"
     prefix:     /forum

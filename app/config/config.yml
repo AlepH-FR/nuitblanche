@@ -52,6 +52,9 @@ doctrine:
         mappings:
             IHQSNuitBlancheBundle: { type: annotation, dir: Entity/ }
             IHQSForumBundle: { type: annotation, dir: Entity/ }
+            IHQSTournamentBundle: { type: xml }
+
+
 
 # Swiftmailer Configuration
 swiftmailer:
@@ -74,6 +77,10 @@ ihqs_wysiwyg:
         library: ckeditor
         set: custom
         theme: kama
+
+ihqs_tournament:
+    model:
+      user_class: IHQS\NuitBlancheBundle\Entity\User
 
 forum:
     db_driver: orm
