@@ -43,8 +43,7 @@ class SC2Profile
 
     /**
      * @ORM\Column(type="integer")
-     * @Assert\NotBlank(groups="Registration", message = "Please add your SC2 account id")
-     * @Assert\Regex("/\d+/")
+     * @Assert\Regex("/\d*/")
      */
     protected $sc2Id;
 
