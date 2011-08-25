@@ -43,7 +43,7 @@ class SC2Profile
 
     /**
      * @ORM\Column(type="integer")
-     * @Assert\Regex("/\d*/")
+     * @Assert\Regex("/\d+/")
      */
     protected $sc2Id;
 

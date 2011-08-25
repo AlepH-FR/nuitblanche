@@ -26,8 +26,8 @@ EOT
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $em = $this->container->get('nb.entity_manager');
-		$players = $this->container->get('nb.manager.player')->findAll();
+        $em = $this->getContainer()->get('nb.entity_manager');
+		$players = $this->getContainer()->get('nb.manager.sc2profile')->findAll();
 
 		$ranks = new \SC2Ranks\SC2Ranks('clan-nuitblanche.org');
 		$this->api = $ranks->getApi('player');
@@ -44,7 +44,7 @@ EOT
 		$em->flush();
     }
 
-	protected function importSc2Ranks(Player $player)
+	protected function importSc2Ranks(SC2Profile $player)
 	{
 		$this->api->setAccount($player->getSc2Account(), $player->getSc2Id());
 

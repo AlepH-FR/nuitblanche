@@ -223,10 +223,10 @@ class User implements PlayerInterface, \Serializable
     public function setAvatar($avatar) {
         if(is_object($avatar) && $avatar instanceof UploadedFile)
         {
-            chmod($avatar->getPath(), 0777);
+            @chmod($avatar->getPath(), 0777);
 
             $dir = '/upload/avatar';
-            $filename = strtolower($this->username) . '.' . pathinfo($avatar->getOriginalName(), PATHINFO_EXTENSION);
+            $filename = strtolower($this->username) . '.' . pathinfo($avatar->getClientOriginalName(), PATHINFO_EXTENSION);
 
             $rootDir = __DIR__.'/../../../../web';
             $avatar->move($rootDir . $dir, $filename);

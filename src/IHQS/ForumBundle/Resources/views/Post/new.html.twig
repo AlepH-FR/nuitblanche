@@ -10,7 +10,7 @@
         <li><a href="{{ forum_urlForTopic(topic) }}">{{ topic.subject }}</a></li>
         <li class="last">{{ "New reply" | trans }}</li>
     </ul>
-    {% if not is_granted('ROLE_MEMBER') %}
+    {% if not is_granted('ROLE_USER') %}
     <p class="login">
         {{ "Please" | trans }}
         <strong>{{ "log in" | trans }} </strong>
