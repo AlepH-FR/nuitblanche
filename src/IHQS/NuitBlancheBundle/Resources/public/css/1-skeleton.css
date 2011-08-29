@@ -99,3 +99,17 @@ hr
 .block-2-mid { width: 157px; }
 .block-3 { width: 335px; }
 .block-4 { width: 520px; }
+
+pre
+{
+    margin: 5px 0;
+    padding: 5px;
+    border: 1px solid #CCC;
+    background: #EEE;
+    font-family: 'Courier New', monospace;
+}
+
+ol.comments div.main p
+{
+    margin-bottom: 5px;
+}
