@@ -53,7 +53,7 @@ EOT
 
 		// random teams and portraits
 		$teams	= $this->api->baseTeams();
-		if(isset($teams->error))
+		if(!$player->getSc2Id() || isset($teams->error))
 		{
 			$this->api->setAccountById($player->getSc2Account(), $player->getSc2RanksId());
 			$teams	= $this->api->baseTeams();
