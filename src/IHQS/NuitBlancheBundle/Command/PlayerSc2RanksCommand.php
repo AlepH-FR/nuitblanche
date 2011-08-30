@@ -46,7 +46,10 @@ EOT
 
 	protected function importSc2Ranks(SC2Profile $player)
 	{
-		$this->api->setAccount($player->getSc2Account(), $player->getSc2Id());
+		if($player->getSc2Id() && 0 !== $player->getSc2Id())
+		{
+			$this->api->setAccount($player->getSc2Account(), $player->getSc2Id());
+		}
 
 		// random teams and portraits
 		$teams	= $this->api->baseTeams();

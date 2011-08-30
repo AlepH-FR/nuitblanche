@@ -30,7 +30,7 @@ class StreamController extends Controller
 			$data = json_decode($content);
 			return $data;
 		} 
-		catch(Exception $e)
+		catch(\Exception $e)
 		{
 			return array();
 		}
