@@ -73,13 +73,11 @@ class ReplayProcessor
 
     protected function moveFile(UploadedFile $file)
     {
-        chmod($file->getPath(), 0777);
-
         $dir = self::$replay_dir . '/upload/replay';
         $file->move($dir);
-        $movedFile = $dir . '/' . $file->getName();
+        $movedFile = $dir . '/' . $file->getBasename();
 
-        return $file;
+        return $movedFile;
     }
 
     protected function buildChart(Replay $replay, $file)
@@ -106,7 +104,7 @@ class ReplayProcessor
             $apm = round(60 * $actions / $sc2replay->getLength());
 
             $name = $player->getName();
-            $db_player = $this->em->getRepository('IHQS\NuitBlancheBundle\Entity\Player')->findOneBySc2Account($name);
+            $db_player = $this->em->getRepository('IHQS\NuitBlancheBundle\Entity\SC2Profile')->findOneBySc2Account($name);
 
 			// looking for an existing game player
 			$gp = null;
