@@ -140,7 +140,8 @@ class Team
 
             foreach($war->getGames() as $game)
             {
-                if($game->getGames()->count() == 0)
+                if($game->getGames()->count() === 0
+                || $game->getType() === 0)
                 {
                     continue;
                 }
