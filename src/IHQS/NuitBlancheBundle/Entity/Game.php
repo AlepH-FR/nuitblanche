@@ -163,6 +163,7 @@ class Game extends BaseGame
 	{
         switch(count($this->players))
         {
+            case 0: return 0;
             case 2: return Game::TYPE_1v1;
             case 4: return Game::TYPE_2v2;
             case 6: return Game::TYPE_3v3;
