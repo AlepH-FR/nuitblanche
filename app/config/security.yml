@@ -41,5 +41,5 @@ security:
 
     access_control:
         - { path: /login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: /contribute/.*, roles: ROLE_MEMBER }
+        - { path: /contribute/.*, roles: ROLE_USER }
         - { path: /forum/admin.*, roles: ROLE_ADMIN }

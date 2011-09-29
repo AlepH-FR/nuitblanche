@@ -12,7 +12,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 class WoWProfile
 {
     const CLASS_DEATHKNIGHT  = "deathknight";
-    const CLASS_DROOD        = "drood";
+    const CLASS_DROOD        = "druid";
     const CLASS_HUNTER       = "hunter";
     const CLASS_MAGE         = "mage";
     const CLASS_PALADIN      = "paladin";
