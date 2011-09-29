@@ -85,21 +85,37 @@ class MPQFile {
 	function setDebug($bool) { $this->debug = $bool; }
 	
 	static function readByte($string, &$numByte) {
+		// the following checks that there are enough bytes left in the string
+		if ($numByte >= strlen($string)) { 
+			return false;
+		}
 		$tmp = unpack("C",substr($string,$numByte,1));
 		$numByte++;
 		return $tmp[1];
 	}
 	static function readBytes($string, &$numByte, $length) {
+		// the following checks that there are enough bytes left in the string
+		if (strlen($string) - $numByte - $length < 0) { 
+			return false;
+		}
 		$tmp = substr($string,$numByte,$length);
 		$numByte += $length;
 		return $tmp;
 	}
 	static function readUInt16($string, &$numByte) {
+		// the following checks that there are enough bytes left in the string
+		if (strlen($string) - $numByte - 2 < 0) { 
+			return false;
+		}
 		$tmp = unpack("v",substr($string,$numByte,2));
 		$numByte += 2;
 		return $tmp[1];
 	}
 	static function readUInt32($string, &$numByte) {
+		// the following checks that there are enough bytes left in the string
+		if (strlen($string) - $numByte - 4 < 0) { 
+			return false;
+		}
 		$tmp = unpack("V",substr($string,$numByte,4));
 		$numByte += 4;
 		return $tmp[1];
@@ -162,7 +178,7 @@ class MPQFile {
 				return MPQFile::parseVLFNumber($string,$numByte);
 				break;
 			default:
-				if ($this->debug) $this->debug(sprintf("Unknown data type in function parseDetailsValue (%d)",$dataType));
+//				if ($this->debug) $this->debug(sprintf("Unknown data type in function parseDetailsValue (%d)",$dataType));
 				return false;
 		}
 	}
@@ -351,7 +367,7 @@ class MPQFile {
 		
 		if (!$flag_file) return false;
 		$fp = $blockOffset;
-		if ($flag_checksums) {
+		if ($flag_checksums || !$flag_singleunit) {
 			for ($i = $fileSize;$i > 0;$i -= $this->sectorSize) {
 				$sectors[] = self::readUInt32($this->fileData, $fp);
 				$blockSize -= 4;
@@ -372,7 +388,7 @@ class MPQFile {
 			$fp = $blockOffset + $sectors[$i];
 			$sectorData = self::readBytes($this->fileData, $fp,$sectorLen);
 			if ($this->debug) $this->debug(sprintf("Got %d bytes of sector data",strlen($sectorData)));
-			if ($flag_compressed && (($flag_singleunit && ($blockSize < $fileSize)) || ($flag_checksums && ($sectorLen <  $this->sectorSize)))) {
+			if ($flag_compressed && ((($blockSize < $fileSize)) || ($flag_checksums && ($sectorLen <  $this->sectorSize)))) {
 				$numByte = 0;
 				$compressionType = self::readByte($sectorData,$numByte);
 				$sectorData = substr($sectorData,1);
