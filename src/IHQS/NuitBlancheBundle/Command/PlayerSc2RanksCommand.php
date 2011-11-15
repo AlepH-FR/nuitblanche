@@ -29,7 +29,7 @@ EOT
         $em = $this->getContainer()->get('nb.entity_manager');
 		$players = $this->getContainer()->get('nb.manager.sc2profile')->findAll();
 
-		$ranks = new \SC2Ranks\SC2Ranks('clan-nuitblanche.org');
+		$ranks = new \SC2Ranks\SC2Ranks('clan-nuitblanche.org', '\SC2Ranks\Client\Curl');
 		$this->api = $ranks->getApi('player');
 
 		foreach($players as $player)
@@ -60,7 +60,7 @@ EOT
 		}
 
 		$sc2ranks = array();
-		if(!isset($teams->error))
+		if(is_object($teams) && !isset($teams->error))
 		{
 			$sc2ranks['base'] = array();
 			if(isset($teams->portrait))
@@ -86,7 +86,7 @@ EOT
 		$league_levels = array_flip(\SC2Ranks\Api\Division::$levels);
 		
 		$teams = $this->api->charTeams(2);
-		if(!isset($teams->error))
+		if(is_object($teams) && !isset($teams->error))
 		{
 			foreach($teams->teams as $team)
 			{
